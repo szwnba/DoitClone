@@ -6,4 +6,4 @@
 | RepeaterTest | 9 | 0 | 0 |
 | SmartAddParserTest | 10 | 0 | 0 |
 
-> 2026-08-26 运行于 Robolectric 4.12 / JVM：29/29 全部通过（含发现并修复 trash 查询 Bug 后的回归）
+> 2026-08-26 原版素材移植后回归：全部通过

@@ -14,8 +14,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/surface"
-            app:navigationIcon="@drawable/ic_arrow_back" />
+            android:background="@drawable/actionbar_bg"
+            app:navigationIcon="@drawable/ic_arrow_back" 
+        app:titleTextColor="@color/actionbar_title_text_color"
+        app:theme="@style/ToolbarMenuTheme" />
 
         <EditText
             android:id="@+id/edit_title"

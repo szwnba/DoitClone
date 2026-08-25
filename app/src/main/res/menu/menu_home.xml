@@ -1,9 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_group_by" android:title="@string/menu_group_by" android:icon="@drawable/ic_filters" app:showAsAction="never" />
-    <item android:id="@+id/action_search" android:title="@string/search" android:icon="@drawable/ic_search" app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_add" android:title="@string/task_new"
+        android:icon="@drawable/icon_actionbar_add" app:showAsAction="always" />
+    <item android:id="@+id/action_search" android:title="@string/search"
+        android:icon="@drawable/ic_search" app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_group_by" android:title="@string/menu_group_by" app:showAsAction="never" />
     <item android:id="@+id/action_daily_plan" android:title="@string/daily_plan" app:showAsAction="never" />
     <item android:id="@+id/action_daily_review" android:title="@string/daily_review" app:showAsAction="never" />
     <item android:id="@+id/action_empty_trash" android:title="@string/action_empty_trash" app:showAsAction="never" />
-    <item android:id="@+id/action_settings" android:title="@string/settings" android:icon="@drawable/ic_settings" app:showAsAction="never" />
+    <item android:id="@+id/action_settings" android:title="@string/settings" app:showAsAction="never" />
 </menu>

@@ -15,7 +15,10 @@ import com.doit.clone.databinding.ItemTaskBinding
 import com.doit.clone.model.Priority
 import com.doit.clone.util.DateUtils
 
-/** 任务列表适配器：支持分组头、完成态、优先级条、逾期标红 */
+/**
+ * 任务列表适配器：原版 layout_listview_task 结构——
+ * 左侧优先级色条 + 复选框（原版图标）+ 标题 + 属性行（重复图标/时间/项目/截止）。
+ */
 class TaskListAdapter(
     private val listener: Listener,
     private val dateFormat: String
@@ -70,38 +73,47 @@ class TaskListAdapter(
             b.taskTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
-        val subtitleParts = mutableListOf<String>()
+        val attrParts = mutableListOf<String>()
         task.startAt?.let { st ->
-            subtitleParts.add(
+            attrParts.add(
                 if (task.allDay) DateUtils.friendlyDate(st, dateFormat)
                 else DateUtils.friendlyDate(st, dateFormat) + " " + DateUtils.formatTime(st)
             )
         }
-        task.endAt?.let { en ->
-            val text = "截止 " + DateUtils.friendlyDate(en, dateFormat) +
-                if (task.allDay.not()) " " + DateUtils.formatTime(en) else ""
-            subtitleParts.add(text)
-        }
-        row.projectName?.let { subtitleParts.add(it) }
-        row.contextName?.let { subtitleParts.add("@$it") }
+        row.contextName?.let { attrParts.add(it) }
+        row.projectName?.let { attrParts.add(it) }
         task.tags?.takeIf { it.isNotBlank() }?.split(",")?.filter { it.isNotBlank() }
-            ?.forEach { subtitleParts.add("#$it") }
-        b.taskSubtitle.text = subtitleParts.joinToString(" · ")
-        b.taskSubtitle.visibility = if (subtitleParts.isEmpty()) View.GONE else View.VISIBLE
+            ?.forEach { attrParts.add("#$it") }
+        b.taskSubtitle.text = attrParts.joinToString("  ")
 
         if (task.endAt != null && !task.completed && task.endAt < System.currentTimeMillis()) {
             b.taskDue.text = "逾期"
             b.taskDue.setTextColor(ContextCompat.getColor(b.root.context, R.color.overdue))
         } else {
-            b.taskDue.text = null
+            b.taskDue.text = task.endAt?.let { "截止 " + DateUtils.friendlyDate(it, dateFormat) }
+            b.taskDue.setTextColor(
+                ContextCompat.getColor(b.root.context, R.color.task_list_item_attribute_normal_color)
+            )
         }
 
-        b.taskCheckbox.isChecked = task.completed
-        b.priorityBar.setBackgroundColor(Priority.colorRes(task.priority))
+        b.taskCheckbox.setImageResource(
+            if (task.completed) R.drawable.icon_checkbox_completed else R.drawable.icon_checkbox_uncompleted
+        )
+        b.priorityBar.setBackgroundColor(priorityColor(b.root.context, task.priority))
+        b.attrRepeat.visibility = if (task.repeater != null) View.VISIBLE else View.GONE
+        b.notesIcon.visibility = if (!task.notes.isNullOrBlank()) View.VISIBLE else View.GONE
 
         b.taskCheckbox.setOnClickListener { listener.onToggle(task) }
         b.root.setOnClickListener { listener.onClick(task) }
         b.root.setOnLongClickListener { listener.onLongClick(task); true }
+    }
+
+    /** 原版优先级四色：高=橙红 中=蓝 低=浅蓝 无=灰 */
+    private fun priorityColor(context: android.content.Context, value: Int): Int = when (value) {
+        Priority.HIGH -> ContextCompat.getColor(context, R.color.pri_h)
+        Priority.MIDDLE -> ContextCompat.getColor(context, R.color.pri_m)
+        Priority.LOW -> ContextCompat.getColor(context, R.color.pri_l)
+        else -> ContextCompat.getColor(context, R.color.pri_n)
     }
 
     companion object {

@@ -17,31 +17,23 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/surface"
-                app:titleTextAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                android:layout_height="@dimen/actionbar_height"
+                android:background="@drawable/actionbar_bg"
+                app:titleTextAppearance="@style/ToolbarTitle.Doit"
+                app:titleTextColor="@color/actionbar_title_text_color"
+                app:subtitleTextColor="@color/actionbar_subtitle"
+                app:theme="@style/ToolbarMenuTheme" />
 
             <FrameLayout
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/task_new"
-            android:src="@drawable/ic_add"
-            app:backgroundTint="@color/primary"
-            app:tint="@color/on_primary" />
     </FrameLayout>
 
     <LinearLayout
         android:id="@+id/drawer_pane"
-        android:layout_width="@dimen/drawer_width"
+        android:layout_width="@dimen/d_menu_list_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/drawer_bg"

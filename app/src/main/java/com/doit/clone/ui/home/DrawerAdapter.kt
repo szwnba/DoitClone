@@ -45,7 +45,8 @@ class DrawerAdapter(
         RecyclerView.ViewHolder(b.root) {
         fun bind(item: DrawerItem.Box, selected: Boolean) {
             b.boxName.text = item.name
-            b.boxIcon.setImageResource(iconOf(item.type))
+            val icon = if (item.type == BoxType.TOMORROW) tomorrowIcon(b.root.context) else iconOf(item.type)
+            b.boxIcon.setImageResource(icon)
             if (item.count >= 0) {
                 b.boxBadge.visible()
                 b.boxBadge.text = item.count.toString()
@@ -58,6 +59,9 @@ class DrawerAdapter(
             } else {
                 b.boxBadgeOverdue.gone()
             }
+            b.badgeDivider.visibility =
+                if (item.overdueCount > 0 && item.count >= 0) android.view.View.VISIBLE
+                else android.view.View.GONE
             b.root.isActivated = selected
             b.root.setOnClickListener { onClick(item.type) }
         }
@@ -107,21 +111,30 @@ class DrawerAdapter(
             DrawerItem.Box(BoxType.TRASH, "垃圾桶", counts.trash)
         )
 
+        /** 原版图标名（icon_leftbox_*，还原自 BoxUtils.setBoxViewRes） */
         fun iconOf(type: BoxType): Int = when (type) {
-            BoxType.INBOX -> R.drawable.ic_inbox
-            BoxType.TODAY -> R.drawable.ic_today
-            BoxType.NEXT -> R.drawable.ic_next
-            BoxType.TOMORROW -> R.drawable.ic_tomorrow
-            BoxType.SCHEDULED -> R.drawable.ic_scheduled
-            BoxType.SOMEDAY -> R.drawable.ic_someday
-            BoxType.WAITING -> R.drawable.ic_waiting
-            BoxType.PROJECTS -> R.drawable.ic_projects
-            BoxType.GOALS -> R.drawable.ic_goals
-            BoxType.CONTEXTS -> R.drawable.ic_contexts
-            BoxType.FILTERS -> R.drawable.ic_filters
-            BoxType.COMPLETED -> R.drawable.ic_completed
-            BoxType.TRASH -> R.drawable.ic_trash
-            else -> R.drawable.ic_inbox
+            BoxType.INBOX -> R.drawable.icon_leftbox_inbox
+            BoxType.TODAY -> R.drawable.icon_leftbox_today
+            BoxType.NEXT -> R.drawable.icon_leftbox_next
+            BoxType.TOMORROW -> R.drawable.icon_leftbox_tomorrow1
+            BoxType.SCHEDULED -> R.drawable.icon_leftbox_scheduled
+            BoxType.SOMEDAY -> R.drawable.icon_leftbox_someday
+            BoxType.WAITING -> R.drawable.icon_leftbox_waiting
+            BoxType.PROJECTS -> R.drawable.icon_leftbox_projects
+            BoxType.GOALS -> R.drawable.icon_leftbox_goals
+            BoxType.CONTEXTS -> R.drawable.icon_leftbox_contexts
+            BoxType.FILTERS -> R.drawable.icon_leftbox_filters
+            BoxType.COMPLETED -> R.drawable.icon_leftbox_completed
+            BoxType.TRASH -> R.drawable.icon_leftbox_trash
+            else -> R.drawable.icon_leftbox_inbox
+        }
+
+        /** 原版行为：明日箱图标按明日的日期动态切换（tomorrow1~31） */
+        fun tomorrowIcon(context: android.content.Context): Int {
+            val cal = java.util.Calendar.getInstance().apply { add(java.util.Calendar.DAY_OF_YEAR, 1) }
+            val day = cal.get(java.util.Calendar.DAY_OF_MONTH)
+            val id = context.resources.getIdentifier("icon_leftbox_tomorrow$day", "drawable", context.packageName)
+            return if (id != 0) id else R.drawable.icon_leftbox_tomorrow1
         }
     }
 }

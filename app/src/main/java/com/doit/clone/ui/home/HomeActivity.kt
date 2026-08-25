@@ -58,6 +58,7 @@ class HomeActivity : AppCompatActivity() {
         binding.toolbar.inflateMenu(R.menu.menu_home)
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+                R.id.action_add -> startActivity(TaskDetailActivity.newIntent(this, currentBox))
                 R.id.action_group_by -> currentTaskFragment()?.showGroupByDialog()
                 R.id.action_search -> startActivity(SearchActivity.intent(this))
                 R.id.action_daily_plan -> startActivity(DailyPlanActivity.intent(this))
@@ -84,9 +85,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupFab() {
-        binding.fabAdd.setOnClickListener {
-            startActivity(TaskDetailActivity.newIntent(this, currentBox))
-        }
+        // 原版无 FAB：添加入口在标题栏（icon_actionbar_add）
     }
 
     private fun showBox(box: BoxType) {
@@ -95,9 +94,8 @@ class HomeActivity : AppCompatActivity() {
         binding.toolbar.menu.findItem(R.id.action_empty_trash)?.isVisible = box == BoxType.TRASH
         binding.toolbar.menu.findItem(R.id.action_group_by)?.isVisible =
             TaskListFragmentSupport.groupByVisible(box)
-        binding.fabAdd.visibility =
-            if (box == BoxType.COMPLETED || box == BoxType.TRASH) android.view.View.GONE
-            else android.view.View.VISIBLE
+        binding.toolbar.menu.findItem(R.id.action_add)?.isVisible =
+            box != BoxType.COMPLETED && box != BoxType.TRASH
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, TaskListFragment.newInstance(box))
             .commit()

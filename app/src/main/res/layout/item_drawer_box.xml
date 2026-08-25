@@ -1,53 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="@dimen/d_menu_list_item_height"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingStart="12dp"
-    android:paddingEnd="12dp"
+    android:paddingLeft="@dimen/d_menu_list_item_padding_left"
+    android:paddingRight="@dimen/d_menu_list_item_padding_right"
     android:background="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/box_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@null" />
 
     <TextView
         android:id="@+id/box_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-    <TextView
-        android:id="@+id/box_badge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/badge_bg"
-        android:minWidth="20dp"
-        android:gravity="center"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
-        android:paddingTop="1dp"
-        android:paddingBottom="1dp"
-        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-        android:textColor="@color/badge_text" />
+        android:layout_marginLeft="12dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:textColor="@color/d_menu_list_box_item_name" />
 
     <TextView
         android:id="@+id/box_badge_overdue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/badge_overdue_bg"
-        android:minWidth="20dp"
-        android:gravity="center"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
-        android:paddingTop="1dp"
-        android:paddingBottom="1dp"
-        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
-        android:textColor="@color/overdue" />
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:textSize="14sp"
+        android:textColor="@color/d_menu_list_box_item_overdue_count" />
+
+    <View
+        android:id="@+id/badge_divider"
+        android:layout_width="1dp"
+        android:layout_height="14dp"
+        android:background="@color/d_menu_list_item_divider" />
+
+    <TextView
+        android:id="@+id/box_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:maxWidth="24dp"
+        android:textSize="14sp"
+        android:textColor="@color/d_menu_list_box_item_count" />
 </LinearLayout>
