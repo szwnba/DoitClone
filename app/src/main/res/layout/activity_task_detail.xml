@@ -1,0 +1,232 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/surface"
+            app:navigationIcon="@drawable/ic_arrow_back" />
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/task_title_hint"
+            android:inputType="textCapSentences"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
+
+        <EditText
+            android:id="@+id/edit_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:hint="@string/task_notes_hint"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+        <LinearLayout
+            android:id="@+id/row_start"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_calendar" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_start" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_end"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_clock" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_end" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_all_day"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_scheduled" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_all_day" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switch_all_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_priority"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_send_today" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_priority" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_priority" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/priority_none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_project"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_projects" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_project" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_project" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_goal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_goals" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_goal" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_goal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_context"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_contexts" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_context" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_context" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_repeater"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_repeat" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_repeater" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_repeater" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/repeat_none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_reminders"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_alarm" android:contentDescription="@null" />
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_reminders" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+            <TextView android:id="@+id/value_reminders" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row_tags"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_tag" android:contentDescription="@null" />
+            <EditText
+                android:id="@+id/edit_tags"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:hint="#工作 #重要"
+                android:inputType="text"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:text="@string/task_subtasks"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subtask_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+
+        <EditText
+            android:id="@+id/edit_new_subtask"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/task_add_subtask"
+            android:inputType="text"
+            android:drawableStart="@drawable/ic_add"
+            android:drawablePadding="12dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+
+        <Space android:layout_width="match_parent" android:layout_height="32dp" />
+    </LinearLayout>
+</ScrollView>

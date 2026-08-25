@@ -1,0 +1,16 @@
+# 构建产物（APK 已复制到 dist/ 保留）
+build/
+.gradle/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# 签名与凭据
+*.jks
+*.keystore
+
+# 测试临时输出
+app/build/reports/
