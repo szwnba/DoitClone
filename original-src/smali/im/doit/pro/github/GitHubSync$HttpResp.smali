@@ -24,7 +24,7 @@
 .method private constructor <init>()V
     .registers 1
 
-    .line 273
+    .line 190
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -33,7 +33,7 @@
 .method synthetic constructor <init>(Lim/doit/pro/github/GitHubSync$1;)V
     .registers 2
 
-    .line 273
+    .line 190
     invoke-direct {p0}, Lim/doit/pro/github/GitHubSync$HttpResp;-><init>()V
 
     return-void

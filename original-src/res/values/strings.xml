@@ -312,7 +312,14 @@ Please go to Preferences in Doit.im for Web to reset the timezone."</string>
     <string name="hour_time_12">12-Hour Time</string>
     <string name="week_starts_on">Week Starts on</string>
     <string name="sync_log">Sync Log</string>
-    <string name="github_sync_label">GitHub Sync (Backup/Restore)</string>
+        <string name="github_sync_label">GitHub Sync (Backup/Restore)</string>
+    <string name="ghs_title">GitHub Sync</string>
+    <string name="ghs_section_config">Configuration</string>
+    <string name="ghs_section_sync">Backup &amp; Restore</string>
+    <string name="ghs_token">GitHub Token</string>
+    <string name="ghs_repo">Sync repository</string>
+    <string name="ghs_upload">Upload backup to GitHub</string>
+    <string name="ghs_restore">Restore from GitHub</string>
     <string name="support">Support</string>
     <string name="remind_me_on_weekends">Remind me on weekends</string>
     <string name="reminders_for_daily_plan">Reminders for Daily Plan</string>

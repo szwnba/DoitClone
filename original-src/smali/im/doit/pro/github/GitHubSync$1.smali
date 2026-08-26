@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 63
+    .line 82
     iput-object p1, p0, Lim/doit/pro/github/GitHubSync$1;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,11 +43,11 @@
 .method public onClick(Landroid/view/View;)V
     .registers 2
 
-    .line 66
+    .line 85
     iget-object p1, p0, Lim/doit/pro/github/GitHubSync$1;->val$a:Landroid/app/Activity;
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->onSettings(Landroid/app/Activity;)V
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->open(Landroid/app/Activity;)V
 
-    .line 67
+    .line 86
     return-void
 .end method

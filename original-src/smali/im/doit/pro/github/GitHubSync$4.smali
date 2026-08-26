@@ -3,12 +3,12 @@
 .source "GitHubSync.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->editRepo(Landroid/app/Activity;)V
+    value = Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,22 +20,26 @@
 # instance fields
 .field final synthetic val$a:Landroid/app/Activity;
 
-.field final synthetic val$input:Landroid/widget/EditText;
+.field final synthetic val$ok:Ljava/lang/Runnable;
+
+.field final synthetic val$w:Lim/doit/pro/github/GitHubSync$Worker;
 
 
 # direct methods
-.method constructor <init>(Landroid/widget/EditText;Landroid/app/Activity;)V
-    .registers 3
+.method constructor <init>(Lim/doit/pro/github/GitHubSync$Worker;Landroid/app/Activity;Ljava/lang/Runnable;)V
+    .registers 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 154
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$4;->val$input:Landroid/widget/EditText;
+    .line 240
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$4;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
+
+    iput-object p3, p0, Lim/doit/pro/github/GitHubSync$4;->val$ok:Ljava/lang/Runnable;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -44,66 +48,70 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 5
+.method public run()V
+    .registers 4
 
-    .line 157
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$4;->val$input:Landroid/widget/EditText;
+    .line 244
+    :try_start_0
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$4;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
 
-    invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
 
-    move-result-object p1
+    invoke-interface {v0, v1}, Lim/doit/pro/github/GitHubSync$Worker;->run(Landroid/content/Context;)V
 
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object p1
-
-    .line 158
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
-
-    invoke-static {p2}, Lim/doit/pro/github/GitHubSync;->access$500(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    const-string v0, "repo"
-
-    invoke-interface {p2, v0, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences$Editor;->commit()Z
-
-    .line 159
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "\u4ed3\u5e93\u5df2\u4fdd\u5b58: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 245
+    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$800()Landroid/os/Handler;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$4;->val$ok:Ljava/lang/Runnable;
 
-    move-result-object p1
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+    :try_end_10
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_10} :catch_11
 
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 252
+    goto :goto_31
 
-    move-result-object p1
+    .line 246
+    :catch_11
+    move-exception v0
 
-    invoke-static {p2, p1}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;Ljava/lang/String;)V
+    .line 247
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
-    .line 160
+    move-result-object v1
+
+    if-nez v1, :cond_21
+
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_25
+
+    :cond_21
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 248
+    :goto_25
+    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$800()Landroid/os/Handler;
+
+    move-result-object v1
+
+    new-instance v2, Lim/doit/pro/github/GitHubSync$4$1;
+
+    invoke-direct {v2, p0, v0}, Lim/doit/pro/github/GitHubSync$4$1;-><init>(Lim/doit/pro/github/GitHubSync$4;Ljava/lang/String;)V
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 253
+    :goto_31
     return-void
 .end method

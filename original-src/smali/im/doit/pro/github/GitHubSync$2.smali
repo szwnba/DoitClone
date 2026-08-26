@@ -3,12 +3,12 @@
 .source "GitHubSync.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Lim/doit/pro/github/GitHubSync$Worker;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->onSettings(Landroid/app/Activity;)V
+    value = Lim/doit/pro/github/GitHubSync;->doUpload(Landroid/app/Activity;Ljava/lang/Runnable;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -17,22 +17,11 @@
 .end annotation
 
 
-# instance fields
-.field final synthetic val$a:Landroid/app/Activity;
-
-
 # direct methods
-.method constructor <init>(Landroid/app/Activity;)V
-    .registers 2
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
+.method constructor <init>()V
+    .registers 1
 
-    .line 98
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
-
+    .line 118
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -40,61 +29,192 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 3
+.method public run(Landroid/content/Context;)V
+    .registers 8
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/Exception;
+        }
+    .end annotation
 
-    .line 101
-    if-nez p2, :cond_8
+    .line 121
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$000(Landroid/content/Context;)[B
 
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    move-result-object v0
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$000(Landroid/app/Activity;)V
+    .line 122
+    invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->access$100([B)[B
 
-    goto :goto_28
+    move-result-object v0
 
-    .line 102
-    :cond_8
-    const/4 p1, 0x1
+    const/4 v1, 0x2
 
-    if-ne p2, p1, :cond_11
+    invoke-static {v0, v1}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
 
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    move-result-object v0
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$100(Landroid/app/Activity;)V
+    .line 123
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    goto :goto_28
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 103
-    :cond_11
-    const/4 p1, 0x2
+    const-string v2, "/repos/"
 
-    if-ne p2, p1, :cond_1a
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    move-result-object v1
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$200(Landroid/app/Activity;)V
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->repo(Landroid/content/Context;)Ljava/lang/String;
 
-    goto :goto_28
+    move-result-object v2
 
-    .line 104
-    :cond_1a
-    const/4 p1, 0x3
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-ne p2, p1, :cond_23
+    move-result-object v1
 
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    const-string v2, "/contents/"
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$300(Landroid/app/Activity;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    goto :goto_28
+    move-result-object v1
 
-    .line 105
-    :cond_23
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    const-string v2, "doitim.db.gz"
 
-    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$400(Landroid/app/Activity;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 106
-    :goto_28
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 124
+    invoke-static {p1, v1}, Lim/doit/pro/github/GitHubSync;->access$200(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 125
+    new-instance v3, Lorg/json/JSONObject;
+
+    invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V
+
+    .line 126
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "Doit backup "
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-static {}, Lim/doit/pro/github/GitHubSync;->now()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    const-string v5, "message"
+
+    invoke-virtual {v3, v5, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 127
+    const-string v4, "content"
+
+    invoke-virtual {v3, v4, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 128
+    if-eqz v2, :cond_61
+
+    const-string v0, "sha"
+
+    invoke-virtual {v3, v0, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 129
+    :cond_61
+    const-string v0, "PUT"
+
+    invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {p1, v0, v1, v2}, Lim/doit/pro/github/GitHubSync;->access$300(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lim/doit/pro/github/GitHubSync$HttpResp;
+
+    move-result-object v0
+
+    .line 130
+    iget v1, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
+
+    const/16 v2, 0xc8
+
+    if-eq v1, v2, :cond_a3
+
+    iget v1, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
+
+    const/16 v2, 0xc9
+
+    if-ne v1, v2, :cond_78
+
+    goto :goto_a3
+
+    .line 131
+    :cond_78
+    new-instance p1, Ljava/io/IOException;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "GitHub \u8fd4\u56de "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget v2, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, " "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-object v0, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->body:Ljava/lang/String;
+
+    invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->access$400(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-direct {p1, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    .line 133
+    :cond_a3
+    :goto_a3
+    const-string v0, "\u4e0a\u4f20"
+
+    invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->setLastSync(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 134
     return-void
 .end method

@@ -1,4 +1,4 @@
-.class interface abstract Lim/doit/pro/github/GitHubSync$Worker;
+.class public interface abstract Lim/doit/pro/github/GitHubSync$Worker;
 .super Ljava/lang/Object;
 .source "GitHubSync.java"
 
@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x60a
+    accessFlags = 0x609
     name = "Worker"
 .end annotation
 

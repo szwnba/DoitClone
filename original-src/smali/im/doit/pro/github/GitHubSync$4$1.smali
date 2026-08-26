@@ -1,4 +1,4 @@
-.class Lim/doit/pro/github/GitHubSync$8$1;
+.class Lim/doit/pro/github/GitHubSync$4$1;
 .super Ljava/lang/Object;
 .source "GitHubSync.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync$8;->run()V
+    value = Lim/doit/pro/github/GitHubSync$4;->run()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,13 +18,13 @@
 
 
 # instance fields
-.field final synthetic this$0:Lim/doit/pro/github/GitHubSync$8;
+.field final synthetic this$0:Lim/doit/pro/github/GitHubSync$4;
 
 .field final synthetic val$msg:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSync$8;Ljava/lang/String;)V
+.method constructor <init>(Lim/doit/pro/github/GitHubSync$4;Ljava/lang/String;)V
     .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -32,10 +32,10 @@
         }
     .end annotation
 
-    .line 331
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$8$1;->this$0:Lim/doit/pro/github/GitHubSync$8;
+    .line 248
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$4$1;->this$0:Lim/doit/pro/github/GitHubSync$4;
 
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$8$1;->val$msg:Ljava/lang/String;
+    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$4$1;->val$msg:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -47,10 +47,10 @@
 .method public run()V
     .registers 4
 
-    .line 333
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$8$1;->this$0:Lim/doit/pro/github/GitHubSync$8;
+    .line 250
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$4$1;->this$0:Lim/doit/pro/github/GitHubSync$4;
 
-    iget-object v0, v0, Lim/doit/pro/github/GitHubSync$8;->val$a:Landroid/app/Activity;
+    iget-object v0, v0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -62,7 +62,7 @@
 
     move-result-object v1
 
-    iget-object v2, p0, Lim/doit/pro/github/GitHubSync$8$1;->val$msg:Ljava/lang/String;
+    iget-object v2, p0, Lim/doit/pro/github/GitHubSync$4$1;->val$msg:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -72,7 +72,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
     return-void
 .end method

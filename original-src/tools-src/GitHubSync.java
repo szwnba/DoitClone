@@ -1,24 +1,21 @@
 package im.doit.pro.github;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Process;
-import android.text.InputType;
 import android.util.Base64;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,29 +29,51 @@ import java.util.zip.GZIPOutputStream;
 
 import org.json.JSONObject;
 
-/** GitHub 仓库备份/恢复（本地版追加功能，不依赖原同步引擎） */
+/** GitHub 仓库备份/恢复引擎（本地版追加功能，不依赖原同步引擎） */
 public class GitHubSync {
 
-    private static final String PREFS = "doit_github_sync";
+    public static final String PREFS = "doit_github_sync";
     private static final String K_TOKEN = "token";
     private static final String K_REPO = "repo";
     private static final String K_LAST = "last_sync";
-    private static final String DEFAULT_REPO = "szwnba/doit-data";
+    public static final String DEFAULT_REPO = "szwnba/doit-data";
     private static final String DB_NAME = "doitim.db";
     private static final String REMOTE_FILE = "doitim.db.gz";
     private static final String API = "https://api.github.com";
 
-    private interface Worker {
+    public interface Worker {
         void run(Context c) throws Exception;
     }
 
     private static final Handler MAIN = new Handler(Looper.getMainLooper());
 
-    // ---------- 入口：设置页 ----------
+    // ---------- 配置读写 ----------
 
-    /** 在 SettingsActivity.onCreate 里调用：找到设置页里标签含 "GitHub" 的行并接上点击。
-     *  不用 android:onClick（会被 LabelArrowButton 内部的 setOnClickListener 覆盖），
-     *  也不用资源 id（手写 smali 无法引用符号资源名）。 */
+    public static SharedPreferences prefs(Context c) {
+        return c.getSharedPreferences(PREFS, 0);
+    }
+
+    public static String token(Context c) {
+        return prefs(c).getString(K_TOKEN, "");
+    }
+
+    public static String repo(Context c) {
+        String r = prefs(c).getString(K_REPO, "");
+        return r.length() == 0 ? DEFAULT_REPO : r;
+    }
+
+    public static String lastSync(Context c) {
+        String s = prefs(c).getString(K_LAST, "");
+        return s.length() == 0 ? "从未同步" : s;
+    }
+
+    public static void setLastSync(Context c, String what) {
+        prefs(c).edit().putString(K_LAST, what + " " + now()).commit();
+    }
+
+    // ---------- 设置页入口 ----------
+
+    /** 在 SettingsActivity.onCreate 里调用：找到标签含 "GitHub" 的行并接上点击。 */
     public static void wire(final Activity a) {
         try {
             View target = findByText(a.getWindow().getDecorView(), "GitHub");
@@ -63,13 +82,19 @@ public class GitHubSync {
                 parent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onSettings(a);
+                        open(a);
                     }
                 });
             }
         } catch (Throwable t) {
             // 设置页接线失败不影响其他功能
         }
+    }
+
+    public static void open(Activity a) {
+        Intent i = new Intent();
+        i.setClassName(a, "im.doit.pro.github.GitHubSyncActivity");
+        a.startActivity(i);
     }
 
     private static View findByText(View v, String key) {
@@ -87,93 +112,9 @@ public class GitHubSync {
         return null;
     }
 
-    public static void onSettings(final Activity a) {
-        final String[] items = {
-            "设置 GitHub Token",
-            "设置仓库（当前: " + repo(a) + "）",
-            "上传备份到 GitHub",
-            "从 GitHub 恢复数据",
-            "查看同步状态"
-        };
-        new AlertDialog.Builder(a).setTitle("GitHub 同步").setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) editToken(a);
-                else if (which == 1) editRepo(a);
-                else if (which == 2) upload(a);
-                else if (which == 3) download(a);
-                else status(a);
-            }
-        }).show();
-    }
+    // ---------- 上传 / 下载（引擎，回调在主线程） ----------
 
-    // ---------- 配置 ----------
-
-    private static SharedPreferences prefs(Context c) {
-        return c.getSharedPreferences(PREFS, 0);
-    }
-
-    private static String token(Context c) {
-        return prefs(c).getString(K_TOKEN, "");
-    }
-
-    private static String repo(Context c) {
-        String r = prefs(c).getString(K_REPO, "");
-        return r.length() == 0 ? DEFAULT_REPO : r;
-    }
-
-    private static String lastSync(Context c) {
-        String s = prefs(c).getString(K_LAST, "");
-        return s.length() == 0 ? "从未同步" : s;
-    }
-
-    private static void editToken(final Activity a) {
-        final EditText input = new EditText(a);
-        input.setText(token(a));
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        pad(input);
-        new AlertDialog.Builder(a).setTitle("GitHub Token")
-            .setMessage("粘贴 fine-grained Token（仅需 doit-data 仓库 Contents 读写权限）")
-            .setView(input)
-            .setPositiveButton("保存", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    String t = input.getText().toString().trim();
-                    prefs(a).edit().putString(K_TOKEN, t).commit();
-                    toast(a, t.length() == 0 ? "已清空 Token" : "Token 已保存");
-                }
-            }).setNegativeButton("取消", null).show();
-    }
-
-    private static void editRepo(final Activity a) {
-        final EditText input = new EditText(a);
-        input.setText(repo(a));
-        pad(input);
-        new AlertDialog.Builder(a).setTitle("同步仓库").setMessage("格式: 用户名/仓库名")
-            .setView(input)
-            .setPositiveButton("保存", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    String r = input.getText().toString().trim();
-                    prefs(a).edit().putString(K_REPO, r).commit();
-                    toast(a, "仓库已保存: " + r);
-                }
-            }).setNegativeButton("取消", null).show();
-    }
-
-    private static void status(Activity a) {
-        String t = token(a);
-        String msg = "仓库: " + repo(a)
-            + "\nToken: " + (t.length() == 0 ? "未设置" : "已设置")
-            + "\n上次同步: " + lastSync(a);
-        new AlertDialog.Builder(a).setTitle("GitHub 同步").setMessage(msg)
-            .setPositiveButton("确定", null).show();
-    }
-
-    // ---------- 上传 / 下载 ----------
-
-    private static void upload(final Activity a) {
-        if (token(a).length() == 0) { toast(a, "请先设置 Token"); editToken(a); return; }
+    public static void doUpload(final Activity a, final Runnable onDone) {
         runAsync(a, "正在上传备份…", new Worker() {
             @Override
             public void run(Context c) throws Exception {
@@ -189,49 +130,25 @@ public class GitHubSync {
                 if (r.code != 200 && r.code != 201) {
                     throw new IOException("GitHub 返回 " + r.code + " " + brief(r.body));
                 }
-                prefs(c).edit().putString(K_LAST, "上传 " + now()).commit();
+                setLastSync(c, "上传");
             }
-        }, new Runnable() {
-            @Override
-            public void run() { toast(a, "✓ 备份已上传到 GitHub"); }
-        });
+        }, onDone);
     }
 
-    private static void download(final Activity a) {
-        if (token(a).length() == 0) { toast(a, "请先设置 Token"); editToken(a); return; }
-        new AlertDialog.Builder(a).setTitle("从 GitHub 恢复")
-            .setMessage("将用 GitHub 上的备份覆盖本机全部数据，恢复后应用会自动重启。确定继续？")
-            .setPositiveButton("恢复", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    runAsync(a, "正在下载恢复…", new Worker() {
-                        @Override
-                        public void run(Context c) throws Exception {
-                            String path = "/repos/" + repo(c) + "/contents/" + REMOTE_FILE;
-                            HttpResp r = http(c, "GET", path, null);
-                            if (r.code == 404) throw new IOException("GitHub 上还没有备份文件");
-                            if (r.code != 200) throw new IOException("GitHub 返回 " + r.code + " " + brief(r.body));
-                            String content = new JSONObject(r.body).getString("content");
-                            byte[] raw = gunzip(Base64.decode(content, Base64.DEFAULT));
-                            restoreDb(c, raw);
-                            prefs(c).edit().putString(K_LAST, "下载 " + now()).commit();
-                        }
-                    }, new Runnable() {
-                        @Override
-                        public void run() {
-                            new AlertDialog.Builder(a).setTitle("恢复完成")
-                                .setMessage("数据已恢复，应用即将重启。")
-                                .setCancelable(false)
-                                .setPositiveButton("立即重启", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Process.killProcess(Process.myPid());
-                                    }
-                                }).show();
-                        }
-                    });
-                }
-            }).setNegativeButton("取消", null).show();
+    public static void doRestore(final Activity a, final Runnable onDone) {
+        runAsync(a, "正在下载恢复…", new Worker() {
+            @Override
+            public void run(Context c) throws Exception {
+                String path = "/repos/" + repo(c) + "/contents/" + REMOTE_FILE;
+                HttpResp r = http(c, "GET", path, null);
+                if (r.code == 404) throw new IOException("GitHub 上还没有备份文件");
+                if (r.code != 200) throw new IOException("GitHub 返回 " + r.code + " " + brief(r.body));
+                String content = new JSONObject(r.body).getString("content");
+                byte[] raw = gunzip(Base64.decode(content, Base64.DEFAULT));
+                restoreDb(c, raw);
+                setLastSync(c, "下载");
+            }
+        }, onDone);
     }
 
     // ---------- 数据库快照与恢复 ----------
@@ -258,7 +175,7 @@ public class GitHubSync {
         File dir = db.getParentFile();
         if (!dir.exists() && !dir.mkdirs()) throw new IOException("无法访问数据库目录");
         File tmp = new File(dir, "gh_restore_tmp.db");
-        OutputStream os = new java.io.FileOutputStream(tmp);
+        OutputStream os = new FileOutputStream(tmp);
         try { os.write(raw); } finally { os.close(); }
         // 清掉旧 journal/wal，避免旧日志覆盖新库
         new File(db.getPath() + "-journal").delete();
@@ -337,19 +254,14 @@ public class GitHubSync {
         }).start();
     }
 
-    private static void toast(final Context c, final String msg) {
+    public static void toast(final Context c, final String msg) {
         MAIN.post(new Runnable() {
             @Override
             public void run() { Toast.makeText(c, msg, Toast.LENGTH_LONG).show(); }
         });
     }
 
-    private static void pad(View v) {
-        float d = v.getResources().getDisplayMetrics().density;
-        v.setPadding((int) (d * 20), (int) (d * 12), (int) (d * 20), (int) (d * 12));
-    }
-
-    private static String now() {
+    public static String now() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(new Date());
     }
 

@@ -293,7 +293,14 @@ Doit.im时区：%1$s
     <string name="hour_time_12">12小时制</string>
     <string name="week_starts_on">一周开始日</string>
     <string name="sync_log">同步日志</string>
-    <string name="github_sync_label">GitHub 同步（备份 / 恢复）</string>
+        <string name="github_sync_label">GitHub 同步（备份 / 恢复）</string>
+    <string name="ghs_title">GitHub 同步</string>
+    <string name="ghs_section_config">配置</string>
+    <string name="ghs_section_sync">备份与恢复</string>
+    <string name="ghs_token">GitHub Token</string>
+    <string name="ghs_repo">同步仓库</string>
+    <string name="ghs_upload">上传备份到 GitHub</string>
+    <string name="ghs_restore">从 GitHub 恢复数据</string>
     <string name="support">服务支持</string>
     <string name="remind_me_on_weekends">周末照常提醒</string>
     <string name="reminders_for_daily_plan">每日计划提醒</string>

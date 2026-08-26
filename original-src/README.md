@@ -1,4 +1,4 @@
-# 原版本地化版源码（基准版本 4.4.5-local-r5 / code 1414409）
+# 原版本地化版源码（基准版本 4.4.5-local-r6 / code 1414410）
 
 本目录是 doit.im v4.4.5（2015）APK 的 apktool 反编译产物 + 本地化补丁，
 **当前分发的 doit-local.apk 即由此树构建**。
@@ -34,6 +34,8 @@ apksigner sign --ks original-src/doit-reverse.keystore \
   设置 → 通用 → **GitHub 同步（备份 / 恢复）**。
 - 上传 = `VACUUM INTO` 一致性快照 → gzip → base64 → `PUT /repos/{owner}/{repo}/contents/doitim.db.gz`（自动带 sha 覆盖，每次备份是一个 commit，可在 GitHub 网页回滚任意历史版本）。
 - 恢复 = GET 同一文件 → 解码解压 → 覆盖 `doitim.db`（清 journal/wal）→ 提示重启进程。
+- UI：独立页 `GitHubSyncActivity`（仿"提醒"设置页风格：`Theme.Doit.Light.WithBackBtn`
+  蓝色标题栏 + `LabelArrowButton` 白色分块行 + `Theme.Doit.Light.Dialog` 对话框）。
 - 接线：`SettingsActivity.onCreate` 末尾调用 `GitHubSync.wire()`，按标签文本找到设置行再 `setOnClickListener`
   （`LabelArrowButton` 内部会覆盖 XML `android:onClick`，故必须代码接线）。
 - 认证：GitHub fine-grained token（仅需目标私有仓 Contents 读写），在 App 设置页粘贴，不写死在代码里。
