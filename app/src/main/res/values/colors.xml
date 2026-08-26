@@ -37,5 +37,9 @@
     <color name="drawer_bg">#FFFFFFFF</color>
     <color name="group_header_bg">#FFF2F1EF</color>
     <color name="primary">#FF1262A1</color>
+    <color name="button_smartadd_save">#FF5F9DD3</color>
+    <color name="button_smartadd_save_sel">#7F5F9DD3</color>
+    <color name="dialog_title_bottom_divider">#FF5F9DD3</color>
+    <color name="task_detail_block_top_bottom_line_color">#0F000000</color>
     <color name="on_primary">#FFFFFFFF</color>
 </resources>

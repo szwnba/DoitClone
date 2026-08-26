@@ -48,10 +48,11 @@ enum class GroupByType {
 }
 
 object Priority {
+    /** 原版取值：低=1 中=2 高=3（还原 setTaskPriority） */
     const val NONE = 0
     const val LOW = 1
-    const val MIDDLE = 3
-    const val HIGH = 5
+    const val MIDDLE = 2
+    const val HIGH = 3
 
     fun label(value: Int): String = when (value) {
         HIGH -> "高"
@@ -61,9 +62,9 @@ object Priority {
     }
 
     fun colorRes(value: Int): Int = when (value) {
-        HIGH -> 0xFFE53935.toInt()
-        MIDDLE -> 0xFFFB8C00.toInt()
-        LOW -> 0xFF1E88E5.toInt()
-        else -> 0xFFBDBDBD.toInt()
+        HIGH -> 0xFFC05318.toInt()
+        MIDDLE -> 0xFF207CC2.toInt()
+        LOW -> 0xFF85C3F2.toInt()
+        else -> 0xFFD3D4D6.toInt()
     }
 }

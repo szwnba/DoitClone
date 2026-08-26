@@ -101,6 +101,18 @@
     <string name="selected_count">已选 %1$d 项</string>
     <string name="action_clear_time">清除时间</string>
     <string name="smartadd_cancel_tip">点击空白处取消</string>
+    <string name="date_today">今天</string>
+    <string name="date_tomorrow">明天</string>
+    <string name="title_required">标题必填</string>
+    <string name="title_length_limit">标题不能超过255个字符</string>
+    <string name="smartadd_empty_project">您还未建项目</string>
+    <string name="smartadd_empty_context">您还未建情境</string>
+    <string name="smartadd_empty_tag">直接输入可添加标签</string>
+    <string name="smartadd_success_inbox">已添加至收集箱</string>
+    <string name="smartadd_success_today">已添加至今日待办</string>
+    <string name="smartadd_success_next">已成功添加至下一步行动</string>
+    <string name="smartadd_success_tomorrow">已添加至明日待办</string>
+    <string name="smartadd_success_scheduled">已添加至日程</string>
 
     <!-- 每日计划/回顾 -->
     <string name="daily_plan">每日计划</string>
@@ -113,6 +125,7 @@
     <string name="daily_review_stat_overdue">逾期 %1$d 项</string>
 
     <!-- SmartAdd -->
+    <string name="new_task">新增任务</string>
     <string name="new_task_hint">新任务</string>
     <string name="smart_add_hint">输入任务，如：明天 9:00 交报告 #工作 !高</string>
     <string name="smart_add_ok">添加</string>
