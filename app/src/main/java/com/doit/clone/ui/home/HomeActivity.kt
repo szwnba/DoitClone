@@ -58,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
         binding.toolbar.inflateMenu(R.menu.menu_home)
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.action_add -> startActivity(TaskDetailActivity.newIntent(this, currentBox))
+                R.id.action_add -> startActivity(android.content.Intent(this, com.doit.clone.smartadd.SmartAddActivity::class.java))
                 R.id.action_group_by -> currentTaskFragment()?.showGroupByDialog()
                 R.id.action_search -> startActivity(SearchActivity.intent(this))
                 R.id.action_daily_plan -> startActivity(DailyPlanActivity.intent(this))

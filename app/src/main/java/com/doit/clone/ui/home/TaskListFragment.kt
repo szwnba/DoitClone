@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -20,9 +21,7 @@ import com.doit.clone.ui.common.Row
 import com.doit.clone.ui.common.TaskGrouper
 import com.doit.clone.ui.common.TaskListAdapter
 import com.doit.clone.ui.task.TaskDetailActivity
-import com.doit.clone.util.gone
 import com.doit.clone.util.observe
-import com.doit.clone.util.visible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -31,8 +30,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * 单个箱子的任务列表：观察箱子数据 → 按设置分组 → 展示。
- * 拖拽排序（仅不分组时）、右滑完成、左滑进垃圾桶。
+ * 单个箱子的任务列表。还原原版交互：
+ * - 今日/下一步箱复选框=立即处理；其他箱=完成
+ * - 明日/日程箱带"移到今天"按钮
+ * - 长按进入多选（Contextual Action Bar：全选/完成/移动/删除）
+ * - 右滑完成、左滑垃圾桶（多选时禁用）
  */
 class TaskListFragment : Fragment(), TaskListAdapter.Listener {
 
@@ -41,12 +43,9 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
 
     private lateinit var box: BoxType
     private lateinit var adapter: TaskListAdapter
-
-    /** 分组方式的响应式状态：切换分组时自动重算列表 */
     private val groupByFlow = MutableStateFlow(GroupByType.NONE)
-
-    /** 拖拽后的待持久化顺序（submitList 异步，clearView 时 currentList 可能未更新） */
     private var pendingOrder: List<String>? = null
+    private var actionMode: androidx.appcompat.view.ActionMode? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentTaskListBinding.inflate(inflater, container, false)
@@ -57,13 +56,11 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
         box = BoxType.from(requireArguments().getString(ARG_BOX) ?: "TODAY") ?: BoxType.TODAY
         groupByFlow.value = Graph.settings.groupBy(box.name)
 
-        adapter = TaskListAdapter(this, Graph.settings.dateFormat)
+        adapter = TaskListAdapter(this, Graph.settings.dateFormat, box)
         binding.taskList.layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.adapter = adapter
 
-        if (box == BoxType.TRASH) {
-            binding.emptyView.text = getString(R.string.empty_trash)
-        }
+        if (box == BoxType.TRASH) binding.emptyView.text = getString(R.string.empty_trash)
 
         attachSwipe()
         observeData()
@@ -97,7 +94,10 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
 
         val callback = object : ItemTouchHelper.SimpleCallback(0, swipeDirs) {
 
+            override fun isLongPressDragEnabled(): Boolean = false
+
             override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+                if (adapter.selectionMode) return 0
                 val position = viewHolder.bindingAdapterPosition
                 if (position == RecyclerView.NO_POSITION) return 0
                 if (adapter.currentList.getOrNull(position) !is Row.TaskRow) return 0
@@ -156,7 +156,19 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
 
     override fun onToggle(task: TaskEntity) {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            Graph.taskRepo.toggleComplete(task.uuid)
+            val isDoitNowBox = box == BoxType.TODAY || box == BoxType.NEXT
+            if (isDoitNowBox && !task.completed) {
+                // 今日/下一步箱：立即处理切换（还原 doitNow/notNow）
+                if (task.now) Graph.taskRepo.notNow(task.uuid) else Graph.taskRepo.doitNow(task.uuid)
+            } else {
+                Graph.taskRepo.toggleComplete(task.uuid)
+            }
+        }
+    }
+
+    override fun onMarkToday(task: TaskEntity) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            Graph.taskRepo.moveTo(task.uuid, BoxType.TODAY)
         }
     }
 
@@ -165,69 +177,107 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
     }
 
     override fun onLongClick(task: TaskEntity) {
-        if (box == BoxType.TRASH) {
-            MaterialAlertDialogBuilder(requireContext())
-                .setTitle(task.title)
-                .setItems(arrayOf(getString(R.string.action_restore), getString(R.string.delete))) { _, which ->
-                    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                        if (which == 0) Graph.taskRepo.restore(task.uuid)
-                        else Graph.taskRepo.deleteForever(task.uuid)
-                    }
-                }
-                .show()
+        if (box == BoxType.TRASH || box == BoxType.COMPLETED) {
+            showTrashMenu(task)
             return
         }
-        val options = arrayOf(
-            if (task.completed) getString(R.string.action_uncomplete) else getString(R.string.action_complete),
-            getString(R.string.task_move_to),
-            getString(R.string.action_trash)
-        )
+        adapter.startSelection(task)
+        startActionMode()
+    }
+
+    private fun showTrashMenu(task: TaskEntity) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(task.title)
-            .setItems(options) { _, which ->
+            .setItems(arrayOf(getString(R.string.action_restore), getString(R.string.delete))) { _, which ->
                 viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                    when (which) {
-                        0 -> Graph.taskRepo.toggleComplete(task.uuid)
-                        1 -> withContext(Dispatchers.Main) { showMoveDialog(task) }
-                        2 -> Graph.taskRepo.trash(task.uuid)
-                    }
+                    if (which == 0) Graph.taskRepo.restore(task.uuid)
+                    else Graph.taskRepo.deleteForever(task.uuid)
                 }
             }
             .show()
     }
 
-    private fun showMoveDialog(task: TaskEntity) {
+    // ===== 多选 CAB =====
+
+    private fun startActionMode() {
+        val activity = requireActivity() as? AppCompatActivity ?: return
+        actionMode?.finish()
+        actionMode = activity.startSupportActionMode(object : androidx.appcompat.view.ActionMode.Callback {
+            override fun onCreateActionMode(mode: androidx.appcompat.view.ActionMode, menu: android.view.Menu): Boolean {
+                mode.menuInflater.inflate(R.menu.menu_multiselect, menu)
+                return true
+            }
+
+            override fun onPrepareActionMode(mode: androidx.appcompat.view.ActionMode, menu: android.view.Menu) = false
+
+            override fun onActionItemClicked(mode: androidx.appcompat.view.ActionMode, item: android.view.MenuItem): Boolean {
+                val uuids = adapter.selected.toList()
+                when (item.itemId) {
+                    R.id.action_select_all -> adapter.selectAll()
+                    R.id.action_batch_complete -> batch {
+                        Graph.taskRepo.batchComplete(uuids)
+                        mode.finish()
+                    }
+                    R.id.action_batch_move -> {
+                        showBatchMoveDialog(uuids) { mode.finish() }
+                    }
+                    R.id.action_batch_trash -> batch {
+                        Graph.taskRepo.batchTrash(uuids)
+                        mode.finish()
+                    }
+                    else -> return false
+                }
+                return true
+            }
+
+            override fun onDestroyActionMode(mode: androidx.appcompat.view.ActionMode) {
+                adapter.stopSelection()
+                actionMode = null
+            }
+        })
+    }
+
+    private inline fun batch(crossinline block: suspend () -> Unit) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) { block() }
+    }
+
+    private fun showBatchMoveDialog(uuids: List<String>, onDone: () -> Unit) {
         val boxes = listOf(
-            BoxType.INBOX to "收件箱",
-            BoxType.TODAY to "今日待办",
-            BoxType.TOMORROW to "明日待办",
-            BoxType.NEXT to "下一步",
-            BoxType.SCHEDULED to "日程",
-            BoxType.SOMEDAY to "将来/也许",
-            BoxType.WAITING to "等待"
+            BoxType.INBOX to getString(R.string.box_inbox),
+            BoxType.TODAY to getString(R.string.box_today),
+            BoxType.TOMORROW to getString(R.string.box_tomorrow),
+            BoxType.NEXT to getString(R.string.box_next),
+            BoxType.SCHEDULED to getString(R.string.box_scheduled),
+            BoxType.SOMEDAY to getString(R.string.box_someday),
+            BoxType.WAITING to getString(R.string.box_waiting)
         )
         Pickers.radio(
             requireContext(),
             getString(R.string.task_move_to),
             boxes.map { it.second },
-            boxes.indexOfFirst { it.first.name == task.attribute }
+            -1
         ) { index ->
             val target = boxes[index].first
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                Graph.taskRepo.moveTo(task.uuid, target)
+                Graph.taskRepo.batchMove(uuids, target)
+                withContext(Dispatchers.Main) { onDone() }
             }
         }
+    }
+
+    override fun onSelectionChanged(count: Int) {
+        actionMode?.title = getString(R.string.selected_count, count)
+        if (count == 0) actionMode?.finish()
     }
 
     /** 工具栏「分组查看」入口（由 HomeActivity 调用） */
     fun showGroupByDialog() {
         val options = TaskGrouper.optionsFor(box.name)
-        val current = groupByFlow.value
         Pickers.radio(
             requireContext(),
             getString(R.string.group_by),
             options.map { TaskGrouper.label(it) },
-            options.indexOf(current)
+            options.indexOf(groupByFlow.value)
         ) { index ->
             Graph.settings.setGroupBy(box.name, options[index])
             groupByFlow.value = options[index]
@@ -236,6 +286,7 @@ class TaskListFragment : Fragment(), TaskListAdapter.Listener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        actionMode?.finish()
         _binding = null
     }
 

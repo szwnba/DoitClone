@@ -96,6 +96,11 @@
     <string name="action_add_today">安排到今日</string>
     <string name="action_add_tomorrow">推迟到明日</string>
     <string name="action_add_next">转为下一步</string>
+    <string name="action_doit_now">立即处理</string>
+    <string name="action_select_all">全选</string>
+    <string name="selected_count">已选 %1$d 项</string>
+    <string name="action_clear_time">清除时间</string>
+    <string name="smartadd_cancel_tip">点击空白处取消</string>
 
     <!-- 每日计划/回顾 -->
     <string name="daily_plan">每日计划</string>
@@ -108,6 +113,7 @@
     <string name="daily_review_stat_overdue">逾期 %1$d 项</string>
 
     <!-- SmartAdd -->
+    <string name="new_task_hint">新任务</string>
     <string name="smart_add_hint">输入任务，如：明天 9:00 交报告 #工作 !高</string>
     <string name="smart_add_ok">添加</string>
     <string name="smart_add_today">今天</string>

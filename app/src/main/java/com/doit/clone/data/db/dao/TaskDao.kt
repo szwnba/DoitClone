@@ -23,7 +23,7 @@ interface TaskDao {
     @Query("SELECT * FROM tasks WHERE $ND AND attribute = 'INBOX' ORDER BY pos ASC, created DESC")
     fun inbox(): Flow<List<TaskEntity>>
 
-    @Query("SELECT * FROM tasks WHERE $ND AND repeater IS NULL AND attribute = 'PLAN' AND startAt <= :endOfToday ORDER BY startAt ASC, pos ASC")
+    @Query("SELECT * FROM tasks WHERE $ND AND repeater IS NULL AND attribute = 'PLAN' AND startAt <= :endOfToday ORDER BY now DESC, startAt ASC, pos ASC")
     fun today(endOfToday: Long): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE $ND AND repeater IS NULL AND attribute = 'PLAN' AND startAt >= :startOfTomorrow AND startAt <= :endOfTomorrow ORDER BY startAt ASC")

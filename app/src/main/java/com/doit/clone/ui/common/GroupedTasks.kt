@@ -7,7 +7,7 @@ import com.doit.clone.util.DateUtils
 
 /** 列表行模型：分组头 或 任务 */
 sealed class Row {
-    data class Header(val key: String, val label: String) : Row()
+    data class Header(val key: String, val label: String, val count: Int = 0) : Row()
     data class TaskRow(
         val task: TaskEntity,
         val projectName: String?,
@@ -73,7 +73,8 @@ object TaskGrouper {
         }
         val result = mutableListOf<Row>()
         for (k in sortedKeys) {
-            result.add(Row.Header(k, order[k]!!))
+            val groupCount = keyed.count { it.first == k }
+            result.add(Row.Header(k, order[k]!!, groupCount))
             keyed.filter { it.first == k }.forEach { (_, _, task) ->
                 result.add(Row.TaskRow(task, projectName(task.projectUuid), contextName(task.contextUuid)))
             }

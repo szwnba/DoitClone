@@ -1,76 +1,83 @@
-<FrameLayout
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/smart_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/smart_card"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:layout_gravity="center"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp">
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/smart_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/new_task_hint"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/smart_ok"
+            android:layout_width="66dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/save"
+            android:textColor="@color/primary" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/btn_time" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/icon_smartadd_time" />
+        <Button android:id="@+id/btn_context" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/icon_smartadd_context" />
+        <Button android:id="@+id/btn_project" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/icon_smartadd_project" />
+        <Button android:id="@+id/btn_priority" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/icon_smartadd_priority" />
+        <Button android:id="@+id/btn_tag" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/icon_smartadd_tag" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#60000000">
+
+        <ListView
+            android:id="@+id/smart_options"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:background="@android:color/white"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
+            android:paddingLeft="20dp"
+            android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/smart_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/smart_add_hint"
-                android:inputType="text"
-                android:maxLines="3"
-                android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-            <TextView
-                android:id="@+id/smart_preview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                android:textColor="@color/text_secondary" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/smart_quick_row"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
-            </HorizontalScrollView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="end"
-                android:layout_marginTop="12dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/smart_cancel"
-                    style="@style/TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cancel" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/smart_ok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="@string/smart_add_ok" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-</FrameLayout>
+        <TextView
+            android:id="@+id/smart_hint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/smartadd_cancel_tip"
+            android:textColor="#7FFFFFFF"
+            android:textSize="16sp" />
+    </FrameLayout>
+</LinearLayout>

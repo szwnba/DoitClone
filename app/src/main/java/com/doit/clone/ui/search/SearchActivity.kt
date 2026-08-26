@@ -57,7 +57,7 @@ class SearchActivity : AppCompatActivity(), TaskListAdapter.Listener {
         }
         binding.toolbar.addView(input)
 
-        adapter = TaskListAdapter(this, Graph.settings.dateFormat)
+        adapter = TaskListAdapter(this, Graph.settings.dateFormat, com.doit.clone.model.BoxType.INBOX)
         binding.searchList.layoutManager = LinearLayoutManager(this)
         binding.searchList.adapter = adapter
 
@@ -91,6 +91,8 @@ class SearchActivity : AppCompatActivity(), TaskListAdapter.Listener {
     }
 
     override fun onLongClick(task: TaskEntity) {}
+    override fun onMarkToday(task: TaskEntity) {}
+    override fun onSelectionChanged(count: Int) {}
 
     companion object {
         fun intent(context: Context): Intent = Intent(context, SearchActivity::class.java)

@@ -55,7 +55,7 @@ class OrganizeDetailActivity : AppCompatActivity(), TaskListAdapter.Listener {
             true
         }
 
-        adapter = TaskListAdapter(this, Graph.settings.dateFormat)
+        adapter = TaskListAdapter(this, Graph.settings.dateFormat, com.doit.clone.model.BoxType.INBOX)
         binding.detailTaskList.layoutManager = LinearLayoutManager(this)
         binding.detailTaskList.adapter = adapter
 
@@ -150,9 +150,12 @@ class OrganizeDetailActivity : AppCompatActivity(), TaskListAdapter.Listener {
     }
 
     override fun onLongClick(task: TaskEntity) {
-        // 详情页长按仅提供删除到垃圾桶
         lifecycleScope.launch(Dispatchers.IO) { Graph.taskRepo.trash(task.uuid) }
     }
+
+    override fun onMarkToday(task: TaskEntity) {}
+
+    override fun onSelectionChanged(count: Int) {}
 
     companion object {
         private const val EXTRA_KIND = "kind"

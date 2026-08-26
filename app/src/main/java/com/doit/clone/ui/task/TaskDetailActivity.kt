@@ -19,6 +19,7 @@ import com.doit.clone.model.Priority
 import com.doit.clone.repeat.Repeater
 import com.doit.clone.reminder.ReminderScheduler
 import com.doit.clone.ui.common.Pickers
+import com.doit.clone.ui.common.PriorityPopupAdapter
 import com.doit.clone.util.DateUtils
 import com.doit.clone.util.observe
 import com.doit.clone.util.toast
@@ -222,16 +223,24 @@ class TaskDetailActivity : AppCompatActivity(), SubtaskAdapter.Listener {
         }
     }
 
+    /** 优先级弹窗：还原原版 icon_pop_priority_* 图标 */
     private fun pickPriority() {
         val options = listOf(
             getString(R.string.priority_none), getString(R.string.priority_low),
             getString(R.string.priority_middle), getString(R.string.priority_high)
         )
+        val icons = listOf(
+            R.drawable.icon_pop_priority_unset, R.drawable.icon_pop_priority_low,
+            R.drawable.icon_pop_priority_medium, R.drawable.icon_pop_priority_high
+        )
         val values = listOf(Priority.NONE, Priority.LOW, Priority.MIDDLE, Priority.HIGH)
-        Pickers.radio(this, getString(R.string.task_priority), options, values.indexOf(priority)) {
-            priority = values[it]
-            refreshValueLabels()
-        }
+        android.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.task_priority))
+            .setAdapter(PriorityPopupAdapter(this, icons.zip(options))) { _, which ->
+                priority = values[which]
+                refreshValueLabels()
+            }
+            .show()
     }
 
     private fun pickProject() {

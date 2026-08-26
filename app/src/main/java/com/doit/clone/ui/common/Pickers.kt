@@ -81,3 +81,26 @@ object Pickers {
             .show()
     }
 }
+
+
+/** 原版优先级弹窗行：图标 + 名称 */
+class PriorityPopupAdapter(
+    context: android.content.Context,
+    private val items: List<Pair<Int, String>>
+) : android.widget.ArrayAdapter<Int>(context, 0) {
+
+    override fun getCount() = items.size
+
+    override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
+        val row = convertView ?: android.view.LayoutInflater.from(context)
+            .inflate(android.R.layout.simple_list_item_1, parent, false)
+        val text = row.findViewById<android.widget.TextView>(android.R.id.text1)
+        val (iconRes, name) = items[position]
+        text.text = name
+        val d = androidx.core.content.ContextCompat.getDrawable(context, iconRes)
+        d?.setBounds(0, 0, 72, 72)
+        text.setCompoundDrawables(d, null, null, null)
+        text.compoundDrawablePadding = 24
+        return row
+    }
+}

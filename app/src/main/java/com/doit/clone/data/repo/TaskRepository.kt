@@ -123,6 +123,53 @@ class TaskRepository(
         )
     }
 
+    /**
+     * 立即处理（还原原版 onDoitnowClickListener 语义）：
+     * 非今日任务 → 移到今天（全天=今天0点，带时间=下个整点）并置 PLAN；
+     * 然后置 now=true（今日箱置顶 + 复选框高亮）。
+     */
+    suspend fun doitNow(uuid: String) {
+        val task = taskDao.get(uuid) ?: return
+        var updated = task
+        val todayStart = DateUtils.startOfToday()
+        val isToday = task.startAt != null && DateUtils.dayStart(task.startAt!!) == todayStart
+        if (!isToday) {
+            val startAt = if (task.allDay) todayStart else {
+                val cal = DateUtils.now().apply {
+                    add(Calendar.HOUR_OF_DAY, 1)
+                    set(Calendar.MINUTE, 0); set(Calendar.SECOND, 0); clear(Calendar.MILLISECOND)
+                }
+                cal.timeInMillis
+            }
+            updated = updated.copy(attribute = Attribute.PLAN.name, startAt = startAt)
+        }
+        taskDao.update(updated.copy(now = true, updated = System.currentTimeMillis()))
+    }
+
+    suspend fun notNow(uuid: String) {
+        val task = taskDao.get(uuid) ?: return
+        taskDao.update(task.copy(now = false, updated = System.currentTimeMillis()))
+    }
+
+    /** 强制完成（批量场景不做成取消切换） */
+    suspend fun forceComplete(uuid: String) {
+        val task = taskDao.get(uuid) ?: return
+        if (task.completed) return
+        toggleComplete(uuid)
+    }
+
+    suspend fun batchComplete(uuids: Collection<String>) {
+        uuids.forEach { forceComplete(it) }
+    }
+
+    suspend fun batchTrash(uuids: Collection<String>) {
+        uuids.forEach { trash(it) }
+    }
+
+    suspend fun batchMove(uuids: Collection<String>, box: BoxType) {
+        uuids.forEach { moveTo(it, box) }
+    }
+
     suspend fun trash(uuid: String) {
         val task = taskDao.get(uuid) ?: return
         taskDao.update(task.copy(trashed = true, trashedAt = System.currentTimeMillis(), updated = System.currentTimeMillis()))

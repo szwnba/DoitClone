@@ -25,6 +25,7 @@ data class TaskEntity(
     val endAt: Long? = null,
     val priority: Int = 0,
     val pos: Int = 0,
+    val now: Boolean = false,
     val projectUuid: String? = null,
     val goalUuid: String? = null,
     val contextUuid: String? = null,

@@ -22,7 +22,7 @@ import com.doit.clone.data.db.entity.TaskEntity
         TaskEntity::class, SubTaskEntity::class, ProjectEntity::class,
         GoalEntity::class, ContextEntity::class, FilterEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class DoitDatabase : RoomDatabase() {
