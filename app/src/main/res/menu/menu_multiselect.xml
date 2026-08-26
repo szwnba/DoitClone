@@ -1,8 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_select_all" android:title="@string/action_select_all"
-        android:icon="@drawable/icon_actionbar_check" app:showAsAction="always" />
-    <item android:id="@+id/action_batch_complete" android:title="@string/action_complete" app:showAsAction="never" />
-    <item android:id="@+id/action_batch_move" android:title="@string/task_move_to" app:showAsAction="never" />
-    <item android:id="@+id/action_batch_trash" android:title="@string/action_trash" app:showAsAction="never" />
-</menu>
