@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <item android:color="@color/subtask_title_text_color_completed" doit:completed="true" />
+    <item android:color="@color/subtask_title_text_color_ori" />
+</selector>

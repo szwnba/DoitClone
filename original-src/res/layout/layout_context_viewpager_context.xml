@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/list_item" style="@style/viewpager_self_item_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/title" android:paddingLeft="16.0dip" style="@style/viewpager_title" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/empty_msg_title" android:layout_marginBottom="10.0dip" style="@style/empty_message" />
+    <TextView android:id="@id/empty_msg" style="@style/empty_message" />
+</LinearLayout>

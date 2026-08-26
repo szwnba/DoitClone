@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/title_wrap" style="@style/dialog_title_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/title" style="@style/dialog_title" />
+    <im.doit.pro.ui.component.DButton android:id="@id/until_btn" style="@style/repeater_until_btn" />
+    <View style="@style/dialog_title_bottom_line" />
+</RelativeLayout>

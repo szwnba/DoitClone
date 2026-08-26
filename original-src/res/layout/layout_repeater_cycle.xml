@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:layout_marginRight="40.0dip" android:text="@string/every" style="@style/repeater_unit_text" />
+    <TextView android:id="@id/cycle" style="@style/repeater_cycle_text" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/up_btn" style="@style/timepicker_pre_btn" />
+        <ImageButton android:id="@id/down_btn" android:layout_below="@id/up_btn" style="@style/timepicker_next_btn" />
+    </RelativeLayout>
+    <TextView android:id="@id/unit" android:layout_marginLeft="20.0dip" android:text="@string/unit_day" style="@style/repeater_unit_text" />
+</LinearLayout>

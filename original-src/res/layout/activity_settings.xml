@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <RelativeLayout android:id="@id/avatar_wrap" android:paddingBottom="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip">
+                <ImageView android:id="@id/upgrade_magicstick" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:src="@drawable/icon_upgrade_magicstick" android:scaleType="fitEnd" />
+                <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/my_avatar" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="16.0dip" style="@style/task_list_item_sender_wrap" />
+            </RelativeLayout>
+            <TextView android:textSize="16.0sp" android:textColor="#d8000000" android:ellipsize="end" android:id="@id/username" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="14.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/avatar_wrap" />
+            <TextView android:textSize="14.0sp" android:id="@id/account_type_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:includeFontPadding="false" android:layout_toRightOf="@id/avatar_wrap" android:layout_below="@id/username" android:lineSpacingExtra="8.0dip" />
+            <im.doit.pro.ui.component.DButton android:textColor="@color/upgrade_to_pro_color" android:gravity="center" android:id="@id/upgrade_to_pro" android:background="@drawable/upgrade_to_pro_bg" android:paddingBottom="16.0dip" android:layout_width="188.0dip" android:layout_height="wrap_content" android:text="@string/upgrade_to_pro" android:layout_toRightOf="@id/avatar_wrap" android:layout_below="@id/account_type_message" />
+        </RelativeLayout>
+        <TextView android:text="@string/account" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/block_1" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/account_info" doit:label="@string/account_info" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/task_mailbox" android:layout_below="@id/account_info" doit:label="@string/task_mailbox" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/gcal_sync" android:layout_below="@id/task_mailbox" doit:label="@string/gcal_sync_switch_label" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/evernote" android:layout_below="@id/gcal_sync" doit:label="@string/link_to_evernote" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <TextView android:text="@string/general" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelSwitchButton android:id="@id/open_smartadd_switch" doit:label="@string/open_smargadd_switch_label" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/date_and_time_format" android:layout_below="@id/open_smartadd_switch" doit:label="@string/date_and_time" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/widget_style" android:layout_below="@id/date_and_time_format" doit:label="@string/widget_style" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/reminder_settings" android:layout_below="@id/widget_style" doit:label="@string/reminder" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/sync_log" android:layout_below="@id/reminder_settings" doit:label="@string/sync_log" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <TextView android:text="@string/security" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/block_3" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelSwitchButton android:id="@id/passcode_switch" doit:label="@string/passcode" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/set_passcode" android:layout_below="@id/passcode_switch" doit:label="@string/change_passcode" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <TextView android:text="@string/support" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/block_4" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/check_for_update" doit:label="@string/check_for_update" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/about_us" android:layout_below="@id/check_for_update" doit:label="@string/about_us" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/follow_us" android:layout_below="@id/about_us" doit:label="@string/follow_us" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/feedback" android:layout_below="@id/follow_us" doit:label="@string/feedback" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/help_center" android:layout_below="@id/feedback" doit:label="@string/help_desk" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/send_log" android:visibility="gone" android:layout_below="@id/help_center" doit:label="@string/send_log" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

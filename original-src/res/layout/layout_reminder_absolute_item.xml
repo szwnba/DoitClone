@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/reminder_item_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/reminder_time" style="@style/reminder_text" />
+    <im.doit.pro.ui.component.DSwitch android:layout_gravity="center_vertical" android:id="@id/switch_btn" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" doit:dThumb="@drawable/btn_toggle_handle" doit:dTrack="@drawable/btn_toggle_track" />
+</LinearLayout>

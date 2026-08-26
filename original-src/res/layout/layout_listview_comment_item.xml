@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/comment_avatar" android:layout_marginLeft="16.0dip" android:layout_centerVertical="true" doit:avatar_text_size="18.0dip" style="@style/comment_list_avator" />
+        <TextView android:textSize="14.0sp" android:textColor="#d8000000" android:id="@id/comment_auth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="64.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#4c000000" android:id="@id/comment_post_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/comment_auth" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="18.0sp" android:textColor="#d8000000" android:autoLink="all" android:linksClickable="true" android:id="@id/comment_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="64.0dip" android:lineSpacingExtra="10.0dip" android:textIsSelectable="true" />
+</LinearLayout>

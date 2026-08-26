@@ -1,5 +1,8 @@
 # Doit 复刻版（DoitClone）
 
+> **当前基准版本：原版本地化版 `4.4.5-local-r3`**（`original-src/` 构建，产物 `dist/doit-local.apk`）。
+> 下载：https://szwnba.github.io/DoitClone/download/doit-local.apk
+
 基于对 doit.im v4 安卓客户端（2015 版 APK）的逆向分析，用现代 Android 技术栈完整重写的
 本地优先 GTD 任务管理应用。界面结构、箱子语义、数据模型均还原自原版。
 

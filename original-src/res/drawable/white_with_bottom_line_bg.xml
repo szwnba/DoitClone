@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/d_menu_list_item_divider" />
+    <item android:drawable="@android:color/white" android:bottom="1.0dip" />
+</layer-list>

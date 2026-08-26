@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" package="im.doit.pro.v4" platformBuildVersionCode="21" platformBuildVersionName="5.0.1-1624448">
+    <supports-screens android:largeScreens="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <application android:allowBackup="true" android:icon="@drawable/logo_launcher" android:label="@string/app_name" android:name="im.doit.pro.activity.DoitApp" android:theme="@style/Theme.Doit" android:maxAspectRatio="2.4" android:resizeableActivity="true">
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:name="im.doit.pro.activity.StartUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.BootGuideActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="im.doit.pro.activity.LoginActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="im.doit.pro.activity.SignupActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="im.doit.pro.activity.LoginAgainActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SigninWithGoogleDialogActivity" android:theme="@style/Theme.Doit.Light.Dialog" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SigninWithGoogleWebViewActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="im.doit.pro.activity.HomeActivity" android:theme="@style/Theme.Doit.Light" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:launchMode="singleTask" android:name="im.doit.pro.activity.ProjectViewPagerActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="im.doit.pro.activity.GoalViewPagerActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="im.doit.pro.activity.TaskContextViewPagerActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="im.doit.pro.activity.FilterViewPagerActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.TaskDetailActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SelectContactsActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ProjectDetailActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.GoalDetailActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.TaskContextDetailActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SettingsActivity" android:theme="@style/Theme.Doit.Light" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.LockSetupActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.LockActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UpgradeToProActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.AccountInfoActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserNicknameEditActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserGenderEditActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserDateAndTimeFormatActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserDateFormatActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserTimeFormatActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.UserWeekStartsOnActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.WidgetStyleSettingsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ReminderSettingsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.DailyPlanSettingsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.DailyReviewSettingsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.AboutUsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.FollowUsActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.FeedbackActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.SmartAddActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SearchActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.NoticeActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="im.doit.pro.activity.WidgetBadgeConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="im.doit.pro.activity.WidgetAddConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="im.doit.pro.activity.WidgetSelectBox3x3ConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.RemindPopupActivity" android:theme="@style/Theme.Doit.FullScreen" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="im.doit.pro.activity.ReceiveOtherAppData">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.StartDailyPlanDialog" android:theme="@style/Theme.Doit.FullScreenDialog" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.DailyPlanActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.DailyPlanOnNextActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="im.doit.pro.activity.StartDailyReviewDialog" android:theme="@style/Theme.Doit.FullScreenDialog" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.DailyReviewActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ContactListActivity" android:theme="@style/Theme.Doit.Light" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.AddContactActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustUnspecified|stateUnspecified"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ContactViewPagerActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.SendTaskActivity" android:theme="@style/Theme.Doit.Light.WithoutBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ContactDetailActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.evernote.client.android.EvernoteOAuthActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.EvernoteAccountActivity" android:theme="@style/Theme.Doit.Light.WithBackBtn" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.AttachFromEvernoteActivity" android:theme="@style/Theme.Doit.Light" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="im.doit.pro.activity.ViewNotesActivity" android:theme="@style/Theme.Doit.Light" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <service android:enabled="true" android:name="im.doit.pro.service.DoitService"/>
+        <service android:enabled="true" android:name="im.doit.pro.service.DoitReminderService"/>
+        <service android:exported="false" android:name="im.doit.pro.widget.WidgetListWidgetService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <service android:exported="false" android:name="im.doit.pro.widget.WidgetCalendarService" android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <receiver android:enabled="true" android:exported="true" android:name="im.doit.pro.receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.DoitSyncReceiver" android:permission="im.doit.pro.receiver.DoitSyncReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.DoitSyncReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.ReminderComputeReceiver" android:permission="im.doit.pro.receiver.ReminderComputeReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.ReminderComputeReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.ReminderSendReceiver" android:permission="im.doit.pro.receiver.ReminderSendReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.ReminderSendReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.SetTodayDailyPlanAlarmReceiver" android:permission="im.doit.pro.receiver.SetTodayDailyPlanAlarmReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.SetTodayDailyPlanAlarmReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.StartTodayDailyPlanReceiver" android:permission="im.doit.pro.receiver.StartTodayDailyPlanReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.StartTodayDailyPlanReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.SetTodayDailyReviewAlarmReceiver" android:permission="im.doit.pro.receiver.SetTodayDailyReviewAlarmReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.SetTodayDailyReviewAlarmReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.StartTodayDailyReviewReceiver" android:permission="im.doit.pro.receiver.StartTodayDailyReviewReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.StartTodayDailyReviewReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="im.doit.pro.receiver.RefreshWidgetReceiver" android:permission="im.doit.pro.receiver.RefreshWidgetReceiver">
+            <intent-filter>
+                <action android:name="im.doit.pro.receiver.RefreshWidgetReceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="@string/widget_badge" android:name="im.doit.pro.widget.WidgetBadgeProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_badge_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="@string/add_task" android:name="im.doit.pro.widget.WidgetAddProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_add_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="@string/task_list" android:name="im.doit.pro.widget.WidgetTaskList3x3Provider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_task_list_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="@string/calendar" android:name="im.doit.pro.widget.WidgetCalendarProvider">
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_calendar_provider"/>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="465cb44e4411512b2e05af8d0daa8cb77075b8eb"/>
+    </application>
+</manifest>

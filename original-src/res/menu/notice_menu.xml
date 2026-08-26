@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/icon_actionbar_empty" android:id="@id/action_empty" android:title="@string/empty" android:showAsAction="always" />
+</menu>

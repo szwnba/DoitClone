@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/listview_task_last_in_group_divider" android:top="1.0dip" />
+    <item android:drawable="@color/d_menu_list_item_divider" android:bottom="1.0dip" />
+    <item android:drawable="@android:color/white" android:top="1.0dip" android:bottom="1.0dip" />
+    <item android:drawable="@color/listview_item_sel" android:top="1.0dip" android:bottom="1.0dip" />
+</layer-list>

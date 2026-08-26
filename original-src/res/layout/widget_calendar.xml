@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/widget_wrap" style="@style/widget_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:paddingLeft="0.0dip" style="@style/widget_topbar">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/widget_calendar_today_text_size" android:textColor="#ffffffff" android:gravity="center" android:id="@id/today_btn" android:background="@drawable/widget_cal_today_white_bg" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+            <TextView android:textSize="@dimen/widget_calendar_day_of_week_text_size" android:textColor="#ffffffff" android:id="@id/dayOfWeek" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/widget_calendar_year_month_text_size" android:textColor="#ffffffff" android:id="@id/yearAndMonth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+        </LinearLayout>
+        <ImageButton android:id="@id/pre" style="@style/widget_topbar_pre_btn" />
+        <ImageButton android:id="@id/next" android:contentDescription="@string/next_week" style="@style/widget_topbar_next_btn" />
+        <ImageButton android:id="@id/add" android:contentDescription="@string/add_task" style="@style/widget_topbar_add_btn" />
+    </LinearLayout>
+    <ImageView android:id="@id/topbar_bottom_divider" android:background="@color/widget_divider_color_forblackbg" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/cell_0" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_0" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_0" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_0" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_0" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_1" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_1" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_1" android:layout_below="@id/week_1" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_1" android:layout_below="@id/day_1" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_1" android:layout_below="@id/withtask_1" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_2" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_2" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_2" android:layout_below="@id/week_2" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_2" android:layout_below="@id/day_2" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_2" android:layout_below="@id/withtask_2" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_3" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_3" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_3" android:layout_below="@id/week_3" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_3" android:layout_below="@id/day_3" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_3" android:layout_below="@id/withtask_3" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_4" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_4" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_4" android:layout_below="@id/week_4" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_4" android:layout_below="@id/day_4" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_4" android:layout_below="@id/withtask_4" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_5" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_5" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_5" android:layout_below="@id/week_5" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_5" android:layout_below="@id/day_5" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_5" android:layout_below="@id/withtask_5" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/cell_6" style="@style/widget_calendar_topbar_cell">
+            <TextView android:id="@id/week_6" style="@style/widget_calendar_week" />
+            <TextView android:id="@id/day_6" android:layout_below="@id/week_6" style="@style/widget_calendar_day" />
+            <ImageView android:id="@id/withtask_6" android:layout_below="@id/day_6" style="@style/widget_calendar_withtask" />
+            <ImageView android:id="@id/selected_6" android:layout_below="@id/withtask_6" style="@style/widget_calendar_selected" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/week_bottom_divider" android:background="@color/widget_divider_color_forblackbg" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <ListView android:id="@id/list_view" style="@style/widget_listview" />
+</LinearLayout>

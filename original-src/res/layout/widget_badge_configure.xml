@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/dialog_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/dialog_title_layout" />
+    <ExpandableListView android:id="@id/list_view" android:descendantFocusability="beforeDescendants" android:groupIndicator="@android:color/transparent" style="@style/dialog_with_listview" />
+</LinearLayout>

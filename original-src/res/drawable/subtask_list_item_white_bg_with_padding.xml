@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset android:drawable="@android:color/white" android:insetLeft="@dimen/task_detail_left_space" android:insetRight="@dimen/task_detail_right_space"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

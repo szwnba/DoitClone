@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/list_item" android:background="@drawable/project_viewpager_project_bg" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/viewpager_self_height">
+        <ImageView android:id="@id/check_box" android:layout_centerVertical="true" android:contentDescription="@string/complete" style="@style/viewpager_completed" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/check_box">
+            <TextView android:gravity="center_vertical" android:id="@id/title" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/viewpager_title" />
+            <im.doit.pro.ui.component.AutoEllipsizeViewGroup android:id="@id/attributes_wrap" style="@style/listview_attrs_wrap">
+                <TextView android:id="@id/goal" android:drawableLeft="@drawable/icon_taskbar_goal" android:drawablePadding="1.0dip" style="@style/task_list_item_attribute_text_view" />
+            </im.doit.pro.ui.component.AutoEllipsizeViewGroup>
+        </LinearLayout>
+    </RelativeLayout>
+    <im.doit.pro.ui.component.LinearLayoutForListView android:orientation="vertical" android:id="@id/evernote_list" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="53.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="24.0dip" />
+</LinearLayout>

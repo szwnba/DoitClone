@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@drawable/dialog_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/dialog_title_layout" />
+        <TextView android:id="@id/body" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/dialog_message" />
+        <TextView android:id="@id/hint" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/dialog_message" />
+        <LinearLayout android:id="@id/btns_wrap" android:visibility="gone" style="@style/dialog_btns_wrap">
+            <LinearLayout android:orientation="horizontal" android:id="@id/positive_btn_wrap" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_weight="1.0">
+                <im.doit.pro.ui.component.DButton android:id="@id/positive_btn" style="@style/dialog_btn" />
+                <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/neutral_btn_wrap" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" android:layout_weight="1.0">
+                <im.doit.pro.ui.component.DButton android:id="@id/neutral_btn" style="@style/dialog_btn" />
+                <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+            </LinearLayout>
+            <im.doit.pro.ui.component.DButton android:id="@id/negative_btn" android:visibility="gone" style="@style/dialog_btn" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

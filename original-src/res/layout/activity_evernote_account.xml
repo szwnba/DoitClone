@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/task_detail_block_margin_bottom">
+        <RelativeLayout style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/evernote_account" doit:label="@string/account" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/task_detial_block_wrap">
+            <TextView android:gravity="center" android:id="@id/unlink_btn" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/task_detail_text_with_label_height" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

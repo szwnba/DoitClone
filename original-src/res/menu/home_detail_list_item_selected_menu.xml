@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/icon_actionbar_moveto" android:id="@id/action_moveto" android:title="@string/move_to" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_convert" android:id="@id/action_convert" android:title="@string/convert_to_project" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_project" android:id="@id/action_project" android:title="@string/project" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_goal" android:id="@id/action_goal" android:title="@string/goal" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_context" android:id="@id/action_context" android:title="@string/context" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_priority" android:id="@id/action_priority" android:title="@string/priority" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_delete" android:id="@id/action_trash" android:title="@string/delete" android:showAsAction="ifRoom" />
+    <item android:icon="@drawable/icon_actionbar_putback" android:id="@id/action_putback" android:title="@string/untrash" android:showAsAction="ifRoom" />
+</menu>

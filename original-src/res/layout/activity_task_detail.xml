@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/task_detail_content_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/task_detail_content_layout" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:id="@id/reminder_snooze_wrap" style="@style/task_detail_bottombar">
+        <TextView android:id="@id/reminder_snooze" android:text="@string/task_snooze" android:drawableTop="@drawable/icon_reminder_snooze" style="@style/task_detail_bottombar_btn" />
+    </LinearLayout>
+</LinearLayout>

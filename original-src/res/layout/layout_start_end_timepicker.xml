@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/start_btn_wrap" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/pre_start_btn" style="@style/timepicker_pre_btn" />
+        <ImageButton android:id="@id/next_start_btn" android:layout_below="@id/pre_start_btn" style="@style/timepicker_next_btn" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/time_wrap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:id="@id/start_time" style="@style/timepicker_normal_text" />
+        <TextView android:id="@id/colon_divider" android:text=" - " android:layout_toRightOf="@id/start_time" style="@style/timepicker_normal_text" />
+        <TextView android:id="@id/end_time" android:layout_toRightOf="@id/colon_divider" style="@style/timepicker_normal_text" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/end_btn_wrap" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/pre_end_btn" style="@style/timepicker_pre_btn" />
+        <ImageButton android:id="@id/next_end_btn" android:layout_below="@id/pre_end_btn" style="@style/timepicker_next_btn" />
+    </RelativeLayout>
+</LinearLayout>

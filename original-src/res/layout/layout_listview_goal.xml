@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/list_item" style="@style/listview_item_with_complete"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/complete_btn" android:layout_centerVertical="true" android:contentDescription="@string/complete" style="@style/listview_item_completed" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/title_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/complete_btn">
+        <ImageView android:id="@id/goal_icon" android:src="@drawable/icon_completedgoalbar_goal" android:contentDescription="@string/project" style="@style/listview_entity_icon" />
+        <TextView android:id="@id/title" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/task_list_item_title" />
+        <ImageView android:id="@id/notes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/task_list_item_attribute_space" android:src="@drawable/icon_taskbar_description" android:contentDescription="@string/note" />
+    </LinearLayout>
+    <include layout="@layout/layout_listview_uncomplete" />
+</RelativeLayout>

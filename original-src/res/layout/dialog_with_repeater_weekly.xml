@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/dialog_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/layout_repeater_title_with_until" />
+    <include layout="@layout/layout_repeater_cycle" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/weekly_day_of_week_wrap" android:layout_width="fill_parent" android:layout_height="54.0dip">
+        <TextView style="@style/day_of_week_cell" />
+        <TextView style="@style/day_of_week_cell" />
+        <TextView style="@style/day_of_week_cell" />
+        <TextView style="@style/day_of_week_cell" />
+        <TextView style="@style/day_of_week_cell" />
+        <TextView style="@style/day_of_week_cell" />
+        <TextView android:background="@drawable/day_of_week_cell_without_right_line_bg" style="@style/day_of_week_cell" />
+    </LinearLayout>
+    <include layout="@layout/layout_cancel_and_ok_btns" />
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/contact_avatar" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/block_1" android:layout_marginBottom="24.0dip" android:layout_below="@id/contact_avatar" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.EditTextWithLabelLayout android:id="@id/nickname" doit:label="@string/nickname" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.EditTextWithLabelLayout android:id="@id/phone" android:layout_below="@id/nickname" doit:label="@string/phone" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/birthday" android:layout_below="@id/phone" doit:label="@string/birthday" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <im.doit.pro.ui.component.DEditText android:textSize="@dimen/contact_notes_text_size" android:textColorHint="@color/hint_text_color" android:gravity="top" android:id="@id/notes" android:padding="16.0dip" android:hint="@string/note" android:minLines="3" android:maxLength="@integer/contact_notes_max_length" android:layout_below="@id/block_1" android:lineSpacingExtra="6.0dip" android:inputType="textCapSentences|textMultiLine" doit:hint_text_size="@dimen/contact_notes_hint_text_size" style="@style/task_detial_block_wrap" />
+    </RelativeLayout>
+</ScrollView>

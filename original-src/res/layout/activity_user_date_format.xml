@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioGroup android:orientation="vertical" android:id="@id/formats" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@id/mmddyyyy" android:text="@string/format_mm_dd_yyyy" style="@style/base_radiobtn_with_bottom_line" />
+            <RadioButton android:id="@id/ddmmyyyy" android:text="@string/format_dd_mm_yyyy" style="@style/base_radiobtn_with_bottom_line" />
+            <RadioButton android:id="@id/yyyymmdd" android:text="@string/format_yyyy_mm_dd" style="@style/base_radiobtn_with_bottom_line" />
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>

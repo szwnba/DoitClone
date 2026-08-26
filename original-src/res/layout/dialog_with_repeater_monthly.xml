@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout style="@style/dialog_wrap">
+        <include layout="@layout/layout_repeater_title_with_until" />
+        <include layout="@layout/layout_repeater_cycle" />
+        <TextView android:id="@id/monthly_mode" android:background="@drawable/day_of_week_cell_without_right_line_bg" android:layout_width="fill_parent" android:layout_height="54.0dip" style="@style/day_of_week_cell" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/monthly_date_wrap" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/monthly_date" style="@style/repeater_cycle_text" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageButton android:id="@id/up_date_btn" style="@style/timepicker_pre_btn" />
+                <ImageButton android:id="@id/down_date_btn" android:layout_below="@id/up_date_btn" style="@style/timepicker_next_btn" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/monthly_week_wrap" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageButton android:id="@id/up_week_btn" style="@style/timepicker_pre_btn" />
+                <ImageButton android:id="@id/down_week_btn" android:layout_below="@id/up_week_btn" style="@style/timepicker_next_btn" />
+            </RelativeLayout>
+            <TextView android:id="@id/monthly_week" android:layout_width="wrap_content" android:layout_weight="1.0" style="@style/repeater_cycle_text" />
+            <TextView android:id="@id/monthly_day_of_week" android:layout_width="wrap_content" android:layout_weight="1.0" style="@style/repeater_cycle_text" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageButton android:id="@id/up_day_of_week_btn" style="@style/timepicker_pre_btn" />
+                <ImageButton android:id="@id/down_day_of_week_btn" android:layout_below="@id/up_day_of_week_btn" style="@style/timepicker_next_btn" />
+            </RelativeLayout>
+        </LinearLayout>
+        <include layout="@layout/layout_cancel_and_ok_btns" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/clickable_layout" style="@style/textview_with_label_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/label" style="@style/row_textview_label" />
+    <im.doit.pro.ui.component.NoEnterEditText android:id="@id/content" android:background="@null" android:layout_height="fill_parent" android:layout_toRightOf="@id/label" android:inputType="textCapSentences" style="@style/row_textview_content" />
+</RelativeLayout>

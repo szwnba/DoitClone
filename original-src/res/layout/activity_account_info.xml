@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/task_detail_block_margin_bottom">
+        <RelativeLayout android:id="@id/block_1" style="@style/task_detial_block_wrap">
+            <RelativeLayout android:id="@id/avatar_wrap" style="@style/textview_with_label_wrap">
+                <TextView android:id="@id/avatar" android:layout_width="wrap_content" android:text="@string/avatar" android:layout_centerVertical="true" style="@style/row_textview_label" />
+                <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/my_avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="@dimen/task_detail_right_space" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/task_list_item_sender_wrap" />
+            </RelativeLayout>
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/nickname" android:layout_below="@id/avatar_wrap" doit:label="@string/nickname" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/gender" android:layout_below="@id/nickname" doit:label="@string/gender" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/birthday" android:layout_below="@id/gender" doit:label="@string/birthday" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/block_2" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/username" doit:label="@string/username" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/email" android:layout_below="@id/username" doit:label="@string/email" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/server" android:layout_below="@id/email" doit:label="@string/server" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/block_3" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/pro_expires_on" doit:label="@string/pro_expires_on" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/renew_btn" android:layout_below="@id/pro_expires_on" doit:label="@string/renew" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <RelativeLayout style="@style/task_detial_block_wrap">
+            <TextView android:gravity="center" android:id="@id/logout" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/task_detail_text_with_label_height" android:text="@string/logout" android:onClick="onLogoutClick" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

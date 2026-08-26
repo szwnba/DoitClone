@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_marginTop="@dimen/task_detail_block_margin_bottom" android:layout_marginBottom="26.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/text_size" doit:label="@string/text_size" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/background_color" android:layout_below="@id/text_size" doit:label="@string/background_color" style="@style/task_detail_cell_wrap" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/task_detail_left_space" android:paddingRight="@dimen/task_detail_right_space" android:layout_width="fill_parent" android:layout_height="@dimen/task_detail_text_with_label_height" android:layout_below="@id/background_color">
+                <TextView android:paddingRight="0.0dip" android:text="@string/background_alpha_min" style="@style/row_textview_label" />
+                <SeekBar android:id="@id/background_alpha" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:maxHeight="4.0dip" android:max="255" android:progressDrawable="@drawable/widget_background_alpha_bg" android:minHeight="4.0dip" android:thumb="@drawable/btn_settings_widgetstyle_handle" android:layout_weight="1.0" />
+                <TextView android:paddingRight="0.0dip" android:text="@string/background_alpha_max" style="@style/row_textview_label" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

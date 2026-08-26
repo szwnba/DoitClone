@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/task_topbar_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/topbar_text_btn" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/task_detail_topbar_text_color" android:id="@id/task_actionbar_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <Button android:id="@id/save_btn" android:visibility="gone" android:text="@string/save" style="@style/topbar_text_btn" />
+            <ImageButton android:id="@id/add_comment_btn" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:src="@drawable/icon_actionbar_comment" android:contentDescription="@string/add_a_comment" style="@style/task_detail_topbar_btn" />
+            <ImageButton android:id="@id/send_btn" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:src="@drawable/icon_actionbar_sendto" android:contentDescription="@string/send" style="@style/task_detail_topbar_btn" />
+        </LinearLayout>
+    </RelativeLayout>
+    <Button android:id="@id/done_btn" android:visibility="gone" android:text="@string/done" android:layout_alignParentRight="true" style="@style/topbar_text_btn" />
+    <RelativeLayout android:id="@id/chart_topbar_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageButton android:id="@id/chart_back_btn" android:src="@drawable/actionbar_back_btn" android:contentDescription="@string/back" style="@style/task_detail_topbar_btn" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/task_detail_topbar_text_color" android:id="@id/chart_actionbar_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/statistics" android:layout_centerInParent="true" />
+        <Button android:id="@id/chart_close_btn" android:text="@string/close" android:layout_alignParentRight="true" style="@style/topbar_text_btn" />
+    </RelativeLayout>
+</RelativeLayout>

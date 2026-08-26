@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/dialog_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/title_wrap" style="@style/dialog_title_wrap">
+        <TextView android:id="@id/title" style="@style/dialog_title" />
+        <ImageButton android:id="@id/add_btn" style="@style/reminder_add_btn" />
+        <View style="@style/dialog_title_bottom_line" />
+    </RelativeLayout>
+    <ListView android:id="@id/list_view" android:descendantFocusability="beforeDescendants" style="@style/dialog_with_listview" />
+    <include layout="@layout/layout_cancel_and_ok_btns" />
+</LinearLayout>

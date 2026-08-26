@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/search_wrap" android:background="@drawable/sendto_search_bg" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_margin="8.0dip">
+        <im.doit.pro.ui.component.DEditText android:id="@id/search_input" android:background="@null" android:paddingLeft="6.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:drawableLeft="@drawable/icon_sendto_search" android:drawablePadding="6.0dip" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/delete_search_btn" android:background="@null" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/icon_sendto_delete" android:scaleType="center" android:contentDescription="@string/delete" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/content_wrap" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <RelativeLayout android:id="@id/auto_complete_wrap" android:layout_width="fill_parent" android:layout_height="60.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#bf000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:text="@string/auto_complete" android:layout_toLeftOf="@id/auto_complete" android:layout_centerVertical="true" />
+            <im.doit.pro.ui.component.DSwitch android:id="@id/auto_complete" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/task_detail_right_space" android:layout_alignParentRight="true" android:layout_centerVertical="true" doit:dThumb="@drawable/btn_toggle_handle" doit:dTrack="@drawable/btn_toggle_track" doit:dThumbTextPadding="10.0dip" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ListView android:id="@id/list_view" android:background="@drawable/task_detail_block_wrap_bg" android:descendantFocusability="beforeDescendants" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:choiceMode="multipleChoice" style="@style/d_list_view" />
+        </RelativeLayout>
+        <include layout="@layout/layout_cancel_and_ok_btns" />
+    </LinearLayout>
+    <TextView android:textColor="#66000000" android:id="@id/no_results" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="26.0dip" android:text="@string/no_results" />
+</LinearLayout>

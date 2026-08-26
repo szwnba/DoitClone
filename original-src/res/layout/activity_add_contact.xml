@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/scroll_view" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" style="@style/task_detail_wrap">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/task_detail_title_block_wrap_bg" android:paddingLeft="0.0dip" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <RelativeLayout android:id="@id/title_notes_wrap" android:paddingLeft="@dimen/task_detail_left_space" android:paddingTop="22.0dip" android:paddingRight="@dimen/task_detail_right_space" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <im.doit.pro.ui.component.NoEnterEditText android:id="@id/email_input" android:paddingTop="1.0dip" android:hint="@string/contact_email_placeholder" android:inputType="textEmailAddress" style="@style/task_detail_title" />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="#66000000" android:paddingLeft="@dimen/task_detail_left_space" android:paddingRight="@dimen/task_detail_right_space" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/contact_add_tip" android:lineSpacingExtra="6.0dip" />
+    </LinearLayout>
+</ScrollView>

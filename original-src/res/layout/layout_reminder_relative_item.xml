@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/reminder_relative_item_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/up_btn" style="@style/timepicker_pre_btn" />
+        <ImageButton android:id="@id/down_btn" android:layout_below="@id/up_btn" style="@style/timepicker_next_btn" />
+    </RelativeLayout>
+    <TextView android:gravity="center" android:id="@id/reminder_time" android:layout_width="wrap_content" android:minWidth="48.0dip" style="@style/repeater_cycle_text" />
+    <TextView android:id="@id/reminder_unit" style="@style/reminder_text" />
+    <im.doit.pro.ui.component.DSwitch android:gravity="center_vertical" android:id="@id/switch_btn" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" doit:dThumb="@drawable/btn_toggle_handle" doit:dTrack="@drawable/btn_toggle_track" />
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/list_item" style="@style/listview_item_with_complete"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/complete_btn" android:layout_centerVertical="true" android:contentDescription="@string/complete" style="@style/listview_item_completed" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/complete_btn">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/title_wrap" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ImageView android:id="@id/project_icon" android:src="@drawable/icon_completedprojectbar_project" android:contentDescription="@string/project" style="@style/listview_entity_icon" />
+            <TextView android:id="@id/title" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/task_list_item_title" />
+            <ImageView android:id="@id/notes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/task_list_item_attribute_space" android:src="@drawable/icon_taskbar_description" android:contentDescription="@string/note" />
+            <TextView android:textSize="12.0sp" android:textColor="#4c000000" android:ellipsize="end" android:gravity="center" android:id="@id/count" android:background="@drawable/listview_count_wrap_bg" android:layout_width="26.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/task_list_item_attribute_space" android:singleLine="true" />
+        </LinearLayout>
+        <im.doit.pro.ui.component.AutoEllipsizeViewGroup android:id="@id/attributes_wrap" style="@style/listview_attrs_wrap">
+            <TextView android:id="@id/start_at" style="@style/task_list_item_attribute_text_view" />
+            <TextView android:id="@id/goal" android:drawableLeft="@drawable/icon_taskbar_goal" android:drawablePadding="1.0dip" style="@style/task_list_item_attribute_text_view" />
+            <TextView android:id="@id/context" style="@style/task_list_item_attribute_text_view" />
+            <im.doit.pro.ui.component.DListItemAttributeTextView android:id="@id/end_at" doit:align_right="true" style="@style/task_list_item_attribute_text_view" />
+        </im.doit.pro.ui.component.AutoEllipsizeViewGroup>
+    </LinearLayout>
+    <include layout="@layout/layout_listview_uncomplete" />
+</RelativeLayout>

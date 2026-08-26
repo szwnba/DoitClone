@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="abc_max_action_buttons">2</integer>
+    <integer name="default_circle_indicator_orientation">0</integer>
+    <integer name="spb_default_sections_count">4</integer>
+    <integer name="spb_default_interpolator">0</integer>
+    <integer name="username_max_length">32</integer>
+    <integer name="nickname_max_length">30</integer>
+    <integer name="email_max_length">254</integer>
+    <integer name="password_max_length">128</integer>
+    <integer name="task_name_max_length">255</integer>
+    <integer name="task_note_max_length">2048</integer>
+    <integer name="pro_task_note_max_length">10000</integer>
+    <integer name="task_reminders_max_count">5</integer>
+    <integer name="task_tags_max_count">5</integer>
+    <integer name="comment_content_max_length">1024</integer>
+    <integer name="project_name_max_length">255</integer>
+    <integer name="project_note_max_length">2048</integer>
+    <integer name="pro_project_note_max_length">10000</integer>
+    <integer name="context_name_max_length">30</integer>
+    <integer name="tag_name_max_length">30</integer>
+    <integer name="goal_name_max_length">255</integer>
+    <integer name="goal_note_max_length">2048</integer>
+    <integer name="pro_goal_note_max_length">10000</integer>
+    <integer name="subtask_max_lenght">255</integer>
+    <integer name="contact_name_max_length">30</integer>
+    <integer name="contact_notes_max_length">255</integer>
+    <integer name="contact_email_max_length">254</integer>
+    <integer name="contact_phone_max_length">20</integer>
+    <integer name="feedback_title_max_length">255</integer>
+    <integer name="feedback_content_max_length">10000</integer>
+</resources>

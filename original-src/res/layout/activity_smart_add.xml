@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/quickadd_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/icon_smartadd_input_wrap" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <im.doit.pro.ui.component.NoEnterEditText android:textSize="16.0sp" android:textColor="@android:color/black" android:id="@id/title" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:hint="@string/new_task" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionDone" style="@style/editview_with_cap_sentences" />
+        <Button android:textColor="@color/button_smartadd_save" android:background="@null" android:layout_width="66.0dip" android:layout_height="wrap_content" android:text="@string/save" android:onClick="onSaveClick" />
+    </LinearLayout>
+    <View android:background="@color/dialog_title_bottom_divider" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/smart_add_btn" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:background="@drawable/icon_smartadd_time" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" android:onClick="onTimeClick" />
+        <Button android:background="@drawable/icon_smartadd_context" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" android:onClick="onContextClick" />
+        <Button android:background="@drawable/icon_smartadd_project" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" android:onClick="onProjectClick" />
+        <Button android:background="@drawable/icon_smartadd_priority" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" android:onClick="onPriorityClick" />
+        <Button android:background="@drawable/icon_smartadd_tag" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" android:onClick="onTagClick" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/content_wrap" android:background="#60000000" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ListView android:id="@id/options" android:paddingLeft="20.0dip" android:visibility="gone" android:descendantFocusability="afterDescendants" android:divider="@color/task_detail_block_top_bottom_line_color" android:dividerHeight="1.0dip" style="@style/d_list_view" />
+        <TextView android:textSize="16.0sp" android:textColor="#7fffffff" android:gravity="center" android:id="@id/msg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/smartadd_click_to_cancel_tip" />
+    </LinearLayout>
+</LinearLayout>

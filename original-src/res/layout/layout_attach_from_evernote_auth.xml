@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/unlink_wrap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:src="@drawable/img_attachfromevernote_notlinked" />
+    <Button android:textSize="14.0sp" android:textColor="@android:color/white" android:id="@id/link_to_your_evernote_btn" android:background="@drawable/link_to_your_evernote_btn_bg" android:layout_width="240.0dip" android:layout_height="40.0dip" android:text="@string/link_to_your_evernote_account" />
+</LinearLayout>

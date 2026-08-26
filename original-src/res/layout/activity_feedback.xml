@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <im.doit.pro.ui.component.NoEnterEditText android:id="@id/title" android:hint="@string/feedback_title_required" android:maxLength="@integer/feedback_title_max_length" android:imeOptions="actionNext" style="@style/task_detail_title" />
+        <im.doit.pro.ui.component.DEditText android:id="@id/notes" android:hint="@string/feedback_description_required" android:maxLength="@integer/feedback_content_max_length" android:layout_below="@id/title" style="@style/task_detail_notes" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff5f9dd3" android:id="@id/private_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/private_tip" android:layout_alignParentBottom="true" android:lineSpacingExtra="10.0dip" />
+    </RelativeLayout>
+</ScrollView>

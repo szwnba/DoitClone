@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/subtask_item_wrap" style="@style/subtask_item_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/subtask_complete_btn" android:focusable="false" android:layout_alignParentLeft="true" android:contentDescription="@string/complete" style="@style/subtask_completed" />
+    <ImageView android:id="@id/subtask_delete_btn" android:background="@android:color/white" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_detailpage_delete_btn" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/delete" />
+    <im.doit.pro.ui.component.SubTaskTitleView android:id="@id/subtask_edit_title" android:layout_toLeftOf="@id/subtask_delete_btn" android:layout_toRightOf="@id/subtask_complete_btn" style="@style/task_detail_subtask_edittext" />
+</RelativeLayout>

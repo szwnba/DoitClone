@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <item android:state_pressed="true" android:drawable="@drawable/icon_signin_user_sel" />
+    <item android:state_focused="true" android:drawable="@drawable/icon_signin_user_sel" />
+    <item android:state_selected="true" android:drawable="@drawable/icon_signin_user_sel" />
+    <item android:drawable="@drawable/icon_signin_user_sel" android:state_activated="true" />
+    <item android:drawable="@drawable/icon_signin_user_sel" doit:state_contain_content="true" />
+    <item android:state_enabled="false" android:drawable="@drawable/icon_signin_user_ori" />
+    <item android:drawable="@drawable/icon_signin_user_ori" />
+</selector>

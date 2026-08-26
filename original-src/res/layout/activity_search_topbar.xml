@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.doit.pro.ui.component.NoEnterEditText android:textColor="@android:color/white" android:id="@id/search_input" android:background="#19000000" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:drawableLeft="@drawable/icon_searchbox_search" android:drawablePadding="8.0dip" android:layout_weight="1.0" android:imeOptions="actionSearch" />
+    <ImageButton android:id="@id/delete_search_btn" android:background="#19000000" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/search_delete_btn" android:scaleType="center" android:contentDescription="@string/delete" />
+    <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/search_btn" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:text="@string/search" />
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.doit.pro.ui.component.pullrefresh.PullToRefreshLayout android:id="@id/ptr_layout" style="@style/listview_pull_to_sync">
+        <ListView android:id="@id/list_view" android:background="@drawable/task_detail_block_wrap_bg" android:descendantFocusability="beforeDescendants" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:choiceMode="multipleChoice" style="@style/d_list_view" />
+    </im.doit.pro.ui.component.pullrefresh.PullToRefreshLayout>
+    <im.doit.pro.ui.component.ListViewEmptyView android:id="@id/empty_wrap" style="@style/empty_wrap" />
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/widget_wrap" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/rlayout" android:layout_width="@dimen/bagde_add_size" android:layout_height="@dimen/bagde_add_size">
+        <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:src="@drawable/icon_widget_add" android:contentDescription="@string/just_a_image" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center_horizontal" android:id="@id/txtAddName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:text="@string/add" />
+</LinearLayout>

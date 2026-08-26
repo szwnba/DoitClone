@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/dialog_title_layout" />
+    <ListView android:id="@id/list_view" style="@style/dialog_with_listview" />
+    <TextView android:gravity="center" android:id="@id/add_btn" android:background="@drawable/dialog_btns_wrap_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_listview_item_height" android:text="@string/add_an_account" style="@style/dialog_listview_name" />
+    <LinearLayout android:id="@id/btns_wrap" style="@style/dialog_btns_wrap">
+        <im.doit.pro.ui.component.DButton android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/dialog_btn" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/task_detail_block_margin_bottom">
+        <RelativeLayout android:id="@id/block_1" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/date_format" doit:label="@string/date_format" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/time_format" android:layout_below="@id/date_format" doit:label="@string/time_format" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/block_2" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/week_starts_on" doit:label="@string/week_starts_on" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/working_hours" android:layout_below="@id/week_starts_on" doit:label="@string/working_hours" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

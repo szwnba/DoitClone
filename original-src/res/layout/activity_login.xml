@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/scroll_view" android:background="@drawable/bg_signin" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="36.0dip" android:layout_width="@dimen/signin_content_width" android:layout_height="fill_parent">
+        <im.doit.pro.ui.component.KeyboardDetectorRelativeLayout android:id="@id/wrap_layout" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="32.0sp" android:textColor="@android:color/white" android:id="@id/app_name" android:paddingTop="48.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_name" android:layout_centerHorizontal="true" />
+            <im.doit.pro.ui.component.DEditText android:id="@id/username" android:layout_marginTop="146.0dip" android:hint="@string/username_or_email" android:drawableLeft="@drawable/icon_signin_user" style="@style/signin_edittext" />
+            <im.doit.pro.ui.component.DEditText android:id="@id/password" android:hint="@string/password" android:drawableLeft="@drawable/icon_signin_password" android:layout_below="@id/username" android:inputType="textPassword" style="@style/signin_edittext" />
+            <im.doit.pro.ui.component.DButton android:id="@id/signin_btn" android:text="@string/sign_in" android:onClick="onLoginClick" style="@style/signin_btn" />
+            <TextView android:id="@id/choose_server" android:onClick="onChooseServerClick" style="@style/choose_server_text_btn" />
+        </im.doit.pro.ui.component.KeyboardDetectorRelativeLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <TextView android:id="@id/signin_with_google" android:text="@string/sign_in_with_google" android:onClick="onSigninWithGoogleClick" style="@style/signin_text_btn" />
+            <TextView android:id="@id/signup" android:layout_marginTop="32.0dip" android:text="@string/sign_up_free_declare" android:onClick="onSignupClick" style="@style/signin_text_btn" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

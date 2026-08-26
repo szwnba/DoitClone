@@ -1,0 +1,38 @@
+# 原版本地化版源码（基准版本 4.4.5-local-r3 / code 1414407）
+
+本目录是 doit.im v4.4.5（2015）APK 的 apktool 反编译产物 + 本地化补丁，
+**当前分发的 doit-local.apk 即由此树构建**。
+
+## 重新构建
+
+```bash
+apktool b original-src -o doit-local-unsigned.apk
+zipalign -f 4 doit-local-unsigned.apk aligned.apk
+apksigner sign --ks original-src/doit-reverse.keystore \
+  --ks-pass pass:doit123456 --ks-key-alias doit \
+  --out doit-local.apk aligned.apk
+```
+
+## 相对原版的全部改动
+
+| # | 位置 | 改动 | 作用 |
+|---|---|---|---|
+| 1 | `AndroidManifest.xml` | `maxAspectRatio=2.4` + `resizeableActivity=true` | 解除 16:9 信箱化（长屏黑边） |
+| 2 | `res/values/styles.xml` | 两个主题加 `windowDrawsSystemBarBackgrounds` + `navigationBarColor` | 底部导航栏区域染色（消除黑条） |
+| 3 | `smali/.../DoitApp.smali` | `isLogin/isAuth→true`、`isLoginAgain→false`、`user()` 空安全 | 免登录 |
+| 4 | `smali/.../StartUpActivity.smali` | `startInit` 直进主界面 | 跳过登录页/引导/同步自启 |
+| 5 | `smali/.../DoitService.smali` | `onStartCommand` 直接返回 | 彻底中和云同步（纯本地） |
+| 6 | `smali/.../UserUtils.smali` | `isNotPro→false` | 解锁全部 Pro 功能 |
+| 7 | `smali/.../DSQLiteOpenHelper.smali` | 新增 `onOpen` 幂等种子 14 个默认箱子 | 原版箱子数据依赖服务器下发，本地版必须自种 |
+| 8 | `AndroidManifest.xml` | `uses-library org.apache.http.legacy` | targetSdk 23 上 Apache HttpClient 可用 |
+| 9 | `apktool.yml` | targetSdk 23、版本 4.4.5-local-r3/1414407 | Android 14+ 可装、版本可识别 |
+
+## 签名密钥
+
+`doit-reverse.keystore`（别名 `doit`，口令 `doit123456`）。
+**注意：密钥随公开仓库分发意味着任何人都能签同包名升级包，仅接受自担风险时使用。**
+
+## 法律
+
+原版代码与素材版权归 doit.im（上海煎饼客网络科技）所有，仅限个人学习研究，
+请勿商用或二次分发。

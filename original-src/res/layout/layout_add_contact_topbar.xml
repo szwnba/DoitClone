@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/topbar_text_btn" />
+    <Button android:id="@id/add_btn" android:text="@string/add" android:layout_alignParentRight="true" style="@style/topbar_text_btn" />
+</RelativeLayout>

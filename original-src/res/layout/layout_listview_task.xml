@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/list_item" style="@style/listview_item_with_complete"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/content_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/priority" android:layout_width="@dimen/task_list_item_priority_width" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/doitnow_btn" android:src="@drawable/doitnow_checkbox" android:contentDescription="@string/doit_now" style="@style/listview_item_completed" />
+        <ImageView android:id="@id/complete_btn" android:contentDescription="@string/complete" style="@style/listview_item_completed" />
+        <ImageView android:id="@id/mark_today_btn" android:visibility="gone" android:src="@drawable/listview_mark_today" android:contentDescription="@string/today" style="@style/listview_item_completed" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <RelativeLayout android:id="@id/title_wrap" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <TextView android:id="@id/title" android:layout_toLeftOf="@id/notes" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/task_list_item_title" />
+                <ImageView android:id="@id/notes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/task_list_item_attribute_space" android:src="@drawable/icon_taskbar_description" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <im.doit.pro.ui.component.AutoEllipsizeViewGroup android:id="@id/attributes_wrap" style="@style/listview_attrs_wrap">
+                <ImageView android:id="@id/repeat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/icon_taskbar_repeat" />
+                <TextView android:id="@id/start_at" style="@style/task_list_item_attribute_text_view" />
+                <TextView android:id="@id/context" style="@style/task_list_item_attribute_text_view" />
+                <TextView android:id="@id/project" style="@style/task_list_item_attribute_text_view" />
+                <im.doit.pro.ui.component.DListItemAttributeTextView android:id="@id/end_at" doit:align_right="true" style="@style/task_list_item_attribute_text_view" />
+            </im.doit.pro.ui.component.AutoEllipsizeViewGroup>
+        </LinearLayout>
+        <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/sender_avatar" style="@style/task_list_item_sender_wrap" />
+    </LinearLayout>
+    <include layout="@layout/layout_listview_uncomplete" />
+</RelativeLayout>

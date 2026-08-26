@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/btns_wrap" style="@style/dialog_btns_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <im.doit.pro.ui.component.DButton android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/dialog_btn" />
+    <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <im.doit.pro.ui.component.DButton android:id="@id/ok_btn" android:text="@string/OK" style="@style/dialog_btn" />
+</LinearLayout>

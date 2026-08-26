@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/content_wrap" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:id="@id/btns_wrap" style="@style/dialog_btns_wrap">
+            <im.doit.pro.ui.component.DButton android:id="@id/close_btn" android:text="@string/close" style="@style/dialog_btn" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

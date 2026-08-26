@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.doit.pro.ui.component.DViewPager android:id="@id/viewpager" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:id="@id/bottombar_wrap" style="@style/task_detail_bottombar">
+        <TextView android:id="@id/tomorrow_btn" android:text="@string/date_tomorrow" android:drawableTop="@drawable/icon_plan_tomorrow" android:onClick="onTomorrowClick" style="@style/task_detail_bottombar_btn" />
+        <TextView android:id="@id/record_time_spent_btn" android:text="@string/record_time_spent" android:drawableTop="@drawable/icon_plan_estimate" android:onClick="onSpentTimeClick" style="@style/task_detail_bottombar_btn" />
+        <TextView android:id="@id/delete_btn" android:text="@string/delete" android:drawableTop="@drawable/icon_plan_delete" android:onClick="onDeleteClick" style="@style/task_detail_bottombar_btn" />
+    </LinearLayout>
+</LinearLayout>

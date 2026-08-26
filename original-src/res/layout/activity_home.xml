@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout android:id="@id/drawer_layout" android:background="@color/home_content_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.doit.pro.ui.component.HomeMenuContent android:id="@id/content_frame" android:background="@color/home_content_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:layout_gravity="start" android:id="@id/menu_list" android:layout_width="@dimen/d_menu_list_width" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" style="@style/d_list_view" />
+</android.support.v4.widget.DrawerLayout>

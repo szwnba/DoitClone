@@ -1,0 +1,126 @@
+version: 2.9.1
+apkFileName: doitv4.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  tag: null
+sdkInfo:
+  minSdkVersion: 14
+  targetSdkVersion: 23
+packageInfo:
+  forcedPackageId: 127
+  renameManifestPackage: null
+versionInfo:
+  versionCode: 1414407
+  versionName: 4.4.5-local-r3
+resourcesAreCompressed: false
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  evernote-api-1.25.jar: 8
+  scribe-1.3.1.jar: 8
+  index-all.html: 8
+  overview-summary.html: 8
+  overview-tree.html: 8
+  index.html: 8
+  stylesheet.css: 8
+  deprecated-list.html: 8
+  overview-frame.html: 8
+  allclasses-frame.html: 8
+  allclasses-noframe.html: 8
+  help-doc.html: 8
+  serialized-form.html: 8
+  package-list: 8
+  constant-values.html: 8
+  layout/esdk__webview.xml: 8
+  menu/esdk__oauth.xml: 8
+  values/esdk__strings.xml: 8
+  com/google/gson/package-tree.html: 8
+  com/google/gson/JsonNull.html: 8
+  com/google/gson/package-use.html: 8
+  com/google/gson/JsonParser.html: 8
+  com/google/gson/FieldNamingPolicy.html: 8
+  com/google/gson/FieldAttributes.html: 8
+  com/google/gson/JsonArray.html: 8
+  com/google/gson/InstanceCreator.html: 8
+  com/google/gson/FieldNamingStrategy.html: 8
+  com/google/gson/JsonSerializationContext.html: 8
+  com/google/gson/JsonParseException.html: 8
+  com/google/gson/TypeAdapter.html: 8
+  com/google/gson/Gson.html: 8
+  com/google/gson/JsonDeserializer.html: 8
+  com/google/gson/ExclusionStrategy.html: 8
+  com/google/gson/JsonSyntaxException.html: 8
+  com/google/gson/GsonBuilder.html: 8
+  com/google/gson/LongSerializationPolicy.html: 8
+  com/google/gson/JsonObject.html: 8
+  com/google/gson/JsonElement.html: 8
+  com/google/gson/JsonDeserializationContext.html: 8
+  com/google/gson/package-summary.html: 8
+  com/google/gson/JsonSerializer.html: 8
+  com/google/gson/JsonPrimitive.html: 8
+  com/google/gson/package-frame.html: 8
+  com/google/gson/TypeAdapterFactory.html: 8
+  com/google/gson/JsonStreamParser.html: 8
+  com/google/gson/JsonIOException.html: 8
+  com/google/gson/reflect/package-tree.html: 8
+  com/google/gson/reflect/package-use.html: 8
+  com/google/gson/reflect/TypeToken.html: 8
+  com/google/gson/reflect/package-summary.html: 8
+  com/google/gson/reflect/package-frame.html: 8
+  com/google/gson/reflect/class-use/TypeToken.html: 8
+  com/google/gson/stream/JsonReader.html: 8
+  com/google/gson/stream/package-tree.html: 8
+  com/google/gson/stream/package-use.html: 8
+  com/google/gson/stream/JsonToken.html: 8
+  com/google/gson/stream/MalformedJsonException.html: 8
+  com/google/gson/stream/JsonWriter.html: 8
+  com/google/gson/stream/package-summary.html: 8
+  com/google/gson/stream/package-frame.html: 8
+  com/google/gson/stream/class-use/JsonReader.html: 8
+  com/google/gson/stream/class-use/JsonToken.html: 8
+  com/google/gson/stream/class-use/MalformedJsonException.html: 8
+  com/google/gson/stream/class-use/JsonWriter.html: 8
+  com/google/gson/class-use/JsonNull.html: 8
+  com/google/gson/class-use/JsonParser.html: 8
+  com/google/gson/class-use/FieldNamingPolicy.html: 8
+  com/google/gson/class-use/FieldAttributes.html: 8
+  com/google/gson/class-use/JsonArray.html: 8
+  com/google/gson/class-use/InstanceCreator.html: 8
+  com/google/gson/class-use/FieldNamingStrategy.html: 8
+  com/google/gson/class-use/JsonSerializationContext.html: 8
+  com/google/gson/class-use/JsonParseException.html: 8
+  com/google/gson/class-use/TypeAdapter.html: 8
+  com/google/gson/class-use/Gson.html: 8
+  com/google/gson/class-use/JsonDeserializer.html: 8
+  com/google/gson/class-use/ExclusionStrategy.html: 8
+  com/google/gson/class-use/JsonSyntaxException.html: 8
+  com/google/gson/class-use/GsonBuilder.html: 8
+  com/google/gson/class-use/LongSerializationPolicy.html: 8
+  com/google/gson/class-use/JsonObject.html: 8
+  com/google/gson/class-use/JsonElement.html: 8
+  com/google/gson/class-use/JsonDeserializationContext.html: 8
+  com/google/gson/class-use/JsonSerializer.html: 8
+  com/google/gson/class-use/JsonPrimitive.html: 8
+  com/google/gson/class-use/TypeAdapterFactory.html: 8
+  com/google/gson/class-use/JsonStreamParser.html: 8
+  com/google/gson/class-use/JsonIOException.html: 8
+  com/google/gson/annotations/package-tree.html: 8
+  com/google/gson/annotations/package-use.html: 8
+  com/google/gson/annotations/Until.html: 8
+  com/google/gson/annotations/Since.html: 8
+  com/google/gson/annotations/SerializedName.html: 8
+  com/google/gson/annotations/package-summary.html: 8
+  com/google/gson/annotations/package-frame.html: 8
+  com/google/gson/annotations/Expose.html: 8
+  com/google/gson/annotations/class-use/Until.html: 8
+  com/google/gson/annotations/class-use/Since.html: 8
+  com/google/gson/annotations/class-use/SerializedName.html: 8
+  com/google/gson/annotations/class-use/Expose.html: 8
+  resources/inherit.gif: 8
+  org/apache/http/entity/mime/version.properties: 8
+doNotCompress:
+- resources.arsc
+- assets/configs/env.properties
+- png

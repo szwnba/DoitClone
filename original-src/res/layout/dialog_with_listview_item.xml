@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="14.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/dialog_listview_item_height"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/name" android:duplicateParentState="false" android:layout_weight="1.0" style="@style/dialog_listview_name" />
+    <ImageView style="@style/dialog_listview_checked_icon" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <im.doit.pro.ui.component.LabelArrowButton android:id="@id/btn_facebook" doit:label="@string/facebook" style="@style/task_detail_cell_wrap" />
+        <im.doit.pro.ui.component.LabelArrowButton android:id="@id/btn_twitter" doit:label="@string/twitter" style="@style/task_detail_cell_wrap" />
+        <im.doit.pro.ui.component.LabelArrowButton android:id="@id/btn_weibo" doit:label="@string/sina_weibo" style="@style/task_detail_cell_wrap" />
+        <im.doit.pro.ui.component.LabelArrowButton android:id="@id/btn_write_review_in_google_play" doit:label="@string/write_a_review_in_google_play" style="@style/task_detail_cell_wrap" />
+    </LinearLayout>
+</ScrollView>

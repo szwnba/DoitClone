@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/viewpager" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:id="@id/bottombar_wrap" style="@style/task_detail_bottombar">
+        <TextView android:id="@id/today_btn" android:text="@string/date_today" android:drawableTop="@drawable/icon_plan_today" android:onClick="onTodayClick" style="@style/task_detail_bottombar_btn" />
+        <TextView android:id="@id/estimate_btn" android:text="@string/estimate_time" android:drawableTop="@drawable/icon_plan_estimate" android:onClick="onEstimateClick" style="@style/task_detail_bottombar_btn" />
+        <TextView android:id="@id/delete_btn" android:text="@string/delete" android:drawableTop="@drawable/icon_plan_delete" android:onClick="onDeleteClick" style="@style/task_detail_bottombar_btn" />
+    </LinearLayout>
+</LinearLayout>

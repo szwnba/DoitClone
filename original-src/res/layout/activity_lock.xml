@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_signin" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <im.doit.pro.ui.component.DRoundedAvatarView android:id="@id/my_avatar" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="45.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/tips" android:layout_height="75.0dip" android:layout_below="@id/my_avatar" style="@style/lock_tips" />
+    <im.doit.pro.ui.component.LockPatternView android:id="@id/lock_pattern" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/tips" android:layout_centerHorizontal="true" doit:lock_square_margin="@dimen/lock_square_margin" />
+</RelativeLayout>

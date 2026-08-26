@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/task_detail_block_margin_bottom" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/block_1" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/reminder_ringtone" doit:label="@string/reminder_ringtone" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/reminder_snooze_time" android:layout_below="@id/reminder_ringtone" doit:label="@string/snooze_time" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelSwitchButton android:id="@id/reminder_is_show_in_notification" android:layout_below="@id/reminder_snooze_time" doit:label="@string/show_in_notifications" style="@style/task_detail_cell_wrap" />
+            <TextView android:id="@id/popup_style_label" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/task_detail_left_space" android:layout_marginTop="16.0dip" android:layout_marginBottom="20.0dip" android:text="@string/select_a_popup_style" android:layout_below="@id/reminder_is_show_in_notification" style="@style/row_textview_label" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/popup_style_label">
+                <RelativeLayout android:id="@id/titlepop" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/titlepop_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/img_settings_reminderstyle_titlepop" android:layout_centerHorizontal="true" android:contentDescription="@string/title_popup" />
+                    <im.doit.pro.ui.component.DButton android:text="@string/title_popup" android:layout_below="@id/titlepop_img" style="@style/reminder_popup_style_btn" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@id/detailpop" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="56.0dip">
+                    <ImageView android:id="@id/detailpop_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/img_settings_reminderstyle_detailpop" android:layout_centerHorizontal="true" android:contentDescription="@string/detail_popup" />
+                    <im.doit.pro.ui.component.DButton android:text="@string/detail_popup" android:layout_below="@id/detailpop_img" style="@style/reminder_popup_style_btn" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:text="@string/plan_and_review" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/daily_plan" doit:label="@string/daily_plan" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/daily_review" android:layout_below="@id/daily_plan" doit:label="@string/daily_review" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelSwitchButton android:id="@id/remind_me_on_weekends" android:layout_below="@id/daily_review" doit:label="@string/remind_me_on_weekends" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

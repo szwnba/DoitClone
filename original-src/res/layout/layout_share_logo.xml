@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/share_logo" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/chart_dashed_line" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="18.0dip" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="80.0dip" android:src="@drawable/icon_review_share_logo" android:scaleType="center" />
+</LinearLayout>

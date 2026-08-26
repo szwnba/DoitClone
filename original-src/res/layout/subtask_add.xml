@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/subtask_add_wrap" style="@style/subtask_item_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="top" android:src="@drawable/icon_detailpage_addsubtask" style="@style/subtask_completed" />
+    <im.doit.pro.ui.component.SubTaskTitleView android:id="@id/add_subtask" android:hint="@string/add_a_subtask" style="@style/task_detail_add_subtask" />
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/home_right_content_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <im.doit.pro.ui.component.pullrefresh.PullToRefreshLayout android:id="@id/ptr_layout" style="@style/listview_pull_to_sync">
+        <com.mobeta.android.dslv.DragSortListView android:id="@id/list_view" style="@style/task_list_view" />
+    </im.doit.pro.ui.component.pullrefresh.PullToRefreshLayout>
+    <im.doit.pro.ui.component.ListViewEmptyView android:id="@id/empty_wrap" style="@style/empty_wrap" />
+</LinearLayout>

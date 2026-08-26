@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/content_wrap" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:id="@id/btns_wrap" style="@style/dialog_btns_wrap">
+            <im.doit.pro.ui.component.DButton android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/dialog_btn" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/unset_wrap" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+                <im.doit.pro.ui.component.DButton android:id="@id/unset_btn" android:text="@string/unset" style="@style/dialog_btn" />
+            </LinearLayout>
+            <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+            <im.doit.pro.ui.component.DButton android:id="@id/ok_btn" android:text="@string/OK" style="@style/dialog_btn" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

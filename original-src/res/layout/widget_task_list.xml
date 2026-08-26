@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/widget_wrap" android:background="@color/widget_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/widget_topbar">
+        <TextView android:textSize="@dimen/widget_topbar_title_text_size" android:textColor="#ffffffff" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/add" android:contentDescription="@string/add_task" style="@style/widget_topbar_add_btn" />
+    </LinearLayout>
+    <ImageView android:id="@id/topbar_bottom_divider" android:background="@color/widget_divider_color_forblackbg" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <ListView android:id="@id/list_view" android:layout_marginTop="16.0dip" style="@style/widget_listview" />
+</LinearLayout>

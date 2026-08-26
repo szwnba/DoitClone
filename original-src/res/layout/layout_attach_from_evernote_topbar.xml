@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/actionbar_wrap" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textColor="@color/dialog_title_bottom_divider" android:id="@id/cancel_btn" android:text="@string/cancel" android:layout_alignParentLeft="true" style="@style/topbar_text_btn" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/temp_btn" android:layout_toRightOf="@id/cancel_btn" android:layout_centerInParent="true">
+        <TextView android:textColor="#e5000000" android:id="@id/topbar_title" android:text="@string/attach_from_evernote" android:drawableRight="@drawable/icon_attachfromevernote_folded" android:drawablePadding="10.0dip" style="@style/topbar_center_title" />
+    </RelativeLayout>
+    <Button android:textColor="@color/dialog_title_bottom_divider" android:id="@id/temp_btn" android:visibility="invisible" android:text="@string/cancel" android:layout_alignParentRight="true" style="@style/topbar_text_btn" />
+</RelativeLayout>

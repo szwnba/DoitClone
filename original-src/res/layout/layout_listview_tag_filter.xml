@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:id="@id/list_item" android:background="@drawable/listview_tagfilter_bg" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0sp" android:textColor="#66000000" android:ellipsize="end" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:singleLine="true" android:layout_weight="1.0" />
+    <ImageView android:id="@id/delete_tag_filter_btn" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/listview_delete_tagfilter_btn" />
+</LinearLayout>
