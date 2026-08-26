@@ -25,4 +25,23 @@
     <style name="ToolbarMenuTheme" parent="ThemeOverlay.Material3.Dark">
         <item name="colorControlNormal">#FFFFFFFF</item>
     </style>
+    <style name="BottomBarButton">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="ReviewStar">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:src">@drawable/icon_review_star</item>
+        <item name="android:scaleType">center</item>
+    </style>
 </resources>

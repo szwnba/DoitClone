@@ -14,7 +14,7 @@ import com.doit.clone.ui.common.Pickers
 import com.doit.clone.util.DateUtils
 import java.util.Calendar
 
-/** 设置：周起始、日期格式、每日计划/回顾时间、通知栏快速添加 */
+/** 设置 —— 分块结构移植自原版 activity_settings（通用 / 支持） */
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
@@ -26,11 +26,11 @@ class SettingsActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener { finish() }
 
         refresh()
-        binding.rowWeekStart.setOnClickListener { pickWeekStart() }
-        binding.rowDateFormat.setOnClickListener { pickDateFormat() }
-        binding.rowPlanTime.setOnClickListener { pickTime(isPlan = true) }
-        binding.rowReviewTime.setOnClickListener { pickTime(isPlan = false) }
-        binding.switchQuickAdd.setOnCheckedChangeListener { _, checked ->
+        binding.cellWeekStart.setOnClickListener { pickWeekStart() }
+        binding.cellDateFormat.setOnClickListener { pickDateFormat() }
+        binding.cellPlanTime.setOnClickListener { pickTime(isPlan = true) }
+        binding.cellReviewTime.setOnClickListener { pickTime(isPlan = false) }
+        binding.switchQuickadd.setOnCheckedChangeListener { _, checked ->
             Graph.settings.quickAddNotification = checked
             if (checked) ReminderReceiver.notifyQuickAdd(this) else ReminderReceiver.cancelQuickAdd(this)
         }
@@ -41,7 +41,7 @@ class SettingsActivity : AppCompatActivity() {
         binding.valueDateFormat.text = Graph.settings.dateFormat
         binding.valuePlanTime.text = Graph.settings.dailyPlanTime
         binding.valueReviewTime.text = Graph.settings.dailyReviewTime
-        binding.switchQuickAdd.isChecked = Graph.settings.quickAddNotification
+        binding.switchQuickadd.isChecked = Graph.settings.quickAddNotification
     }
 
     private fun pickWeekStart() {

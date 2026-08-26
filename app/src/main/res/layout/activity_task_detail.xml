@@ -1,6 +1,7 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -13,222 +14,480 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="@dimen/actionbar_height"
             android:background="@drawable/actionbar_bg"
-            app:navigationIcon="@drawable/ic_arrow_back" 
-        app:titleTextColor="@color/actionbar_title_text_color"
-        app:theme="@style/ToolbarMenuTheme" />
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:titleTextAppearance="@style/ToolbarTitle.Doit"
+            app:titleTextColor="@color/actionbar_title_text_color"
+            app:theme="@style/ToolbarMenuTheme" />
 
-        <EditText
-            android:id="@+id/edit_title"
+        <!-- ===== 标题块（还原 task_detial_block_wrap） ===== -->
+        <LinearLayout
+            android:background="@drawable/task_detail_block_wrap_bg"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/task_title_hint"
-            android:inputType="textCapSentences"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
+            android:layout_marginBottom="28dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_notes"
+            <RelativeLayout
+                android:paddingTop="22dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/complete_btn"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="16dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/complete_checkbox"
+                    android:scaleType="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:contentDescription="@string/action_complete" />
+                <EditText
+                    android:id="@+id/title"
+                    android:layout_toRightOf="@id/complete_btn"
+                    android:textSize="18sp"
+                    android:textColor="#D8000000"
+                    android:hint="@string/title_hint"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:lineSpacingExtra="10dp"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/notes"
+                    android:layout_toRightOf="@id/complete_btn"
+                    android:layout_below="@id/title"
+                    android:textSize="16sp"
+                    android:textColor="#BF000000"
+                    android:paddingTop="28dp"
+                    android:hint="@string/description_hint"
+                    android:inputType="textMultiLine"
+                    android:gravity="top"
+                    android:background="@null"
+                    android:minLines="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+            <!-- 子任务区 -->
+            <LinearLayout
+                android:id="@+id/subtask_wrap"
+                android:paddingBottom="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/subtask_list"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/subtask_add_wrap"
+                    android:paddingTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:src="@drawable/icon_detailpage_addsubtask"
+                        android:layout_gravity="top"
+                        android:paddingRight="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@null" />
+                    <EditText
+                        android:id="@+id/add_subtask"
+                        android:hint="@string/add_a_subtask"
+                        android:textSize="14sp"
+                        android:textColor="#BF000000"
+                        android:gravity="center_vertical"
+                        android:background="@null"
+                        android:paddingTop="4dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ===== 优先级块 ===== -->
+        <RelativeLayout
+            android:background="@drawable/task_detail_block_wrap_bg"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/task_notes_hint"
-            android:inputType="textMultiLine"
-            android:minLines="2"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-
-        <LinearLayout
-            android:id="@+id/row_start"
+            android:layout_marginBottom="28dp">
+        <RelativeLayout
+            android:id="@+id/cell_priority"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_calendar" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_start" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_end"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_clock" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_end" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_all_day"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_scheduled" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_all_day" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/switch_all_day"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_priority"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/priority" />
+            <TextView
+                android:id="@+id/value_priority"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </LinearLayout>
+        </RelativeLayout>
+        </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/row_priority"
+        <!-- ===== 时间块 ===== -->
+        <RelativeLayout
+            android:background="@drawable/task_detail_block_wrap_bg"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_send_today" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_priority" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_priority" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/priority_none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_project"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp">
+        <RelativeLayout
+            android:id="@+id/cell_allday"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_projects" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_project" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_project" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_goal"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_goals" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_goal" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_goal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_context"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_contexts" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_context" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_context" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_repeater"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_repeat" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_repeater" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_repeater" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/repeat_none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_reminders"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_alarm" android:contentDescription="@null" />
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:text="@string/task_reminders" android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-            <TextView android:id="@+id/value_reminders" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/none" android:textAppearance="@style/TextAppearance.Material3.BodyMedium" android:textColor="@color/text_secondary" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/row_tags"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
-
-            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_tag" android:contentDescription="@null" />
-            <EditText
-                android:id="@+id/edit_tags"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            android:layout_height="48dp">
+            <TextView
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:hint="#工作 #重要"
-                android:inputType="text"
-                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
-        </LinearLayout>
+                android:text="@string/allday" />
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switch_allday"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_start_time"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_start_time"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_time" />
+            <TextView
+                android:id="@+id/value_start_time"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_deadline"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_deadline"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deadline" />
+            <TextView
+                android:id="@+id/value_deadline"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_estimated_time"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_estimated_time"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_estimated" />
+            <TextView
+                android:id="@+id/value_estimated_time"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_spent_time"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_spent_time"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_spent" />
+            <TextView
+                android:id="@+id/value_spent_time"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </RelativeLayout>
 
-        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginTop="8dp" />
-
-        <TextView
+        <!-- ===== 情境/项目/标签块 ===== -->
+        <RelativeLayout
+            android:background="@drawable/task_detail_block_wrap_bg"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="12dp"
-            android:text="@string/task_subtasks"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall" />
+            android:layout_marginBottom="28dp">
+        <RelativeLayout
+            android:id="@+id/cell_context"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_context"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/context" />
+            <TextView
+                android:id="@+id/value_context"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_project"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_project"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project" />
+            <TextView
+                android:id="@+id/value_project"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_tags"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_tags"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tags" />
+            <TextView
+                android:id="@+id/value_tags"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/subtask_list"
+        <!-- ===== 重复/提醒块 ===== -->
+        <RelativeLayout
+            android:background="@drawable/task_detail_block_wrap_bg"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <EditText
-            android:id="@+id/edit_new_subtask"
+            android:layout_marginBottom="28dp">
+        <RelativeLayout
+            android:id="@+id/cell_repeat"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/task_add_subtask"
-            android:inputType="text"
-            android:drawableStart="@drawable/ic_add"
-            android:drawablePadding="12dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_repeat"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repeat" />
+            <TextView
+                android:id="@+id/value_repeat"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/cell_reminder"
+            android:background="@drawable/task_detail_cell_bg_with_bottom_line"
+            android:paddingLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+            <TextView
+                android:id="@+id/label_reminder"
+                android:textSize="14sp"
+                android:textColor="#D8000000"
+                android:ellipsize="end"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reminder" />
+            <TextView
+                android:id="@+id/value_reminder"
+                android:textSize="14sp"
+                android:textColor="#CC1262A1"
+                android:ellipsize="end"
+                android:gravity="center|right"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:drawablePadding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </RelativeLayout>
 
-        <Space android:layout_width="match_parent" android:layout_height="32dp" />
+        <Space android:layout_width="match_parent" android:layout_height="26dp" />
     </LinearLayout>
 </ScrollView>

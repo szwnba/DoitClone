@@ -3,34 +3,33 @@ package com.doit.clone.ui.daily
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.doit.clone.Graph
 import com.doit.clone.R
 import com.doit.clone.data.db.entity.TaskEntity
 import com.doit.clone.databinding.ActivityDailyPlanBinding
-import com.doit.clone.databinding.ItemDailyTaskBinding
 import com.doit.clone.model.BoxType
-import com.doit.clone.ui.task.TaskDetailActivity
-import com.doit.clone.util.DateUtils
-import com.doit.clone.util.observe
+import com.doit.clone.ui.common.Pickers
+import com.doit.clone.util.toast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
- * 每日计划（还原原版 DailyPlanActivity）：
- * 上半区 = 今日已安排；下半区 = 可安排候选（未安排任务 + 逾期任务）。
+ * 每日计划 —— 移植原版 DailyPlanActivity 的向导式结构：
+ * ViewPager 逐张翻「今日任务卡」，蓝色底栏（今天 / 预估时间 / 删除），
+ * 末页为汇总（已安排 / 剩余工作时间）+「再从下一步行动中选几条」。
  */
-class DailyPlanActivity : AppCompatActivity() {
+class DailyPlanActivity : AppCompatActivity(), PlanDoneFragment.Host {
 
     private lateinit var binding: ActivityDailyPlanBinding
-    private lateinit var plannedAdapter: DailyTaskAdapter
-    private lateinit var candidateAdapter: DailyTaskAdapter
+    private val tasks = mutableListOf<TaskEntity>()
+    private var workTimeMinutes = 480   // 默认 8 小时（对应原版 initWorkTime）
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,77 +37,92 @@ class DailyPlanActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.toolbar.setNavigationOnClickListener { finish() }
 
-        plannedAdapter = DailyTaskAdapter(showToday = false, showTomorrow = false, listener = object : DailyTaskAdapter.Listener {
-            override fun onToggle(task: TaskEntity) = toggle(task)
-            override fun onClick(task: TaskEntity) = open(task)
-            override fun onToday(task: TaskEntity) {}
-            override fun onTomorrow(task: TaskEntity) {}
-        })
-        candidateAdapter = DailyTaskAdapter(showToday = true, showTomorrow = true, listener = object : DailyTaskAdapter.Listener {
-            override fun onToggle(task: TaskEntity) = toggle(task)
-            override fun onClick(task: TaskEntity) = open(task)
-            override fun onToday(task: TaskEntity) = move(task, BoxType.TODAY)
-            override fun onTomorrow(task: TaskEntity) = move(task, BoxType.TOMORROW)
-        })
-
-        binding.listPlanned.layoutManager = LinearLayoutManager(this)
-        binding.listPlanned.adapter = plannedAdapter
-        binding.listCandidates.layoutManager = LinearLayoutManager(this)
-        binding.listCandidates.adapter = candidateAdapter
-
-        Graph.taskRepo.observeBox(BoxType.TODAY).observe(this) { plannedAdapter.submit(it) }
-        Graph.taskRepo.dailyPlanCandidates().observe(this) { candidateAdapter.submit(it) }
-    }
-
-    private fun toggle(task: TaskEntity) {
-        lifecycleScope.launch(Dispatchers.IO) { Graph.taskRepo.toggleComplete(task.uuid) }
-    }
-
-    private fun open(task: TaskEntity) {
-        startActivity(TaskDetailActivity.intent(this, task.uuid))
-    }
-
-    private fun move(task: TaskEntity, box: BoxType) {
-        lifecycleScope.launch(Dispatchers.IO) { Graph.taskRepo.moveTo(task.uuid, box) }
-    }
-
-    class DailyTaskAdapter(
-        private val showToday: Boolean,
-        private val showTomorrow: Boolean,
-        private val listener: Listener
-    ) : RecyclerView.Adapter<DailyTaskAdapter.VH>() {
-
-        interface Listener {
-            fun onToggle(task: TaskEntity)
-            fun onClick(task: TaskEntity)
-            fun onToday(task: TaskEntity)
-            fun onTomorrow(task: TaskEntity)
+        lifecycleScope.launch(Dispatchers.IO) {
+            val today = Graph.taskRepo.observeBox(BoxType.TODAY).firstOrNull() ?: emptyList()
+            tasks.clear()
+            tasks.addAll(today)
+            withContext(Dispatchers.Main) { setupPager() }
         }
 
-        private var items: List<TaskEntity> = emptyList()
+        binding.todayBtn.setOnClickListener { onTodayClick() }
+        binding.estimateBtn.setOnClickListener { onEstimateClick() }
+        binding.deleteBtn.setOnClickListener { onDeleteClick() }
+    }
 
-        fun submit(list: List<TaskEntity>) {
-            items = list
-            notifyDataSetChanged()
+    private fun setupPager() {
+        binding.viewpager.adapter = object : androidx.viewpager2.adapter.FragmentStateAdapter(this) {
+            override fun getItemCount() = tasks.size + 1  // 末页汇总
+            override fun createFragment(position: Int): Fragment =
+                if (position < tasks.size) PlanPageFragment.newInstance(tasks[position].uuid)
+                else PlanDoneFragment.newInstance()
         }
+    }
 
-        class VH(val b: ItemDailyTaskBinding) : RecyclerView.ViewHolder(b.root)
+    private fun currentTask(): TaskEntity? {
+        val pos = binding.viewpager.currentItem
+        return tasks.getOrNull(pos)
+    }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-            VH(ItemDailyTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    private fun advance() {
+        val next = (binding.viewpager.currentItem + 1).coerceAtMost(tasks.size)
+        binding.viewpager.setCurrentItem(next, true)
+    }
 
-        override fun getItemCount() = items.size
+    /** 还原 onTodayClick：安排到今天（保持时间则设今天）*/
+    fun onTodayClick() {
+        val task = currentTask() ?: return
+        lifecycleScope.launch(Dispatchers.IO) {
+            Graph.taskRepo.moveTo(task.uuid, BoxType.TODAY)
+            withContext(Dispatchers.Main) { advance() }
+        }
+    }
 
-        override fun onBindViewHolder(holder: VH, position: Int) {
-            val task = items.getOrNull(position) ?: return
-            holder.b.title.text = task.title
-            holder.b.checkbox.isChecked = task.completed
-            holder.b.checkbox.setOnClickListener { listener.onToggle(task) }
-            holder.b.root.setOnClickListener { listener.onClick(task) }
-            holder.b.btnToday.visibility = if (showToday) View.VISIBLE else View.GONE
-            holder.b.btnTomorrow.visibility = if (showTomorrow) View.VISIBLE else View.GONE
-            if (showToday) holder.b.btnToday.setOnClickListener { listener.onToday(task) }
-            if (showTomorrow) holder.b.btnTomorrow.setOnClickListener { listener.onTomorrow(task) }
+    /** 还原 onEstimateClick：预估时间输入（分钟）*/
+    fun onEstimateClick() {
+        val task = currentTask() ?: return
+        Pickers.textInput(this, getString(R.string.time_estimated) + "（分钟）",
+            task.estimatedTime?.toString() ?: "") { text ->
+            val minutes = text.trim().toIntOrNull()
+            if (minutes != null) {
+                lifecycleScope.launch(Dispatchers.IO) {
+                    Graph.taskRepo.update(task.copy(estimatedTime = minutes))
+                    withContext(Dispatchers.Main) {
+                        toast(getString(R.string.minutes_fmt, minutes))
+                        advance()
+                    }
+                }
+            }
+        }
+    }
+
+    /** 还原 onDeleteClick：移到垃圾桶并翻下一页 */
+    fun onDeleteClick() {
+        val task = currentTask() ?: return
+        lifecycleScope.launch(Dispatchers.IO) {
+            Graph.taskRepo.trash(task.uuid)
+            withContext(Dispatchers.Main) { advance() }
+        }
+    }
+
+    override fun arrangedMinutes(): Int =
+        tasks.filter { !it.completed }.sumOf { it.estimatedTime ?: 0 }
+
+    override fun leftMinutes(): Int = (workTimeMinutes - arrangedMinutes()).coerceAtLeast(0)
+
+    /** 还原「再从下一步行动中选几条」：把下一步任务追加进计划向导 */
+    override fun loadFromNext() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val next = Graph.taskRepo.observeBox(BoxType.NEXT).firstOrNull() ?: emptyList()
+            val newOnes = next.filter { n -> tasks.none { it.uuid == n.uuid } }
+            if (newOnes.isEmpty()) {
+                withContext(Dispatchers.Main) { toast("下一步没有更多任务了") }
+                return@launch
+            }
+            tasks.addAll(newOnes)
+            withContext(Dispatchers.Main) {
+                binding.viewpager.adapter?.notifyDataSetChanged()
+                binding.viewpager.setCurrentItem(tasks.size - newOnes.size, true)
+            }
         }
     }
 
