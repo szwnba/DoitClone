@@ -214,6 +214,14 @@
     return-void
 .end method
 
+.method public onGitHubSyncClick(Landroid/view/View;)V
+    .locals 0
+
+    invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->onSettings(Landroid/app/Activity;)V
+
+    return-void
+.end method
+
 .method static synthetic access$0(Lim/doit/pro/activity/SettingsActivity;)V
     .locals 0
 

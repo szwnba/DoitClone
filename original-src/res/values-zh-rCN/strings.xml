@@ -293,6 +293,7 @@ Doit.im时区：%1$s
     <string name="hour_time_12">12小时制</string>
     <string name="week_starts_on">一周开始日</string>
     <string name="sync_log">同步日志</string>
+    <string name="github_sync_label">GitHub 同步（备份 / 恢复）</string>
     <string name="support">服务支持</string>
     <string name="remind_me_on_weekends">周末照常提醒</string>
     <string name="reminders_for_daily_plan">每日计划提醒</string>
