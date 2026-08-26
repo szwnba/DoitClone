@@ -272,21 +272,21 @@
 .method private static brief(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
 
-    .line 322
+    .line 357
     const-string v0, ""
 
     if-nez p0, :cond_5
 
     return-object v0
 
-    .line 324
+    .line 359
     :cond_5
     :try_start_5
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 325
+    .line 360
     const-string v2, "message"
 
     invoke-virtual {v1, v2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -297,11 +297,11 @@
 
     return-object p0
 
-    .line 326
+    .line 361
     :catch_11
     move-exception v0
 
-    .line 327
+    .line 362
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -323,7 +323,7 @@
 .method private static download(Landroid/app/Activity;)V
     .registers 3
 
-    .line 166
+    .line 201
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
@@ -342,7 +342,7 @@
 
     return-void
 
-    .line 167
+    .line 202
     :cond_13
     new-instance v0, Landroid/app/AlertDialog$Builder;
 
@@ -354,25 +354,25 @@
 
     move-result-object v0
 
-    .line 168
+    .line 203
     const-string v1, "\u5c06\u7528 GitHub \u4e0a\u7684\u5907\u4efd\u8986\u76d6\u672c\u673a\u5168\u90e8\u6570\u636e\uff0c\u6062\u590d\u540e\u5e94\u7528\u4f1a\u81ea\u52a8\u91cd\u542f\u3002\u786e\u5b9a\u7ee7\u7eed\uff1f"
 
     invoke-virtual {v0, v1}, Landroid/app/AlertDialog$Builder;->setMessage(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
 
     move-result-object v0
 
-    new-instance v1, Lim/doit/pro/github/GitHubSync$6;
+    new-instance v1, Lim/doit/pro/github/GitHubSync$7;
 
-    invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$6;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$7;-><init>(Landroid/app/Activity;)V
 
-    .line 169
+    .line 204
     const-string p0, "\u6062\u590d"
 
     invoke-virtual {v0, p0, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
     move-result-object p0
 
-    .line 199
+    .line 234
     const-string v0, "\u53d6\u6d88"
 
     const/4 v1, 0x0
@@ -383,29 +383,29 @@
 
     invoke-virtual {p0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
-    .line 200
+    .line 235
     return-void
 .end method
 
 .method private static editRepo(Landroid/app/Activity;)V
     .registers 4
 
-    .line 114
+    .line 149
     new-instance v0, Landroid/widget/EditText;
 
     invoke-direct {v0, p0}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
 
-    .line 115
+    .line 150
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->repo(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 116
+    .line 151
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->pad(Landroid/view/View;)V
 
-    .line 117
+    .line 152
     new-instance v1, Landroid/app/AlertDialog$Builder;
 
     invoke-direct {v1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
@@ -422,23 +422,23 @@
 
     move-result-object v1
 
-    .line 118
+    .line 153
     invoke-virtual {v1, v0}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
 
     move-result-object v1
 
-    new-instance v2, Lim/doit/pro/github/GitHubSync$3;
+    new-instance v2, Lim/doit/pro/github/GitHubSync$4;
 
-    invoke-direct {v2, v0, p0}, Lim/doit/pro/github/GitHubSync$3;-><init>(Landroid/widget/EditText;Landroid/app/Activity;)V
+    invoke-direct {v2, v0, p0}, Lim/doit/pro/github/GitHubSync$4;-><init>(Landroid/widget/EditText;Landroid/app/Activity;)V
 
-    .line 119
+    .line 154
     const-string p0, "\u4fdd\u5b58"
 
     invoke-virtual {v1, p0, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
     move-result-object p0
 
-    .line 126
+    .line 161
     const-string v0, "\u53d6\u6d88"
 
     const/4 v1, 0x0
@@ -449,34 +449,34 @@
 
     invoke-virtual {p0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
-    .line 127
+    .line 162
     return-void
 .end method
 
 .method private static editToken(Landroid/app/Activity;)V
     .registers 4
 
-    .line 96
+    .line 131
     new-instance v0, Landroid/widget/EditText;
 
     invoke-direct {v0, p0}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
 
-    .line 97
+    .line 132
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 98
+    .line 133
     const/16 v1, 0x81
 
     invoke-virtual {v0, v1}, Landroid/widget/EditText;->setInputType(I)V
 
-    .line 99
+    .line 134
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->pad(Landroid/view/View;)V
 
-    .line 100
+    .line 135
     new-instance v1, Landroid/app/AlertDialog$Builder;
 
     invoke-direct {v1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
@@ -487,30 +487,30 @@
 
     move-result-object v1
 
-    .line 101
+    .line 136
     const-string v2, "\u7c98\u8d34 fine-grained Token\uff08\u4ec5\u9700 doit-data \u4ed3\u5e93 Contents \u8bfb\u5199\u6743\u9650\uff09"
 
     invoke-virtual {v1, v2}, Landroid/app/AlertDialog$Builder;->setMessage(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
 
     move-result-object v1
 
-    .line 102
+    .line 137
     invoke-virtual {v1, v0}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
 
     move-result-object v1
 
-    new-instance v2, Lim/doit/pro/github/GitHubSync$2;
+    new-instance v2, Lim/doit/pro/github/GitHubSync$3;
 
-    invoke-direct {v2, v0, p0}, Lim/doit/pro/github/GitHubSync$2;-><init>(Landroid/widget/EditText;Landroid/app/Activity;)V
+    invoke-direct {v2, v0, p0}, Lim/doit/pro/github/GitHubSync$3;-><init>(Landroid/widget/EditText;Landroid/app/Activity;)V
 
-    .line 103
+    .line 138
     const-string p0, "\u4fdd\u5b58"
 
     invoke-virtual {v1, p0, v2}, Landroid/app/AlertDialog$Builder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
     move-result-object p0
 
-    .line 110
+    .line 145
     const-string v0, "\u53d6\u6d88"
 
     const/4 v1, 0x0
@@ -521,8 +521,86 @@
 
     invoke-virtual {p0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
-    .line 111
+    .line 146
     return-void
+.end method
+
+.method private static findByText(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
+    .registers 4
+
+    .line 76
+    instance-of v0, p0, Landroid/widget/TextView;
+
+    if-eqz v0, :cond_18
+
+    .line 77
+    move-object v0, p0
+
+    check-cast v0, Landroid/widget/TextView;
+
+    invoke-virtual {v0}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+
+    move-result-object v0
+
+    .line 78
+    if-eqz v0, :cond_18
+
+    invoke-interface {v0}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_18
+
+    return-object p0
+
+    .line 80
+    :cond_18
+    instance-of v0, p0, Landroid/view/ViewGroup;
+
+    if-eqz v0, :cond_33
+
+    .line 81
+    check-cast p0, Landroid/view/ViewGroup;
+
+    .line 82
+    const/4 v0, 0x0
+
+    :goto_1f
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getChildCount()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_33
+
+    .line 83
+    invoke-virtual {p0, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v1
+
+    invoke-static {v1, p1}, Lim/doit/pro/github/GitHubSync;->findByText(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
+
+    move-result-object v1
+
+    .line 84
+    if-eqz v1, :cond_30
+
+    return-object v1
+
+    .line 82
+    :cond_30
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1f
+
+    .line 87
+    :cond_33
+    const/4 p0, 0x0
+
+    return-object p0
 .end method
 
 .method private static gunzip([B)[B
@@ -533,7 +611,7 @@
         }
     .end annotation
 
-    .line 340
+    .line 375
     new-instance v0, Ljava/util/zip/GZIPInputStream;
 
     new-instance v1, Ljava/io/ByteArrayInputStream;
@@ -542,17 +620,17 @@
 
     invoke-direct {v0, v1}, Ljava/util/zip/GZIPInputStream;-><init>(Ljava/io/InputStream;)V
 
-    .line 341
+    .line 376
     new-instance p0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {p0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 342
+    .line 377
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 344
+    .line 379
     :goto_13
     invoke-virtual {v0, v1}, Ljava/util/zip/GZIPInputStream;->read([B)I
 
@@ -566,11 +644,11 @@
 
     goto :goto_13
 
-    .line 345
+    .line 380
     :cond_1e
     invoke-virtual {v0}, Ljava/util/zip/GZIPInputStream;->close()V
 
-    .line 346
+    .line 381
     invoke-virtual {p0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -586,23 +664,23 @@
         }
     .end annotation
 
-    .line 332
+    .line 367
     new-instance v0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 333
+    .line 368
     new-instance v1, Ljava/util/zip/GZIPOutputStream;
 
     invoke-direct {v1, v0}, Ljava/util/zip/GZIPOutputStream;-><init>(Ljava/io/OutputStream;)V
 
-    .line 334
+    .line 369
     invoke-virtual {v1, p0}, Ljava/util/zip/GZIPOutputStream;->write([B)V
 
-    .line 335
+    .line 370
     invoke-virtual {v1}, Ljava/util/zip/GZIPOutputStream;->close()V
 
-    .line 336
+    .line 371
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -618,10 +696,10 @@
         }
     .end annotation
 
-    .line 252
+    .line 287
     nop
 
-    .line 254
+    .line 289
     const/4 v0, 0x0
 
     :try_start_2
@@ -655,21 +733,21 @@
     :try_end_20
     .catchall {:try_start_2 .. :try_end_20} :catchall_c3
 
-    .line 255
+    .line 290
     const/16 v1, 0x3a98
 
     :try_start_22
     invoke-virtual {p2, v1}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V
 
-    .line 256
+    .line 291
     const v1, 0x1d4c0
 
     invoke-virtual {p2, v1}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V
 
-    .line 257
+    .line 292
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
 
-    .line 258
+    .line 293
     const-string p1, "Authorization"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -696,14 +774,14 @@
 
     invoke-virtual {p2, p1, p0}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 259
+    .line 294
     const-string p0, "Accept"
 
     const-string p1, "application/vnd.github+json"
 
     invoke-virtual {p2, p0, p1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 260
+    .line 295
     const-string p0, "User-Agent"
 
     const-string p1, "DoitLocalSync/1.0"
@@ -712,32 +790,32 @@
     :try_end_58
     .catchall {:try_start_22 .. :try_end_58} :catchall_c0
 
-    .line 261
+    .line 296
     const-string p0, "UTF-8"
 
     if-eqz p3, :cond_7b
 
-    .line 262
+    .line 297
     const/4 p1, 0x1
 
     :try_start_5d
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V
 
-    .line 263
+    .line 298
     const-string p1, "Content-Type"
 
     const-string v1, "application/json"
 
     invoke-virtual {p2, p1, v1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 264
+    .line 299
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object p1
     :try_end_6b
     .catchall {:try_start_5d .. :try_end_6b} :catchall_c0
 
-    .line 265
+    .line 300
     :try_start_6b
     invoke-virtual {p3, p0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
@@ -759,21 +837,21 @@
 
     throw p0
 
-    .line 267
+    .line 302
     :cond_7b
     :goto_7b
     new-instance p1, Lim/doit/pro/github/GitHubSync$HttpResp;
 
     invoke-direct {p1, v0}, Lim/doit/pro/github/GitHubSync$HttpResp;-><init>(Lim/doit/pro/github/GitHubSync$1;)V
 
-    .line 268
+    .line 303
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getResponseCode()I
 
     move-result p3
 
     iput p3, p1, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
-    .line 269
+    .line 304
     iget p3, p1, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v0, 0x190
@@ -791,21 +869,21 @@
 
     move-result-object p3
 
-    .line 270
+    .line 305
     :goto_95
     new-instance v0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 271
+    .line 306
     if-eqz p3, :cond_ae
 
-    .line 272
+    .line 307
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 274
+    .line 309
     :goto_a0
     invoke-virtual {p3, v1}, Ljava/io/InputStream;->read([B)I
 
@@ -819,11 +897,11 @@
 
     goto :goto_a0
 
-    .line 275
+    .line 310
     :cond_ab
     invoke-virtual {p3}, Ljava/io/InputStream;->close()V
 
-    .line 277
+    .line 312
     :cond_ae
     new-instance p3, Ljava/lang/String;
 
@@ -837,19 +915,19 @@
     :try_end_b9
     .catchall {:try_start_72 .. :try_end_b9} :catchall_c0
 
-    .line 278
+    .line 313
     nop
 
-    .line 280
+    .line 315
     if-eqz p2, :cond_bf
 
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 278
+    .line 313
     :cond_bf
     return-object p1
 
-    .line 280
+    .line 315
     :catchall_c0
     move-exception p0
 
@@ -865,7 +943,7 @@
 
     invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 281
+    .line 316
     :cond_c9
     goto :goto_cb
 
@@ -879,7 +957,7 @@
 .method private static lastSync(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 91
+    .line 126
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -892,7 +970,7 @@
 
     move-result-object p0
 
-    .line 92
+    .line 127
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -908,7 +986,7 @@
 .method private static now()Ljava/lang/String;
     .registers 3
 
-    .line 318
+    .line 353
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v1, "yyyy-MM-dd HH:mm"
@@ -933,7 +1011,7 @@
 .method public static onSettings(Landroid/app/Activity;)V
     .registers 6
 
-    .line 56
+    .line 91
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -944,7 +1022,7 @@
 
     move-result-object v0
 
-    .line 58
+    .line 93
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->repo(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
@@ -975,7 +1053,7 @@
 
     move-result-object v0
 
-    .line 63
+    .line 98
     new-instance v1, Landroid/app/AlertDialog$Builder;
 
     invoke-direct {v1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
@@ -986,25 +1064,25 @@
 
     move-result-object v1
 
-    new-instance v2, Lim/doit/pro/github/GitHubSync$1;
+    new-instance v2, Lim/doit/pro/github/GitHubSync$2;
 
-    invoke-direct {v2, p0}, Lim/doit/pro/github/GitHubSync$1;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v2, p0}, Lim/doit/pro/github/GitHubSync$2;-><init>(Landroid/app/Activity;)V
 
     invoke-virtual {v1, v0, v2}, Landroid/app/AlertDialog$Builder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
     move-result-object p0
 
-    .line 72
+    .line 107
     invoke-virtual {p0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
-    .line 73
+    .line 108
     return-void
 .end method
 
 .method private static pad(Landroid/view/View;)V
     .registers 4
 
-    .line 313
+    .line 348
     invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -1015,7 +1093,7 @@
 
     iget v0, v0, Landroid/util/DisplayMetrics;->density:F
 
-    .line 314
+    .line 349
     const/high16 v1, 0x41a00000    # 20.0f
 
     mul-float v1, v1, v0
@@ -1030,14 +1108,14 @@
 
     invoke-virtual {p0, v1, v0, v1, v0}, Landroid/view/View;->setPadding(IIII)V
 
-    .line 315
+    .line 350
     return-void
 .end method
 
 .method private static prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
     .registers 3
 
-    .line 78
+    .line 113
     const-string v0, "doit_github_sync"
 
     const/4 v1, 0x0
@@ -1057,22 +1135,22 @@
         }
     .end annotation
 
-    .line 350
+    .line 385
     new-instance v0, Ljava/io/FileInputStream;
 
     invoke-direct {v0, p0}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
 
-    .line 351
+    .line 386
     new-instance p0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {p0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 352
+    .line 387
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 354
+    .line 389
     :goto_e
     invoke-virtual {v0, v1}, Ljava/io/FileInputStream;->read([B)I
 
@@ -1086,11 +1164,11 @@
 
     goto :goto_e
 
-    .line 355
+    .line 390
     :cond_19
     invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
 
-    .line 356
+    .line 391
     invoke-virtual {p0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -1106,7 +1184,7 @@
         }
     .end annotation
 
-    .line 244
+    .line 279
     const-string v0, "GET"
 
     const/4 v1, 0x0
@@ -1115,7 +1193,7 @@
 
     move-result-object p0
 
-    .line 245
+    .line 280
     iget p1, p0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v0, 0x194
@@ -1124,7 +1202,7 @@
 
     return-object v1
 
-    .line 246
+    .line 281
     :cond_e
     iget p1, p0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
@@ -1132,7 +1210,7 @@
 
     if-ne p1, v0, :cond_24
 
-    .line 247
+    .line 282
     :try_start_14
     new-instance p1, Lorg/json/JSONObject;
 
@@ -1150,13 +1228,13 @@
 
     return-object p0
 
-    .line 248
+    .line 283
     :catch_22
     move-exception p0
 
     return-object v1
 
-    .line 246
+    .line 281
     :cond_24
     new-instance p1, Ljava/io/IOException;
 
@@ -1204,7 +1282,7 @@
 .method private static repo(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 86
+    .line 121
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -1217,7 +1295,7 @@
 
     move-result-object p0
 
-    .line 87
+    .line 122
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -1238,19 +1316,19 @@
         }
     .end annotation
 
-    .line 222
+    .line 257
     const-string v0, "doitim.db"
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
 
     move-result-object p0
 
-    .line 223
+    .line 258
     invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
     move-result-object v0
 
-    .line 224
+    .line 259
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
     move-result v1
@@ -1274,7 +1352,7 @@
 
     throw p0
 
-    .line 225
+    .line 260
     :cond_1f
     :goto_1f
     new-instance v1, Ljava/io/File;
@@ -1283,12 +1361,12 @@
 
     invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 226
+    .line 261
     new-instance v0, Ljava/io/FileOutputStream;
 
     invoke-direct {v0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
 
-    .line 227
+    .line 262
     :try_start_2b
     invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write([B)V
     :try_end_2e
@@ -1296,7 +1374,7 @@
 
     invoke-virtual {v0}, Ljava/io/OutputStream;->close()V
 
-    .line 229
+    .line 264
     new-instance p1, Ljava/io/File;
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1325,7 +1403,7 @@
 
     invoke-virtual {p1}, Ljava/io/File;->delete()Z
 
-    .line 230
+    .line 265
     new-instance p1, Ljava/io/File;
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1354,7 +1432,7 @@
 
     invoke-virtual {p1}, Ljava/io/File;->delete()Z
 
-    .line 231
+    .line 266
     new-instance p1, Ljava/io/File;
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -1383,7 +1461,7 @@
 
     invoke-virtual {p1}, Ljava/io/File;->delete()Z
 
-    .line 232
+    .line 267
     invoke-virtual {p0}, Ljava/io/File;->exists()Z
 
     move-result p1
@@ -1407,7 +1485,7 @@
 
     throw p0
 
-    .line 233
+    .line 268
     :cond_a3
     :goto_a3
     invoke-virtual {v1, p0}, Ljava/io/File;->renameTo(Ljava/io/File;)Z
@@ -1416,10 +1494,10 @@
 
     if-eqz p0, :cond_aa
 
-    .line 234
+    .line 269
     return-void
 
-    .line 233
+    .line 268
     :cond_aa
     new-instance p0, Ljava/io/IOException;
 
@@ -1429,7 +1507,7 @@
 
     throw p0
 
-    .line 227
+    .line 262
     :catchall_b2
     move-exception p0
 
@@ -1441,22 +1519,22 @@
 .method private static runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
     .registers 5
 
-    .line 287
+    .line 322
     invoke-static {p0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 288
+    .line 323
     new-instance p1, Ljava/lang/Thread;
 
-    new-instance v0, Lim/doit/pro/github/GitHubSync$7;
+    new-instance v0, Lim/doit/pro/github/GitHubSync$8;
 
-    invoke-direct {v0, p2, p0, p3}, Lim/doit/pro/github/GitHubSync$7;-><init>(Lim/doit/pro/github/GitHubSync$Worker;Landroid/app/Activity;Ljava/lang/Runnable;)V
+    invoke-direct {v0, p2, p0, p3}, Lim/doit/pro/github/GitHubSync$8;-><init>(Lim/doit/pro/github/GitHubSync$Worker;Landroid/app/Activity;Ljava/lang/Runnable;)V
 
     invoke-direct {p1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 302
+    .line 337
     invoke-virtual {p1}, Ljava/lang/Thread;->start()V
 
-    .line 303
+    .line 338
     return-void
 .end method
 
@@ -1468,21 +1546,21 @@
         }
     .end annotation
 
-    .line 206
+    .line 241
     const-string v0, "doitim.db"
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
 
     move-result-object p0
 
-    .line 207
+    .line 242
     invoke-virtual {p0}, Ljava/io/File;->exists()Z
 
     move-result v0
 
     if-eqz v0, :cond_62
 
-    .line 208
+    .line 243
     new-instance v0, Ljava/io/File;
 
     invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
@@ -1493,10 +1571,10 @@
 
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 209
+    .line 244
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 211
+    .line 246
     :try_start_1a
     invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
 
@@ -1512,7 +1590,7 @@
     :try_end_24
     .catchall {:try_start_1a .. :try_end_24} :catchall_54
 
-    .line 212
+    .line 247
     :try_start_24
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1549,20 +1627,20 @@
     :try_start_44
     invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->close()V
 
-    .line 213
+    .line 248
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->readFile(Ljava/io/File;)[B
 
     move-result-object p0
     :try_end_4b
     .catchall {:try_start_44 .. :try_end_4b} :catchall_54
 
-    .line 217
+    .line 252
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 213
+    .line 248
     return-object p0
 
-    .line 212
+    .line 247
     :catchall_4f
     move-exception v2
 
@@ -1573,11 +1651,11 @@
     :try_end_54
     .catchall {:try_start_50 .. :try_end_54} :catchall_54
 
-    .line 214
+    .line 249
     :catchall_54
     move-exception v1
 
-    .line 215
+    .line 250
     :try_start_55
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->readFile(Ljava/io/File;)[B
 
@@ -1585,22 +1663,22 @@
     :try_end_59
     .catchall {:try_start_55 .. :try_end_59} :catchall_5d
 
-    .line 217
+    .line 252
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 215
+    .line 250
     return-object p0
 
-    .line 217
+    .line 252
     :catchall_5d
     move-exception p0
 
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 218
+    .line 253
     throw p0
 
-    .line 207
+    .line 242
     :cond_62
     new-instance p0, Ljava/io/IOException;
 
@@ -1614,12 +1692,12 @@
 .method private static status(Landroid/app/Activity;)V
     .registers 4
 
-    .line 130
+    .line 165
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 131
+    .line 166
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1644,7 +1722,7 @@
 
     move-result-object v1
 
-    .line 132
+    .line 167
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -1669,7 +1747,7 @@
 
     move-result-object v0
 
-    .line 133
+    .line 168
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->lastSync(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
@@ -1682,7 +1760,7 @@
 
     move-result-object v0
 
-    .line 134
+    .line 169
     new-instance v1, Landroid/app/AlertDialog$Builder;
 
     invoke-direct {v1, p0}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
@@ -1697,7 +1775,7 @@
 
     move-result-object p0
 
-    .line 135
+    .line 170
     const-string v0, "\u786e\u5b9a"
 
     const/4 v1, 0x0
@@ -1708,30 +1786,30 @@
 
     invoke-virtual {p0}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
 
-    .line 136
+    .line 171
     return-void
 .end method
 
 .method private static toast(Landroid/content/Context;Ljava/lang/String;)V
     .registers 4
 
-    .line 306
+    .line 341
     sget-object v0, Lim/doit/pro/github/GitHubSync;->MAIN:Landroid/os/Handler;
 
-    new-instance v1, Lim/doit/pro/github/GitHubSync$8;
+    new-instance v1, Lim/doit/pro/github/GitHubSync$9;
 
-    invoke-direct {v1, p0, p1}, Lim/doit/pro/github/GitHubSync$8;-><init>(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-direct {v1, p0, p1}, Lim/doit/pro/github/GitHubSync$9;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 310
+    .line 345
     return-void
 .end method
 
 .method private static token(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 82
+    .line 117
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -1750,7 +1828,7 @@
 .method private static upload(Landroid/app/Activity;)V
     .registers 4
 
-    .line 141
+    .line 176
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
@@ -1769,20 +1847,71 @@
 
     return-void
 
-    .line 142
+    .line 177
     :cond_13
-    new-instance v0, Lim/doit/pro/github/GitHubSync$4;
+    new-instance v0, Lim/doit/pro/github/GitHubSync$5;
 
-    invoke-direct {v0}, Lim/doit/pro/github/GitHubSync$4;-><init>()V
+    invoke-direct {v0}, Lim/doit/pro/github/GitHubSync$5;-><init>()V
 
-    new-instance v1, Lim/doit/pro/github/GitHubSync$5;
+    new-instance v1, Lim/doit/pro/github/GitHubSync$6;
 
-    invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$5;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$6;-><init>(Landroid/app/Activity;)V
 
     const-string v2, "\u6b63\u5728\u4e0a\u4f20\u5907\u4efd\u2026"
 
     invoke-static {p0, v2, v0, v1}, Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
 
-    .line 163
+    .line 198
+    return-void
+.end method
+
+.method public static wire(Landroid/app/Activity;)V
+    .registers 3
+
+    .line 60
+    :try_start_0
+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
+    move-result-object v0
+
+    const-string v1, "GitHub"
+
+    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->findByText(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
+
+    move-result-object v0
+
+    .line 61
+    if-eqz v0, :cond_1e
+
+    .line 62
+    invoke-virtual {v0}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/View;
+
+    .line 63
+    new-instance v1, Lim/doit/pro/github/GitHubSync$1;
+
+    invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$1;-><init>(Landroid/app/Activity;)V
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    :try_end_1e
+    .catchall {:try_start_0 .. :try_end_1e} :catchall_1f
+
+    .line 72
+    :cond_1e
+    goto :goto_20
+
+    .line 70
+    :catchall_1f
+    move-exception p0
+
+    .line 73
+    :goto_20
     return-void
 .end method

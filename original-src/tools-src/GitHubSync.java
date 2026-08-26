@@ -52,6 +52,41 @@ public class GitHubSync {
 
     // ---------- 入口：设置页 ----------
 
+    /** 在 SettingsActivity.onCreate 里调用：找到设置页里标签含 "GitHub" 的行并接上点击。
+     *  不用 android:onClick（会被 LabelArrowButton 内部的 setOnClickListener 覆盖），
+     *  也不用资源 id（手写 smali 无法引用符号资源名）。 */
+    public static void wire(final Activity a) {
+        try {
+            View target = findByText(a.getWindow().getDecorView(), "GitHub");
+            if (target != null) {
+                View parent = (View) target.getParent();
+                parent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onSettings(a);
+                    }
+                });
+            }
+        } catch (Throwable t) {
+            // 设置页接线失败不影响其他功能
+        }
+    }
+
+    private static View findByText(View v, String key) {
+        if (v instanceof android.widget.TextView) {
+            CharSequence text = ((android.widget.TextView) v).getText();
+            if (text != null && text.toString().contains(key)) return v;
+        }
+        if (v instanceof android.view.ViewGroup) {
+            android.view.ViewGroup g = (android.view.ViewGroup) v;
+            for (int i = 0; i < g.getChildCount(); i++) {
+                View r = findByText(g.getChildAt(i), key);
+                if (r != null) return r;
+            }
+        }
+        return null;
+    }
+
     public static void onSettings(final Activity a) {
         final String[] items = {
             "设置 GitHub Token",

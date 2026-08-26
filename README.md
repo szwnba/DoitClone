@@ -1,6 +1,6 @@
 # Doit 本地版（DoitClone）
 
-> **基准版本 `4.4.5-local-r4`（versionCode 1414408）**
+> **基准版本 `4.4.5-local-r5`（versionCode 1414409）**
 > 下载：https://szwnba.github.io/DoitClone/download/doit-local.apk
 
 doit.im Android 客户端（v4.4.5，2015）的**原版本地化版**：反编译产物重打包 + 十处最小侵入补丁——
@@ -13,7 +13,7 @@ doit.im Android 客户端（v4.4.5，2015）的**原版本地化版**：反编�
 - 纯本地：数据仅存本机 SQLite（原版自带离线队列 OpLog，天然支持）
 - Pro 解锁：重复任务提醒、每日计划/回顾提醒等付费功能全部可用
 - 长屏适配：解除 16:9 信箱限制，导航栏染色无黑边
-- GitHub 云备份（r4 新增）：设置页一键把整库备份到私有 GitHub 仓库，支持恢复与历史回滚，Token 仅存本机
+- GitHub 云备份（r5 新增）：设置页一键把整库备份到私有 GitHub 仓库，支持恢复与历史回滚，Token 仅存本机
 
 ## 仓库结构
 

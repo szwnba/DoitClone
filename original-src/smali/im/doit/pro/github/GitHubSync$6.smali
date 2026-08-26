@@ -3,12 +3,12 @@
 .source "GitHubSync.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->download(Landroid/app/Activity;)V
+    value = Lim/doit/pro/github/GitHubSync;->upload(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 169
+    .line 194
     iput-object p1, p0, Lim/doit/pro/github/GitHubSync$6;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,24 +40,15 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 5
+.method public run()V
+    .registers 3
 
-    .line 172
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$6;->val$a:Landroid/app/Activity;
+    .line 196
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$6;->val$a:Landroid/app/Activity;
 
-    new-instance p2, Lim/doit/pro/github/GitHubSync$6$1;
+    const-string v1, "\u2713 \u5907\u4efd\u5df2\u4e0a\u4f20\u5230 GitHub"
 
-    invoke-direct {p2, p0}, Lim/doit/pro/github/GitHubSync$6$1;-><init>(Lim/doit/pro/github/GitHubSync$6;)V
+    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;Ljava/lang/String;)V
 
-    new-instance v0, Lim/doit/pro/github/GitHubSync$6$2;
-
-    invoke-direct {v0, p0}, Lim/doit/pro/github/GitHubSync$6$2;-><init>(Lim/doit/pro/github/GitHubSync$6;)V
-
-    const-string v1, "\u6b63\u5728\u4e0b\u8f7d\u6062\u590d\u2026"
-
-    invoke-static {p1, v1, p2, v0}, Lim/doit/pro/github/GitHubSync;->access$1600(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
-
-    .line 198
     return-void
 .end method

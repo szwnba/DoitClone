@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->editToken(Landroid/app/Activity;)V
+    value = Lim/doit/pro/github/GitHubSync;->onSettings(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,22 +20,18 @@
 # instance fields
 .field final synthetic val$a:Landroid/app/Activity;
 
-.field final synthetic val$input:Landroid/widget/EditText;
-
 
 # direct methods
-.method constructor <init>(Landroid/widget/EditText;Landroid/app/Activity;)V
-    .registers 3
+.method constructor <init>(Landroid/app/Activity;)V
+    .registers 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 103
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$input:Landroid/widget/EditText;
-
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+    .line 98
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -45,61 +41,60 @@
 
 # virtual methods
 .method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 4
+    .registers 3
+
+    .line 101
+    if-nez p2, :cond_8
+
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$000(Landroid/app/Activity;)V
+
+    goto :goto_28
+
+    .line 102
+    :cond_8
+    const/4 p1, 0x1
+
+    if-ne p2, p1, :cond_11
+
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$100(Landroid/app/Activity;)V
+
+    goto :goto_28
+
+    .line 103
+    :cond_11
+    const/4 p1, 0x2
+
+    if-ne p2, p1, :cond_1a
+
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$200(Landroid/app/Activity;)V
+
+    goto :goto_28
+
+    .line 104
+    :cond_1a
+    const/4 p1, 0x3
+
+    if-ne p2, p1, :cond_23
+
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$300(Landroid/app/Activity;)V
+
+    goto :goto_28
+
+    .line 105
+    :cond_23
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
+
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$400(Landroid/app/Activity;)V
 
     .line 106
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$2;->val$input:Landroid/widget/EditText;
-
-    invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object p1
-
-    .line 107
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
-
-    invoke-static {p2}, Lim/doit/pro/github/GitHubSync;->access$500(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    const-string v0, "token"
-
-    invoke-interface {p2, v0, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences$Editor;->commit()Z
-
-    .line 108
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSync$2;->val$a:Landroid/app/Activity;
-
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result p1
-
-    if-nez p1, :cond_2c
-
-    const-string p1, "\u5df2\u6e05\u7a7a Token"
-
-    goto :goto_2e
-
-    :cond_2c
-    const-string p1, "Token \u5df2\u4fdd\u5b58"
-
-    :goto_2e
-    invoke-static {p2, p1}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;Ljava/lang/String;)V
-
-    .line 109
+    :goto_28
     return-void
 .end method

@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->editRepo(Landroid/app/Activity;)V
+    value = Lim/doit/pro/github/GitHubSync;->editToken(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 119
+    .line 138
     iput-object p1, p0, Lim/doit/pro/github/GitHubSync$3;->val$input:Landroid/widget/EditText;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSync$3;->val$a:Landroid/app/Activity;
@@ -45,9 +45,9 @@
 
 # virtual methods
 .method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 5
+    .registers 4
 
-    .line 122
+    .line 141
     iget-object p1, p0, Lim/doit/pro/github/GitHubSync$3;->val$input:Landroid/widget/EditText;
 
     invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
@@ -62,7 +62,7 @@
 
     move-result-object p1
 
-    .line 123
+    .line 142
     iget-object p2, p0, Lim/doit/pro/github/GitHubSync$3;->val$a:Landroid/app/Activity;
 
     invoke-static {p2}, Lim/doit/pro/github/GitHubSync;->access$500(Landroid/content/Context;)Landroid/content/SharedPreferences;
@@ -73,7 +73,7 @@
 
     move-result-object p2
 
-    const-string v0, "repo"
+    const-string v0, "token"
 
     invoke-interface {p2, v0, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -81,29 +81,25 @@
 
     invoke-interface {p2}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 124
+    .line 143
     iget-object p2, p0, Lim/doit/pro/github/GitHubSync$3;->val$a:Landroid/app/Activity;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    move-result p1
 
-    const-string v1, "\u4ed3\u5e93\u5df2\u4fdd\u5b58: "
+    if-nez p1, :cond_2c
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string p1, "\u5df2\u6e05\u7a7a Token"
 
-    move-result-object v0
+    goto :goto_2e
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :cond_2c
+    const-string p1, "Token \u5df2\u4fdd\u5b58"
 
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
+    :goto_2e
     invoke-static {p2, p1}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 125
+    .line 144
     return-void
 .end method

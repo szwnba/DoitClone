@@ -3,12 +3,12 @@
 .source "GitHubSync.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
+    value = Lim/doit/pro/github/GitHubSync;->download(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,26 +20,18 @@
 # instance fields
 .field final synthetic val$a:Landroid/app/Activity;
 
-.field final synthetic val$ok:Ljava/lang/Runnable;
-
-.field final synthetic val$w:Lim/doit/pro/github/GitHubSync$Worker;
-
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSync$Worker;Landroid/app/Activity;Ljava/lang/Runnable;)V
-    .registers 4
+.method constructor <init>(Landroid/app/Activity;)V
+    .registers 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 288
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$7;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
-
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$7;->val$a:Landroid/app/Activity;
-
-    iput-object p3, p0, Lim/doit/pro/github/GitHubSync$7;->val$ok:Ljava/lang/Runnable;
+    .line 204
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$7;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,70 +40,24 @@
 
 
 # virtual methods
-.method public run()V
-    .registers 4
+.method public onClick(Landroid/content/DialogInterface;I)V
+    .registers 5
 
-    .line 292
-    :try_start_0
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$7;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
+    .line 207
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSync$7;->val$a:Landroid/app/Activity;
 
-    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$7;->val$a:Landroid/app/Activity;
+    new-instance p2, Lim/doit/pro/github/GitHubSync$7$1;
 
-    invoke-interface {v0, v1}, Lim/doit/pro/github/GitHubSync$Worker;->run(Landroid/content/Context;)V
+    invoke-direct {p2, p0}, Lim/doit/pro/github/GitHubSync$7$1;-><init>(Lim/doit/pro/github/GitHubSync$7;)V
 
-    .line 293
-    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$1800()Landroid/os/Handler;
+    new-instance v0, Lim/doit/pro/github/GitHubSync$7$2;
 
-    move-result-object v0
+    invoke-direct {v0, p0}, Lim/doit/pro/github/GitHubSync$7$2;-><init>(Lim/doit/pro/github/GitHubSync$7;)V
 
-    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$7;->val$ok:Ljava/lang/Runnable;
+    const-string v1, "\u6b63\u5728\u4e0b\u8f7d\u6062\u590d\u2026"
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-    :try_end_10
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_10} :catch_11
+    invoke-static {p1, v1, p2, v0}, Lim/doit/pro/github/GitHubSync;->access$1600(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
 
-    .line 300
-    goto :goto_31
-
-    .line 294
-    :catch_11
-    move-exception v0
-
-    .line 295
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v1
-
-    if-nez v1, :cond_21
-
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
-
-    move-result-object v0
-
-    goto :goto_25
-
-    :cond_21
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 296
-    :goto_25
-    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$1800()Landroid/os/Handler;
-
-    move-result-object v1
-
-    new-instance v2, Lim/doit/pro/github/GitHubSync$7$1;
-
-    invoke-direct {v2, p0, v0}, Lim/doit/pro/github/GitHubSync$7$1;-><init>(Lim/doit/pro/github/GitHubSync$7;Ljava/lang/String;)V
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 301
-    :goto_31
+    .line 233
     return-void
 .end method
