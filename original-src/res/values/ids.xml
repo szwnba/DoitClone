@@ -519,4 +519,6 @@
     <item type="id" name="ghs_upload" />
     <item type="id" name="ghs_restore" />
     <item type="id" name="ghs_last_sync" />
+    <item type="id" name="ghs_msg" />
+    <item type="id" name="ghs_input" />
 </resources>

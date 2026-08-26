@@ -3,12 +3,12 @@
 .source "GitHubSyncActivity.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Lim/doit/pro/github/GitHubSyncActivity$OnOk;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->editRepo()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->onRestore()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,22 +20,13 @@
 # instance fields
 .field final synthetic this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-.field final synthetic val$input:Landroid/widget/EditText;
-
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;Landroid/widget/EditText;)V
-    .registers 3
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
+.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
+    .registers 2
 
-    .line 159
+    .line 149
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
-
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->val$input:Landroid/widget/EditText;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -44,65 +35,17 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 5
+.method public ok(Ljava/lang/String;)V
+    .registers 3
 
-    .line 162
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->val$input:Landroid/widget/EditText;
+    .line 152
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    invoke-virtual {p1}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+    new-instance v0, Lim/doit/pro/github/GitHubSyncActivity$8$1;
 
-    move-result-object p1
+    invoke-direct {v0, p0}, Lim/doit/pro/github/GitHubSyncActivity$8$1;-><init>(Lim/doit/pro/github/GitHubSyncActivity$8;)V
 
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object p1
-
-    .line 163
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
-
-    invoke-static {p2}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    const-string v0, "repo"
-
-    invoke-interface {p2, v0, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object p2
-
-    invoke-interface {p2}, Landroid/content/SharedPreferences$Editor;->commit()Z
-
-    .line 164
-    iget-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "\u4ed3\u5e93\u5df2\u4fdd\u5b58: "
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    invoke-static {p2, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->doRestore(Landroid/app/Activity;Ljava/lang/Runnable;)V
 
     .line 165
     return-void

@@ -1,14 +1,14 @@
-.class Lim/doit/pro/github/GitHubSyncActivity$6$1$1;
+.class Lim/doit/pro/github/GitHubSyncActivity$8$1$1;
 .super Ljava/lang/Object;
 .source "GitHubSyncActivity.java"
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Lim/doit/pro/github/GitHubSyncActivity$OnOk;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity$6$1;->run()V
+    value = Lim/doit/pro/github/GitHubSyncActivity$8$1;->run()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,15 +18,15 @@
 
 
 # instance fields
-.field final synthetic this$2:Lim/doit/pro/github/GitHubSyncActivity$6$1;
+.field final synthetic this$2:Lim/doit/pro/github/GitHubSyncActivity$8$1;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity$6$1;)V
+.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity$8$1;)V
     .registers 2
 
-    .line 114
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6$1$1;->this$2:Lim/doit/pro/github/GitHubSyncActivity$6$1;
+    .line 157
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8$1$1;->this$2:Lim/doit/pro/github/GitHubSyncActivity$8$1;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -35,16 +35,16 @@
 
 
 # virtual methods
-.method public onClick(Landroid/content/DialogInterface;I)V
-    .registers 3
+.method public ok(Ljava/lang/String;)V
+    .registers 2
 
-    .line 117
+    .line 160
     invoke-static {}, Landroid/os/Process;->myPid()I
 
     move-result p1
 
     invoke-static {p1}, Landroid/os/Process;->killProcess(I)V
 
-    .line 118
+    .line 161
     return-void
 .end method

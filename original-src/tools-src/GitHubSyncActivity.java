@@ -1,11 +1,12 @@
 package im.doit.pro.github;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Process;
 import android.text.InputType;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -13,19 +14,35 @@ import android.widget.TextView;
 
 import im.doit.pro.activity.DSwipeBackBaseActivity;
 import im.doit.pro.activity.listener.OnLayoutClickListener;
+import im.doit.pro.ui.component.DButton;
 import im.doit.pro.ui.component.LabelArrowButton;
 
-/** GitHub 同步页 —— 样式仿原版"提醒"设置页（蓝色标题栏 + 白色分块行） */
+/** GitHub 同步页 —— 样式仿原版"提醒"设置页（蓝色标题栏 + 白色分块行 + 原版扁平对话框） */
 public class GitHubSyncActivity extends DSwipeBackBaseActivity {
+
+    private interface OnOk {
+        void ok(String inputText);
+    }
 
     private int id(String name) {
         return getResources().getIdentifier(name, "id", getPackageName());
     }
 
+    private int res(String name, String type) {
+        return getResources().getIdentifier(name, type, getPackageName());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getResources().getIdentifier("activity_github_sync", "layout", getPackageName()));
+        setContentView(res("activity_github_sync", "layout"));
+
+        android.app.ActionBar bar = getActionBar();
+        if (bar != null) {
+            bar.setTitle(res("ghs_title", "string"));
+            bar.setDisplayHomeAsUpEnabled(true);
+            bar.setHomeButtonEnabled(true);
+        }
 
         row(id("ghs_token"), new OnLayoutClickListener() {
             @Override
@@ -70,8 +87,37 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private int dialogTheme() {
-        return getResources().getIdentifier("Theme.Doit.Light.Dialog", "style", getPackageName());
+    /** 原版模式对话框：Theme.Doit.Light.Dialog + dialog_title_layout + layout_cancel_and_ok_btns */
+    private Dialog appDialog(String layoutName, String title, String message, String okText,
+            final OnOk onOk, boolean withInput, String inputText, boolean password) {
+        final Dialog d = new Dialog(this, res("Theme.Doit.Light.Dialog", "style"));
+        View content = LayoutInflater.from(this).inflate(res(layoutName, "layout"), null);
+        ((TextView) content.findViewById(id("title"))).setText(title);
+        if (message != null) {
+            ((TextView) content.findViewById(id("ghs_msg"))).setText(message);
+        }
+        final EditText input = (EditText) content.findViewById(id("ghs_input"));
+        if (input != null) {
+            if (password) input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            input.setText(inputText);
+            input.setSelection(input.getText().length());
+        }
+        DButton cancel = (DButton) content.findViewById(id("cancel_btn"));
+        DButton ok = (DButton) content.findViewById(id("ok_btn"));
+        if (okText != null) ok.setText(okText);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { d.dismiss(); }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+                onOk.ok(input == null ? null : input.getText().toString());
+            }
+        });
+        d.setContentView(content);
+        return d;
     }
 
     private boolean hasToken() {
@@ -98,73 +144,51 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
 
     private void onRestore() {
         if (!hasToken()) return;
-        new AlertDialog.Builder(this, dialogTheme())
-            .setTitle("从 GitHub 恢复")
-            .setMessage("将用 GitHub 上的备份覆盖本机全部数据，恢复后应用会自动重启。确定继续？")
-            .setPositiveButton("恢复", new DialogInterface.OnClickListener() {
+        appDialog("dialog_ghs_confirm", "从 GitHub 恢复",
+            "将用 GitHub 上的备份覆盖本机全部数据，恢复后应用会自动重启。确定继续？",
+            "恢复", new OnOk() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
+                public void ok(String inputText) {
                     GitHubSync.doRestore(GitHubSyncActivity.this, new Runnable() {
                         @Override
                         public void run() {
-                            new AlertDialog.Builder(GitHubSyncActivity.this, dialogTheme())
-                                .setTitle("恢复完成")
-                                .setMessage("数据已恢复，应用即将重启。")
-                                .setCancelable(false)
-                                .setPositiveButton("立即重启", new DialogInterface.OnClickListener() {
+                            appDialog("dialog_ghs_confirm", "恢复完成",
+                                "数据已恢复，应用即将重启。", "立即重启",
+                                new OnOk() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which) {
+                                    public void ok(String s) {
                                         Process.killProcess(Process.myPid());
                                     }
-                                }).show();
+                                }, false, null, false).show();
                         }
                     });
                 }
-            })
-            .setNegativeButton("取消", null)
-            .show();
+            }, false, null, false).show();
     }
 
     private void editToken() {
-        final EditText input = new EditText(this);
-        input.setText(GitHubSync.token(this));
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        float d = getResources().getDisplayMetrics().density;
-        input.setPadding((int) (d * 20), (int) (d * 12), (int) (d * 20), (int) (d * 12));
-        new AlertDialog.Builder(this, dialogTheme())
-            .setTitle("GitHub Token")
-            .setMessage("粘贴 fine-grained Token（仅需 doit-data 仓库 Contents 读写权限）")
-            .setView(input)
-            .setPositiveButton("保存", new DialogInterface.OnClickListener() {
+        appDialog("dialog_ghs_input", "GitHub Token",
+            "粘贴 fine-grained Token（仅需 doit-data 仓库 Contents 读写权限）",
+            "保存", new OnOk() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    String t = input.getText().toString().trim();
+                public void ok(String text) {
+                    String t = text == null ? "" : text.trim();
                     GitHubSync.prefs(GitHubSyncActivity.this).edit().putString("token", t).commit();
-                    GitHubSync.toast(GitHubSyncActivity.this, t.length() == 0 ? "已清空 Token" : "Token 已保存");
+                    GitHubSync.toast(GitHubSyncActivity.this,
+                        t.length() == 0 ? "已清空 Token" : "Token 已保存");
                 }
-            })
-            .setNegativeButton("取消", null)
-            .show();
+            }, true, GitHubSync.token(this), true).show();
     }
 
     private void editRepo() {
-        final EditText input = new EditText(this);
-        input.setText(GitHubSync.repo(this));
-        float d = getResources().getDisplayMetrics().density;
-        input.setPadding((int) (d * 20), (int) (d * 12), (int) (d * 20), (int) (d * 12));
-        new AlertDialog.Builder(this, dialogTheme())
-            .setTitle("同步仓库")
-            .setMessage("格式: 用户名/仓库名")
-            .setView(input)
-            .setPositiveButton("保存", new DialogInterface.OnClickListener() {
+        appDialog("dialog_ghs_input", "同步仓库", "格式: 用户名/仓库名",
+            "保存", new OnOk() {
                 @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    String r = input.getText().toString().trim();
+                public void ok(String text) {
+                    String r = text == null ? "" : text.trim();
                     GitHubSync.prefs(GitHubSyncActivity.this).edit().putString("repo", r).commit();
                     GitHubSync.toast(GitHubSyncActivity.this, "仓库已保存: " + r);
                 }
-            })
-            .setNegativeButton("取消", null)
-            .show();
+            }, true, GitHubSync.repo(this), false).show();
     }
 }

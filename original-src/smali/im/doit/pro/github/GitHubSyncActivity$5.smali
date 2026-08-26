@@ -3,12 +3,12 @@
 .source "GitHubSyncActivity.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->onUpload()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,13 +20,22 @@
 # instance fields
 .field final synthetic this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
+.field final synthetic val$d:Landroid/app/Dialog;
+
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
-    .registers 2
+.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;Landroid/app/Dialog;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
 
-    .line 90
+    .line 108
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+
+    iput-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->val$d:Landroid/app/Dialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -35,21 +44,13 @@
 
 
 # virtual methods
-.method public run()V
-    .registers 3
+.method public onClick(Landroid/view/View;)V
+    .registers 2
 
-    .line 93
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 110
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->val$d:Landroid/app/Dialog;
 
-    const-string v1, "\u2713 \u5907\u4efd\u5df2\u4e0a\u4f20\u5230 GitHub"
+    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    .line 94
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
-
-    invoke-virtual {v0}, Lim/doit/pro/github/GitHubSyncActivity;->onResume()V
-
-    .line 95
     return-void
 .end method

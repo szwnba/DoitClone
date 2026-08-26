@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 30
+    .line 47
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$1;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public click(Landroid/view/View;)V
     .registers 2
 
-    .line 32
+    .line 49
     iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$1;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-static {p1}, Lim/doit/pro/github/GitHubSyncActivity;->access$000(Lim/doit/pro/github/GitHubSyncActivity;)V

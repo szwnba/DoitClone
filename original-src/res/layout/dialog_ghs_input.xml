@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/dialog_title_layout" />
+    <TextView android:id="@id/ghs_msg" android:textSize="14.0sp" android:textColor="@color/task_list_item_attribute_normal_color" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:id="@id/ghs_input" android:textSize="14.0sp" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:layout_marginTop="8.0dip" android:layout_width="fill_parent" android:layout_height="1.0dip" android:background="@color/datepicker_normal_line" />
+    <include layout="@layout/layout_cancel_and_ok_btns" />
+</LinearLayout>
