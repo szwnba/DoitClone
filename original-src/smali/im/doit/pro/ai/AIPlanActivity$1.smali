@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/ai/AIPlanActivity;)V
     .registers 2
 
-    .line 63
+    .line 65
     iput-object p1, p0, Lim/doit/pro/ai/AIPlanActivity$1;->this$0:Lim/doit/pro/ai/AIPlanActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public onClick(Landroid/view/View;)V
     .registers 2
 
-    .line 64
+    .line 66
     iget-object p1, p0, Lim/doit/pro/ai/AIPlanActivity$1;->this$0:Lim/doit/pro/ai/AIPlanActivity;
 
     invoke-virtual {p1}, Lim/doit/pro/ai/AIPlanActivity;->finish()V

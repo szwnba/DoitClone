@@ -115,6 +115,7 @@ public class AIAssistant {
             Intent i = new Intent();
             i.setClassName(a, "im.doit.pro.ai.AIPlanActivity");
             i.putExtra("taskUuid", task.getUuid());
+            i.putExtra("taskRepeatNo", task.getRepeatNo());
             i.putExtra("taskTitle", title);
             a.startActivity(i);
         } catch (Throwable t) {
@@ -310,18 +311,18 @@ public class AIAssistant {
         return steps;
     }
 
-    /** 按 uuid 加载任务（方案页用） */
-    public static Task loadTask(Context c, String uuid) {
+    /** 按 uuid(+repeatNo) 加载任务（方案页用）。注意 findByUUID(String) 已废弃且恒返回 null。 */
+    public static Task loadTask(Context c, String uuid, String repeatNo) {
         try {
-            return im.doit.pro.activity.DoitApp.persist().taskDao.findByUUID(uuid);
+            return im.doit.pro.activity.DoitApp.persist().taskDao.findByUUIDAndRepeatNo(uuid, repeatNo);
         } catch (Throwable t) {
             return null;
         }
     }
 
     /** 返回创建的子任务数；-1 = 任务未找到 */
-    public static int applyToTask(Context c, String taskUuid, String planText) {
-        Task t = im.doit.pro.activity.DoitApp.persist().taskDao.findByUUID(taskUuid);
+    public static int applyToTask(Context c, String taskUuid, String taskRepeatNo, String planText) {
+        Task t = im.doit.pro.activity.DoitApp.persist().taskDao.findByUUIDAndRepeatNo(taskUuid, taskRepeatNo);
         if (t == null) return -1;
         t.setNotes(planText.trim());
         im.doit.pro.activity.DoitApp.persist().taskDao.updateAndSaveLog(t);

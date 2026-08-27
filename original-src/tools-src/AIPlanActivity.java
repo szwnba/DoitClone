@@ -23,6 +23,7 @@ public class AIPlanActivity extends DSwipeBackBaseActivity {
     private DButton applyBtn;
 
     private String taskUuid;
+    private String taskRepeatNo;
     private String fullText = "";
     private boolean streaming = false;
 
@@ -53,6 +54,7 @@ public class AIPlanActivity extends DSwipeBackBaseActivity {
         applyBtn = (DButton) findViewById(id("ai_plan_apply"));
 
         taskUuid = getIntent().getStringExtra("taskUuid");
+        taskRepeatNo = getIntent().getStringExtra("taskRepeatNo");
         String title = getIntent().getStringExtra("taskTitle");
         if (taskUuid == null || taskUuid.length() == 0) {
             AIAssistant.toast(this, "任务参数缺失");
@@ -88,7 +90,7 @@ public class AIPlanActivity extends DSwipeBackBaseActivity {
         regenBtn.setAlpha(0.4f);
 
         final WeakReference<AIPlanActivity> self = new WeakReference<AIPlanActivity>(this);
-        final Task snapshot = AIAssistant.loadTask(this, taskUuid);
+        final Task snapshot = AIAssistant.loadTask(this, taskUuid, taskRepeatNo);
         if (snapshot == null) {
             text.setText("任务未找到（可能已被删除）");
             streaming = false;
@@ -177,7 +179,7 @@ public class AIPlanActivity extends DSwipeBackBaseActivity {
 
     private void apply() {
         if (fullText.length() == 0 || streaming) return;
-        int n = AIAssistant.applyToTask(this, taskUuid, fullText);
+        int n = AIAssistant.applyToTask(this, taskUuid, taskRepeatNo, fullText);
         if (n < 0) {
             AIAssistant.toast(this, "任务未找到，应用失败");
             return;

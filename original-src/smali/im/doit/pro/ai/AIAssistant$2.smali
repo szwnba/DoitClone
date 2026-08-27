@@ -36,7 +36,7 @@
         }
     .end annotation
 
-    .line 164
+    .line 165
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$c:Landroid/content/Context;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$2;->val$system:Ljava/lang/String;
@@ -55,7 +55,7 @@
 .method public run()V
     .registers 11
 
-    .line 167
+    .line 168
     const-string v0, "UTF-8"
 
     const-string v1, ""
@@ -64,7 +64,7 @@
 
     const-string v3, "content"
 
-    .line 169
+    .line 170
     const/4 v4, 0x0
 
     :try_start_9
@@ -72,7 +72,7 @@
 
     invoke-direct {v5}, Lorg/json/JSONObject;-><init>()V
 
-    .line 170
+    .line 171
     const-string v6, "model"
 
     iget-object v7, p0, Lim/doit/pro/ai/AIAssistant$2;->val$c:Landroid/content/Context;
@@ -83,12 +83,12 @@
 
     invoke-virtual {v5, v6, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 171
+    .line 172
     new-instance v6, Lorg/json/JSONArray;
 
     invoke-direct {v6}, Lorg/json/JSONArray;-><init>()V
 
-    .line 172
+    .line 173
     new-instance v7, Lorg/json/JSONObject;
 
     invoke-direct {v7}, Lorg/json/JSONObject;-><init>()V
@@ -107,7 +107,7 @@
 
     invoke-virtual {v6, v7}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
 
-    .line 173
+    .line 174
     new-instance v7, Lorg/json/JSONObject;
 
     invoke-direct {v7}, Lorg/json/JSONObject;-><init>()V
@@ -126,26 +126,26 @@
 
     invoke-virtual {v6, v2}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
 
-    .line 174
+    .line 175
     const-string v2, "messages"
 
     invoke-virtual {v5, v2, v6}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 175
+    .line 176
     const-string v2, "temperature"
 
     const-wide v6, 0x3fd999999999999aL    # 0.4
 
     invoke-virtual {v5, v2, v6, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;D)Lorg/json/JSONObject;
 
-    .line 176
+    .line 177
     const-string v2, "stream"
 
     const/4 v6, 0x1
 
     invoke-virtual {v5, v2, v6}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
 
-    .line 178
+    .line 179
     new-instance v2, Ljava/net/URL;
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -188,23 +188,23 @@
     :try_end_85
     .catchall {:try_start_9 .. :try_end_85} :catchall_1b5
 
-    .line 179
+    .line 180
     const/16 v4, 0x3a98
 
     :try_start_87
     invoke-virtual {v2, v4}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V
 
-    .line 180
+    .line 181
     const v4, 0x2bf20
 
     invoke-virtual {v2, v4}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V
 
-    .line 181
+    .line 182
     const-string v4, "POST"
 
     invoke-virtual {v2, v4}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
 
-    .line 182
+    .line 183
     const-string v4, "Authorization"
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -233,38 +233,38 @@
 
     invoke-virtual {v2, v4, v7}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 183
+    .line 184
     const-string v4, "Content-Type"
 
     const-string v7, "application/json"
 
     invoke-virtual {v2, v4, v7}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 184
+    .line 185
     const-string v4, "Accept"
 
     const-string v7, "text/event-stream"
 
     invoke-virtual {v2, v4, v7}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 185
+    .line 186
     const-string v4, "User-Agent"
 
     const-string v7, "DoitLocalAI/1.0"
 
     invoke-virtual {v2, v4, v7}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 186
+    .line 187
     invoke-virtual {v2, v6}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V
 
-    .line 187
+    .line 188
     invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object v4
     :try_end_cf
     .catchall {:try_start_87 .. :try_end_cf} :catchall_1b2
 
-    .line 188
+    .line 189
     :try_start_cf
     invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
@@ -281,17 +281,17 @@
     :try_start_da
     invoke-virtual {v4}, Ljava/io/OutputStream;->close()V
 
-    .line 190
+    .line 191
     invoke-virtual {v2}, Ljava/net/HttpURLConnection;->getResponseCode()I
 
     move-result v4
 
-    .line 191
+    .line 192
     const/16 v5, 0xc8
 
     if-eq v4, v5, :cond_11d
 
-    .line 192
+    .line 193
     const/16 v0, 0x190
 
     if-lt v4, v0, :cond_ee
@@ -312,7 +312,7 @@
 
     move-result-object v0
 
-    .line 193
+    .line 194
     new-instance v1, Ljava/lang/Exception;
 
     new-instance v3, Ljava/lang/StringBuilder;
@@ -351,13 +351,13 @@
 
     throw v1
 
-    .line 196
+    .line 197
     :cond_11d
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 197
+    .line 198
     new-instance v5, Ljava/io/BufferedReader;
 
     new-instance v6, Ljava/io/InputStreamReader;
@@ -370,7 +370,7 @@
 
     invoke-direct {v5, v6}, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;)V
 
-    .line 199
+    .line 200
     :cond_130
     :goto_130
     invoke-virtual {v5}, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
@@ -379,7 +379,7 @@
 
     if-eqz v0, :cond_190
 
-    .line 200
+    .line 201
     const-string v6, "data:"
 
     invoke-virtual {v0, v6}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -390,7 +390,7 @@
 
     goto :goto_130
 
-    .line 201
+    .line 202
     :cond_13f
     const/4 v6, 0x5
 
@@ -402,7 +402,7 @@
 
     move-result-object v0
 
-    .line 202
+    .line 203
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v6
@@ -411,7 +411,7 @@
 
     goto :goto_130
 
-    .line 203
+    .line 204
     :cond_14f
     const-string v6, "[DONE]"
 
@@ -425,21 +425,21 @@
 
     goto :goto_190
 
-    .line 205
+    .line 206
     :cond_158
     :try_start_158
     new-instance v6, Lorg/json/JSONObject;
 
     invoke-direct {v6, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 206
+    .line 207
     const-string v0, "choices"
 
     invoke-virtual {v6, v0}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v0
 
-    .line 207
+    .line 208
     if-eqz v0, :cond_130
 
     invoke-virtual {v0}, Lorg/json/JSONArray;->length()I
@@ -450,7 +450,7 @@
 
     goto :goto_130
 
-    .line 208
+    .line 209
     :cond_16c
     const/4 v6, 0x0
 
@@ -464,28 +464,28 @@
 
     move-result-object v0
 
-    .line 209
+    .line 210
     if-nez v0, :cond_17a
 
     goto :goto_130
 
-    .line 210
+    .line 211
     :cond_17a
     invoke-virtual {v0, v3, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 211
+    .line 212
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v6
 
     if-lez v6, :cond_18e
 
-    .line 212
+    .line 213
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 213
+    .line 214
     iget-object v6, p0, Lim/doit/pro/ai/AIAssistant$2;->val$cb:Lim/doit/pro/ai/AIAssistant$StreamCb;
 
     invoke-interface {v6, v0}, Lim/doit/pro/ai/AIAssistant$StreamCb;->onDelta(Ljava/lang/String;)V
@@ -494,7 +494,7 @@
 
     goto :goto_18e
 
-    .line 215
+    .line 216
     :catchall_18d
     move-exception v0
 
@@ -502,10 +502,10 @@
     :goto_18e
     nop
 
-    .line 216
+    .line 217
     goto :goto_130
 
-    .line 217
+    .line 218
     :cond_190
     :goto_190
     :try_start_190
@@ -515,7 +515,7 @@
 
     if-eqz v0, :cond_1a5
 
-    .line 218
+    .line 219
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$2;->val$cb:Lim/doit/pro/ai/AIAssistant$StreamCb;
 
     invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -526,14 +526,14 @@
     :try_end_19f
     .catchall {:try_start_190 .. :try_end_19f} :catchall_1b2
 
-    .line 232
+    .line 233
     if-eqz v2, :cond_1f0
 
     invoke-virtual {v2}, Ljava/net/HttpURLConnection;->disconnect()V
 
     goto :goto_1f0
 
-    .line 217
+    .line 218
     :cond_1a5
     :try_start_1a5
     new-instance v0, Ljava/lang/Exception;
@@ -544,7 +544,7 @@
 
     throw v0
 
-    .line 188
+    .line 189
     :catchall_1ad
     move-exception v0
 
@@ -554,7 +554,7 @@
     :try_end_1b2
     .catchall {:try_start_1a5 .. :try_end_1b2} :catchall_1b2
 
-    .line 219
+    .line 220
     :catchall_1b2
     move-exception v0
 
@@ -565,7 +565,7 @@
     :catchall_1b5
     move-exception v0
 
-    .line 220
+    .line 221
     :goto_1b6
     :try_start_1b6
     invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
@@ -591,7 +591,7 @@
     :try_end_1c9
     .catchall {:try_start_1b6 .. :try_end_1c9} :catchall_1f1
 
-    .line 223
+    .line 224
     :goto_1c9
     :try_start_1c9
     iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$c:Landroid/content/Context;
@@ -604,26 +604,26 @@
 
     move-result-object v1
 
-    .line 224
+    .line 225
     iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$2;->val$cb:Lim/doit/pro/ai/AIAssistant$StreamCb;
 
     invoke-interface {v2, v1}, Lim/doit/pro/ai/AIAssistant$StreamCb;->onDelta(Ljava/lang/String;)V
 
-    .line 225
+    .line 226
     iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$2;->val$cb:Lim/doit/pro/ai/AIAssistant$StreamCb;
 
     invoke-interface {v2, v1}, Lim/doit/pro/ai/AIAssistant$StreamCb;->onDone(Ljava/lang/String;)V
     :try_end_1dd
     .catchall {:try_start_1c9 .. :try_end_1dd} :catchall_1de
 
-    .line 230
+    .line 231
     goto :goto_1eb
 
-    .line 226
+    .line 227
     :catchall_1de
     move-exception v1
 
-    .line 227
+    .line 228
     :try_start_1df
     invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$200()Landroid/os/Handler;
 
@@ -637,18 +637,18 @@
     :try_end_1eb
     .catchall {:try_start_1df .. :try_end_1eb} :catchall_1f1
 
-    .line 232
+    .line 233
     :goto_1eb
     if-eqz v4, :cond_1f0
 
     invoke-virtual {v4}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 234
+    .line 235
     :cond_1f0
     :goto_1f0
     return-void
 
-    .line 232
+    .line 233
     :catchall_1f1
     move-exception v0
 
@@ -656,7 +656,7 @@
 
     invoke-virtual {v4}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 233
+    .line 234
     :cond_1f7
     goto :goto_1f9
 

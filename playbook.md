@@ -295,6 +295,13 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **教训**：xml 改完务必回解验证（这次菜单图标进了包但点击劫持锚文本没匹配上，静默失败——
   assert 挂了但脚本继续跑完构建，产物验证才发现）。
 
+### 37. 签名审计抓不住"空壳方法"——TaskDao.findByUUID 恒返回 null（r19）
+- **坑**：调用 `TaskDao.findByUUID(String)` 签名存在、运行不抛异常，但它是**标注 @Deprecated 的
+  空壳**（方法体就一行 `const-null; return`），恒返回 null → 表现为"任务未找到"。
+  真实实现在 `findByUUIDAndRepeatNo(uuid, repeatNo)`（repeatNo 传 null 时拼 `repeat_no IS NULL`）。
+- **教训**：复用原版 API 前看三样东西——签名、**@Deprecated 注解**、**方法体是否只有 return 常量**。
+  审计脚本可升级：对将被调用的方法做"空壳体检"（方法体 ≤5 条指令且含 return-const 即告警）。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

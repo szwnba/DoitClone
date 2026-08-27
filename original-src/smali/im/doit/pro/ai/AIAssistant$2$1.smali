@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 227
+    .line 228
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$2$1;->this$0:Lim/doit/pro/ai/AIAssistant$2;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$2$1;->val$msg:Ljava/lang/String;
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 3
 
-    .line 228
+    .line 229
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$2$1;->this$0:Lim/doit/pro/ai/AIAssistant$2;
 
     iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$2;->val$cb:Lim/doit/pro/ai/AIAssistant$StreamCb;

@@ -38,7 +38,7 @@
         }
     .end annotation
 
-    .line 419
+    .line 420
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$8;->val$id:Ljava/lang/String;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$8;->val$a:Landroid/app/Activity;
@@ -59,7 +59,7 @@
 .method public click(Landroid/view/View;)V
     .registers 13
 
-    .line 422
+    .line 423
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$8;->val$id:Ljava/lang/String;
 
     const-string v0, "ai_key"
@@ -78,7 +78,7 @@
 
     goto :goto_1f
 
-    .line 423
+    .line 424
     :cond_10
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$8;->val$id:Ljava/lang/String;
 
@@ -94,13 +94,13 @@
 
     goto :goto_1f
 
-    .line 424
+    .line 425
     :cond_1c
     const-string p1, "\u6a21\u578b\u540d\uff08\u7559\u7a7a\u6062\u590d\u9ed8\u8ba4\uff09"
 
     move-object v5, p1
 
-    .line 425
+    .line 426
     :goto_1f
     iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$8;->val$a:Landroid/app/Activity;
 
@@ -154,9 +154,9 @@
 
     move-result-object p1
 
-    .line 426
+    .line 427
     invoke-virtual {p1}, Landroid/app/Dialog;->show()V
 
-    .line 427
+    .line 428
     return-void
 .end method

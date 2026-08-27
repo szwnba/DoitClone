@@ -34,7 +34,7 @@
         }
     .end annotation
 
-    .line 106
+    .line 108
     iput-object p1, p0, Lim/doit/pro/ai/AIPlanActivity$4$1;->this$1:Lim/doit/pro/ai/AIPlanActivity$4;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIPlanActivity$4$1;->val$a:Lim/doit/pro/ai/AIPlanActivity;
@@ -51,7 +51,7 @@
 .method public run()V
     .registers 3
 
-    .line 107
+    .line 109
     iget-object v0, p0, Lim/doit/pro/ai/AIPlanActivity$4$1;->val$a:Lim/doit/pro/ai/AIPlanActivity;
 
     iget-object v1, p0, Lim/doit/pro/ai/AIPlanActivity$4$1;->val$piece:Ljava/lang/String;

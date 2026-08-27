@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/ai/AIPlanActivity;)V
     .registers 2
 
-    .line 172
+    .line 174
     iput-object p1, p0, Lim/doit/pro/ai/AIPlanActivity$6;->this$0:Lim/doit/pro/ai/AIPlanActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public run()V
     .registers 3
 
-    .line 173
+    .line 175
     iget-object v0, p0, Lim/doit/pro/ai/AIPlanActivity$6;->this$0:Lim/doit/pro/ai/AIPlanActivity;
 
     invoke-static {v0}, Lim/doit/pro/ai/AIPlanActivity;->access$1000(Lim/doit/pro/ai/AIPlanActivity;)Landroid/widget/ScrollView;

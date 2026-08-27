@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 101
+    .line 103
     iput-object p1, p0, Lim/doit/pro/ai/AIPlanActivity$4;->this$0:Lim/doit/pro/ai/AIPlanActivity;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIPlanActivity$4;->val$self:Ljava/lang/ref/WeakReference;
@@ -47,7 +47,7 @@
 .method public onDelta(Ljava/lang/String;)V
     .registers 4
 
-    .line 104
+    .line 106
     iget-object v0, p0, Lim/doit/pro/ai/AIPlanActivity$4;->val$self:Ljava/lang/ref/WeakReference;
 
     invoke-virtual {v0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
@@ -56,7 +56,7 @@
 
     check-cast v0, Lim/doit/pro/ai/AIPlanActivity;
 
-    .line 105
+    .line 107
     if-eqz v0, :cond_1a
 
     invoke-virtual {v0}, Lim/doit/pro/ai/AIPlanActivity;->isFinishing()Z
@@ -67,7 +67,7 @@
 
     goto :goto_1a
 
-    .line 106
+    .line 108
     :cond_11
     new-instance v1, Lim/doit/pro/ai/AIPlanActivity$4$1;
 
@@ -75,10 +75,10 @@
 
     invoke-virtual {v0, v1}, Lim/doit/pro/ai/AIPlanActivity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 109
+    .line 111
     return-void
 
-    .line 105
+    .line 107
     :cond_1a
     :goto_1a
     return-void
@@ -87,7 +87,7 @@
 .method public onDone(Ljava/lang/String;)V
     .registers 4
 
-    .line 113
+    .line 115
     iget-object v0, p0, Lim/doit/pro/ai/AIPlanActivity$4;->val$self:Ljava/lang/ref/WeakReference;
 
     invoke-virtual {v0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
@@ -96,7 +96,7 @@
 
     check-cast v0, Lim/doit/pro/ai/AIPlanActivity;
 
-    .line 114
+    .line 116
     if-eqz v0, :cond_1a
 
     invoke-virtual {v0}, Lim/doit/pro/ai/AIPlanActivity;->isFinishing()Z
@@ -107,7 +107,7 @@
 
     goto :goto_1a
 
-    .line 115
+    .line 117
     :cond_11
     new-instance v1, Lim/doit/pro/ai/AIPlanActivity$4$2;
 
@@ -115,10 +115,10 @@
 
     invoke-virtual {v0, v1}, Lim/doit/pro/ai/AIPlanActivity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 130
+    .line 132
     return-void
 
-    .line 114
+    .line 116
     :cond_1a
     :goto_1a
     return-void
@@ -127,7 +127,7 @@
 .method public onError(Ljava/lang/String;)V
     .registers 4
 
-    .line 134
+    .line 136
     iget-object v0, p0, Lim/doit/pro/ai/AIPlanActivity$4;->val$self:Ljava/lang/ref/WeakReference;
 
     invoke-virtual {v0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
@@ -136,7 +136,7 @@
 
     check-cast v0, Lim/doit/pro/ai/AIPlanActivity;
 
-    .line 135
+    .line 137
     if-eqz v0, :cond_1a
 
     invoke-virtual {v0}, Lim/doit/pro/ai/AIPlanActivity;->isFinishing()Z
@@ -147,7 +147,7 @@
 
     goto :goto_1a
 
-    .line 136
+    .line 138
     :cond_11
     new-instance v1, Lim/doit/pro/ai/AIPlanActivity$4$3;
 
@@ -155,10 +155,10 @@
 
     invoke-virtual {v0, v1}, Lim/doit/pro/ai/AIPlanActivity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 148
+    .line 150
     return-void
 
-    .line 135
+    .line 137
     :cond_1a
     :goto_1a
     return-void
