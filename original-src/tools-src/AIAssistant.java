@@ -104,10 +104,12 @@ public class AIAssistant {
 
     // ---------- 详情页「AI 行动方案」 ----------
 
-    public static void wireDetail(final TaskDetailFragment f) {
+    /** 在 TaskDetailFragment.onCreateView（initView 之后）调用：接上详情页的 AI 按钮。
+     *  必须传入 inflate 出来的 layoutView——此时 getView() 还是 null。 */
+    public static void wireDetail(final TaskDetailFragment f, View layout) {
         try {
-            int id = f.getResources().getIdentifier("ai_plan_btn", "id", f.getView().getContext().getPackageName());
-            View btn = f.getView().findViewById(id);
+            int id = layout.getResources().getIdentifier("ai_plan_btn", "id", layout.getContext().getPackageName());
+            View btn = layout.findViewById(id);
             if (btn != null) {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -127,6 +129,16 @@ public class AIAssistant {
         }
     }
 
+    private static boolean isCreateMode(Object fragment) {
+        try {
+            java.lang.reflect.Field f = fragment.getClass().getDeclaredField("mIsCreate");
+            f.setAccessible(true);
+            return f.getBoolean(fragment);
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
     private static void onPlanClick(final TaskDetailFragment f) {
         final Activity a = f.getActivity();
         if (a == null) return;
@@ -135,10 +147,25 @@ public class AIAssistant {
             a.startActivity(new Intent().setClassName(a, "im.doit.pro.ai.AISettingsActivity"));
             return;
         }
+        if (isCreateMode(f)) {
+            toast(a, "请先保存任务，再生成 AI 方案");
+            return;
+        }
         final Task task = getTask(f);
         if (task == null) { toast(a, "任务未加载"); return; }
+        String title = safe(task.getTitle()).trim();
+        if (title.length() == 0) { toast(a, "请先填写任务标题"); return; }
+
+        // 组装提示：已有子任务会追加、已有描述会被替换
+        StringBuilder warn = new StringBuilder();
+        try {
+            int existing = task.getSubTasks() == null ? 0 : task.getSubTasks().size();
+            if (existing > 0) warn.append("\n注意：任务已有 ").append(existing).append(" 条子任务，应用后会追加新的子任务。");
+        } catch (Throwable t) { }
+        if (!isBlank(task.getNotes())) warn.append("\n注意：现有描述将被方案文本替换（原内容会作为上下文提供给 AI）。");
+
         confirm(a, "AI 行动方案",
-            "将根据任务「" + task.getTitle() + "」生成行动方案。\n任务标题与描述会发送给你配置的 AI 服务商。继续？",
+            "将根据任务「" + title + "」生成行动方案。\n任务标题与描述会发送给你配置的 AI 服务商。" + warn + "\n\n继续？",
             "生成", new OnOk() {
                 @Override
                 public void ok(String s) { generate(a, f, task, false); }
@@ -257,10 +284,10 @@ public class AIAssistant {
             }
         });
         d.setContentView(content);
-        android.view.Window w = d.getWindow();
-        if (w != null) w.setLayout(android.view.ViewGroup.LayoutParams.MATCH_PARENT, (int) (a.getResources().getDisplayMetrics().heightPixels * 0.7));
         try {
             d.show();
+            android.view.Window w = d.getWindow();
+            if (w != null) w.setLayout(android.view.ViewGroup.LayoutParams.MATCH_PARENT, (int) (a.getResources().getDisplayMetrics().heightPixels * 0.7));
         } catch (Throwable t) {
             toast(a, "方案已生成，但页面已关闭，请重新点击 AI 行动方案查看");
         }

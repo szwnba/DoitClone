@@ -259,6 +259,11 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **反射取私有字段**：mTask 等 fragment 私有字段用 getDeclaredField + setAccessible，
   比给整个 Fragment 建 stub 轻得多。
 - **对话框防崩**：异步回来 dialog.show() 前页面可能已销毁 → show 包 try/catch，防 BadTokenException。
+- **r14 复检修正（自查揪出的坑）**：在 onCreateView 里给按钮接线时**不能用 getView()**——
+  Fragment 的 view 要等 onCreateView 返回后才挂载，此时 getView() 为 null，NPE 被 try/catch
+  吞掉后表现为"按钮点了没反应"。必须把 inflate 出来的 layoutView 直接传给接线方法。
+  另：新建任务（mIsCreate）未落库时禁用 AI（防孤儿子任务）；重复应用会追加子任务、
+  描述会被替换——这两种情况都要在确认框里向用户明示。
 
 ## 九、教训级方法论
 
