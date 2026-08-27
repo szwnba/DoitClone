@@ -228,6 +228,16 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   `parseInt`/`valueOf` 对版本号的使用。**
 - **附带收获**：落盘崩溃日志（坑 30）一次就锁定了真凶——用户发来 `doit_crash.txt`，
   堆栈比任何远程猜测都快。之前对"恢复数据坏库"的怀疑其实证据不足。
+### 32. 2015 年的闹钟代码在现代系统上"不响"的三层原因
+- **坑**：任务提醒设置了但不响。代码用的全是 `AlarmManager.set()`（非精确、Doze 下可推迟数小时），
+  且 manifest 没有 `POST_NOTIFICATIONS`（Android 13+ 通知权限）。
+- **解法**：全部 6 处 `set(IJLandroid/app/PendingIntent;)V` 就地替换为
+  `setExactAndAllowWhileIdle`（**同签名**，API 23 起可用，Doze 白名单级精确触发）——smali 一行 sed 搞定；
+  manifest 补 `POST_NOTIFICATIONS`（targetSdk<33 声明即自动授予，同时让系统设置里出现通知开关）。
+- **代码修不了的（必须用户侧操作）**：国产 ROM 的自启动/后台限制（vivo/iCos 等）要把 App 加入
+  白名单；提醒时间设在过去不会响。
+- **排查技巧**：receiver 上 `android:permission` 引用未定义的自定义权限**不是问题**——同 UID 自发自收
+  不做权限校验，别在这里浪费时间。
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

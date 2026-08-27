@@ -108,7 +108,7 @@
 
     .line 81
     .local v6, "triggerAtMillis":J
-    invoke-virtual {v0, v10, v6, v7, v1}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V
+    invoke-virtual {v0, v10, v6, v7, v1}, Landroid/app/AlarmManager;->setExactAndAllowWhileIdle(IJLandroid/app/PendingIntent;)V
 
     .line 84
     const v5, 0x7f0c0123
