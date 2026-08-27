@@ -273,6 +273,19 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   逐个沿真实继承链解析核对（单文件检查会因继承产生大量误报，框架父类按公开 API 放行，
   有"同款调用已在旧版本工作"的先例即闭环）。r15 审计 65 项全部通过后才发版。
 
+### 35. 入口复用与 SSE 流式（r17）
+- **劫持原版按钮比新增按钮优雅**：详情页右上"发送"按钮不再需要（服务已死），直接改
+  `TaskDetailActivity$OnSendBtnClick.onClick` 里的一行 invoke → 拉起 AI 页；布局里按钮文案换成
+  @string/ai_plan_short。原版样式零改动，天然统一。
+- **SSE 流式三要点**：body 带 "stream":true + Accept: text/event-stream；按行读，取 "data:" 前缀，
+  "[DONE]" 结束，choices[0].delta.content 为增量；**服务商不支持时自动降级非流式**（一次性吐全文）。
+- **流式 UI 别逐 token 刷屏**：TextView.append 是 void 且高频 post 会卡——攒 60ms 批量 flush +
+  自动滚底；Activity 用 WeakReference 持有防泄漏，isFinishing 防窗口销毁后回调。
+- **方案落库走独立 Activity 时**：taskUuid 传参 + taskDao.findByUUID 重查（别传对象）；
+  保存用 taskDao.updateAndSaveLog；步骤行用正则 ^\d{1,2}[.、)）] 从【行动步骤】小节提取。
+- **流式输出别要求 JSON**：让模型直接输出可读的【目标/行动步骤/风险提示】文本（边流边看），
+  完成后再用正则抽步骤——比"流 JSON 再解析"体验好得多。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

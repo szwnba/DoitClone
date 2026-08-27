@@ -649,4 +649,6 @@ Come on!"</string>
     <string name="ai_note">Task title and description will be sent to your configured AI provider.</string>
     <string name="ai_plan_btn">AI Action Plan</string>
     <string name="ai_entry_label">AI Assistant (Action Plan)</string>
+    <string name="ai_plan_short">AI Plan</string>
+    <string name="ai_plan_page_title">AI Action Plan</string>
 </resources>

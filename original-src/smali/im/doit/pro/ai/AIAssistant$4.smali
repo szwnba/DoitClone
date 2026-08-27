@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lim/doit/pro/ai/AIAssistant$OnOk;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->generate(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
+    value = Lim/doit/pro/ai/AIAssistant;->wireSettings(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,26 +20,18 @@
 # instance fields
 .field final synthetic val$a:Landroid/app/Activity;
 
-.field final synthetic val$f:Lim/doit/pro/activity/TaskDetailFragment;
-
-.field final synthetic val$task:Lim/doit/pro/model/Task;
-
 
 # direct methods
-.method constructor <init>(Landroid/app/Activity;Lim/doit/pro/model/Task;Lim/doit/pro/activity/TaskDetailFragment;)V
-    .registers 4
+.method constructor <init>(Landroid/app/Activity;)V
+    .registers 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 185
+    .line 360
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
-
-    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$4;->val$task:Lim/doit/pro/model/Task;
-
-    iput-object p3, p0, Lim/doit/pro/ai/AIAssistant$4;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,74 +40,60 @@
 
 
 # virtual methods
-.method public run()V
+.method public ok(Ljava/lang/String;)V
     .registers 4
 
-    .line 189
-    :try_start_0
+    .line 363
+    if-nez p1, :cond_5
+
+    const-string p1, ""
+
+    goto :goto_9
+
+    :cond_5
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object p1
+
+    .line 364
+    :goto_9
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
 
-    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$4;->val$task:Lim/doit/pro/model/Task;
-
-    invoke-static {v0, v1}, Lim/doit/pro/ai/AIAssistant;->access$200(Landroid/app/Activity;Lim/doit/pro/model/Task;)Lim/doit/pro/ai/AIAssistant$PlanResult;
+    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object v0
 
-    .line 190
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
-
-    move-result-object v1
-
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$4$1;
-
-    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$4$1;-><init>(Lim/doit/pro/ai/AIAssistant$4;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-    :try_end_14
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_14} :catch_15
-
-    .line 200
-    goto :goto_35
-
-    .line 194
-    :catch_15
-    move-exception v0
-
-    .line 195
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v1
-
-    if-nez v1, :cond_25
-
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+    const-string v1, "endpoint"
+
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
     move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
+
+    .line 365
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result p1
+
+    if-nez p1, :cond_27
+
+    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u7aef\u70b9"
 
     goto :goto_29
 
-    :cond_25
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+    :cond_27
+    const-string p1, "\u7aef\u70b9\u5df2\u4fdd\u5b58"
 
-    move-result-object v0
-
-    .line 196
     :goto_29
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
+    invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    move-result-object v1
-
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$4$2;
-
-    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$4$2;-><init>(Lim/doit/pro/ai/AIAssistant$4;Ljava/lang/String;)V
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 201
-    :goto_35
+    .line 366
     return-void
 .end method

@@ -54,7 +54,7 @@
     .line 343
     iget-object v0, p0, Lim/doit/pro/activity/TaskDetailActivity$OnSendBtnClick;->this$0:Lim/doit/pro/activity/TaskDetailActivity;
 
-    invoke-static {v0}, Lim/doit/pro/activity/TaskDetailActivity;->access$3(Lim/doit/pro/activity/TaskDetailActivity;)V
+    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->openPlan(Landroid/app/Activity;)V
 
     .line 344
     return-void

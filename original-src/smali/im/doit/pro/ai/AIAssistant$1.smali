@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 78
+    .line 77
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$1;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,25 +41,25 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .registers 4
+    .registers 5
+
+    .line 80
+    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$1;->val$a:Landroid/app/Activity;
+
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$1;->val$a:Landroid/app/Activity;
+
+    const-string v2, "im.doit.pro.ai.AISettingsActivity"
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
     .line 81
-    new-instance p1, Landroid/content/Intent;
-
-    invoke-direct {p1}, Landroid/content/Intent;-><init>()V
-
-    .line 82
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$1;->val$a:Landroid/app/Activity;
-
-    const-string v1, "im.doit.pro.ai.AISettingsActivity"
-
-    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 83
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$1;->val$a:Landroid/app/Activity;
-
-    invoke-virtual {v0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
-
-    .line 84
     return-void
 .end method

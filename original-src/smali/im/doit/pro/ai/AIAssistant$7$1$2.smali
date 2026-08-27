@@ -1,4 +1,4 @@
-.class Lim/doit/pro/ai/AIAssistant$4$2;
+.class Lim/doit/pro/ai/AIAssistant$7$1$2;
 .super Ljava/lang/Object;
 .source "AIAssistant.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant$4;->run()V
+    value = Lim/doit/pro/ai/AIAssistant$7$1;->run()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,13 +18,13 @@
 
 
 # instance fields
-.field final synthetic this$0:Lim/doit/pro/ai/AIAssistant$4;
+.field final synthetic this$1:Lim/doit/pro/ai/AIAssistant$7$1;
 
 .field final synthetic val$msg:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/ai/AIAssistant$4;Ljava/lang/String;)V
+.method constructor <init>(Lim/doit/pro/ai/AIAssistant$7$1;Ljava/lang/String;)V
     .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -32,10 +32,10 @@
         }
     .end annotation
 
-    .line 196
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$4$2;->this$0:Lim/doit/pro/ai/AIAssistant$4;
+    .line 401
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$7$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$7$1;
 
-    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$4$2;->val$msg:Ljava/lang/String;
+    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$7$1$2;->val$msg:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -47,22 +47,24 @@
 .method public run()V
     .registers 4
 
-    .line 198
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$4$2;->this$0:Lim/doit/pro/ai/AIAssistant$4;
+    .line 402
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$7$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$7$1;
 
-    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
+    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$7$1;->this$0:Lim/doit/pro/ai/AIAssistant$7;
+
+    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "AI \u8c03\u7528\u5931\u8d25: "
+    const-string v2, "\u2717 \u8fde\u63a5\u5931\u8d25: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$4$2;->val$msg:Ljava/lang/String;
+    iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$7$1$2;->val$msg:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
