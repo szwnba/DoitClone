@@ -3,12 +3,12 @@
 .source "GitHubSync.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ljava/lang/Thread$UncaughtExceptionHandler;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
+    value = Lim/doit/pro/github/GitHubSync;->installCrashLogger(Landroid/content/Context;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,28 +18,24 @@
 
 
 # instance fields
-.field final synthetic val$a:Landroid/app/Activity;
+.field final synthetic val$c:Landroid/content/Context;
 
-.field final synthetic val$ok:Ljava/lang/Runnable;
-
-.field final synthetic val$w:Lim/doit/pro/github/GitHubSync$Worker;
+.field final synthetic val$prev:Ljava/lang/Thread$UncaughtExceptionHandler;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSync$Worker;Landroid/app/Activity;Ljava/lang/Runnable;)V
-    .registers 4
+.method constructor <init>(Landroid/content/Context;Ljava/lang/Thread$UncaughtExceptionHandler;)V
+    .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 260
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$4;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
+    .line 182
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSync$4;->val$c:Landroid/content/Context;
 
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
-
-    iput-object p3, p0, Lim/doit/pro/github/GitHubSync$4;->val$ok:Ljava/lang/Runnable;
+    iput-object p2, p0, Lim/doit/pro/github/GitHubSync$4;->val$prev:Ljava/lang/Thread$UncaughtExceptionHandler;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,70 +44,139 @@
 
 
 # virtual methods
-.method public run()V
-    .registers 4
+.method public uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
+    .registers 7
 
-    .line 264
+    .line 186
     :try_start_0
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$4;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
+    new-instance v0, Ljava/io/StringWriter;
 
-    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$4;->val$a:Landroid/app/Activity;
+    invoke-direct {v0}, Ljava/io/StringWriter;-><init>()V
 
-    invoke-interface {v0, v1}, Lim/doit/pro/github/GitHubSync$Worker;->run(Landroid/content/Context;)V
+    .line 187
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    .line 265
-    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$800()Landroid/os/Handler;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "==== crash "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-static {}, Lim/doit/pro/github/GitHubSync;->now()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, " thread="
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {p1}, Ljava/lang/Thread;->getName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, " ====\n"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/io/StringWriter;->write(Ljava/lang/String;)V
+
+    .line 188
+    new-instance v1, Ljava/io/PrintWriter;
+
+    invoke-direct {v1, v0}, Ljava/io/PrintWriter;-><init>(Ljava/io/Writer;)V
+
+    invoke-virtual {p2, v1}, Ljava/lang/Throwable;->printStackTrace(Ljava/io/PrintWriter;)V
+
+    .line 189
+    invoke-virtual {v0}, Ljava/io/StringWriter;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$4;->val$ok:Ljava/lang/Runnable;
+    .line 190
+    iget-object v1, p0, Lim/doit/pro/github/GitHubSync$4;->val$c:Landroid/content/Context;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-    :try_end_10
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_10} :catch_11
+    const/4 v2, 0x0
 
-    .line 272
-    goto :goto_31
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getExternalFilesDir(Ljava/lang/String;)Ljava/io/File;
 
-    .line 266
-    :catch_11
+    move-result-object v1
+    :try_end_46
+    .catchall {:try_start_0 .. :try_end_46} :catchall_63
+
+    .line 191
+    const-string v2, "doit_crash.txt"
+
+    if-eqz v1, :cond_52
+
+    :try_start_4a
+    new-instance v3, Ljava/io/File;
+
+    invoke-direct {v3, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-static {v3, v0}, Lim/doit/pro/github/GitHubSync;->access$700(Ljava/io/File;Ljava/lang/String;)V
+    :try_end_52
+    .catchall {:try_start_4a .. :try_end_52} :catchall_63
+
+    .line 193
+    :cond_52
+    :try_start_52
+    sget-object v1, Landroid/os/Environment;->DIRECTORY_DOWNLOADS:Ljava/lang/String;
+
+    invoke-static {v1}, Landroid/os/Environment;->getExternalStoragePublicDirectory(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v1
+
+    .line 195
+    new-instance v3, Ljava/io/File;
+
+    invoke-direct {v3, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-static {v3, v0}, Lim/doit/pro/github/GitHubSync;->access$700(Ljava/io/File;Ljava/lang/String;)V
+    :try_end_60
+    .catchall {:try_start_52 .. :try_end_60} :catchall_61
+
+    goto :goto_62
+
+    .line 196
+    :catchall_61
     move-exception v0
 
-    .line 267
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+    :goto_62
+    goto :goto_64
 
-    move-result-object v1
+    .line 197
+    :catchall_63
+    move-exception v0
 
-    if-nez v1, :cond_21
+    :goto_64
+    nop
 
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 198
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSync$4;->val$prev:Ljava/lang/Thread$UncaughtExceptionHandler;
 
-    move-result-object v0
+    if-eqz v0, :cond_6c
 
-    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+    invoke-interface {v0, p1, p2}, Ljava/lang/Thread$UncaughtExceptionHandler;->uncaughtException(Ljava/lang/Thread;Ljava/lang/Throwable;)V
 
-    move-result-object v0
-
-    goto :goto_25
-
-    :cond_21
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    move-result-object v0
-
-    .line 268
-    :goto_25
-    invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$800()Landroid/os/Handler;
-
-    move-result-object v1
-
-    new-instance v2, Lim/doit/pro/github/GitHubSync$4$1;
-
-    invoke-direct {v2, p0, v0}, Lim/doit/pro/github/GitHubSync$4$1;-><init>(Lim/doit/pro/github/GitHubSync$4;Ljava/lang/String;)V
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 273
-    :goto_31
+    .line 199
+    :cond_6c
     return-void
 .end method

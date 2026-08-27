@@ -203,7 +203,23 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 
 ---
 
-## 八、教训级方法论
+## 八、本地化补丁的隐形地雷（r9 事件）
+
+### 28. 静态排查结论会被"字符串只在 R 类引用"骗过
+- **坑**：断言"启动路径没有时区校验"，结果用户一清数据就弹出时区不一致对话框。
+- **原因**：校验代码引用的是**数字资源 ID**（`0x7f0c0092`），grep "timezone/时区" 只能搜到 R 类和 strings.xml，搜不到业务代码。
+- **解法**：找"某 UI/文案是谁触发的"时，先查 `res/values/public.xml` 把资源名映射成十六进制 ID，再用 ID 反查 smali。
+
+### 29. 清除数据 = 摘掉原版登录态的"隐形补丁"
+- **坑**：免登录版一直正常，用户清除数据后立刻闪退 + 各种空值对话框。
+- **原因**：此前一切正常依赖原版安装留下的登录残留（真实 User、偏好设置）；假 User（`new User()`）字段全空，清数据后才第一次真正走到这些空字段。
+- **解法**：假 User 创建时补关键默认值（如 timezone = 设备 GMT 偏移）；对返回用户信息的工具方法做空值兜底（`UserUtils.getTimeZone` 返回设备值）；无意义的联网时代校验直接废掉方法体（`showTimeZoneDiffDialog` → `return-void`）。**以后清数据测试要当作"首次真实验收"。**
+
+### 30. 无 adb 环境取崩溃日志：装一个落盘崩溃处理器
+- **坑**：用户手机闪退但不会用 adb logcat，远程只能靠猜。
+- **解法**：在 Application.onCreate 包装 `Thread.setDefaultUncaughtExceptionHandler`（注意装在原崩溃处理器**之后**以保留链），把堆栈追加写到 `getExternalFilesDir(null)/doit_crash.txt` 和公共 `Download/doit_crash.txt`，用户用文件管理器即可取到发给开发者。
+
+## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
 - **读代码用 jadx，改代码用 smali，验证用回解**（坑 7/11）——三种视图各司其职。

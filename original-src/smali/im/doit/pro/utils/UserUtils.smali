@@ -395,72 +395,33 @@
 .end method
 
 .method public static getTimeZone()Ljava/lang/String;
-    .locals 3
+    .locals 2
 
-    .prologue
-    .line 194
     invoke-static {}, Lim/doit/pro/activity/DoitApp;->user()Lim/doit/pro/model/User;
 
-    move-result-object v1
+    move-result-object v0
 
-    if-nez v1, :cond_0
+    if-nez v0, :cond_0
 
-    .line 195
-    const/4 v0, 0x0
+    invoke-static {}, Lim/doit/pro/utils/DateUtils;->getGMTOffset()Ljava/lang/String;
 
-    .line 203
-    .local v0, "timezone":Ljava/lang/String;
-    :goto_0
+    move-result-object v0
+
     return-object v0
 
-    .line 197
-    .end local v0    # "timezone":Ljava/lang/String;
     :cond_0
-    invoke-static {}, Lim/doit/pro/activity/DoitApp;->user()Lim/doit/pro/model/User;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Lim/doit/pro/model/User;->getTimezone()Ljava/lang/String;
+    invoke-virtual {v0}, Lim/doit/pro/model/User;->getTimezone()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 198
-    .restart local v0    # "timezone":Ljava/lang/String;
-    invoke-static {v0}, Lim/doit/pro/utils/StringUtils;->isNotEmpty(Ljava/lang/String;)Z
+    if-nez v0, :cond_1
 
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 199
-    const-string v1, "("
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
-
-    move-result v1
-
-    add-int/lit8 v1, v1, 0x1
-
-    const-string v2, ")"
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
-
-    move-result v2
-
-    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-static {}, Lim/doit/pro/utils/DateUtils;->getGMTOffset()Ljava/lang/String;
 
     move-result-object v0
 
-    .line 200
-    goto :goto_0
-
-    .line 201
     :cond_1
-    const-string v1, "get user timezone is null."
-
-    invoke-static {v1}, Lim/doit/pro/utils/Logger;->e(Ljava/lang/Object;)V
-
-    goto :goto_0
+    return-object v0
 .end method
 
 .method public static getUserWeekStart()Ljava/lang/String;

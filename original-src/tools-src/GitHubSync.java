@@ -174,6 +174,42 @@ public class GitHubSync {
         }
     }
 
+    /** 在 DoitApp.onCreate（DoitCrashException.init 之后）调用：包装默认崩溃处理器，
+     *  把堆栈写到应用外部目录和公共 Download 目录，供无 adb 环境取日志。 */
+    public static void installCrashLogger(final Context c) {
+        try {
+            final Thread.UncaughtExceptionHandler prev = Thread.getDefaultUncaughtExceptionHandler();
+            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                @Override
+                public void uncaughtException(Thread t, Throwable e) {
+                    try {
+                        java.io.StringWriter sw = new java.io.StringWriter();
+                        sw.write("==== crash " + now() + " thread=" + t.getName() + " ====\n");
+                        e.printStackTrace(new java.io.PrintWriter(sw));
+                        String text = sw.toString();
+                        java.io.File appDir = c.getExternalFilesDir(null);
+                        if (appDir != null) writeFile(new java.io.File(appDir, "doit_crash.txt"), text);
+                        try {
+                            java.io.File dl = android.os.Environment.getExternalStoragePublicDirectory(
+                                android.os.Environment.DIRECTORY_DOWNLOADS);
+                            writeFile(new java.io.File(dl, "doit_crash.txt"), text);
+                        } catch (Throwable ignore) { }
+                    } catch (Throwable ignore) { }
+                    if (prev != null) prev.uncaughtException(t, e);
+                }
+            });
+        } catch (Throwable t) { }
+    }
+
+    private static void writeFile(java.io.File f, String s) {
+        try {
+            java.io.FileWriter w = new java.io.FileWriter(f, true);
+            w.write(s);
+            w.write("\n");
+            w.close();
+        } catch (Throwable t) { }
+    }
+
     // ---------- 数据库快照与恢复 ----------
 
     /** 优先 VACUUM INTO 取一致快照，失败则直接读文件 */

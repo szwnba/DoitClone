@@ -1686,6 +1686,12 @@
 
     invoke-direct {v0}, Lim/doit/pro/model/User;-><init>()V
 
+    invoke-static {}, Lim/doit/pro/utils/DateUtils;->getGMTOffset()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lim/doit/pro/model/User;->setTimezone(Ljava/lang/String;)V
+
     :cond_1
     sput-object v0, Lim/doit/pro/activity/DoitApp;->_user:Lim/doit/pro/model/User;
 
@@ -1768,6 +1774,8 @@
     move-result-object v0
 
     invoke-virtual {v0, p0}, Lim/doit/pro/exception/DoitCrashException;->init(Landroid/content/Context;)V
+
+    invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->installCrashLogger(Landroid/content/Context;)V
 
     .line 151
     new-instance v0, Lim/doit/pro/activity/DoitApp$MyLifecycleHandler;
