@@ -45,11 +45,11 @@
 
     const-string v2, "dialog_ghs_confirm"
 
-    const-string v3, "\u6062\u590d\u5b8c\u6210"
+    const-string v3, "\u4e0b\u8f7d\u5b8c\u6210"
 
-    const-string v4, "\u6570\u636e\u5df2\u6062\u590d\uff0c\u5e94\u7528\u5373\u5c06\u91cd\u542f\u3002"
+    const-string v4, "\u5907\u4efd\u5df2\u4e0b\u8f7d\u5230\u672c\u673a\u3002\u70b9\u51fb\u300c\u91cd\u542f\u300d\u540e\u5e94\u7528\u4f1a\u81ea\u52a8\u5b8c\u6210\u6570\u636e\u66ff\u6362\u5e76\u91cd\u65b0\u6253\u5f00\u3002"
 
-    const-string v5, "\u7acb\u5373\u91cd\u542f"
+    const-string v5, "\u91cd\u542f"
 
     new-instance v6, Lim/doit/pro/github/GitHubSyncActivity$8$1$1;
 
@@ -65,9 +65,9 @@
 
     move-result-object v0
 
-    .line 162
+    .line 163
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 163
+    .line 164
     return-void
 .end method

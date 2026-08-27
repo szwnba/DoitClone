@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity$8$1;)V
     .registers 2
 
-    .line 157
+    .line 158
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8$1$1;->this$2:Lim/doit/pro/github/GitHubSyncActivity$8$1;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,13 +38,13 @@
 .method public ok(Ljava/lang/String;)V
     .registers 2
 
-    .line 160
+    .line 161
     invoke-static {}, Landroid/os/Process;->myPid()I
 
     move-result p1
 
     invoke-static {p1}, Landroid/os/Process;->killProcess(I)V
 
-    .line 161
+    .line 162
     return-void
 .end method

@@ -47,6 +47,6 @@
 
     invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->doRestore(Landroid/app/Activity;Ljava/lang/Runnable;)V
 
-    .line 165
+    .line 166
     return-void
 .end method

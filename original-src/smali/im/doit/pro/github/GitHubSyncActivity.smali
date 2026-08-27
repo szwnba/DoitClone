@@ -230,7 +230,7 @@
 .method private editRepo()V
     .registers 10
 
-    .line 184
+    .line 185
     const-string v1, "dialog_ghs_input"
 
     const-string v2, "\u540c\u6b65\u4ed3\u5e93"
@@ -245,31 +245,31 @@
 
     const/4 v6, 0x1
 
-    .line 192
+    .line 193
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->repo(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v7
 
     const/4 v8, 0x0
 
-    .line 184
+    .line 185
     move-object v0, p0
 
     invoke-direct/range {v0 .. v8}, Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 
     move-result-object v0
 
-    .line 192
+    .line 193
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 193
+    .line 194
     return-void
 .end method
 
 .method private editToken()V
     .registers 10
 
-    .line 170
+    .line 171
     const-string v1, "dialog_ghs_input"
 
     const-string v2, "GitHub Token"
@@ -284,24 +284,24 @@
 
     const/4 v6, 0x1
 
-    .line 180
+    .line 181
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v7
 
     const/4 v8, 0x1
 
-    .line 170
+    .line 171
     move-object v0, p0
 
     invoke-direct/range {v0 .. v8}, Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 
     move-result-object v0
 
-    .line 180
+    .line 181
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 181
+    .line 182
     return-void
 .end method
 
@@ -398,10 +398,10 @@
 
     move-result-object v0
 
-    .line 166
+    .line 167
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 167
+    .line 168
     return-void
 .end method
 

@@ -152,8 +152,9 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
                     GitHubSync.doRestore(GitHubSyncActivity.this, new Runnable() {
                         @Override
                         public void run() {
-                            appDialog("dialog_ghs_confirm", "恢复完成",
-                                "数据已恢复，应用即将重启。", "立即重启",
+                            appDialog("dialog_ghs_confirm", "下载完成",
+                                "备份已下载到本机。点击「重启」后应用会自动完成数据替换并重新打开。",
+                                "重启",
                                 new OnOk() {
                                     @Override
                                     public void ok(String s) {

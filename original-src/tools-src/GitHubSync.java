@@ -37,6 +37,7 @@ public class GitHubSync {
     private static final String K_REPO = "repo";
     private static final String K_LAST = "last_sync";
     public static final String DEFAULT_REPO = "szwnba/doit-data";
+    private static final String K_PENDING = "pending_restore";
     private static final String DB_NAME = "doitim.db";
     private static final String REMOTE_FILE = "doitim.db.gz";
     private static final String API = "https://api.github.com";
@@ -145,10 +146,32 @@ public class GitHubSync {
                 if (r.code != 200) throw new IOException("GitHub 返回 " + r.code + " " + brief(r.body));
                 String content = new JSONObject(r.body).getString("content");
                 byte[] raw = gunzip(Base64.decode(content, Base64.DEFAULT));
-                restoreDb(c, raw);
+                stageRestore(c, raw);
                 setLastSync(c, "下载");
             }
         }, onDone);
+    }
+
+    /** 启动最早期（DoitApp.onCreate，任何 DB 连接打开前）调用：完成挂起的恢复替换。绝不抛异常。 */
+    public static void applyPendingRestore(Context c) {
+        try {
+            SharedPreferences p = prefs(c);
+            if (!p.getBoolean(K_PENDING, false)) return;
+            File db = c.getDatabasePath(DB_NAME);
+            File staging = new File(db.getParentFile(), DB_NAME + ".ghrestore");
+            if (!staging.exists()) {
+                p.edit().putBoolean(K_PENDING, false).commit();
+                return;
+            }
+            new File(db.getPath() + "-journal").delete();
+            new File(db.getPath() + "-wal").delete();
+            new File(db.getPath() + "-shm").delete();
+            if (db.exists()) db.delete();
+            if (!staging.renameTo(db)) return; // 保底：下次启动再试
+            p.edit().putBoolean(K_PENDING, false).commit();
+        } catch (Throwable t) {
+            // 启动路径，吞掉一切异常
+        }
     }
 
     // ---------- 数据库快照与恢复 ----------
@@ -170,19 +193,16 @@ public class GitHubSync {
         }
     }
 
-    private static void restoreDb(Context c, byte[] raw) throws IOException {
+    /** 只写入暂存文件并打标记，真正的替换推迟到下次启动（applyPendingRestore），
+     *  避免在活进程、数据库连接未关闭时替换文件导致旧 WAL 写坏新库。 */
+    private static void stageRestore(Context c, byte[] raw) throws IOException {
         File db = c.getDatabasePath(DB_NAME);
         File dir = db.getParentFile();
         if (!dir.exists() && !dir.mkdirs()) throw new IOException("无法访问数据库目录");
-        File tmp = new File(dir, "gh_restore_tmp.db");
-        OutputStream os = new FileOutputStream(tmp);
+        File staging = new File(dir, DB_NAME + ".ghrestore");
+        OutputStream os = new FileOutputStream(staging);
         try { os.write(raw); } finally { os.close(); }
-        // 清掉旧 journal/wal，避免旧日志覆盖新库
-        new File(db.getPath() + "-journal").delete();
-        new File(db.getPath() + "-wal").delete();
-        new File(db.getPath() + "-shm").delete();
-        if (db.exists() && !db.delete()) throw new IOException("无法替换旧数据库（请重启后重试）");
-        if (!tmp.renameTo(db)) throw new IOException("写入恢复数据失败");
+        prefs(c).edit().putBoolean(K_PENDING, true).commit();
     }
 
     // ---------- HTTP（GitHub Contents API） ----------

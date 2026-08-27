@@ -21,6 +21,8 @@
 
 .field private static final K_LAST:Ljava/lang/String; = "last_sync"
 
+.field private static final K_PENDING:Ljava/lang/String; = "pending_restore"
+
 .field private static final K_REPO:Ljava/lang/String; = "repo"
 
 .field private static final K_TOKEN:Ljava/lang/String; = "token"
@@ -36,7 +38,7 @@
 .method static constructor <clinit>()V
     .registers 2
 
-    .line 48
+    .line 49
     new-instance v0, Landroid/os/Handler;
 
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
@@ -159,7 +161,7 @@
     .end annotation
 
     .line 33
-    invoke-static {p0, p1}, Lim/doit/pro/github/GitHubSync;->restoreDb(Landroid/content/Context;[B)V
+    invoke-static {p0, p1}, Lim/doit/pro/github/GitHubSync;->stageRestore(Landroid/content/Context;[B)V
 
     return-void
 .end method
@@ -173,24 +175,219 @@
     return-object v0
 .end method
 
+.method public static applyPendingRestore(Landroid/content/Context;)V
+    .registers 8
+
+    .line 158
+    const-string v0, "pending_restore"
+
+    :try_start_2
+    invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object v1
+
+    .line 159
+    const/4 v2, 0x0
+
+    invoke-interface {v1, v0, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v3
+
+    if-nez v3, :cond_e
+
+    return-void
+
+    .line 160
+    :cond_e
+    const-string v3, "doitim.db"
+
+    invoke-virtual {p0, v3}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object p0
+
+    .line 161
+    new-instance v3, Ljava/io/File;
+
+    invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
+
+    move-result-object v4
+
+    const-string v5, "doitim.db.ghrestore"
+
+    invoke-direct {v3, v4, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    .line 162
+    invoke-virtual {v3}, Ljava/io/File;->exists()Z
+
+    move-result v4
+
+    if-nez v4, :cond_31
+
+    .line 163
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, v0, v2}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
+
+    .line 164
+    return-void
+
+    .line 166
+    :cond_31
+    new-instance v4, Ljava/io/File;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, "-journal"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4}, Ljava/io/File;->delete()Z
+
+    .line 167
+    new-instance v4, Ljava/io/File;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, "-wal"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4}, Ljava/io/File;->delete()Z
+
+    .line 168
+    new-instance v4, Ljava/io/File;
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    const-string v6, "-shm"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4}, Ljava/io/File;->delete()Z
+
+    .line 169
+    invoke-virtual {p0}, Ljava/io/File;->exists()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_97
+
+    invoke-virtual {p0}, Ljava/io/File;->delete()Z
+
+    .line 170
+    :cond_97
+    invoke-virtual {v3, p0}, Ljava/io/File;->renameTo(Ljava/io/File;)Z
+
+    move-result p0
+
+    if-nez p0, :cond_9e
+
+    return-void
+
+    .line 171
+    :cond_9e
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0, v0, v2}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
+    :try_end_a9
+    .catchall {:try_start_2 .. :try_end_a9} :catchall_aa
+
+    .line 174
+    goto :goto_ab
+
+    .line 172
+    :catchall_aa
+    move-exception p0
+
+    .line 175
+    :goto_ab
+    return-void
+.end method
+
 .method private static brief(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
 
-    .line 269
+    .line 289
     const-string v0, ""
 
     if-nez p0, :cond_5
 
     return-object v0
 
-    .line 271
+    .line 291
     :cond_5
     :try_start_5
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 272
+    .line 292
     const-string v2, "message"
 
     invoke-virtual {v1, v2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
@@ -201,11 +398,11 @@
 
     return-object p0
 
-    .line 273
+    .line 293
     :catch_11
     move-exception v0
 
-    .line 274
+    .line 294
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -227,7 +424,7 @@
 .method public static doRestore(Landroid/app/Activity;Ljava/lang/Runnable;)V
     .registers 4
 
-    .line 139
+    .line 140
     new-instance v0, Lim/doit/pro/github/GitHubSync$3;
 
     invoke-direct {v0}, Lim/doit/pro/github/GitHubSync$3;-><init>()V
@@ -236,14 +433,14 @@
 
     invoke-static {p0, v1, v0, p1}, Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
 
-    .line 152
+    .line 153
     return-void
 .end method
 
 .method public static doUpload(Landroid/app/Activity;Ljava/lang/Runnable;)V
     .registers 4
 
-    .line 118
+    .line 119
     new-instance v0, Lim/doit/pro/github/GitHubSync$2;
 
     invoke-direct {v0}, Lim/doit/pro/github/GitHubSync$2;-><init>()V
@@ -252,19 +449,19 @@
 
     invoke-static {p0, v1, v0, p1}, Lim/doit/pro/github/GitHubSync;->runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
 
-    .line 136
+    .line 137
     return-void
 .end method
 
 .method private static findByText(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
     .registers 4
 
-    .line 101
+    .line 102
     instance-of v0, p0, Landroid/widget/TextView;
 
     if-eqz v0, :cond_18
 
-    .line 102
+    .line 103
     move-object v0, p0
 
     check-cast v0, Landroid/widget/TextView;
@@ -273,7 +470,7 @@
 
     move-result-object v0
 
-    .line 103
+    .line 104
     if-eqz v0, :cond_18
 
     invoke-interface {v0}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
@@ -288,16 +485,16 @@
 
     return-object p0
 
-    .line 105
+    .line 106
     :cond_18
     instance-of v0, p0, Landroid/view/ViewGroup;
 
     if-eqz v0, :cond_33
 
-    .line 106
+    .line 107
     check-cast p0, Landroid/view/ViewGroup;
 
-    .line 107
+    .line 108
     const/4 v0, 0x0
 
     :goto_1f
@@ -307,7 +504,7 @@
 
     if-ge v0, v1, :cond_33
 
-    .line 108
+    .line 109
     invoke-virtual {p0, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
     move-result-object v1
@@ -316,18 +513,18 @@
 
     move-result-object v1
 
-    .line 109
+    .line 110
     if-eqz v1, :cond_30
 
     return-object v1
 
-    .line 107
+    .line 108
     :cond_30
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1f
 
-    .line 112
+    .line 113
     :cond_33
     const/4 p0, 0x0
 
@@ -342,7 +539,7 @@
         }
     .end annotation
 
-    .line 287
+    .line 307
     new-instance v0, Ljava/util/zip/GZIPInputStream;
 
     new-instance v1, Ljava/io/ByteArrayInputStream;
@@ -351,17 +548,17 @@
 
     invoke-direct {v0, v1}, Ljava/util/zip/GZIPInputStream;-><init>(Ljava/io/InputStream;)V
 
-    .line 288
+    .line 308
     new-instance p0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {p0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 289
+    .line 309
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 291
+    .line 311
     :goto_13
     invoke-virtual {v0, v1}, Ljava/util/zip/GZIPInputStream;->read([B)I
 
@@ -375,11 +572,11 @@
 
     goto :goto_13
 
-    .line 292
+    .line 312
     :cond_1e
     invoke-virtual {v0}, Ljava/util/zip/GZIPInputStream;->close()V
 
-    .line 293
+    .line 313
     invoke-virtual {p0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -395,23 +592,23 @@
         }
     .end annotation
 
-    .line 279
+    .line 299
     new-instance v0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 280
+    .line 300
     new-instance v1, Ljava/util/zip/GZIPOutputStream;
 
     invoke-direct {v1, v0}, Ljava/util/zip/GZIPOutputStream;-><init>(Ljava/io/OutputStream;)V
 
-    .line 281
+    .line 301
     invoke-virtual {v1, p0}, Ljava/util/zip/GZIPOutputStream;->write([B)V
 
-    .line 282
+    .line 302
     invoke-virtual {v1}, Ljava/util/zip/GZIPOutputStream;->close()V
 
-    .line 283
+    .line 303
     invoke-virtual {v0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -427,10 +624,10 @@
         }
     .end annotation
 
-    .line 204
+    .line 224
     nop
 
-    .line 206
+    .line 226
     const/4 v0, 0x0
 
     :try_start_2
@@ -464,21 +661,21 @@
     :try_end_20
     .catchall {:try_start_2 .. :try_end_20} :catchall_c3
 
-    .line 207
+    .line 227
     const/16 v1, 0x3a98
 
     :try_start_22
     invoke-virtual {p2, v1}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V
 
-    .line 208
+    .line 228
     const v1, 0x1d4c0
 
     invoke-virtual {p2, v1}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V
 
-    .line 209
+    .line 229
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
 
-    .line 210
+    .line 230
     const-string p1, "Authorization"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -505,14 +702,14 @@
 
     invoke-virtual {p2, p1, p0}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 211
+    .line 231
     const-string p0, "Accept"
 
     const-string p1, "application/vnd.github+json"
 
     invoke-virtual {p2, p0, p1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 212
+    .line 232
     const-string p0, "User-Agent"
 
     const-string p1, "DoitLocalSync/1.0"
@@ -521,32 +718,32 @@
     :try_end_58
     .catchall {:try_start_22 .. :try_end_58} :catchall_c0
 
-    .line 213
+    .line 233
     const-string p0, "UTF-8"
 
     if-eqz p3, :cond_7b
 
-    .line 214
+    .line 234
     const/4 p1, 0x1
 
     :try_start_5d
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V
 
-    .line 215
+    .line 235
     const-string p1, "Content-Type"
 
     const-string v1, "application/json"
 
     invoke-virtual {p2, p1, v1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 216
+    .line 236
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object p1
     :try_end_6b
     .catchall {:try_start_5d .. :try_end_6b} :catchall_c0
 
-    .line 217
+    .line 237
     :try_start_6b
     invoke-virtual {p3, p0}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
 
@@ -568,21 +765,21 @@
 
     throw p0
 
-    .line 219
+    .line 239
     :cond_7b
     :goto_7b
     new-instance p1, Lim/doit/pro/github/GitHubSync$HttpResp;
 
     invoke-direct {p1, v0}, Lim/doit/pro/github/GitHubSync$HttpResp;-><init>(Lim/doit/pro/github/GitHubSync$1;)V
 
-    .line 220
+    .line 240
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getResponseCode()I
 
     move-result p3
 
     iput p3, p1, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
-    .line 221
+    .line 241
     iget p3, p1, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v0, 0x190
@@ -600,21 +797,21 @@
 
     move-result-object p3
 
-    .line 222
+    .line 242
     :goto_95
     new-instance v0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 223
+    .line 243
     if-eqz p3, :cond_ae
 
-    .line 224
+    .line 244
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 226
+    .line 246
     :goto_a0
     invoke-virtual {p3, v1}, Ljava/io/InputStream;->read([B)I
 
@@ -628,11 +825,11 @@
 
     goto :goto_a0
 
-    .line 227
+    .line 247
     :cond_ab
     invoke-virtual {p3}, Ljava/io/InputStream;->close()V
 
-    .line 229
+    .line 249
     :cond_ae
     new-instance p3, Ljava/lang/String;
 
@@ -646,19 +843,19 @@
     :try_end_b9
     .catchall {:try_start_72 .. :try_end_b9} :catchall_c0
 
-    .line 230
+    .line 250
     nop
 
-    .line 232
+    .line 252
     if-eqz p2, :cond_bf
 
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 230
+    .line 250
     :cond_bf
     return-object p1
 
-    .line 232
+    .line 252
     :catchall_c0
     move-exception p0
 
@@ -674,7 +871,7 @@
 
     invoke-virtual {v0}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 233
+    .line 253
     :cond_c9
     goto :goto_cb
 
@@ -688,7 +885,7 @@
 .method public static lastSync(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 66
+    .line 67
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -701,7 +898,7 @@
 
     move-result-object p0
 
-    .line 67
+    .line 68
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -717,7 +914,7 @@
 .method public static now()Ljava/lang/String;
     .registers 3
 
-    .line 265
+    .line 285
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v1, "yyyy-MM-dd HH:mm"
@@ -742,27 +939,27 @@
 .method public static open(Landroid/app/Activity;)V
     .registers 3
 
-    .line 95
+    .line 96
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    .line 96
+    .line 97
     const-string v1, "im.doit.pro.github.GitHubSyncActivity"
 
     invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 97
+    .line 98
     invoke-virtual {p0, v0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    .line 98
+    .line 99
     return-void
 .end method
 
 .method public static prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
     .registers 3
 
-    .line 53
+    .line 54
     const-string v0, "doit_github_sync"
 
     const/4 v1, 0x0
@@ -782,22 +979,22 @@
         }
     .end annotation
 
-    .line 297
+    .line 317
     new-instance v0, Ljava/io/FileInputStream;
 
     invoke-direct {v0, p0}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
 
-    .line 298
+    .line 318
     new-instance p0, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {p0}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 299
+    .line 319
     const/16 v1, 0x2000
 
     new-array v1, v1, [B
 
-    .line 301
+    .line 321
     :goto_e
     invoke-virtual {v0, v1}, Ljava/io/FileInputStream;->read([B)I
 
@@ -811,11 +1008,11 @@
 
     goto :goto_e
 
-    .line 302
+    .line 322
     :cond_19
     invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
 
-    .line 303
+    .line 323
     invoke-virtual {p0}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object p0
@@ -831,7 +1028,7 @@
         }
     .end annotation
 
-    .line 196
+    .line 216
     const-string v0, "GET"
 
     const/4 v1, 0x0
@@ -840,7 +1037,7 @@
 
     move-result-object p0
 
-    .line 197
+    .line 217
     iget p1, p0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v0, 0x194
@@ -849,7 +1046,7 @@
 
     return-object v1
 
-    .line 198
+    .line 218
     :cond_e
     iget p1, p0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
@@ -857,7 +1054,7 @@
 
     if-ne p1, v0, :cond_24
 
-    .line 199
+    .line 219
     :try_start_14
     new-instance p1, Lorg/json/JSONObject;
 
@@ -875,13 +1072,13 @@
 
     return-object p0
 
-    .line 200
+    .line 220
     :catch_22
     move-exception p0
 
     return-object v1
 
-    .line 198
+    .line 218
     :cond_24
     new-instance p1, Ljava/io/IOException;
 
@@ -929,7 +1126,7 @@
 .method public static repo(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 61
+    .line 62
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -942,7 +1139,7 @@
 
     move-result-object p0
 
-    .line 62
+    .line 63
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -955,221 +1152,13 @@
     return-object p0
 .end method
 
-.method private static restoreDb(Landroid/content/Context;[B)V
-    .registers 5
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .line 174
-    const-string v0, "doitim.db"
-
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
-
-    move-result-object p0
-
-    .line 175
-    invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
-
-    move-result-object v0
-
-    .line 176
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v1
-
-    if-nez v1, :cond_1f
-
-    invoke-virtual {v0}, Ljava/io/File;->mkdirs()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_17
-
-    goto :goto_1f
-
-    :cond_17
-    new-instance p0, Ljava/io/IOException;
-
-    const-string p1, "\u65e0\u6cd5\u8bbf\u95ee\u6570\u636e\u5e93\u76ee\u5f55"
-
-    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw p0
-
-    .line 177
-    :cond_1f
-    :goto_1f
-    new-instance v1, Ljava/io/File;
-
-    const-string v2, "gh_restore_tmp.db"
-
-    invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
-    .line 178
-    new-instance v0, Ljava/io/FileOutputStream;
-
-    invoke-direct {v0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
-
-    .line 179
-    :try_start_2b
-    invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write([B)V
-    :try_end_2e
-    .catchall {:try_start_2b .. :try_end_2e} :catchall_b2
-
-    invoke-virtual {v0}, Ljava/io/OutputStream;->close()V
-
-    .line 181
-    new-instance p1, Ljava/io/File;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v2, "-journal"
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {p1}, Ljava/io/File;->delete()Z
-
-    .line 182
-    new-instance p1, Ljava/io/File;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v2, "-wal"
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {p1}, Ljava/io/File;->delete()Z
-
-    .line 183
-    new-instance p1, Ljava/io/File;
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v2, "-shm"
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {p1}, Ljava/io/File;->delete()Z
-
-    .line 184
-    invoke-virtual {p0}, Ljava/io/File;->exists()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_a3
-
-    invoke-virtual {p0}, Ljava/io/File;->delete()Z
-
-    move-result p1
-
-    if-eqz p1, :cond_9b
-
-    goto :goto_a3
-
-    :cond_9b
-    new-instance p0, Ljava/io/IOException;
-
-    const-string p1, "\u65e0\u6cd5\u66ff\u6362\u65e7\u6570\u636e\u5e93\uff08\u8bf7\u91cd\u542f\u540e\u91cd\u8bd5\uff09"
-
-    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw p0
-
-    .line 185
-    :cond_a3
-    :goto_a3
-    invoke-virtual {v1, p0}, Ljava/io/File;->renameTo(Ljava/io/File;)Z
-
-    move-result p0
-
-    if-eqz p0, :cond_aa
-
-    .line 186
-    return-void
-
-    .line 185
-    :cond_aa
-    new-instance p0, Ljava/io/IOException;
-
-    const-string p1, "\u5199\u5165\u6062\u590d\u6570\u636e\u5931\u8d25"
-
-    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw p0
-
-    .line 179
-    :catchall_b2
-    move-exception p0
-
-    invoke-virtual {v0}, Ljava/io/OutputStream;->close()V
-
-    throw p0
-.end method
-
 .method private static runAsync(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/github/GitHubSync$Worker;Ljava/lang/Runnable;)V
     .registers 5
 
-    .line 239
+    .line 259
     invoke-static {p0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 240
+    .line 260
     new-instance p1, Ljava/lang/Thread;
 
     new-instance v0, Lim/doit/pro/github/GitHubSync$4;
@@ -1178,17 +1167,17 @@
 
     invoke-direct {p1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 254
+    .line 274
     invoke-virtual {p1}, Ljava/lang/Thread;->start()V
 
-    .line 255
+    .line 275
     return-void
 .end method
 
 .method public static setLastSync(Landroid/content/Context;Ljava/lang/String;)V
     .registers 3
 
-    .line 71
+    .line 72
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -1231,7 +1220,7 @@
 
     invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 72
+    .line 73
     return-void
 .end method
 
@@ -1243,21 +1232,21 @@
         }
     .end annotation
 
-    .line 158
+    .line 181
     const-string v0, "doitim.db"
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
 
     move-result-object p0
 
-    .line 159
+    .line 182
     invoke-virtual {p0}, Ljava/io/File;->exists()Z
 
     move-result v0
 
     if-eqz v0, :cond_62
 
-    .line 160
+    .line 183
     new-instance v0, Ljava/io/File;
 
     invoke-virtual {p0}, Ljava/io/File;->getParentFile()Ljava/io/File;
@@ -1268,10 +1257,10 @@
 
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 161
+    .line 184
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 163
+    .line 186
     :try_start_1a
     invoke-virtual {p0}, Ljava/io/File;->getPath()Ljava/lang/String;
 
@@ -1287,7 +1276,7 @@
     :try_end_24
     .catchall {:try_start_1a .. :try_end_24} :catchall_54
 
-    .line 164
+    .line 187
     :try_start_24
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -1324,20 +1313,20 @@
     :try_start_44
     invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->close()V
 
-    .line 165
+    .line 188
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->readFile(Ljava/io/File;)[B
 
     move-result-object p0
     :try_end_4b
     .catchall {:try_start_44 .. :try_end_4b} :catchall_54
 
-    .line 169
+    .line 192
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 165
+    .line 188
     return-object p0
 
-    .line 164
+    .line 187
     :catchall_4f
     move-exception v2
 
@@ -1348,11 +1337,11 @@
     :try_end_54
     .catchall {:try_start_50 .. :try_end_54} :catchall_54
 
-    .line 166
+    .line 189
     :catchall_54
     move-exception v1
 
-    .line 167
+    .line 190
     :try_start_55
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->readFile(Ljava/io/File;)[B
 
@@ -1360,22 +1349,22 @@
     :try_end_59
     .catchall {:try_start_55 .. :try_end_59} :catchall_5d
 
-    .line 169
+    .line 192
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 167
+    .line 190
     return-object p0
 
-    .line 169
+    .line 192
     :catchall_5d
     move-exception p0
 
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 170
+    .line 193
     throw p0
 
-    .line 159
+    .line 182
     :cond_62
     new-instance p0, Ljava/io/IOException;
 
@@ -1386,10 +1375,107 @@
     throw p0
 .end method
 
+.method private static stageRestore(Landroid/content/Context;[B)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .line 199
+    const-string v0, "doitim.db"
+
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getDatabasePath(Ljava/lang/String;)Ljava/io/File;
+
+    move-result-object v0
+
+    .line 200
+    invoke-virtual {v0}, Ljava/io/File;->getParentFile()Ljava/io/File;
+
+    move-result-object v0
+
+    .line 201
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v1
+
+    if-nez v1, :cond_1f
+
+    invoke-virtual {v0}, Ljava/io/File;->mkdirs()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_17
+
+    goto :goto_1f
+
+    :cond_17
+    new-instance p0, Ljava/io/IOException;
+
+    const-string p1, "\u65e0\u6cd5\u8bbf\u95ee\u6570\u636e\u5e93\u76ee\u5f55"
+
+    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    .line 202
+    :cond_1f
+    :goto_1f
+    new-instance v1, Ljava/io/File;
+
+    const-string v2, "doitim.db.ghrestore"
+
+    invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    .line 203
+    new-instance v0, Ljava/io/FileOutputStream;
+
+    invoke-direct {v0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+
+    .line 204
+    :try_start_2b
+    invoke-virtual {v0, p1}, Ljava/io/OutputStream;->write([B)V
+    :try_end_2e
+    .catchall {:try_start_2b .. :try_end_2e} :catchall_44
+
+    invoke-virtual {v0}, Ljava/io/OutputStream;->close()V
+
+    .line 205
+    invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    const-string p1, "pending_restore"
+
+    const/4 v0, 0x1
+
+    invoke-interface {p0, p1, v0}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p0
+
+    invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
+
+    .line 206
+    return-void
+
+    .line 204
+    :catchall_44
+    move-exception p0
+
+    invoke-virtual {v0}, Ljava/io/OutputStream;->close()V
+
+    throw p0
+.end method
+
 .method public static toast(Landroid/content/Context;Ljava/lang/String;)V
     .registers 4
 
-    .line 258
+    .line 278
     sget-object v0, Lim/doit/pro/github/GitHubSync;->MAIN:Landroid/os/Handler;
 
     new-instance v1, Lim/doit/pro/github/GitHubSync$5;
@@ -1398,14 +1484,14 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 262
+    .line 282
     return-void
 .end method
 
 .method public static token(Landroid/content/Context;)Ljava/lang/String;
     .registers 3
 
-    .line 57
+    .line 58
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -1424,7 +1510,7 @@
 .method public static wire(Landroid/app/Activity;)V
     .registers 3
 
-    .line 79
+    .line 80
     :try_start_0
     invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
@@ -1440,17 +1526,17 @@
 
     move-result-object v0
 
-    .line 80
+    .line 81
     if-eqz v0, :cond_1e
 
-    .line 81
+    .line 82
     invoke-virtual {v0}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
     move-result-object v0
 
     check-cast v0, Landroid/view/View;
 
-    .line 82
+    .line 83
     new-instance v1, Lim/doit/pro/github/GitHubSync$1;
 
     invoke-direct {v1, p0}, Lim/doit/pro/github/GitHubSync$1;-><init>(Landroid/app/Activity;)V
@@ -1459,15 +1545,15 @@
     :try_end_1e
     .catchall {:try_start_0 .. :try_end_1e} :catchall_1f
 
-    .line 91
+    .line 92
     :cond_1e
     goto :goto_20
 
-    .line 89
+    .line 90
     :catchall_1f
     move-exception p0
 
-    .line 92
+    .line 93
     :goto_20
     return-void
 .end method

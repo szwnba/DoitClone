@@ -21,7 +21,7 @@
 .method constructor <init>()V
     .registers 1
 
-    .line 139
+    .line 140
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -37,7 +37,7 @@
         }
     .end annotation
 
-    .line 142
+    .line 143
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -72,7 +72,7 @@
 
     move-result-object v0
 
-    .line 143
+    .line 144
     const-string v1, "GET"
 
     const/4 v2, 0x0
@@ -81,21 +81,21 @@
 
     move-result-object v0
 
-    .line 144
+    .line 145
     iget v1, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v2, 0x194
 
     if-eq v1, v2, :cond_80
 
-    .line 145
+    .line 146
     iget v1, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v2, 0xc8
 
     if-ne v1, v2, :cond_55
 
-    .line 146
+    .line 147
     new-instance v1, Lorg/json/JSONObject;
 
     iget-object v0, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->body:Ljava/lang/String;
@@ -108,7 +108,7 @@
 
     move-result-object v0
 
-    .line 147
+    .line 148
     const/4 v1, 0x0
 
     invoke-static {v0, v1}, Landroid/util/Base64;->decode(Ljava/lang/String;I)[B
@@ -119,18 +119,18 @@
 
     move-result-object v0
 
-    .line 148
+    .line 149
     invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->access$600(Landroid/content/Context;[B)V
 
-    .line 149
+    .line 150
     const-string v0, "\u4e0b\u8f7d"
 
     invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->setLastSync(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 150
+    .line 151
     return-void
 
-    .line 145
+    .line 146
     :cond_55
     new-instance p1, Ljava/io/IOException;
 
@@ -174,7 +174,7 @@
 
     throw p1
 
-    .line 144
+    .line 145
     :cond_80
     new-instance p1, Ljava/io/IOException;
 

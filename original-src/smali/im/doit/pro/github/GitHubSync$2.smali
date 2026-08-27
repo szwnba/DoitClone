@@ -21,7 +21,7 @@
 .method constructor <init>()V
     .registers 1
 
-    .line 118
+    .line 119
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -37,12 +37,12 @@
         }
     .end annotation
 
-    .line 121
+    .line 122
     invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->access$000(Landroid/content/Context;)[B
 
     move-result-object v0
 
-    .line 122
+    .line 123
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->access$100([B)[B
 
     move-result-object v0
@@ -53,7 +53,7 @@
 
     move-result-object v0
 
-    .line 123
+    .line 124
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -88,17 +88,17 @@
 
     move-result-object v1
 
-    .line 124
+    .line 125
     invoke-static {p1, v1}, Lim/doit/pro/github/GitHubSync;->access$200(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
-    .line 125
+    .line 126
     new-instance v3, Lorg/json/JSONObject;
 
     invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V
 
-    .line 126
+    .line 127
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -125,19 +125,19 @@
 
     invoke-virtual {v3, v5, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 127
+    .line 128
     const-string v4, "content"
 
     invoke-virtual {v3, v4, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 128
+    .line 129
     if-eqz v2, :cond_61
 
     const-string v0, "sha"
 
     invoke-virtual {v3, v0, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 129
+    .line 130
     :cond_61
     const-string v0, "PUT"
 
@@ -149,7 +149,7 @@
 
     move-result-object v0
 
-    .line 130
+    .line 131
     iget v1, v0, Lim/doit/pro/github/GitHubSync$HttpResp;->code:I
 
     const/16 v2, 0xc8
@@ -164,7 +164,7 @@
 
     goto :goto_a3
 
-    .line 131
+    .line 132
     :cond_78
     new-instance p1, Ljava/io/IOException;
 
@@ -208,13 +208,13 @@
 
     throw p1
 
-    .line 133
+    .line 134
     :cond_a3
     :goto_a3
     const-string v0, "\u4e0a\u4f20"
 
     invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->setLastSync(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 134
+    .line 135
     return-void
 .end method

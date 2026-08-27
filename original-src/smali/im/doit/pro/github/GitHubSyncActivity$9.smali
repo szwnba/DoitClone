@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 172
+    .line 173
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public ok(Ljava/lang/String;)V
     .registers 4
 
-    .line 175
+    .line 176
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -50,7 +50,7 @@
 
     move-result-object p1
 
-    .line 176
+    .line 177
     :goto_9
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
@@ -70,10 +70,10 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 177
+    .line 178
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    .line 178
+    .line 179
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result p1
@@ -87,10 +87,10 @@
     :cond_27
     const-string p1, "Token \u5df2\u4fdd\u5b58"
 
-    .line 177
+    .line 178
     :goto_29
     invoke-static {v0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 179
+    .line 180
     return-void
 .end method

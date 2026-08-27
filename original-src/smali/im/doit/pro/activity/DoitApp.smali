@@ -1760,6 +1760,8 @@
     .line 149
     invoke-super {p0}, Landroid/app/Application;->onCreate()V
 
+    invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->applyPendingRestore(Landroid/content/Context;)V
+
     .line 150
     invoke-static {}, Lim/doit/pro/exception/DoitCrashException;->getInstance()Lim/doit/pro/exception/DoitCrashException;
 
