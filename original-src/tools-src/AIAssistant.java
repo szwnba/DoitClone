@@ -108,12 +108,21 @@ public class AIAssistant {
      *  必须传入 inflate 出来的 layoutView——此时 getView() 还是 null。 */
     public static void wireDetail(final TaskDetailFragment f, View layout) {
         try {
+            // 不能用 f.getActivity()：真实类继承 support-v4 Fragment，其返回类型是
+            // FragmentActivity，签名不匹配会 NoSuchMethodError。布局的 context 就是宿主 Activity。
+            final Activity a = layout.getContext() instanceof Activity ? (Activity) layout.getContext() : null;
             int id = layout.getResources().getIdentifier("ai_plan_btn", "id", layout.getContext().getPackageName());
             View btn = layout.findViewById(id);
-            if (btn != null) {
+            if (btn != null && a != null) {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) { onPlanClick(f); }
+                    public void onClick(View v) {
+                        try {
+                            onPlanClick(f, a);
+                        } catch (Throwable t) {
+                            toast(a, "AI 功能异常: " + t);
+                        }
+                    }
                 });
             }
         } catch (Throwable t) { }
@@ -139,8 +148,7 @@ public class AIAssistant {
         }
     }
 
-    private static void onPlanClick(final TaskDetailFragment f) {
-        final Activity a = f.getActivity();
+    private static void onPlanClick(final TaskDetailFragment f, final Activity a) {
         if (a == null) return;
         if (key(a).length() == 0) {
             toast(a, "请先在 设置 → AI 助理 里配置 API Key");
@@ -294,6 +302,14 @@ public class AIAssistant {
     }
 
     private static void apply(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r, final int[] applied) {
+        try {
+        applyInner(a, f, task, r, applied);
+        } catch (Throwable t) {
+            toast(a, "应用方案时出错: " + t);
+        }
+    }
+
+    private static void applyInner(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r, final int[] applied) {
         // 1. 描述 = 方案文本（setText 触发原版 TextWatcher 自动保存）
         try {
             View notes = f.getView().findViewById(a.getResources().getIdentifier("notes", "id", a.getPackageName()));

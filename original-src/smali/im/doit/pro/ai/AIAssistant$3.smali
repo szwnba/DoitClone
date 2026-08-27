@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->onPlanClick(Lim/doit/pro/activity/TaskDetailFragment;)V
+    value = Lim/doit/pro/ai/AIAssistant;->onPlanClick(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -34,7 +34,7 @@
         }
     .end annotation
 
-    .line 169
+    .line 177
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
@@ -51,7 +51,7 @@
 .method public ok(Ljava/lang/String;)V
     .registers 5
 
-    .line 171
+    .line 179
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;

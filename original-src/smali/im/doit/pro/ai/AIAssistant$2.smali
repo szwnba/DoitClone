@@ -18,20 +18,24 @@
 
 
 # instance fields
+.field final synthetic val$a:Landroid/app/Activity;
+
 .field final synthetic val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/activity/TaskDetailFragment;)V
-    .registers 2
+.method constructor <init>(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
+    .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 114
+    .line 117
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
+
+    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$2;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -41,12 +45,49 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .registers 2
+    .registers 5
 
-    .line 116
+    .line 121
+    :try_start_0
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
-    invoke-static {p1}, Lim/doit/pro/ai/AIAssistant;->access$000(Lim/doit/pro/activity/TaskDetailFragment;)V
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$2;->val$a:Landroid/app/Activity;
 
+    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->access$000(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
+    :try_end_7
+    .catchall {:try_start_0 .. :try_end_7} :catchall_8
+
+    .line 124
+    goto :goto_21
+
+    .line 122
+    :catchall_8
+    move-exception p1
+
+    .line 123
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$2;->val$a:Landroid/app/Activity;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "AI \u529f\u80fd\u5f02\u5e38: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 125
+    :goto_21
     return-void
 .end method

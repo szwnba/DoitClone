@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 505
+    .line 521
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
 .method public click(Landroid/view/View;)V
     .registers 3
 
-    .line 508
+    .line 524
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
     invoke-static {p1}, Lim/doit/pro/ai/AIAssistant;->key(Landroid/content/Context;)Ljava/lang/String;
@@ -64,7 +64,7 @@
 
     return-void
 
-    .line 509
+    .line 525
     :cond_14
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
@@ -72,7 +72,7 @@
 
     invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 510
+    .line 526
     new-instance p1, Ljava/lang/Thread;
 
     new-instance v0, Lim/doit/pro/ai/AIAssistant$13$1;
@@ -81,9 +81,9 @@
 
     invoke-direct {p1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 527
+    .line 543
     invoke-virtual {p1}, Ljava/lang/Thread;->start()V
 
-    .line 528
+    .line 544
     return-void
 .end method

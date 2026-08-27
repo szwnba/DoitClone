@@ -264,6 +264,14 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   吞掉后表现为"按钮点了没反应"。必须把 inflate 出来的 layoutView 直接传给接线方法。
   另：新建任务（mIsCreate）未落库时禁用 AI（防孤儿子任务）；重复应用会追加子任务、
   描述会被替换——这两种情况都要在确认框里向用户明示。
+- **stub 方法签名必须逐字节核对（r15 血泪）**：stub 里 `getActivity()` 声明返回
+  `android.app.Activity`，但真实 TaskDetailFragment 继承 support-v4 Fragment，其
+  `getActivity()` 返回 `FragmentActivity` → 运行时 NoSuchMethodError 秒崩。
+  规则：**凡 stub 涉及继承体系的方法（尤其返回类型），先 grep 真实类及其父链的
+  `.method` 签名**；能不从 stub 类拿的东西就换个来源（如 Activity 从 `layout.getContext()` 拿）。
+- **签名全量审计脚本**：把新包 smali 里对 `Lim/doit/...` 的全部 invoke/field 引用
+  逐个沿真实继承链解析核对（单文件检查会因继承产生大量误报，框架父类按公开 API 放行，
+  有"同款调用已在旧版本工作"的先例即闭环）。r15 审计 65 项全部通过后才发版。
 
 ## 九、教训级方法论
 
