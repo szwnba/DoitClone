@@ -219,6 +219,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **坑**：用户手机闪退但不会用 adb logcat，远程只能靠猜。
 - **解法**：在 Application.onCreate 包装 `Thread.setDefaultUncaughtExceptionHandler`（注意装在原崩溃处理器**之后**以保留链），把堆栈追加写到 `getExternalFilesDir(null)/doit_crash.txt` 和公共 `Download/doit_crash.txt`，用户用文件管理器即可取到发给开发者。
 
+### 31. 原版对版本号格式有隐含假设（闪退排查的实战收获）
+- **坑**：`versionName` 带 `-local-rN` 后缀后，`CheckVersion.needUpdate` 按点切分再 `Integer.parseInt`
+  解析 `5-local-r10` → `NumberFormatException` 主线程崩溃。该检查一天仅触发一次且服务器死亡时
+  走失败分支，所以潜伏多日才爆，极具迷惑性（曾被误判为"恢复数据引入的崩溃"）。
+- **解法**：`CheckVersion.needUpdate` 整体改为 `return false`，`HomeActivity.checkVersionEveryday`
+  废为空方法（同时避免向死服务器发请求）。**任何自定义 versionName 之前，先全局搜
+  `parseInt`/`valueOf` 对版本号的使用。**
+- **附带收获**：落盘崩溃日志（坑 30）一次就锁定了真凶——用户发来 `doit_crash.txt`，
+  堆栈比任何远程猜测都快。之前对"恢复数据坏库"的怀疑其实证据不足。
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

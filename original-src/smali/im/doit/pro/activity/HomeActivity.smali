@@ -306,52 +306,9 @@
 .end method
 
 .method private checkVersionEveryday()V
-    .locals 4
+    .locals 0
 
-    .prologue
-    .line 659
-    iget-object v2, p0, Lim/doit/pro/activity/HomeActivity;->mCheckVersion:Lim/doit/pro/asynctask/CheckVersion;
-
-    if-eqz v2, :cond_1
-
-    .line 667
-    :cond_0
-    :goto_0
     return-void
-
-    .line 662
-    :cond_1
-    invoke-static {}, Lim/doit/pro/utils/LocalSettings;->getLastCheckVersionTime()J
-
-    move-result-wide v0
-
-    .line 663
-    .local v0, "lastUpdated":J
-    invoke-static {v0, v1}, Lim/doit/pro/utils/DateUtils;->checkTimeIntervalAboveDay(J)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 664
-    new-instance v2, Lim/doit/pro/asynctask/CheckVersion;
-
-    const/4 v3, 0x1
-
-    invoke-direct {v2, p0, v3}, Lim/doit/pro/asynctask/CheckVersion;-><init>(Landroid/app/Activity;Z)V
-
-    iput-object v2, p0, Lim/doit/pro/activity/HomeActivity;->mCheckVersion:Lim/doit/pro/asynctask/CheckVersion;
-
-    .line 665
-    iget-object v2, p0, Lim/doit/pro/activity/HomeActivity;->mCheckVersion:Lim/doit/pro/asynctask/CheckVersion;
-
-    const/4 v3, 0x0
-
-    new-array v3, v3, [Ljava/lang/Void;
-
-    invoke-virtual {v2, v3}, Lim/doit/pro/asynctask/CheckVersion;->execute([Ljava/lang/Object;)Lim/doit/pro/asynctask/DoitAsyncTask;
-
-    goto :goto_0
 .end method
 
 .method private filterTasksWithTags(Lim/doit/pro/ui/model/TagFilter;)V
