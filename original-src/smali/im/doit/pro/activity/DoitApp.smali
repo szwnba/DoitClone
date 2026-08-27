@@ -1692,6 +1692,18 @@
 
     invoke-virtual {v0, v1}, Lim/doit/pro/model/User;->setTimezone(Ljava/lang/String;)V
 
+    const-string v1, "doit-local-user"
+
+    invoke-virtual {v0, v1}, Lim/doit/pro/model/BaseEntity;->setUuid(Ljava/lang/String;)V
+
+    const-string v1, "local"
+
+    invoke-virtual {v0, v1}, Lim/doit/pro/model/User;->setAccount(Ljava/lang/String;)V
+
+    const-string v1, "Local"
+
+    invoke-virtual {v0, v1}, Lim/doit/pro/model/User;->setNickname(Ljava/lang/String;)V
+
     :cond_1
     sput-object v0, Lim/doit/pro/activity/DoitApp;->_user:Lim/doit/pro/model/User;
 

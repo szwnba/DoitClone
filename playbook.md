@@ -238,6 +238,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   白名单；提醒时间设在过去不会响。
 - **排查技巧**：receiver 上 `android:permission` 引用未定义的自定义权限**不是问题**——同 UID 自发自收
   不做权限校验，别在这里浪费时间。
+### 33. 假 User 的身份字段是"核弹级"隐患——评论闪退案例
+- **坑**：加了评论后点开任务就闪退。评论创建时 `author = user.getUuid()`（假 User 为 null），
+  详情页渲染 `comment.getAuthor().equals(user.getUuid())` → null.equals → NPE。
+- **解法**：假 User 补固定身份 `uuid="doit-local-user"`（`BaseEntity.setUuid`，User 继承自它），
+  同时 `TaskComment.getAuthor()` 空值兜底返回同一常量——**已入库的 null 评论在渲染时被 getter 兜底救活，
+  无需清数据**；新评论 author 恒等于当前用户 uuid，走"这是我"的渲染分支，头像 null 已有保护。
+- **方法论**：凡"渲染时对用户身份字段做 equals/格式化"的地方，假 User 的 null 都是雷；
+  与其逐个补渲染端，不如给假 User 一个完整、稳定、合理的身份（uuid/account/nickname/timezone），
+  并在模型 getter 层兜底救已入库的脏数据。
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

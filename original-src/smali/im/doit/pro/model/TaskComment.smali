@@ -94,9 +94,13 @@
     .locals 1
 
     .prologue
-    .line 61
     iget-object v0, p0, Lim/doit/pro/model/TaskComment;->author:Ljava/lang/String;
 
+    if-nez v0, :cond_0
+
+    const-string v0, "doit-local-user"
+
+    :cond_0
     return-object v0
 .end method
 
