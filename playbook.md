@@ -247,6 +247,19 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **方法论**：凡"渲染时对用户身份字段做 equals/格式化"的地方，假 User 的 null 都是雷；
   与其逐个补渲染端，不如给假 User 一个完整、稳定、合理的身份（uuid/account/nickname/timezone），
   并在模型 getter 层兜底救已入库的脏数据。
+### 34. AI 功能接入模式（r13 实战定型）
+- **架构**：BYOK + OpenAI 兼容 `/chat/completions`（端点/Key/模型三项用户可配，Key 不入代码不入库）。
+  端点/模型可做默认值，**Key 绝对不硬编码**（仓库公开，dex 里就是泄露）。
+- **AI 输出抢救**：模型可能包代码围栏或夹带文字，先剥围栏、再截首尾大括号；
+  解析失败降级为纯文本方案（永不空手而归）。
+- **相对日期**：把今天日期放进 prompt 让模型输出绝对时间，App 端不做相对时间推算。
+- **写回原版数据的配方**：描述 = 对 notes EditText setText（触发原版 TextWatcher 自动保存）；
+  子任务 = new SubTask(task.getUuid(), task.getRepeatNo()) → setUuid(UUID) → setTitle → initPos
+  → task.getSubTasks().add → subTaskDao.createAndSaveLog → 反射调私有 setSubtaskViewContent() 刷新。
+- **反射取私有字段**：mTask 等 fragment 私有字段用 getDeclaredField + setAccessible，
+  比给整个 Fragment 建 stub 轻得多。
+- **对话框防崩**：异步回来 dialog.show() 前页面可能已销毁 → show 包 try/catch，防 BadTokenException。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

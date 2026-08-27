@@ -639,4 +639,14 @@ Come on!"</string>
     <string name="time_picker_30_label">:30</string>
     <string name="number_picker_seperator">.</string>
     <string name="press_again_to_exit">Press again to exit</string>
+    <string name="ai_title">AI Assistant</string>
+    <string name="ai_section_config">Configuration</string>
+    <string name="ai_section_sync">Connection</string>
+    <string name="ai_endpoint">API endpoint</string>
+    <string name="ai_key">API Key</string>
+    <string name="ai_model">Model</string>
+    <string name="ai_test">Test connection</string>
+    <string name="ai_note">Task title and description will be sent to your configured AI provider.</string>
+    <string name="ai_plan_btn">AI Action Plan</string>
+    <string name="ai_entry_label">AI Assistant (Action Plan)</string>
 </resources>

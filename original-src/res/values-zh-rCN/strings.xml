@@ -623,4 +623,14 @@ Doit.im时区：%1$s
     <string name="earlymorning">凌晨</string>
     <string name="morning">早上</string>
     <string name="forenoon">上午</string>
+    <string name="ai_title">AI 助理</string>
+    <string name="ai_section_config">配置</string>
+    <string name="ai_section_sync">连接</string>
+    <string name="ai_endpoint">API 端点</string>
+    <string name="ai_key">API Key</string>
+    <string name="ai_model">模型</string>
+    <string name="ai_test">测试连接</string>
+    <string name="ai_note">使用 AI 功能时，任务标题与描述会发送给你配置的 AI 服务商，其余数据不经过任何第三方。</string>
+    <string name="ai_plan_btn">AI 行动方案</string>
+    <string name="ai_entry_label">AI 助理（行动方案）</string>
 </resources>

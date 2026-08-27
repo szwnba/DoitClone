@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:doit="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/task_detail_block_margin_bottom" android:paddingBottom="26.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:text="@string/ai_section_config" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/ai_block_1" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_endpoint" doit:label="@string/ai_endpoint" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_key" android:layout_below="@id/ai_endpoint" doit:label="@string/ai_key" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_model" android:layout_below="@id/ai_key" doit:label="@string/ai_model" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <TextView android:text="@string/ai_section_sync" style="@style/settings_label" />
+        <RelativeLayout android:id="@id/ai_block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_test" doit:label="@string/ai_test" style="@style/task_detail_cell_wrap" />
+        </RelativeLayout>
+        <TextView android:text="@string/ai_note" style="@style/settings_label" />
+    </LinearLayout>
+</ScrollView>

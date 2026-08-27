@@ -4419,6 +4419,8 @@
     .line 322
     invoke-direct {p0, v0}, Lim/doit/pro/activity/TaskDetailFragment;->initView(Landroid/view/View;)V
 
+    invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->wireDetail(Lim/doit/pro/activity/TaskDetailFragment;)V
+
     .line 323
     invoke-direct {p0}, Lim/doit/pro/activity/TaskDetailFragment;->initViewLengthLimit()V
 

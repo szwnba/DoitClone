@@ -521,4 +521,13 @@
     <item type="id" name="ghs_last_sync" />
     <item type="id" name="ghs_msg" />
     <item type="id" name="ghs_input" />
+    <item type="id" name="ai_block_1" />
+    <item type="id" name="ai_block_2" />
+    <item type="id" name="ai_endpoint" />
+    <item type="id" name="ai_key" />
+    <item type="id" name="ai_model" />
+    <item type="id" name="ai_test" />
+    <item type="id" name="ai_plan_btn" />
+    <item type="id" name="ai_plan_text" />
+    <item type="id" name="ghs_entry" />
 </resources>

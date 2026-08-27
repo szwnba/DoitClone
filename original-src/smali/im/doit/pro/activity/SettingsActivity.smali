@@ -1825,6 +1825,8 @@
 
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->wire(Landroid/app/Activity;)V
 
+    invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->wire(Landroid/app/Activity;)V
+
     .line 193
     return-void
 .end method

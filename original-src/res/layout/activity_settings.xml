@@ -25,7 +25,8 @@
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/widget_style" android:layout_below="@id/date_and_time_format" doit:label="@string/widget_style" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/reminder_settings" android:layout_below="@id/widget_style" doit:label="@string/reminder" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelTextView android:id="@id/sync_log" android:layout_below="@id/reminder_settings" doit:label="@string/sync_log" style="@style/task_detail_cell_wrap" />
-        <im.doit.pro.ui.component.LabelArrowButton android:layout_below="@id/sync_log" doit:label="@string/github_sync_label" style="@style/task_detail_cell_wrap" />
+        <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_entry" android:layout_below="@id/sync_log" doit:label="@string/github_sync_label" style="@style/task_detail_cell_wrap" />
+        <im.doit.pro.ui.component.LabelArrowButton android:layout_below="@id/ghs_entry" doit:label="@string/ai_entry_label" style="@style/task_detail_cell_wrap" />
         </RelativeLayout>
         <TextView android:text="@string/security" style="@style/settings_label" />
         <RelativeLayout android:id="@id/block_3" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
