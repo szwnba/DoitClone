@@ -1325,7 +1325,7 @@
     if-ne v0, v2, :cond_0
 
     .line 130
-    invoke-direct {p0}, Lim/doit/pro/activity/TaskDetailActivity;->startSelectContacts()V
+    invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->openPlan(Landroid/app/Activity;)V
 
     .line 136
     :goto_0

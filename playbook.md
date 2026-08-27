@@ -286,6 +286,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **流式输出别要求 JSON**：让模型直接输出可读的【目标/行动步骤/风险提示】文本（边流边看），
   完成后再用正则抽步骤——比"流 JSON 再解析"体验好得多。
 
+### 36. "按钮劫持没生效"——先确认用户点的到底是哪一个按钮（r18）
+- **坑**：劫持了顶栏布局里的文字"发送"按钮（layout_task_detail_topbar/send_btn），用户点的却是
+  **ActionBar 菜单**里的纸飞机图标（res/menu/task_detail_menu.xml 的 action_send_to →
+  onMenuItemSelected → startSelectContacts）。同一屏有两个"发送"，长得像、路径完全不同。
+- **排查口诀**：用户说"XX 按钮"，先穷举这个界面所有叫 XX 的入口——布局文件搜、**menu 目录也要搜**、
+  再用资源 ID 反查 inflate/点击处理类（菜单项是数字 ID 分支在 onMenuItemSelected/onOptionsItemSelected 里）。
+- **教训**：xml 改完务必回解验证（这次菜单图标进了包但点击劫持锚文本没匹配上，静默失败——
+  assert 挂了但脚本继续跑完构建，产物验证才发现）。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
