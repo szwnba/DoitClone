@@ -530,9 +530,4 @@
     <item type="id" name="ai_plan_btn" />
     <item type="id" name="ai_plan_text" />
     <item type="id" name="ghs_entry" />
-    <item type="id" name="ai_plan_scroll" />
-    <item type="id" name="ai_plan_text" />
-    <item type="id" name="ai_plan_close" />
-    <item type="id" name="ai_plan_regen" />
-    <item type="id" name="ai_plan_apply" />
 </resources>

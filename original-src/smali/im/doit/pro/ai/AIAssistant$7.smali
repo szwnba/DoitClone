@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Lim/doit/pro/activity/listener/OnLayoutClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->wireSettings(Landroid/app/Activity;)V
+    value = Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,20 +18,24 @@
 
 
 # instance fields
-.field final synthetic val$a:Landroid/app/Activity;
+.field final synthetic val$c:Landroid/content/Context;
+
+.field final synthetic val$msg:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Landroid/app/Activity;)V
-    .registers 2
+.method constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
+    .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 387
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
+    .line 447
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$c:Landroid/content/Context;
+
+    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$7;->val$msg:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -40,50 +44,21 @@
 
 
 # virtual methods
-.method public click(Landroid/view/View;)V
-    .registers 3
+.method public run()V
+    .registers 4
 
-    .line 390
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
+    .line 449
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$7;->val$c:Landroid/content/Context;
 
-    invoke-static {p1}, Lim/doit/pro/ai/AIAssistant;->key(Landroid/content/Context;)Ljava/lang/String;
+    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$msg:Ljava/lang/String;
 
-    move-result-object p1
+    const/4 v2, 0x1
 
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
+    invoke-static {v0, v1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
 
-    move-result p1
+    move-result-object v0
 
-    if-nez p1, :cond_14
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
-
-    const-string v0, "\u8bf7\u5148\u586b\u5199 API Key"
-
-    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    return-void
-
-    .line 391
-    :cond_14
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
-
-    const-string v0, "\u6b63\u5728\u6d4b\u8bd5\u8fde\u63a5\u2026"
-
-    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    .line 392
-    new-instance p1, Ljava/lang/Thread;
-
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$7$1;
-
-    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$7$1;-><init>(Lim/doit/pro/ai/AIAssistant$7;)V
-
-    invoke-direct {p1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-
-    .line 407
-    invoke-virtual {p1}, Ljava/lang/Thread;->start()V
-
-    .line 408
     return-void
 .end method

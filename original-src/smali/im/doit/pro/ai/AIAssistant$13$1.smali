@@ -1,4 +1,4 @@
-.class Lim/doit/pro/ai/AIAssistant$7$1;
+.class Lim/doit/pro/ai/AIAssistant$13$1;
 .super Ljava/lang/Object;
 .source "AIAssistant.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant$7;->click(Landroid/view/View;)V
+    value = Lim/doit/pro/ai/AIAssistant$13;->click(Landroid/view/View;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,15 +18,15 @@
 
 
 # instance fields
-.field final synthetic this$0:Lim/doit/pro/ai/AIAssistant$7;
+.field final synthetic this$0:Lim/doit/pro/ai/AIAssistant$13;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/ai/AIAssistant$7;)V
+.method constructor <init>(Lim/doit/pro/ai/AIAssistant$13;)V
     .registers 2
 
-    .line 392
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$7$1;->this$0:Lim/doit/pro/ai/AIAssistant$7;
+    .line 526
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$13$1;->this$0:Lim/doit/pro/ai/AIAssistant$13;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,39 +38,39 @@
 .method public run()V
     .registers 4
 
-    .line 396
+    .line 530
     :try_start_0
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$7$1;->this$0:Lim/doit/pro/ai/AIAssistant$7;
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$13$1;->this$0:Lim/doit/pro/ai/AIAssistant$13;
 
-    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
+    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
     const-string v1, "\u4f60\u662f\u8fde\u901a\u6027\u6d4b\u8bd5"
 
     const-string v2, "\u53ea\u56de\u590d\u4e24\u4e2a\u5b57\uff1a\u6210\u529f"
 
-    invoke-static {v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->chat(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$700(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 397
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$200()Landroid/os/Handler;
+    .line 531
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
     move-result-object v0
 
-    new-instance v1, Lim/doit/pro/ai/AIAssistant$7$1$1;
+    new-instance v1, Lim/doit/pro/ai/AIAssistant$13$1$1;
 
-    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$7$1$1;-><init>(Lim/doit/pro/ai/AIAssistant$7$1;)V
+    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$13$1$1;-><init>(Lim/doit/pro/ai/AIAssistant$13$1;)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
     :try_end_17
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_17} :catch_18
 
-    .line 405
+    .line 541
     goto :goto_38
 
-    .line 400
+    .line 535
     :catch_18
     move-exception v0
 
-    .line 401
+    .line 536
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v1
@@ -92,19 +92,19 @@
 
     move-result-object v0
 
-    .line 402
+    .line 537
     :goto_2c
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$200()Landroid/os/Handler;
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
     move-result-object v1
 
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$7$1$2;
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$13$1$2;
 
-    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$7$1$2;-><init>(Lim/doit/pro/ai/AIAssistant$7$1;Ljava/lang/String;)V
+    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$13$1$2;-><init>(Lim/doit/pro/ai/AIAssistant$13$1;Ljava/lang/String;)V
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 406
+    .line 542
     :goto_38
     return-void
 .end method

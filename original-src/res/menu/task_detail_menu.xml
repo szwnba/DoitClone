@@ -2,5 +2,5 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:icon="@drawable/icon_actionbar_comment" android:id="@id/action_add_comment" android:title="@string/add_a_comment" android:showAsAction="always" />
-    <item android:icon="@drawable/icon_ai_magicstick" android:id="@id/action_send_to" android:title="@string/ai_plan_page_title" android:showAsAction="always" />
+    <item android:icon="@drawable/icon_actionbar_sendto" android:id="@id/action_send_to" android:title="@string/send_to" android:showAsAction="always" />
 </menu>

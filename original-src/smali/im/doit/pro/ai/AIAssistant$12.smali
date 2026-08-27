@@ -1,4 +1,4 @@
-.class Lim/doit/pro/ai/AIAssistant$10;
+.class Lim/doit/pro/ai/AIAssistant$12;
 .super Ljava/lang/Object;
 .source "AIAssistant.java"
 
@@ -30,8 +30,8 @@
         }
     .end annotation
 
-    .line 495
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$10;->val$a:Landroid/app/Activity;
+    .line 511
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -41,9 +41,9 @@
 
 # virtual methods
 .method public ok(Ljava/lang/String;)V
-    .registers 4
+    .registers 5
 
-    .line 498
+    .line 514
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -55,9 +55,9 @@
 
     move-result-object p1
 
-    .line 499
+    .line 515
     :goto_9
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$10;->val$a:Landroid/app/Activity;
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    const-string v1, "endpoint"
+    const-string v1, "model"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -75,25 +75,41 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 500
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$10;->val$a:Landroid/app/Activity;
+    .line 516
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    move-result p1
+    move-result v1
 
-    if-nez p1, :cond_27
+    if-nez v1, :cond_27
 
-    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u7aef\u70b9"
+    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u6a21\u578b"
 
-    goto :goto_29
+    goto :goto_3a
 
     :cond_27
-    const-string p1, "\u7aef\u70b9\u5df2\u4fdd\u5b58"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    :goto_29
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "\u6a21\u578b\u5df2\u4fdd\u5b58: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    :goto_3a
     invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 501
+    .line 517
     return-void
 .end method

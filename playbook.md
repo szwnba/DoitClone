@@ -302,6 +302,14 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **教训**：复用原版 API 前看三样东西——签名、**@Deprecated 注解**、**方法体是否只有 return 常量**。
   审计脚本可升级：对将被调用的方法做"空壳体检"（方法体 ≤5 条指令且含 return-const 即告警）。
 
+### 38. 版本回退的正确姿势（r20 实操）
+- Android **不允许降级安装**（versionCode 单调递增），"回退到 rN" = 用 git 把 original-src 整树
+  checkout 回该提交，**打更高的 versionCode**（rN 内容 + 新号）重新构建分发。
+- 恢复用"先 git rm 再 checkout"两步：`git checkout <commit> -- path` 不会删除该提交之后新增的文件，
+  只清不取会留下尸体类（还进 dex）。
+- 回退后核对清单：新增入口/劫持是否消失、原入口是否回来、ai 包文件数对得上、
+  构建产物大小与目标版本一致（只差版本号时应相同）。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
