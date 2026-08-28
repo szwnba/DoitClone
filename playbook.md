@@ -330,6 +330,22 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **Issue 附加格式**：guid=`gh-issue-{number}`（天然去重键）、title=`#42 标题`、url=html_url；
   Issues API 会混入 PR，按响应里有无 `pull_request` 字段过滤。
 
+### 41. 换设置行的控件类型 = 闪退（r25→r26）
+- **坑**：把设置页"同步日志"行从 LabelTextView 换成 LabelArrowButton（为了箭头样式），打开设置页即崩。
+- **原因**：SettingsActivity 对该视图有 `check-cast LabelTextView` 硬转换——原版代码对布局控件
+  有类型假设。改任何原版行的控件类型前，必须先 grep 它的资源 ID 找出全部消费方。
+- **解法**：控件类型还原（LabelTextView），只换 label 文案；点击接线用 findViewById 后
+  setOnClickListener（对任何控件类型都成立）。**文案可以随便换，控件类不能随便换。**
+
+### 42. APK 分发切换到 GitHub Releases（r26 起）
+- **动机**：APK 进 git 仓库会随历史永久累积（每版 ~5.7MB，25 版已 ~126MB 对象）。
+- **做法**：`POST /releases`（tag=rN, body=更新说明）→ `POST uploads.../assets?name=doit-local-rN.apk`
+  （Content-Type: vnd.android.package-archive，**附件不计仓库体积**）→ 页面下载按钮指向
+  `releases/download/rN/doit-local-rN.apk` → 仓库 `git rm` 掉 docs/download 里的 APK。
+- **注意**：上传接口偶发**空响应但实际成功**，重传会报 Validation Failed（同名）——以
+  `GET /releases/tags/rN` 查 assets 状态为准；重试循环别按响应判成败，按查询结果判。
+- 发版脚本追加两步（替换原"cp 到 docs/download"）：建 Release 传附件 + 页面链接改 Release URL。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
