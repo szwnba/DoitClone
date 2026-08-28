@@ -344,7 +344,11 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   `releases/download/rN/doit-local-rN.apk` → 仓库 `git rm` 掉 docs/download 里的 APK。
 - **注意**：上传接口偶发**空响应但实际成功**，重传会报 Validation Failed（同名）——以
   `GET /releases/tags/rN` 查 assets 状态为准；重试循环别按响应判成败，按查询结果判。
-- 发版脚本追加两步（替换原"cp 到 docs/download"）：建 Release 传附件 + 页面链接改 Release URL。
+- **实际回退（r26 当日）**：Release 下载要经 objects.githubusercontent.com，大陆网络经常
+  连不上；而 Pages 托管该用户已成功下载 20+ 次（经验证可行）。**分发方式的选择要以用户
+  网络实测为准，不是"官方最佳实践"为准**。最终方案：APK 主分发走 Pages（docs/download），
+  Release 附件留作历史归档（不占仓库体积，白送的版本博物馆）。
+- 发版固定动作（最终版）：cp 到 docs/download/doit-local.apk + 页面 ?v=rN + 建同名 Release 传附件（归档用）。
 
 ## 九、教训级方法论
 
