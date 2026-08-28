@@ -319,6 +319,17 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   **setDisplayShowTitleEnabled(true)** + setDisplayUseLogoEnabled(false)。
 - **教训**：抄原版 UI 初始化时要抄**完整方法体**（数 invoke 条数对齐），别按语义"理解着抄"。
 
+### 40. 借尸还魂：复用原版"回传管线"集成新功能（r23 Issue 附件）
+- **场景**：印象笔记附件挂了（服务退出中国），要用 GitHub Issue 顶上同样的 UI。
+- **关键发现**：原版 `Media` 附件模型是通用的（uuid/type/title/url），回传协议是
+  `setResult(RESULT_OK, evernote_note_guid/title/share_url 三 extras)` → fragment 的
+  `onActivityResult(0x2711)` 自动完成**去重、落库、刷新卡片**。
+- **零成本集成**：新选择页只需按同样协议 setResult；劫持点小到一行——
+  `showAttachFromEvernoteDailog` 里的 `const-class AttachFromEvernoteActivity` 换成新类即可，
+  请求码/启动方式全留原版。**先找原版有没有"协议化"的接缝，比硬改 UI 层优雅一个数量级。**
+- **Issue 附加格式**：guid=`gh-issue-{number}`（天然去重键）、title=`#42 标题`、url=html_url；
+  Issues API 会混入 PR，按响应里有无 `pull_request` 字段过滤。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

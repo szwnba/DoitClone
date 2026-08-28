@@ -6,6 +6,7 @@
         <RelativeLayout android:id="@id/ghs_block_1" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_token" doit:label="@string/ghs_token" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_repo" android:layout_below="@id/ghs_token" doit:label="@string/ghs_repo" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_issue_repo" android:layout_below="@id/ghs_repo" doit:label="@string/ghs_issue_repo" style="@style/task_detail_cell_wrap" />
         </RelativeLayout>
         <TextView android:text="@string/ghs_section_sync" style="@style/settings_label" />
         <RelativeLayout android:id="@id/ghs_block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">

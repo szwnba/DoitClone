@@ -54,6 +54,10 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
             @Override
             public void click(View v) { editRepo(); }
         });
+        row(id("ghs_issue_repo"), new OnLayoutClickListener() {
+            @Override
+            public void click(View v) { editIssueRepo(); }
+        });
         row(id("ghs_upload"), new OnLayoutClickListener() {
             @Override
             public void click(View v) { onUpload(); }
@@ -181,6 +185,20 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
                         t.length() == 0 ? "已清空 Token" : "Token 已保存");
                 }
             }, true, GitHubSync.token(this), true).show();
+    }
+
+    private void editIssueRepo() {
+        appDialog("dialog_ghs_input", "Issue 仓库", "附加 Issue 用的仓库，格式: 用户名/仓库名（留空恢复默认）",
+            "保存", new OnOk() {
+                @Override
+                public void ok(String text) {
+                    String r = text == null ? "" : text.trim();
+                    GitHubSync.prefs(GitHubSyncActivity.this).edit()
+                        .putString("issue_repo", r).commit();
+                    GitHubSync.toast(GitHubSyncActivity.this,
+                        r.length() == 0 ? "已恢复默认 Issue 仓库" : "Issue 仓库已保存: " + r);
+                }
+            }, true, IssuePickerActivity.issueRepo(this), false).show();
     }
 
     private void editRepo() {

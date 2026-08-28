@@ -530,4 +530,9 @@
     <item type="id" name="ai_plan_btn" />
     <item type="id" name="ai_plan_text" />
     <item type="id" name="ghs_entry" />
+    <item type="id" name="issue_list" />
+    <item type="id" name="issue_empty" />
+    <item type="id" name="issue_item_title" />
+    <item type="id" name="issue_item_sub" />
+    <item type="id" name="ghs_issue_repo" />
 </resources>

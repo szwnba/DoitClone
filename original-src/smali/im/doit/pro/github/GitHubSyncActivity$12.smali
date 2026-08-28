@@ -1,4 +1,4 @@
-.class Lim/doit/pro/github/GitHubSyncActivity$10;
+.class Lim/doit/pro/github/GitHubSyncActivity$12;
 .super Ljava/lang/Object;
 .source "GitHubSyncActivity.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->editToken()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->editRepo()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -25,8 +25,8 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 179
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$10;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 206
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -36,9 +36,9 @@
 
 # virtual methods
 .method public ok(Ljava/lang/String;)V
-    .registers 4
+    .registers 5
 
-    .line 182
+    .line 209
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -50,9 +50,9 @@
 
     move-result-object p1
 
-    .line 183
+    .line 210
     :goto_9
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$10;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
@@ -62,7 +62,7 @@
 
     move-result-object v0
 
-    const-string v1, "token"
+    const-string v1, "repo"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -70,27 +70,29 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 184
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$10;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 211
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    .line 185
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    move-result p1
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    if-nez p1, :cond_27
+    const-string v2, "\u4ed3\u5e93\u5df2\u4fdd\u5b58: "
 
-    const-string p1, "\u5df2\u6e05\u7a7a Token"
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    goto :goto_29
+    move-result-object v1
 
-    :cond_27
-    const-string p1, "Token \u5df2\u4fdd\u5b58"
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 184
-    :goto_29
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
     invoke-static {v0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 186
+    .line 212
     return-void
 .end method

@@ -58,7 +58,7 @@
     move-result-object v1
 
     .line 1272
-    const-class v2, Lim/doit/pro/activity/AttachFromEvernoteActivity;
+    const-class v2, Lim/doit/pro/github/IssuePickerActivity;
 
     .line 1271
     invoke-direct {v0, v1, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V

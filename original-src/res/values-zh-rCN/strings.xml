@@ -633,4 +633,6 @@ Doit.im时区：%1$s
     <string name="ai_note">使用 AI 功能时，任务标题与描述会发送给你配置的 AI 服务商，其余数据不经过任何第三方。</string>
     <string name="ai_plan_btn">AI 行动方案</string>
     <string name="ai_entry_label">AI 助理（行动方案）</string>
+    <string name="ghs_issue_repo">Issue 仓库</string>
+    <string name="issue_picker_title">关联 GitHub Issue</string>
 </resources>
