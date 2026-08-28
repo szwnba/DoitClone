@@ -15,7 +15,7 @@
         <RelativeLayout android:id="@id/block_1" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/account_info" doit:label="@string/account_info" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelTextView android:id="@id/task_mailbox" android:layout_below="@id/account_info" doit:label="@string/task_mailbox" style="@style/task_detail_cell_wrap" />
-            <im.doit.pro.ui.component.LabelTextView android:id="@id/gcal_sync" android:layout_below="@id/task_mailbox" doit:label="@string/gcal_sync_switch_label" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelTextView android:id="@id/gcal_sync" android:layout_below="@id/task_mailbox" doit:label="@string/gcal_sync_switch_label" android:visibility="gone" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/evernote" android:layout_below="@id/gcal_sync" doit:label="@string/link_to_evernote" style="@style/task_detail_cell_wrap" />
         </RelativeLayout>
         <TextView android:text="@string/general" style="@style/settings_label" />

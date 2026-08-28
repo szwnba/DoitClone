@@ -9,7 +9,6 @@
             <item android:id="@id/action_daily_plan" android:title="@string/plan" android:showAsAction="withText" />
             <item android:id="@id/action_daily_review" android:title="@string/review" android:showAsAction="withText" />
             <item android:id="@id/action_nextbox_show_mode" android:title="@string/action_show_all" android:showAsAction="withText" />
-            <item android:id="@id/action_sync" android:title="@string/action_sync" android:showAsAction="withText" />
             <item android:id="@id/action_groupby" android:title="@string/group_by" android:showAsAction="withText" />
             <item android:id="@id/action_tag_filter" android:title="@string/tag_filter" android:showAsAction="withText" />
             <item android:id="@id/action_search" android:title="@string/search" android:showAsAction="withText" />
