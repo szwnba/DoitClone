@@ -87,6 +87,17 @@ public class GitHubSync {
                     }
                 });
             }
+            View crash = findByText(a.getWindow().getDecorView(), "崩溃日志");
+            if (crash == null) crash = findByText(a.getWindow().getDecorView(), "crash log");
+            if (crash != null) {
+                View cp = (View) crash.getParent();
+                cp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        shareCrashLog(a);
+                    }
+                });
+            }
         } catch (Throwable t) {
             // 设置页接线失败不影响其他功能
         }

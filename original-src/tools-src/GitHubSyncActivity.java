@@ -66,10 +66,6 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
             @Override
             public void click(View v) { onRestore(); }
         });
-        row(id("ghs_crash_log"), new OnLayoutClickListener() {
-            @Override
-            public void click(View v) { GitHubSync.shareCrashLog(GitHubSyncActivity.this); }
-        });
     }
 
     private void row(int resId, OnLayoutClickListener l) {

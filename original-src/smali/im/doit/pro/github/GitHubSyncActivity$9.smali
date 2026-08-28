@@ -3,12 +3,12 @@
 .source "GitHubSyncActivity.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lim/doit/pro/github/GitHubSyncActivity$OnOk;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->onUpload()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->onRestore()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 146
+    .line 155
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -35,21 +35,18 @@
 
 
 # virtual methods
-.method public run()V
+.method public ok(Ljava/lang/String;)V
     .registers 3
 
-    .line 149
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 158
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    const-string v1, "\u2713 \u5907\u4efd\u5df2\u4e0a\u4f20\u5230 GitHub"
+    new-instance v0, Lim/doit/pro/github/GitHubSyncActivity$9$1;
 
-    invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-direct {v0, p0}, Lim/doit/pro/github/GitHubSyncActivity$9$1;-><init>(Lim/doit/pro/github/GitHubSyncActivity$9;)V
 
-    .line 150
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$9;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->doRestore(Landroid/app/Activity;Ljava/lang/Runnable;)V
 
-    invoke-virtual {v0}, Lim/doit/pro/github/GitHubSyncActivity;->onResume()V
-
-    .line 151
+    .line 172
     return-void
 .end method
