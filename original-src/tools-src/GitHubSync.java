@@ -210,6 +210,46 @@ public class GitHubSync {
         } catch (Throwable t) { }
     }
 
+    /** 崩溃日志一键分享：读取落盘 doit_crash.txt（最近 64KB），拉起系统分享面板 */
+    public static void shareCrashLog(final Activity a) {
+        try {
+            String text = readCrashLog(a);
+            if (text == null || text.trim().length() == 0) {
+                toast(a, "当前没有崩溃日志");
+                return;
+            }
+            Intent i = new Intent(Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(Intent.EXTRA_SUBJECT, "Doit 本地版崩溃日志");
+            i.putExtra(Intent.EXTRA_TEXT, text);
+            a.startActivity(Intent.createChooser(i, "发送崩溃日志"));
+        } catch (Throwable t) {
+            toast(a, "读取失败: " + t);
+        }
+    }
+
+    private static String readCrashLog(Context c) {
+        java.io.File app = c.getExternalFilesDir(null);
+        java.io.File dl = android.os.Environment.getExternalStoragePublicDirectory(
+            android.os.Environment.DIRECTORY_DOWNLOADS);
+        String best = null;
+        java.io.File[] dirs = { app, dl };
+        for (int k = 0; k < dirs.length; k++) {
+            java.io.File dir = dirs[k];
+            if (dir == null) continue;
+            try {
+                java.io.File f = new java.io.File(dir, "doit_crash.txt");
+                if (!f.exists()) continue;
+                String s = new String(readFile(f), "UTF-8");
+                if (s.trim().length() == 0) continue;
+                if (best == null || s.length() > best.length()) best = s;
+            } catch (Throwable ignore) { }
+        }
+        if (best == null) return null;
+        if (best.length() > 65536) best = best.substring(best.length() - 65536);
+        return best;
+    }
+
     // ---------- 数据库快照与恢复 ----------
 
     /** 优先 VACUUM INTO 取一致快照，失败则直接读文件 */

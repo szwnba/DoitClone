@@ -651,4 +651,5 @@ Come on!"</string>
     <string name="ai_entry_label">AI Assistant (Action Plan)</string>
     <string name="ghs_issue_repo">Issues repository</string>
     <string name="issue_picker_title">Attach GitHub Issue</string>
+    <string name="ghs_crash_log">Share crash log</string>
 </resources>

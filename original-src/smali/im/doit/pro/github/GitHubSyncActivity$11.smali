@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->editIssueRepo()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->editToken()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 192
+    .line 183
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$11;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -36,9 +36,9 @@
 
 # virtual methods
 .method public ok(Ljava/lang/String;)V
-    .registers 5
+    .registers 4
 
-    .line 195
+    .line 186
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -50,7 +50,7 @@
 
     move-result-object p1
 
-    .line 196
+    .line 187
     :goto_9
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$11;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
@@ -62,8 +62,7 @@
 
     move-result-object v0
 
-    .line 197
-    const-string v1, "issue_repo"
+    const-string v1, "token"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -71,43 +70,27 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 198
+    .line 188
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$11;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    .line 199
+    .line 189
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    move-result v1
+    move-result p1
 
-    if-nez v1, :cond_27
+    if-nez p1, :cond_27
 
-    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4 Issue \u4ed3\u5e93"
+    const-string p1, "\u5df2\u6e05\u7a7a Token"
 
-    goto :goto_3a
+    goto :goto_29
 
     :cond_27
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string p1, "Token \u5df2\u4fdd\u5b58"
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "Issue \u4ed3\u5e93\u5df2\u4fdd\u5b58: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    .line 198
-    :goto_3a
+    .line 188
+    :goto_29
     invoke-static {v0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 200
+    .line 190
     return-void
 .end method

@@ -535,4 +535,5 @@
     <item type="id" name="issue_item_title" />
     <item type="id" name="issue_item_sub" />
     <item type="id" name="ghs_issue_repo" />
+    <item type="id" name="ghs_crash_log" />
 </resources>

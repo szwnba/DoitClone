@@ -12,6 +12,7 @@
         <RelativeLayout android:id="@id/ghs_block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_upload" doit:label="@string/ghs_upload" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_restore" android:layout_below="@id/ghs_upload" doit:label="@string/ghs_restore" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ghs_crash_log" android:layout_below="@id/ghs_restore" doit:label="@string/ghs_crash_log" style="@style/task_detail_cell_wrap" />
         </RelativeLayout>
         <TextView android:id="@id/ghs_last_sync" style="@style/settings_label" />
     </LinearLayout>

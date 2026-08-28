@@ -1,4 +1,4 @@
-.class Lim/doit/pro/github/GitHubSyncActivity$12;
+.class Lim/doit/pro/github/GitHubSyncActivity$13;
 .super Ljava/lang/Object;
 .source "GitHubSyncActivity.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->editIssueRepo()V
+    value = Lim/doit/pro/github/GitHubSyncActivity;->editRepo()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -25,8 +25,8 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 196
-    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 210
+    iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$13;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -38,7 +38,7 @@
 .method public ok(Ljava/lang/String;)V
     .registers 5
 
-    .line 199
+    .line 213
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -50,9 +50,9 @@
 
     move-result-object p1
 
-    .line 200
+    .line 214
     :goto_9
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$13;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-static {v0}, Lim/doit/pro/github/GitHubSync;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
@@ -62,8 +62,7 @@
 
     move-result-object v0
 
-    .line 201
-    const-string v1, "issue_repo"
+    const-string v1, "repo"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -71,26 +70,14 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 202
-    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$12;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
+    .line 215
+    iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$13;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    .line 203
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v1
-
-    if-nez v1, :cond_27
-
-    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4 Issue \u4ed3\u5e93"
-
-    goto :goto_3a
-
-    :cond_27
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "Issue \u4ed3\u5e93\u5df2\u4fdd\u5b58: "
+    const-string v2, "\u4ed3\u5e93\u5df2\u4fdd\u5b58: "
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -104,10 +91,8 @@
 
     move-result-object p1
 
-    .line 202
-    :goto_3a
     invoke-static {v0, p1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 204
+    .line 216
     return-void
 .end method

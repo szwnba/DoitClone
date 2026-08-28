@@ -34,7 +34,7 @@
         }
     .end annotation
 
-    .line 296
+    .line 336
     iput-object p1, p0, Lim/doit/pro/github/GitHubSync$5;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSync$5;->val$a:Landroid/app/Activity;
@@ -51,7 +51,7 @@
 .method public run()V
     .registers 4
 
-    .line 300
+    .line 340
     :try_start_0
     iget-object v0, p0, Lim/doit/pro/github/GitHubSync$5;->val$w:Lim/doit/pro/github/GitHubSync$Worker;
 
@@ -59,7 +59,7 @@
 
     invoke-interface {v0, v1}, Lim/doit/pro/github/GitHubSync$Worker;->run(Landroid/content/Context;)V
 
-    .line 301
+    .line 341
     invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$900()Landroid/os/Handler;
 
     move-result-object v0
@@ -70,14 +70,14 @@
     :try_end_10
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_10} :catch_11
 
-    .line 308
+    .line 348
     goto :goto_31
 
-    .line 302
+    .line 342
     :catch_11
     move-exception v0
 
-    .line 303
+    .line 343
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v1
@@ -99,7 +99,7 @@
 
     move-result-object v0
 
-    .line 304
+    .line 344
     :goto_25
     invoke-static {}, Lim/doit/pro/github/GitHubSync;->access$900()Landroid/os/Handler;
 
@@ -111,7 +111,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 309
+    .line 349
     :goto_31
     return-void
 .end method

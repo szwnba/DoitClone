@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 304
+    .line 344
     iput-object p1, p0, Lim/doit/pro/github/GitHubSync$5$1;->this$0:Lim/doit/pro/github/GitHubSync$5;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSync$5$1;->val$msg:Ljava/lang/String;
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 4
 
-    .line 306
+    .line 346
     iget-object v0, p0, Lim/doit/pro/github/GitHubSync$5$1;->this$0:Lim/doit/pro/github/GitHubSync$5;
 
     iget-object v0, v0, Lim/doit/pro/github/GitHubSync$5;->val$a:Landroid/app/Activity;

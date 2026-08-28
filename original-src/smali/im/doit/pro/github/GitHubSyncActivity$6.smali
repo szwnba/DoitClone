@@ -3,12 +3,12 @@
 .source "GitHubSyncActivity.java"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Lim/doit/pro/activity/listener/OnLayoutClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
+    value = Lim/doit/pro/github/GitHubSyncActivity;->onCreate(Landroid/os/Bundle;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,22 +20,13 @@
 # instance fields
 .field final synthetic this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-.field final synthetic val$d:Landroid/app/Dialog;
-
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;Landroid/app/Dialog;)V
-    .registers 3
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "()V"
-        }
-    .end annotation
+.method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
+    .registers 2
 
-    .line 114
+    .line 69
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
-
-    iput-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$d:Landroid/app/Dialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -44,13 +35,13 @@
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
+.method public click(Landroid/view/View;)V
     .registers 2
 
-    .line 116
-    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$d:Landroid/app/Dialog;
+    .line 71
+    iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
-    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
+    invoke-static {p1}, Lim/doit/pro/github/GitHubSync;->shareCrashLog(Landroid/app/Activity;)V
 
     return-void
 .end method
