@@ -346,9 +346,12 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   `GET /releases/tags/rN` 查 assets 状态为准；重试循环别按响应判成败，按查询结果判。
 - **实际回退（r26 当日）**：Release 下载要经 objects.githubusercontent.com，大陆网络经常
   连不上；而 Pages 托管该用户已成功下载 20+ 次（经验证可行）。**分发方式的选择要以用户
-  网络实测为准，不是"官方最佳实践"为准**。最终方案：APK 主分发走 Pages（docs/download），
-  Release 附件留作历史归档（不占仓库体积，白送的版本博物馆）。
-- 发版固定动作（最终版）：cp 到 docs/download/doit-local.apk + 页面 ?v=rN + 建同名 Release 传附件（归档用）。
+  网络实测为准，不是"官方最佳实践"为准**。
+- **发版流程定稿（r28）**：**只走 Pages 单路**——cp 到 docs/download/doit-local.apk +
+  页面 ?v=rN + 推送。Release 归档环节被用户明确砍掉（每次上传都在弱网上卡住数分钟，
+  收益≈0）；历史上传过的 Release（r25/r26/r27 部分）留着不管即可。
+- **顺带**：构建机 /tmp 是 tmpfs，apktool 的 aapt2 要在 /tmp 写临时文件，塞满会报
+  "failed to write ... Invalid entry name/IO error" 且 tail 掩盖真因——报 IO error 先 df /tmp。
 
 ## 九、教训级方法论
 
