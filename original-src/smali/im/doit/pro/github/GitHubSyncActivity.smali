@@ -71,7 +71,7 @@
 .method private appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
     .registers 11
 
-    .line 93
+    .line 95
     new-instance p6, Landroid/app/Dialog;
 
     const-string v0, "Theme.Doit.Light.Dialog"
@@ -84,7 +84,7 @@
 
     invoke-direct {p6, p0, v0}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
 
-    .line 94
+    .line 96
     invoke-static {p0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
@@ -101,7 +101,7 @@
 
     move-result-object p1
 
-    .line 95
+    .line 97
     const-string v0, "title"
 
     invoke-direct {p0, v0}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -116,10 +116,10 @@
 
     invoke-virtual {v0, p2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 96
+    .line 98
     if-eqz p3, :cond_3c
 
-    .line 97
+    .line 99
     const-string p2, "ghs_msg"
 
     invoke-direct {p0, p2}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -134,7 +134,7 @@
 
     invoke-virtual {p2, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 99
+    .line 101
     :cond_3c
     const-string p2, "ghs_input"
 
@@ -148,21 +148,21 @@
 
     check-cast p2, Landroid/widget/EditText;
 
-    .line 100
+    .line 102
     if-eqz p2, :cond_5f
 
-    .line 101
+    .line 103
     if-eqz p8, :cond_51
 
     const/16 p3, 0x81
 
     invoke-virtual {p2, p3}, Landroid/widget/EditText;->setInputType(I)V
 
-    .line 102
+    .line 104
     :cond_51
     invoke-virtual {p2, p7}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 103
+    .line 105
     invoke-virtual {p2}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
 
     move-result-object p3
@@ -173,7 +173,7 @@
 
     invoke-virtual {p2, p3}, Landroid/widget/EditText;->setSelection(I)V
 
-    .line 105
+    .line 107
     :cond_5f
     const-string p3, "cancel_btn"
 
@@ -187,7 +187,7 @@
 
     check-cast p3, Lim/doit/pro/ui/component/DButton;
 
-    .line 106
+    .line 108
     const-string p7, "ok_btn"
 
     invoke-direct {p0, p7}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -200,12 +200,12 @@
 
     check-cast p7, Lim/doit/pro/ui/component/DButton;
 
-    .line 107
+    .line 109
     if-eqz p4, :cond_7c
 
     invoke-virtual {p7, p4}, Lim/doit/pro/ui/component/DButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 108
+    .line 110
     :cond_7c
     new-instance p4, Lim/doit/pro/github/GitHubSyncActivity$5;
 
@@ -213,24 +213,24 @@
 
     invoke-virtual {p3, p4}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 112
+    .line 114
     new-instance p3, Lim/doit/pro/github/GitHubSyncActivity$6;
 
     invoke-direct {p3, p0, p6, p5, p2}, Lim/doit/pro/github/GitHubSyncActivity$6;-><init>(Lim/doit/pro/github/GitHubSyncActivity;Landroid/app/Dialog;Lim/doit/pro/github/GitHubSyncActivity$OnOk;Landroid/widget/EditText;)V
 
     invoke-virtual {p7, p3}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 119
+    .line 121
     invoke-virtual {p6, p1}, Landroid/app/Dialog;->setContentView(Landroid/view/View;)V
 
-    .line 120
+    .line 122
     return-object p6
 .end method
 
 .method private editRepo()V
     .registers 10
 
-    .line 185
+    .line 187
     const-string v1, "dialog_ghs_input"
 
     const-string v2, "\u540c\u6b65\u4ed3\u5e93"
@@ -245,31 +245,31 @@
 
     const/4 v6, 0x1
 
-    .line 193
+    .line 195
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->repo(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v7
 
     const/4 v8, 0x0
 
-    .line 185
+    .line 187
     move-object v0, p0
 
     invoke-direct/range {v0 .. v8}, Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 
     move-result-object v0
 
-    .line 193
+    .line 195
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 194
+    .line 196
     return-void
 .end method
 
 .method private editToken()V
     .registers 10
 
-    .line 171
+    .line 173
     const-string v1, "dialog_ghs_input"
 
     const-string v2, "GitHub Token"
@@ -284,31 +284,31 @@
 
     const/4 v6, 0x1
 
-    .line 181
+    .line 183
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v7
 
     const/4 v8, 0x1
 
-    .line 171
+    .line 173
     move-object v0, p0
 
     invoke-direct/range {v0 .. v8}, Lim/doit/pro/github/GitHubSyncActivity;->appDialog(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/github/GitHubSyncActivity$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 
     move-result-object v0
 
-    .line 181
+    .line 183
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 182
+    .line 184
     return-void
 .end method
 
 .method private hasToken()Z
     .registers 2
 
-    .line 124
+    .line 126
     invoke-static {p0}, Lim/doit/pro/github/GitHubSync;->token(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v0
@@ -319,20 +319,20 @@
 
     if-nez v0, :cond_14
 
-    .line 125
+    .line 127
     const-string v0, "\u8bf7\u5148\u8bbe\u7f6e Token"
 
     invoke-static {p0, v0}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 126
+    .line 128
     invoke-direct {p0}, Lim/doit/pro/github/GitHubSyncActivity;->editToken()V
 
-    .line 127
+    .line 129
     const/4 v0, 0x0
 
     return v0
 
-    .line 129
+    .line 131
     :cond_14
     const/4 v0, 0x1
 
@@ -363,7 +363,7 @@
 .method private onRestore()V
     .registers 11
 
-    .line 146
+    .line 148
     invoke-direct {p0}, Lim/doit/pro/github/GitHubSyncActivity;->hasToken()Z
 
     move-result v0
@@ -372,7 +372,7 @@
 
     return-void
 
-    .line 147
+    .line 149
     :cond_7
     const-string v2, "dialog_ghs_confirm"
 
@@ -398,17 +398,17 @@
 
     move-result-object v0
 
-    .line 167
+    .line 169
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 168
+    .line 170
     return-void
 .end method
 
 .method private onUpload()V
     .registers 2
 
-    .line 135
+    .line 137
     invoke-direct {p0}, Lim/doit/pro/github/GitHubSyncActivity;->hasToken()Z
 
     move-result v0
@@ -417,7 +417,7 @@
 
     return-void
 
-    .line 136
+    .line 138
     :cond_7
     new-instance v0, Lim/doit/pro/github/GitHubSyncActivity$7;
 
@@ -425,7 +425,7 @@
 
     invoke-static {p0, v0}, Lim/doit/pro/github/GitHubSync;->doUpload(Landroid/app/Activity;Ljava/lang/Runnable;)V
 
-    .line 143
+    .line 145
     return-void
 .end method
 
@@ -451,22 +451,22 @@
 .method private row(ILim/doit/pro/activity/listener/OnLayoutClickListener;)V
     .registers 4
 
-    .line 66
+    .line 68
     invoke-virtual {p0, p1}, Lim/doit/pro/github/GitHubSyncActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object p1
 
-    .line 67
+    .line 69
     instance-of v0, p1, Lim/doit/pro/ui/component/LabelArrowButton;
 
     if-eqz v0, :cond_d
 
-    .line 68
+    .line 70
     check-cast p1, Lim/doit/pro/ui/component/LabelArrowButton;
 
     invoke-virtual {p1, p2}, Lim/doit/pro/ui/component/LabelArrowButton;->setOnLayoutClickListener(Lim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 70
+    .line 72
     :cond_d
     return-void
 .end method
@@ -496,7 +496,7 @@
     move-result-object p1
 
     .line 41
-    if-eqz p1, :cond_26
+    if-eqz p1, :cond_2d
 
     .line 42
     const-string v0, "ghs_title"
@@ -517,8 +517,16 @@
     .line 44
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setHomeButtonEnabled(Z)V
 
-    .line 47
-    :cond_26
+    .line 45
+    invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayShowTitleEnabled(Z)V
+
+    .line 46
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayUseLogoEnabled(Z)V
+
+    .line 49
+    :cond_2d
     const-string p1, "ghs_token"
 
     invoke-direct {p0, p1}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -531,7 +539,7 @@
 
     invoke-direct {p0, p1, v0}, Lim/doit/pro/github/GitHubSyncActivity;->row(ILim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 51
+    .line 53
     const-string p1, "ghs_repo"
 
     invoke-direct {p0, p1}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -544,7 +552,7 @@
 
     invoke-direct {p0, p1, v0}, Lim/doit/pro/github/GitHubSyncActivity;->row(ILim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 55
+    .line 57
     const-string p1, "ghs_upload"
 
     invoke-direct {p0, p1}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -557,7 +565,7 @@
 
     invoke-direct {p0, p1, v0}, Lim/doit/pro/github/GitHubSyncActivity;->row(ILim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 59
+    .line 61
     const-string p1, "ghs_restore"
 
     invoke-direct {p0, p1}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -570,14 +578,14 @@
 
     invoke-direct {p0, p1, v0}, Lim/doit/pro/github/GitHubSyncActivity;->row(ILim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 63
+    .line 65
     return-void
 .end method
 
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .registers 4
 
-    .line 83
+    .line 85
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
@@ -586,15 +594,15 @@
 
     if-ne v0, v1, :cond_e
 
-    .line 84
+    .line 86
     invoke-virtual {p0}, Lim/doit/pro/github/GitHubSyncActivity;->finish()V
 
-    .line 85
+    .line 87
     const/4 p1, 0x1
 
     return p1
 
-    .line 87
+    .line 89
     :cond_e
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 
@@ -606,10 +614,10 @@
 .method protected onResume()V
     .registers 4
 
-    .line 74
+    .line 76
     invoke-super {p0}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onResume()V
 
-    .line 75
+    .line 77
     const-string v0, "ghs_last_sync"
 
     invoke-direct {p0, v0}, Lim/doit/pro/github/GitHubSyncActivity;->id(Ljava/lang/String;)I
@@ -622,10 +630,10 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    .line 76
+    .line 78
     if-eqz v0, :cond_2b
 
-    .line 77
+    .line 79
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -650,7 +658,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 79
+    .line 81
     :cond_2b
     return-void
 .end method

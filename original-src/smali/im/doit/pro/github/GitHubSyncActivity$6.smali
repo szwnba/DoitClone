@@ -36,7 +36,7 @@
         }
     .end annotation
 
-    .line 112
+    .line 114
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$d:Landroid/app/Dialog;
@@ -55,12 +55,12 @@
 .method public onClick(Landroid/view/View;)V
     .registers 3
 
-    .line 115
+    .line 117
     iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    .line 116
+    .line 118
     iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$onOk:Lim/doit/pro/github/GitHubSyncActivity$OnOk;
 
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$6;->val$input:Landroid/widget/EditText;
@@ -83,6 +83,6 @@
     :goto_15
     invoke-interface {p1, v0}, Lim/doit/pro/github/GitHubSyncActivity$OnOk;->ok(Ljava/lang/String;)V
 
-    .line 117
+    .line 119
     return-void
 .end method

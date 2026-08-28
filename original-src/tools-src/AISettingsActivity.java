@@ -26,6 +26,8 @@ public class AISettingsActivity extends DSwipeBackBaseActivity {
             bar.setTitle(getResources().getIdentifier("ai_title", "string", getPackageName()));
             bar.setDisplayHomeAsUpEnabled(true);
             bar.setHomeButtonEnabled(true);
+            bar.setDisplayShowTitleEnabled(true);
+            bar.setDisplayUseLogoEnabled(false);
         }
 
         AIAssistant.wireSettings(this);

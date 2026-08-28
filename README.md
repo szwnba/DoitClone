@@ -1,6 +1,6 @@
 # Doit 本地版（DoitClone）
 
-> **基准版本 `4.4.5-local-r21`（versionCode 1414425，内容=r16，AI 行图标换大象）**
+> **基准版本 `4.4.5-local-r22`（versionCode 1414426，内容=r16 + 子页标题修复）**
 > 下载：https://szwnba.github.io/DoitClone/download/doit-local.apk
 
 doit.im Android 客户端（v4.4.5，2015）的**原版本地化版**：反编译产物重打包 + 十处最小侵入补丁——

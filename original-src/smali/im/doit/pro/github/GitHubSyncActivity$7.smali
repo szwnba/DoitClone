@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 136
+    .line 138
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$7;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,18 +38,18 @@
 .method public run()V
     .registers 3
 
-    .line 139
+    .line 141
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$7;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     const-string v1, "\u2713 \u5907\u4efd\u5df2\u4e0a\u4f20\u5230 GitHub"
 
     invoke-static {v0, v1}, Lim/doit/pro/github/GitHubSync;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 140
+    .line 142
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$7;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-virtual {v0}, Lim/doit/pro/github/GitHubSyncActivity;->onResume()V
 
-    .line 141
+    .line 143
     return-void
 .end method

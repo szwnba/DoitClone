@@ -67,7 +67,7 @@
     move-result-object p1
 
     .line 25
-    if-eqz p1, :cond_36
+    if-eqz p1, :cond_3d
 
     .line 26
     invoke-virtual {p0}, Lim/doit/pro/ai/AISettingsActivity;->getResources()Landroid/content/res/Resources;
@@ -96,18 +96,26 @@
     .line 28
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setHomeButtonEnabled(Z)V
 
-    .line 31
-    :cond_36
+    .line 29
+    invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayShowTitleEnabled(Z)V
+
+    .line 30
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayUseLogoEnabled(Z)V
+
+    .line 33
+    :cond_3d
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->wireSettings(Landroid/app/Activity;)V
 
-    .line 32
+    .line 34
     return-void
 .end method
 
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .registers 4
 
-    .line 36
+    .line 38
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
@@ -116,15 +124,15 @@
 
     if-ne v0, v1, :cond_e
 
-    .line 37
+    .line 39
     invoke-virtual {p0}, Lim/doit/pro/ai/AISettingsActivity;->finish()V
 
-    .line 38
+    .line 40
     const/4 p1, 0x1
 
     return p1
 
-    .line 40
+    .line 42
     :cond_e
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 

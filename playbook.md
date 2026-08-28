@@ -310,6 +310,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - 回退后核对清单：新增入口/劫持是否消失、原入口是否回来、ai 包文件数对得上、
   构建产物大小与目标版本一致（只差版本号时应相同）。
 
+### 39. 原版 ActionBar 默认"什么都不显示"——标题要五件套（r22）
+- **坑**：自建页面照抄了原版三件套（setTitle/setDisplayHomeAsUpEnabled/setHomeButtonEnabled），
+  结果蓝色栏和箭头都有、标题死活不显示。
+- **原因**：`Theme.Doit.Light.ActionBar` 样式里 `android:displayOptions = none`——原版把
+  ActionBar 默认设为全隐藏，每个子页面在代码里显式逐项打开。完整五件套（UserWeekStartsOnActivity
+  为准）：setTitle + setDisplayHomeAsUpEnabled(true) + setHomeButtonEnabled(true) +
+  **setDisplayShowTitleEnabled(true)** + setDisplayUseLogoEnabled(false)。
+- **教训**：抄原版 UI 初始化时要抄**完整方法体**（数 invoke 条数对齐），别按语义"理解着抄"。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

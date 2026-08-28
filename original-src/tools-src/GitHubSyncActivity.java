@@ -42,6 +42,8 @@ public class GitHubSyncActivity extends DSwipeBackBaseActivity {
             bar.setTitle(res("ghs_title", "string"));
             bar.setDisplayHomeAsUpEnabled(true);
             bar.setHomeButtonEnabled(true);
+            bar.setDisplayShowTitleEnabled(true);
+            bar.setDisplayUseLogoEnabled(false);
         }
 
         row(id("ghs_token"), new OnLayoutClickListener() {

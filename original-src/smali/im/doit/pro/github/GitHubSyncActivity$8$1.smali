@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity$8;)V
     .registers 2
 
-    .line 152
+    .line 154
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8$1;->this$1:Lim/doit/pro/github/GitHubSyncActivity$8;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public run()V
     .registers 11
 
-    .line 155
+    .line 157
     iget-object v0, p0, Lim/doit/pro/github/GitHubSyncActivity$8$1;->this$1:Lim/doit/pro/github/GitHubSyncActivity$8;
 
     iget-object v1, v0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
@@ -65,9 +65,9 @@
 
     move-result-object v0
 
-    .line 163
+    .line 165
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
-    .line 164
+    .line 166
     return-void
 .end method

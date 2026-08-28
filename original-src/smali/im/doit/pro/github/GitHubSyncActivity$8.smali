@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/github/GitHubSyncActivity;)V
     .registers 2
 
-    .line 149
+    .line 151
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public ok(Ljava/lang/String;)V
     .registers 3
 
-    .line 152
+    .line 154
     iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$8;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     new-instance v0, Lim/doit/pro/github/GitHubSyncActivity$8$1;
@@ -47,6 +47,6 @@
 
     invoke-static {p1, v0}, Lim/doit/pro/github/GitHubSync;->doRestore(Landroid/app/Activity;Ljava/lang/Runnable;)V
 
-    .line 166
+    .line 168
     return-void
 .end method

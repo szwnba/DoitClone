@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 108
+    .line 110
     iput-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->this$0:Lim/doit/pro/github/GitHubSyncActivity;
 
     iput-object p2, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->val$d:Landroid/app/Dialog;
@@ -47,7 +47,7 @@
 .method public onClick(Landroid/view/View;)V
     .registers 2
 
-    .line 110
+    .line 112
     iget-object p1, p0, Lim/doit/pro/github/GitHubSyncActivity$5;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
