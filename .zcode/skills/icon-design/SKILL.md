@@ -78,14 +78,14 @@ finish(im, 'my_icon.png')
 
 ## 第三步：预览页给用户挑（必做）
 
-生成对比页：新图标大图 + 26dp 抽屉行实景模拟（混入原版菜单行对照）+ 蓝底按钮模拟 +
+生成对比页：新图标大图 + 36dp 抽屉行实景模拟（混入原版菜单行对照）+ 蓝底按钮模拟 +
 **修正前后参数对照表**。起局域网服务（必须 `setsid ... < /dev/null & disown`，否则会话结束进程即死），
 给用户链接挑选。
 
 ## 第四步：接入 App
 
 - 图标放 `original-src/res/drawable-xhdpi-v4/icon_<语义>.png`（72px 或等比）
-- 抽屉行 26dp ImageView；蓝底按钮用 ImageView+TextView 横排可点容器
+- 抽屉行 **36dp** ImageView（原版是 TextView 的 compound drawable，按位图固有尺寸显示，xhdpi 72×72 在 2.75x 屏即 36dp；写 26dp 会小一圈且视觉偏深）；蓝底按钮用 ImageView+TextView 横排可点容器
 - 先例：`tools-src/BlindBoxActivity.java`、`res/layout/drawer_footer_exp.xml`、
   本目录 `samples/` 里有成品（骰子/书签）
 - 之后走标准发版流程（versionCode+1 → 构建签名 → cp 到 docs/download → 推送）
