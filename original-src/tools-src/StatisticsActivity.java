@@ -185,11 +185,8 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
                 done[i] = count(d, "completed>0 AND trashed=0 AND deleted=0 AND completed>=? AND completed<?", ranges.get(i));
                 created[i] = count(d, "trashed=0 AND deleted=0 AND created>=? AND created<?", ranges.get(i));
             }
-            // 完成率 = 当前时段新增里已完成的比例
-            long[] cur = ranges.get(n - 1);
-            int c = count(d, "trashed=0 AND deleted=0 AND created>=? AND created<?", cur);
-            int cd = count(d, "completed>0 AND trashed=0 AND deleted=0 AND created>=? AND created<?", cur);
-            int rate = c > 0 ? Math.round(cd * 100f / c) : 0;
+            // 完成率 = 完成 ÷ 新增（与 KPI 前两项同口径，自洽可心算）
+            int rate = created[n - 1] > 0 ? Math.round(done[n - 1] * 100f / created[n - 1]) : 0;
 
             // 清单：当前时段 + 上一时段的完成任务
             List<Object[]> groups = new ArrayList<Object[]>();

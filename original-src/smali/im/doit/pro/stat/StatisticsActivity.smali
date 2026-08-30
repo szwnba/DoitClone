@@ -161,24 +161,24 @@
 .method private blank(I)Landroid/view/View;
     .registers 6
 
-    .line 405
+    .line 402
     new-instance v0, Landroid/view/View;
 
     invoke-direct {v0, p0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 406
+    .line 403
     new-instance v1, Landroid/widget/GridLayout$LayoutParams;
 
     invoke-direct {v1}, Landroid/widget/GridLayout$LayoutParams;-><init>()V
 
-    .line 407
+    .line 404
     iput p1, v1, Landroid/widget/GridLayout$LayoutParams;->width:I
 
     const/4 p1, 0x1
 
     iput p1, v1, Landroid/widget/GridLayout$LayoutParams;->height:I
 
-    .line 408
+    .line 405
     const/high16 p1, 0x40400000    # 3.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -197,39 +197,39 @@
 
     invoke-virtual {v1, v3, v3, v2, p1}, Landroid/widget/GridLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 409
+    .line 406
     invoke-virtual {v0, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 410
+    .line 407
     return-object v0
 .end method
 
 .method private card()Landroid/widget/LinearLayout;
     .registers 6
 
-    .line 414
+    .line 411
     new-instance v0, Landroid/widget/LinearLayout;
 
     invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 415
+    .line 412
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 416
+    .line 413
     const/4 v1, -0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setBackgroundColor(I)V
 
-    .line 417
+    .line 414
     new-instance v2, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v3, -0x2
 
     invoke-direct {v2, v1, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 418
+    .line 415
     const/high16 v1, 0x41400000    # 12.0f
 
     invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -238,7 +238,7 @@
 
     float-to-int v1, v1
 
-    .line 419
+    .line 416
     const/high16 v3, 0x41200000    # 10.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -251,17 +251,17 @@
 
     invoke-virtual {v2, v1, v4, v1, v3}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 420
+    .line 417
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 421
+    .line 418
     return-object v0
 .end method
 
 .method private chartCard(Ljava/lang/String;[Ljava/lang/String;[I)Landroid/view/View;
     .registers 20
 
-    .line 324
+    .line 321
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
@@ -270,7 +270,7 @@
 
     move-result-object v2
 
-    .line 325
+    .line 322
     const/high16 v3, 0x41400000    # 12.0f
 
     invoke-direct {v0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -301,12 +301,12 @@
 
     invoke-virtual {v2, v4, v5, v7, v6}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 326
+    .line 323
     new-instance v4, Landroid/widget/TextView;
 
     invoke-direct {v4, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 327
+    .line 324
     move-object/from16 v5, p1
 
     invoke-virtual {v4, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
@@ -317,7 +317,7 @@
 
     invoke-virtual {v4, v3}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 328
+    .line 325
     const/high16 v5, 0x41200000    # 10.0f
 
     invoke-direct {v0, v5}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -330,21 +330,21 @@
 
     invoke-virtual {v4, v6, v6, v6, v5}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 329
+    .line 326
     invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 331
+    .line 328
     new-instance v4, Landroid/widget/LinearLayout;
 
     invoke-direct {v4, v0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 332
+    .line 329
     invoke-virtual {v4, v6}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 333
+    .line 330
     nop
 
-    .line 334
+    .line 331
     array-length v5, v1
 
     const/4 v7, 0x1
@@ -367,7 +367,7 @@
 
     goto :goto_51
 
-    .line 335
+    .line 332
     :cond_5b
     const/high16 v5, 0x42dc0000    # 110.0f
 
@@ -377,7 +377,7 @@
 
     float-to-int v5, v5
 
-    .line 336
+    .line 333
     const/4 v8, 0x0
 
     :goto_63
@@ -385,18 +385,18 @@
 
     if-ge v8, v10, :cond_12e
 
-    .line 337
+    .line 334
     new-instance v10, Landroid/widget/LinearLayout;
 
     invoke-direct {v10, v0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 338
+    .line 335
     invoke-virtual {v10, v7}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 339
+    .line 336
     invoke-virtual {v10, v7}, Landroid/widget/LinearLayout;->setGravity(I)V
 
-    .line 340
+    .line 337
     new-instance v11, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v12, -0x2
@@ -405,7 +405,7 @@
 
     invoke-direct {v11, v6, v12, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
-    .line 341
+    .line 338
     const/high16 v12, 0x40400000    # 3.0f
 
     invoke-direct {v0, v12}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -422,15 +422,15 @@
 
     invoke-virtual {v11, v14, v6, v15, v6}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 342
+    .line 339
     invoke-virtual {v10, v11}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 344
+    .line 341
     new-instance v11, Landroid/widget/TextView;
 
     invoke-direct {v11, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 345
+    .line 342
     aget v14, v1, v8
 
     invoke-static {v14}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -439,7 +439,7 @@
 
     invoke-virtual {v11, v14}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 346
+    .line 343
     const/high16 v14, 0x41100000    # 9.0f
 
     invoke-virtual {v11, v14}, Landroid/widget/TextView;->setTextSize(F)V
@@ -448,7 +448,7 @@
 
     invoke-virtual {v11, v15}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 347
+    .line 344
     const/high16 v15, 0x40000000    # 2.0f
 
     invoke-direct {v0, v15}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -459,27 +459,27 @@
 
     invoke-virtual {v11, v6, v6, v6, v15}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 349
+    .line 346
     new-instance v15, Landroid/widget/FrameLayout;
 
     invoke-direct {v15, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
-    .line 350
+    .line 347
     new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v3, -0x1
 
     invoke-direct {v6, v3, v5}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 351
+    .line 348
     invoke-virtual {v15, v6}, Landroid/widget/FrameLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 352
+    .line 349
     new-instance v6, Landroid/view/View;
 
     invoke-direct {v6, v0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 353
+    .line 350
     new-instance v14, Landroid/widget/FrameLayout$LayoutParams;
 
     aget v7, v1, v8
@@ -522,10 +522,10 @@
 
     invoke-direct {v14, v12, v3, v7}, Landroid/widget/FrameLayout$LayoutParams;-><init>(III)V
 
-    .line 354
+    .line 351
     invoke-virtual {v6, v14}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 355
+    .line 352
     array-length v3, v1
 
     const/4 v7, 0x1
@@ -544,20 +544,20 @@
     :goto_f0
     invoke-virtual {v6, v3}, Landroid/view/View;->setBackgroundColor(I)V
 
-    .line 356
+    .line 353
     invoke-virtual {v15, v6}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;)V
 
-    .line 358
+    .line 355
     new-instance v3, Landroid/widget/TextView;
 
     invoke-direct {v3, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 359
+    .line 356
     aget-object v6, p2, v8
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 360
+    .line 357
     const/high16 v6, 0x41100000    # 9.0f
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setTextSize(F)V
@@ -566,7 +566,7 @@
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 361
+    .line 358
     const/high16 v7, 0x40a00000    # 5.0f
 
     invoke-direct {v0, v7}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -579,22 +579,22 @@
 
     invoke-virtual {v3, v12, v7, v12, v12}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 362
+    .line 359
     const/4 v7, 0x1
 
     invoke-virtual {v3, v7}, Landroid/widget/TextView;->setSingleLine(Z)V
 
-    .line 364
+    .line 361
     invoke-virtual {v10, v11}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
     invoke-virtual {v10, v15}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
     invoke-virtual {v10, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 365
+    .line 362
     invoke-virtual {v4, v10}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 336
+    .line 333
     add-int/lit8 v8, v8, 0x1
 
     const v3, -0x757576
@@ -603,18 +603,18 @@
 
     goto/16 :goto_63
 
-    .line 367
+    .line 364
     :cond_12e
     invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 368
+    .line 365
     return-object v2
 .end method
 
 .method private count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
     .registers 8
 
-    .line 246
+    .line 243
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -637,7 +637,7 @@
 
     aget-wide v1, p3, v0
 
-    .line 247
+    .line 244
     invoke-static {v1, v2}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
     move-result-object v1
@@ -654,30 +654,30 @@
 
     move-result-object p3
 
-    .line 246
+    .line 243
     invoke-virtual {p1, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object p1
 
-    .line 248
+    .line 245
     invoke-interface {p1}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 249
+    .line 246
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getInt(I)I
 
     move-result p2
 
-    .line 250
+    .line 247
     invoke-interface {p1}, Landroid/database/Cursor;->close()V
 
-    .line 251
+    .line 248
     return p2
 .end method
 
 .method private static dayStart(Ljava/util/Calendar;)V
     .registers 3
 
-    .line 255
+    .line 252
     const/16 v0, 0xb
 
     const/4 v1, 0x0
@@ -688,7 +688,7 @@
 
     invoke-virtual {p0, v0, v1}, Ljava/util/Calendar;->set(II)V
 
-    .line 256
+    .line 253
     const/16 v0, 0xd
 
     invoke-virtual {p0, v0, v1}, Ljava/util/Calendar;->set(II)V
@@ -697,14 +697,14 @@
 
     invoke-virtual {p0, v0, v1}, Ljava/util/Calendar;->set(II)V
 
-    .line 257
+    .line 254
     return-void
 .end method
 
 .method private static daysBetween(Ljava/util/Calendar;Ljava/util/Calendar;)I
     .registers 4
 
-    .line 261
+    .line 258
     invoke-virtual {p0}, Ljava/util/Calendar;->clone()Ljava/lang/Object;
 
     move-result-object p0
@@ -713,7 +713,7 @@
 
     invoke-static {p0}, Lim/doit/pro/stat/StatisticsActivity;->dayStart(Ljava/util/Calendar;)V
 
-    .line 262
+    .line 259
     invoke-virtual {p1}, Ljava/util/Calendar;->clone()Ljava/lang/Object;
 
     move-result-object p1
@@ -722,7 +722,7 @@
 
     invoke-static {p1}, Lim/doit/pro/stat/StatisticsActivity;->dayStart(Ljava/util/Calendar;)V
 
-    .line 263
+    .line 260
     invoke-virtual {p1}, Ljava/util/Calendar;->getTimeInMillis()J
 
     move-result-wide v0
@@ -733,7 +733,7 @@
 
     sub-long/2addr v0, p0
 
-    .line 264
+    .line 261
     long-to-double p0, v0
 
     const-wide v0, 0x4194997000000000L    # 8.64E7
@@ -773,15 +773,15 @@
 .method private groupHeader(Ljava/lang/String;)Landroid/view/View;
     .registers 6
 
-    .line 425
+    .line 422
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 426
+    .line 423
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 427
+    .line 424
     const/high16 p1, 0x41400000    # 12.0f
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextSize(F)V
@@ -790,7 +790,7 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 428
+    .line 425
     const/high16 p1, 0x41600000    # 14.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -823,19 +823,19 @@
 
     invoke-virtual {v0, v1, v2, p1, v3}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 429
+    .line 426
     return-object v0
 .end method
 
 .method private heatCard([I)Landroid/view/View;
     .registers 13
 
-    .line 372
+    .line 369
     invoke-direct {p0}, Lim/doit/pro/stat/StatisticsActivity;->card()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
-    .line 373
+    .line 370
     const/high16 v1, 0x41400000    # 12.0f
 
     invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -866,24 +866,24 @@
 
     invoke-virtual {v0, v2, v3, v4, v6}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 374
+    .line 371
     new-instance v2, Landroid/widget/TextView;
 
     invoke-direct {v2, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 375
+    .line 372
     const-string v3, "\u672c\u6708\u70ed\u529b \u00b7 \u6bcf\u683c\u4e00\u5929\uff0c\u989c\u8272\u8d8a\u6df1\u5b8c\u6210\u8d8a\u591a"
 
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 376
+    .line 373
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextSize(F)V
 
     const v1, -0x757576
 
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 377
+    .line 374
     invoke-direct {p0, v5}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
 
     move-result v1
@@ -894,15 +894,15 @@
 
     invoke-virtual {v2, v3, v3, v3, v1}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 378
+    .line 375
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 380
+    .line 377
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v1
 
-    .line 381
+    .line 378
     const/4 v2, 0x7
 
     invoke-virtual {v1, v2}, Ljava/util/Calendar;->get(I)I
@@ -913,18 +913,18 @@
 
     rem-int/2addr v1, v2
 
-    .line 382
+    .line 379
     array-length v4, p1
 
-    .line 383
+    .line 380
     new-instance v5, Landroid/widget/GridLayout;
 
     invoke-direct {v5, p0}, Landroid/widget/GridLayout;-><init>(Landroid/content/Context;)V
 
-    .line 384
+    .line 381
     invoke-virtual {v5, v2}, Landroid/widget/GridLayout;->setColumnCount(I)V
 
-    .line 385
+    .line 382
     new-instance v2, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v6, -0x1
@@ -935,7 +935,7 @@
 
     invoke-virtual {v5, v2}, Landroid/widget/GridLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 386
+    .line 383
     const/high16 v2, 0x41600000    # 14.0f
 
     invoke-direct {p0, v2}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -944,7 +944,7 @@
 
     float-to-int v2, v2
 
-    .line 387
+    .line 384
     const/high16 v6, 0x40400000    # 3.0f
 
     invoke-direct {p0, v6}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -953,7 +953,7 @@
 
     float-to-int v6, v6
 
-    .line 388
+    .line 385
     const/4 v7, 0x0
 
     :goto_6c
@@ -969,38 +969,38 @@
 
     goto :goto_6c
 
-    .line 389
+    .line 386
     :cond_78
     const/4 v1, 0x0
 
     :goto_79
     if-ge v1, v4, :cond_b4
 
-    .line 390
+    .line 387
     new-instance v7, Landroid/view/View;
 
     invoke-direct {v7, p0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 391
+    .line 388
     new-instance v8, Landroid/widget/GridLayout$LayoutParams;
 
     invoke-direct {v8}, Landroid/widget/GridLayout$LayoutParams;-><init>()V
 
-    .line 392
+    .line 389
     iput v2, v8, Landroid/widget/GridLayout$LayoutParams;->width:I
 
     iput v2, v8, Landroid/widget/GridLayout$LayoutParams;->height:I
 
-    .line 393
+    .line 390
     invoke-virtual {v8, v3, v3, v6, v6}, Landroid/widget/GridLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 394
+    .line 391
     invoke-virtual {v7, v8}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 395
+    .line 392
     aget v8, p1, v1
 
-    .line 396
+    .line 393
     const/16 v9, 0xa
 
     if-lt v8, v9, :cond_97
@@ -1039,7 +1039,7 @@
     :cond_a6
     const/4 v8, 0x0
 
-    .line 397
+    .line 394
     :goto_a7
     sget-object v9, Lim/doit/pro/stat/StatisticsActivity;->HEAT:[I
 
@@ -1047,19 +1047,19 @@
 
     invoke-virtual {v7, v8}, Landroid/view/View;->setBackgroundColor(I)V
 
-    .line 398
+    .line 395
     invoke-virtual {v5, v7}, Landroid/widget/GridLayout;->addView(Landroid/view/View;)V
 
-    .line 389
+    .line 386
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_79
 
-    .line 400
+    .line 397
     :cond_b4
     invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 401
+    .line 398
     return-object v0
 .end method
 
@@ -1087,17 +1087,17 @@
 .method private kpiRow(III)Landroid/view/View;
     .registers 8
 
-    .line 312
+    .line 309
     invoke-direct {p0}, Lim/doit/pro/stat/StatisticsActivity;->card()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
-    .line 313
+    .line 310
     new-instance v1, Landroid/widget/TextView;
 
     invoke-direct {v1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 314
+    .line 311
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1144,22 +1144,22 @@
 
     invoke-virtual {v1, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 315
+    .line 312
     const/high16 p1, 0x41800000    # 16.0f
 
     invoke-virtual {v1, p1}, Landroid/widget/TextView;->setTextSize(F)V
 
-    .line 316
+    .line 313
     const p1, -0xcccccd
 
     invoke-virtual {v1, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 317
+    .line 314
     const/16 p1, 0x11
 
     invoke-virtual {v1, p1}, Landroid/widget/TextView;->setGravity(I)V
 
-    .line 318
+    .line 315
     const/high16 p1, 0x41200000    # 10.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -1178,10 +1178,10 @@
 
     invoke-virtual {v1, p3, p2, p3, p1}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 319
+    .line 316
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 320
+    .line 317
     return-object v0
 .end method
 
@@ -1213,15 +1213,15 @@
 .method private note(Ljava/lang/String;)Landroid/view/View;
     .registers 5
 
-    .line 460
+    .line 457
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 461
+    .line 458
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 462
+    .line 459
     const/high16 p1, 0x41500000    # 13.0f
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextSize(F)V
@@ -1230,12 +1230,12 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 463
+    .line 460
     const/16 p1, 0x11
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setGravity(I)V
 
-    .line 464
+    .line 461
     const/high16 p1, 0x41f00000    # 30.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -1254,7 +1254,7 @@
 
     invoke-virtual {v0, v2, v1, v2, p1}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 465
+    .line 462
     return-object v0
 .end method
 
@@ -1380,7 +1380,7 @@
 
     move-result v15
     :try_end_52
-    .catchall {:try_start_40 .. :try_end_52} :catchall_327
+    .catchall {:try_start_40 .. :try_end_52} :catchall_31a
 
     const-string v16, "\u6628\u5929"
 
@@ -1709,43 +1709,40 @@
 
     .line 183
     new-array v8, v5, [I
-    :try_end_16b
-    .catchall {:try_start_5a .. :try_end_16b} :catchall_327
 
     .line 184
     const/4 v9, 0x0
 
     :goto_16c
-    const-string v15, "trashed=0 AND deleted=0 AND created>=? AND created<?"
-
-    if-ge v9, v5, :cond_191
+    if-ge v9, v5, :cond_190
 
     .line 185
-    :try_start_170
-    const-string v7, "completed>0 AND trashed=0 AND deleted=0 AND completed>=? AND completed<?"
+    const-string v15, "completed>0 AND trashed=0 AND deleted=0 AND completed>=? AND completed<?"
 
     invoke-interface {v13, v9}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v19
+    move-result-object v18
 
-    move-object/from16 v12, v19
+    move-object/from16 v7, v18
 
-    check-cast v12, [J
+    check-cast v7, [J
 
-    invoke-direct {v1, v3, v7, v12}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
+    invoke-direct {v1, v3, v15, v7}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
 
     move-result v7
 
     aput v7, v6, v9
 
     .line 186
+    const-string v7, "trashed=0 AND deleted=0 AND created>=? AND created<?"
+
     invoke-interface {v13, v9}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v7
+    move-result-object v15
 
-    check-cast v7, [J
+    check-cast v15, [J
 
-    invoke-direct {v1, v3, v15, v7}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
+    invoke-direct {v1, v3, v7, v15}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
 
     move-result v7
 
@@ -1756,40 +1753,23 @@
 
     const/4 v7, 0x3
 
-    const/4 v12, 0x1
-
     goto :goto_16c
 
     .line 189
-    :cond_191
+    :cond_190
     add-int/lit8 v7, v5, -0x1
 
-    invoke-interface {v13, v7}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    aget v9, v8, v7
 
-    move-result-object v7
+    if-lez v9, :cond_1a4
 
-    check-cast v7, [J
-
-    .line 190
-    invoke-direct {v1, v3, v15, v7}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
-
-    move-result v9
-
-    .line 191
-    const-string v12, "completed>0 AND trashed=0 AND deleted=0 AND created>=? AND created<?"
-
-    invoke-direct {v1, v3, v12, v7}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
-
-    move-result v7
-
-    .line 192
-    if-lez v9, :cond_1b1
+    aget v7, v6, v7
 
     int-to-float v7, v7
 
-    const/high16 v12, 0x42c80000    # 100.0f
+    const/high16 v15, 0x42c80000    # 100.0f
 
-    mul-float v7, v7, v12
+    mul-float v7, v7, v15
 
     int-to-float v9, v9
 
@@ -1799,49 +1779,49 @@
 
     move-result v7
 
-    goto :goto_1b2
+    goto :goto_1a5
 
-    :cond_1b1
+    :cond_1a4
     const/4 v7, 0x0
 
-    .line 195
-    :goto_1b2
+    .line 192
+    :goto_1a5
     new-instance v9, Ljava/util/ArrayList;
 
     invoke-direct {v9}, Ljava/util/ArrayList;-><init>()V
 
-    .line 196
-    new-instance v12, Ljava/text/SimpleDateFormat;
+    .line 193
+    new-instance v15, Ljava/text/SimpleDateFormat;
 
-    const-string v15, "M\u6708d\u65e5 EEEE"
+    const-string v12, "M\u6708d\u65e5 EEEE"
 
     sget-object v11, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
 
-    invoke-direct {v12, v15, v11}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
+    invoke-direct {v15, v12, v11}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
 
-    .line 197
+    .line 194
     new-instance v11, Ljava/text/SimpleDateFormat;
 
-    const-string v15, "M\u6708d\u65e5"
+    const-string v12, "M\u6708d\u65e5"
 
     sget-object v10, Ljava/util/Locale;->CHINA:Ljava/util/Locale;
 
-    invoke-direct {v11, v15, v10}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
+    invoke-direct {v11, v12, v10}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
 
-    .line 198
+    .line 195
     new-instance v10, Ljava/util/HashMap;
 
     invoke-direct {v10}, Ljava/util/HashMap;-><init>()V
 
-    .line 199
-    new-instance v15, Ljava/util/ArrayList;
+    .line 196
+    new-instance v12, Ljava/util/ArrayList;
 
-    invoke-direct {v15}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v12}, Ljava/util/ArrayList;-><init>()V
 
-    .line 200
+    .line 197
     const/4 v1, 0x2
 
-    if-lt v5, v1, :cond_1e1
+    if-lt v5, v1, :cond_1d4
 
     sub-int/2addr v5, v1
 
@@ -1855,9 +1835,9 @@
 
     aget-wide v21, v1, v5
 
-    goto :goto_1ea
+    goto :goto_1dd
 
-    :cond_1e1
+    :cond_1d4
     const/4 v5, 0x0
 
     invoke-interface {v13, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -1868,8 +1848,8 @@
 
     aget-wide v21, v1, v5
 
-    .line 201
-    :goto_1ea
+    .line 198
+    :goto_1dd
     const-string v1, "SELECT title, completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=? ORDER BY completed DESC"
 
     const/4 v5, 0x1
@@ -1880,28 +1860,28 @@
 
     move-result-object v5
 
-    const/16 v19, 0x0
+    const/16 v20, 0x0
 
-    aput-object v5, v13, v19
+    aput-object v5, v13, v20
 
     invoke-virtual {v3, v1, v13}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
     move-result-object v1
 
-    .line 202
-    :goto_1fb
+    .line 199
+    :goto_1ee
     invoke-interface {v1}, Landroid/database/Cursor;->moveToNext()Z
 
     move-result v5
 
-    if-eqz v5, :cond_278
+    if-eqz v5, :cond_26b
 
-    .line 203
+    .line 200
     new-instance v5, Lim/doit/pro/stat/StatisticsActivity$T;
 
     invoke-direct {v5}, Lim/doit/pro/stat/StatisticsActivity$T;-><init>()V
 
-    .line 204
+    .line 201
     move-object/from16 v21, v14
 
     const/4 v13, 0x0
@@ -1912,7 +1892,7 @@
 
     iput-object v14, v5, Lim/doit/pro/stat/StatisticsActivity$T;->title:Ljava/lang/String;
 
-    .line 205
+    .line 202
     move/from16 v22, v7
 
     move-object v14, v8
@@ -1925,14 +1905,14 @@
 
     iput-wide v7, v5, Lim/doit/pro/stat/StatisticsActivity$T;->time:J
 
-    .line 207
+    .line 204
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v7
 
-    if-eqz v7, :cond_244
+    if-eqz v7, :cond_237
 
-    .line 208
+    .line 205
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v7
@@ -1943,31 +1923,31 @@
 
     invoke-virtual {v7, v13, v14}, Ljava/util/Calendar;->setTimeInMillis(J)V
 
-    .line 209
+    .line 206
     invoke-static {v7}, Lim/doit/pro/stat/StatisticsActivity;->dayStart(Ljava/util/Calendar;)V
 
-    .line 210
+    .line 207
     invoke-static {v7, v4}, Lim/doit/pro/stat/StatisticsActivity;->daysBetween(Ljava/util/Calendar;Ljava/util/Calendar;)I
 
     move-result v13
 
-    .line 211
-    if-nez v13, :cond_235
+    .line 208
+    if-nez v13, :cond_228
 
     move-object/from16 v7, v17
 
-    goto :goto_243
+    goto :goto_236
 
-    :cond_235
+    :cond_228
     const/4 v14, 0x1
 
-    if-ne v13, v14, :cond_23b
+    if-ne v13, v14, :cond_22e
 
     move-object/from16 v7, v16
 
-    goto :goto_243
+    goto :goto_236
 
-    :cond_23b
+    :cond_22e
     invoke-virtual {v7}, Ljava/util/Calendar;->getTime()Ljava/util/Date;
 
     move-result-object v7
@@ -1976,12 +1956,12 @@
 
     move-result-object v7
 
-    .line 212
-    :goto_243
-    goto :goto_259
+    .line 209
+    :goto_236
+    goto :goto_24c
 
-    .line 213
-    :cond_244
+    .line 210
+    :cond_237
     move-object v8, v14
 
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
@@ -1992,25 +1972,25 @@
 
     invoke-virtual {v7, v13, v14}, Ljava/util/Calendar;->setTimeInMillis(J)V
 
-    .line 214
+    .line 211
     invoke-static {v7}, Lim/doit/pro/stat/StatisticsActivity;->dayStart(Ljava/util/Calendar;)V
 
-    .line 215
+    .line 212
     invoke-virtual {v7}, Ljava/util/Calendar;->getTime()Ljava/util/Date;
 
     move-result-object v7
 
-    invoke-virtual {v12, v7}, Ljava/text/SimpleDateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
+    invoke-virtual {v15, v7}, Ljava/text/SimpleDateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 217
-    :goto_259
+    .line 214
+    :goto_24c
     invoke-interface {v10, v7}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     move-result v13
 
-    if-nez v13, :cond_26a
+    if-nez v13, :cond_25d
 
     new-instance v13, Ljava/util/ArrayList;
 
@@ -2018,10 +1998,10 @@
 
     invoke-interface {v10, v7, v13}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    invoke-interface {v15, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v12, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 218
-    :cond_26a
+    .line 215
+    :cond_25d
     invoke-interface {v10, v7}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v7
@@ -2030,32 +2010,32 @@
 
     invoke-interface {v7, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 219
+    .line 216
     move-object/from16 v14, v21
 
     move/from16 v7, v22
 
-    goto :goto_1fb
+    goto :goto_1ee
 
-    .line 220
-    :cond_278
+    .line 217
+    :cond_26b
     move/from16 v22, v7
 
     move-object/from16 v21, v14
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    .line 221
-    invoke-interface {v15}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+    .line 218
+    invoke-interface {v12}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    :goto_283
+    :goto_276
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v2
 
-    if-eqz v2, :cond_2a0
+    if-eqz v2, :cond_293
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -2081,31 +2061,31 @@
 
     invoke-interface {v9, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    goto :goto_283
+    goto :goto_276
 
-    .line 224
-    :cond_2a0
+    .line 221
+    :cond_293
     const/4 v1, 0x0
 
     new-array v2, v1, [I
 
-    .line 225
+    .line 222
     const-string v1, "month"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_2fb
+    if-eqz v0, :cond_2ee
 
-    .line 226
+    .line 223
     invoke-virtual {v4}, Ljava/util/Calendar;->clone()Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/util/Calendar;
 
-    .line 227
+    .line 224
     const/4 v1, 0x5
 
     const/4 v2, 0x1
@@ -2114,15 +2094,15 @@
 
     invoke-static {v0}, Lim/doit/pro/stat/StatisticsActivity;->dayStart(Ljava/util/Calendar;)V
 
-    .line 228
+    .line 225
     invoke-virtual {v4, v1}, Ljava/util/Calendar;->getActualMaximum(I)I
 
     move-result v2
 
-    .line 229
+    .line 226
     new-array v1, v2, [I
 
-    .line 230
+    .line 227
     const-string v4, "SELECT completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=?"
 
     const/4 v5, 0x1
@@ -2145,15 +2125,15 @@
 
     move-result-object v0
 
-    .line 231
-    :goto_2d3
+    .line 228
+    :goto_2c6
     invoke-interface {v0}, Landroid/database/Cursor;->moveToNext()Z
 
     move-result v4
 
-    if-eqz v4, :cond_2f7
+    if-eqz v4, :cond_2ea
 
-    .line 232
+    .line 229
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v4
@@ -2166,19 +2146,19 @@
 
     invoke-virtual {v4, v10, v11}, Ljava/util/Calendar;->setTimeInMillis(J)V
 
-    .line 233
+    .line 230
     const/4 v5, 0x5
 
     invoke-virtual {v4, v5}, Ljava/util/Calendar;->get(I)I
 
     move-result v4
 
-    .line 234
+    .line 231
     const/4 v5, 0x1
 
-    if-lt v4, v5, :cond_2f6
+    if-lt v4, v5, :cond_2e9
 
-    if-gt v4, v2, :cond_2f6
+    if-gt v4, v2, :cond_2e9
 
     add-int/lit8 v4, v4, -0x1
 
@@ -2188,18 +2168,18 @@
 
     aput v7, v1, v4
 
-    .line 235
-    :cond_2f6
-    goto :goto_2d3
+    .line 232
+    :cond_2e9
+    goto :goto_2c6
 
-    .line 236
-    :cond_2f7
+    .line 233
+    :cond_2ea
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
     move-object v2, v1
 
-    .line 239
-    :cond_2fb
+    .line 236
+    :cond_2ee
     const/4 v0, 0x6
 
     new-array v0, v0, [Ljava/lang/Object;
@@ -2247,29 +2227,29 @@
     const/4 v1, 0x5
 
     aput-object v2, v0, v1
-    :try_end_323
-    .catchall {:try_start_170 .. :try_end_323} :catchall_327
+    :try_end_316
+    .catchall {:try_start_5a .. :try_end_316} :catchall_31a
 
-    .line 241
+    .line 238
     invoke-virtual {v3}, Landroid/database/sqlite/SQLiteDatabase;->close()V
 
-    .line 239
+    .line 236
     return-object v0
 
-    .line 241
-    :catchall_327
+    .line 238
+    :catchall_31a
     move-exception v0
 
     invoke-virtual {v3}, Landroid/database/sqlite/SQLiteDatabase;->close()V
 
-    .line 242
-    goto :goto_32d
+    .line 239
+    goto :goto_320
 
-    :goto_32c
+    :goto_31f
     throw v0
 
-    :goto_32d
-    goto :goto_32c
+    :goto_320
+    goto :goto_31f
 .end method
 
 .method private reload()V
@@ -2299,20 +2279,20 @@
 .method private render(Ljava/lang/String;[Ljava/lang/Object;)V
     .registers 5
 
-    .line 271
+    .line 268
     :try_start_0
     invoke-direct {p0, p1, p2}, Lim/doit/pro/stat/StatisticsActivity;->renderInner(Ljava/lang/String;[Ljava/lang/Object;)V
     :try_end_3
     .catchall {:try_start_0 .. :try_end_3} :catchall_4
 
-    .line 274
+    .line 271
     goto :goto_21
 
-    .line 272
+    .line 269
     :catchall_4
     move-exception p1
 
-    .line 273
+    .line 270
     iget-object p2, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -2339,7 +2319,7 @@
 
     invoke-virtual {p2, p1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 275
+    .line 272
     :goto_21
     return-void
 .end method
@@ -2347,21 +2327,21 @@
 .method private renderInner(Ljava/lang/String;[Ljava/lang/Object;)V
     .registers 13
 
-    .line 278
+    .line 275
     const/4 v0, 0x0
 
     aget-object v1, p2, v0
 
     check-cast v1, [I
 
-    .line 279
+    .line 276
     const/4 v2, 0x1
 
     aget-object v3, p2, v2
 
     check-cast v3, [I
 
-    .line 280
+    .line 277
     const/4 v4, 0x2
 
     aget-object v4, p2, v4
@@ -2372,31 +2352,31 @@
 
     move-result v4
 
-    .line 281
+    .line 278
     const/4 v5, 0x3
 
     aget-object v5, p2, v5
 
     check-cast v5, [Ljava/lang/String;
 
-    .line 282
+    .line 279
     const/4 v6, 0x4
 
     aget-object v6, p2, v6
 
     check-cast v6, [[Ljava/lang/Object;
 
-    .line 283
+    .line 280
     const/4 v7, 0x5
 
     aget-object p2, p2, v7
 
     check-cast p2, [I
 
-    .line 285
+    .line 282
     nop
 
-    .line 286
+    .line 283
     array-length v7, v1
 
     const/4 v8, 0x0
@@ -2410,11 +2390,11 @@
 
     goto :goto_25
 
-    .line 287
+    .line 284
     :cond_2c
     nop
 
-    .line 288
+    .line 285
     array-length v7, v3
 
     const/4 v8, 0x0
@@ -2428,7 +2408,7 @@
 
     goto :goto_2f
 
-    .line 290
+    .line 287
     :cond_36
     iget-object v7, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
@@ -2450,7 +2430,7 @@
 
     invoke-virtual {v7, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 291
+    .line 288
     iget-object v3, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
     const-string v4, "\u5b8c\u6210\u8d8b\u52bf"
@@ -2461,7 +2441,7 @@
 
     invoke-virtual {v3, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 292
+    .line 289
     const-string v1, "month"
 
     invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -2474,10 +2454,10 @@
 
     if-lez p1, :cond_80
 
-    .line 293
+    .line 290
     nop
 
-    .line 294
+    .line 291
     array-length p1, p2
 
     const/4 v1, 0x0
@@ -2495,7 +2475,7 @@
 
     goto :goto_61
 
-    .line 295
+    .line 292
     :cond_69
     if-lez v3, :cond_75
 
@@ -2509,7 +2489,7 @@
 
     goto :goto_80
 
-    .line 296
+    .line 293
     :cond_75
     iget-object p1, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
@@ -2521,7 +2501,7 @@
 
     invoke-virtual {p1, p2}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 298
+    .line 295
     :cond_80
     :goto_80
     array-length p1, v6
@@ -2538,7 +2518,7 @@
 
     invoke-virtual {p1, p2}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 299
+    .line 296
     :cond_8e
     array-length p1, v6
 
@@ -2549,7 +2529,7 @@
 
     aget-object v1, v6, p2
 
-    .line 300
+    .line 297
     iget-object v3, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -2598,17 +2578,17 @@
 
     invoke-virtual {v3, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 301
+    .line 298
     invoke-direct {p0}, Lim/doit/pro/stat/StatisticsActivity;->card()Landroid/widget/LinearLayout;
 
     move-result-object v3
 
-    .line 302
+    .line 299
     aget-object v1, v1, v2
 
     check-cast v1, Ljava/util/List;
 
-    .line 303
+    .line 300
     const/4 v4, 0x0
 
     :goto_cf
@@ -2622,14 +2602,14 @@
 
     if-ge v4, v5, :cond_eb
 
-    .line 304
+    .line 301
     invoke-interface {v1, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v5
 
     check-cast v5, Lim/doit/pro/stat/StatisticsActivity$T;
 
-    .line 305
+    .line 302
     iget-object v5, v5, Lim/doit/pro/stat/StatisticsActivity$T;->title:Ljava/lang/String;
 
     invoke-direct {p0, v5}, Lim/doit/pro/stat/StatisticsActivity;->taskRow(Ljava/lang/String;)Landroid/view/View;
@@ -2638,23 +2618,23 @@
 
     invoke-virtual {v3, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 303
+    .line 300
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_cf
 
-    .line 307
+    .line 304
     :cond_eb
     iget-object v1, p0, Lim/doit/pro/stat/StatisticsActivity;->root:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 299
+    .line 296
     add-int/lit8 p2, p2, 0x1
 
     goto :goto_90
 
-    .line 309
+    .line 306
     :cond_f3
     return-void
 .end method
@@ -2839,7 +2819,7 @@
 .method private tColor(Landroid/widget/TextView;)V
     .registers 3
 
-    .line 457
+    .line 454
     const v0, -0x656566
 
     invoke-virtual {p1, v0}, Landroid/widget/TextView;->setTextColor(I)V
@@ -2850,22 +2830,22 @@
 .method private taskRow(Ljava/lang/String;)Landroid/view/View;
     .registers 11
 
-    .line 433
+    .line 430
     new-instance v0, Landroid/widget/LinearLayout;
 
     invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 434
+    .line 431
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 435
+    .line 432
     const/16 v2, 0x10
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setGravity(I)V
 
-    .line 436
+    .line 433
     const/high16 v3, 0x41200000    # 10.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -2896,7 +2876,7 @@
 
     invoke-virtual {v0, v4, v6, v7, v5}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 437
+    .line 434
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
@@ -2915,12 +2895,12 @@
 
     if-eqz v4, :cond_6d
 
-    .line 438
+    .line 435
     new-instance v4, Landroid/widget/ImageView;
 
     invoke-direct {v4, p0}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
 
-    .line 439
+    .line 436
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v5
@@ -2933,10 +2913,10 @@
 
     move-result v5
 
-    .line 440
+    .line 437
     invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 441
+    .line 438
     new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
 
     const/high16 v6, 0x41900000    # 18.0f
@@ -2955,7 +2935,7 @@
 
     invoke-direct {v5, v7, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 442
+    .line 439
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
 
     move-result v3
@@ -2964,34 +2944,34 @@
 
     iput v3, v5, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
 
-    .line 443
+    .line 440
     invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 444
+    .line 441
     invoke-virtual {v0, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 446
+    .line 443
     :cond_6d
     new-instance v3, Landroid/widget/TextView;
 
     invoke-direct {v3, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 447
+    .line 444
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 448
+    .line 445
     const/high16 p1, 0x41600000    # 14.0f
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setTextSize(F)V
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->tColor(Landroid/widget/TextView;)V
 
-    .line 449
+    .line 446
     const/4 p1, 0x1
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setSingleLine(Z)V
 
-    .line 450
+    .line 447
     invoke-virtual {v3}, Landroid/widget/TextView;->getPaintFlags()I
 
     move-result p1
@@ -3000,7 +2980,7 @@
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setPaintFlags(I)V
 
-    .line 451
+    .line 448
     new-instance p1, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v2, -0x2
@@ -3009,13 +2989,13 @@
 
     invoke-direct {p1, v1, v2, v4}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
-    .line 452
+    .line 449
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 453
+    .line 450
     invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 454
+    .line 451
     return-object v0
 .end method
 
@@ -3115,7 +3095,7 @@
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .registers 4
 
-    .line 470
+    .line 467
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
@@ -3124,15 +3104,15 @@
 
     if-ne v0, v1, :cond_e
 
-    .line 471
+    .line 468
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->finish()V
 
-    .line 472
+    .line 469
     const/4 p1, 0x1
 
     return p1
 
-    .line 474
+    .line 471
     :cond_e
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 
