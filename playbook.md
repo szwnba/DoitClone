@@ -380,6 +380,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   TaskDao.complete() 存的是 **Calendar 完成时间戳**（未完成=0）。`completed=1` 查询永远空。
   复用原版字段前，看写入它的 DAO 方法写什么值，别按建表类型猜。
 
+### 47. 日期分桶的两个经典坑（r33）
+- **坑一：天数差用"时刻"相减**。daysBetween(完成日零点, 当前时刻)——下午查看时 0.6 天
+  被 round 成 1，今天全部滚进"昨天"。**天数比较必须两边都 dayStart**。
+- **坑二：set(DAY_OF_WEEK, MONDAY) 受 firstDayOfWeek 影响**。zh_CN locale 周以周日开头，
+  周日当天 set(MONDAY) 会跳到"明天"，再修补就偏一整周。**取周一起点用 while 逐日回退**，
+  与 locale 无关。
+- 附带：热力图空格子 #E8E8E8 在白卡上几乎不可见（用户感知为"空白模块"）——
+  数据可视化里"零值格子"也要有可感知的底色；全零时干脆换成文案提示。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

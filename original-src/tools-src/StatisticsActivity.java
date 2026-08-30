@@ -40,7 +40,7 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
     private static final int ORANGE = 0xFFC05318;
     private static final int TEXT_MAIN = 0xFF333333;
     private static final int TEXT_GRAY = 0xFF8A8A8A;
-    private static final int HEAT[] = { 0xFFE8E8E8, 0xFFCFE2F2, 0xFF9EC3E0, 0xFF4A87BC, 0xFF1262A1 };
+    private static final int HEAT[] = { 0xFFE0E0E0, 0xFFC9DFF1, 0xFF93BFDF, 0xFF3F80B9, 0xFF0D5591 };
 
     private LinearLayout root;
     private final Handler main = new Handler(Looper.getMainLooper());
@@ -161,9 +161,8 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
                 for (int i = 5; i >= 0; i--) {
                     Calendar s = (Calendar) now.clone();
                     s.add(Calendar.WEEK_OF_YEAR, -i);
-                    s.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                    while (s.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) s.add(Calendar.DAY_OF_YEAR, -1);
                     dayStart(s);
-                    if (s.after(now)) { s.add(Calendar.WEEK_OF_YEAR, -1); } // 周日时本周一计算
                     Calendar e = (Calendar) s.clone(); e.add(Calendar.WEEK_OF_YEAR, 1);
                     ranges.add(new long[]{ s.getTimeInMillis(), e.getTimeInMillis() });
                     labels.add(i == 0 ? "本周" : df.format(s.getTime()) + "周");
@@ -258,13 +257,24 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
     }
 
     private static int daysBetween(Calendar a, Calendar b) {
-        long d = b.getTimeInMillis() - a.getTimeInMillis();
+        // 两边都取当天零点再比，避免"时刻差"在下午被四舍五入成前一天
+        Calendar a0 = (Calendar) a.clone(); dayStart(a0);
+        Calendar b0 = (Calendar) b.clone(); dayStart(b0);
+        long d = b0.getTimeInMillis() - a0.getTimeInMillis();
         return (int) Math.round(d / 86400000.0);
     }
 
     // ---------- 渲染 ----------
 
     private void render(String m, Object[] r) {
+        try {
+        renderInner(m, r);
+        } catch (Throwable t) {
+            root.addView(note("渲染出错: " + t));
+        }
+    }
+
+    private void renderInner(String m, Object[] r) {
         int[] done = (int[]) r[0];
         int[] created = (int[]) r[1];
         int rate = (Integer) r[2];
@@ -279,7 +289,12 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
 
         root.addView(kpiRow(done[done.length - 1], created[created.length - 1], rate));
         root.addView(chartCard("完成趋势", labels, done));
-        if ("month".equals(m) && heat.length > 0) root.addView(heatCard(heat));
+        if ("month".equals(m) && heat.length > 0) {
+            int sum = 0;
+            for (int v : heat) sum += v;
+            if (sum > 0) root.addView(heatCard(heat));
+            else root.addView(note("本月还没有完成记录，热力图等你点亮"));
+        }
         if (groups.length == 0) root.addView(note("该时段还没有完成记录"));
         for (Object[] g : groups) {
             root.addView(groupHeader((String) g[0] + "  ·  " + ((List<?>) g[1]).size() + " 条"));
@@ -379,6 +394,7 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
         int days = heat.length;
         GridLayout grid = new GridLayout(this);
         grid.setColumnCount(7);
+        grid.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
         int cell = (int) dp(14);
         int gap = (int) dp(3);
         for (int i = 0; i < firstDow; i++) grid.addView(blank(cell));
