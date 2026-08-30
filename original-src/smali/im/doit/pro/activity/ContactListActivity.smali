@@ -775,6 +775,8 @@
     .locals 1
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
+    invoke-super {p0, p1}, Lim/doit/pro/activity/BaseActivityRegisterSyncFinish;->onCreate(Landroid/os/Bundle;)V
+
     invoke-static {p0}, Lim/doit/pro/stat/StatisticsActivity;->open(Landroid/app/Activity;)V
 
     invoke-virtual {p0}, Lim/doit/pro/activity/ContactListActivity;->finish()V

@@ -183,13 +183,13 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
             int[] done = new int[n];
             int[] created = new int[n];
             for (int i = 0; i < n; i++) {
-                done[i] = count(d, "completed=1 AND trashed=0 AND deleted=0 AND updated>=? AND updated<?", ranges.get(i));
+                done[i] = count(d, "completed>0 AND trashed=0 AND deleted=0 AND completed>=? AND completed<?", ranges.get(i));
                 created[i] = count(d, "trashed=0 AND deleted=0 AND created>=? AND created<?", ranges.get(i));
             }
             // 完成率 = 当前时段新增里已完成的比例
             long[] cur = ranges.get(n - 1);
             int c = count(d, "trashed=0 AND deleted=0 AND created>=? AND created<?", cur);
-            int cd = count(d, "completed=1 AND trashed=0 AND deleted=0 AND created>=? AND created<?", cur);
+            int cd = count(d, "completed>0 AND trashed=0 AND deleted=0 AND created>=? AND created<?", cur);
             int rate = c > 0 ? Math.round(cd * 100f / c) : 0;
 
             // 清单：当前时段 + 上一时段的完成任务
@@ -199,7 +199,7 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
             Map<String, List<T>> byDay = new HashMap<String, List<T>>();
             List<String> dayOrder = new ArrayList<String>();
             long listFrom = n >= 2 ? ranges.get(n - 2)[0] : ranges.get(0)[0];
-            Cursor cr = d.rawQuery("SELECT title, updated FROM tasks WHERE completed=1 AND trashed=0 AND deleted=0 AND updated>=? ORDER BY updated DESC", new String[]{ String.valueOf(listFrom) });
+            Cursor cr = d.rawQuery("SELECT title, completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=? ORDER BY completed DESC", new String[]{ String.valueOf(listFrom) });
             while (cr.moveToNext()) {
                 T t = new T();
                 t.title = cr.getString(0);
@@ -228,7 +228,7 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
                 ms.set(Calendar.DAY_OF_MONTH, 1); dayStart(ms);
                 int days = now.getActualMaximum(Calendar.DAY_OF_MONTH);
                 heat = new int[days];
-                Cursor hc = d.rawQuery("SELECT updated FROM tasks WHERE completed=1 AND trashed=0 AND deleted=0 AND updated>=?", new String[]{ String.valueOf(ms.getTimeInMillis()) });
+                Cursor hc = d.rawQuery("SELECT completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=?", new String[]{ String.valueOf(ms.getTimeInMillis()) });
                 while (hc.moveToNext()) {
                     Calendar c3 = Calendar.getInstance(); c3.setTimeInMillis(hc.getLong(0));
                     int dom = c3.get(Calendar.DAY_OF_MONTH);

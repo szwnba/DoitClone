@@ -1813,7 +1813,7 @@
 
     .line 186
     :try_start_170
-    const-string v7, "completed=1 AND trashed=0 AND deleted=0 AND updated>=? AND updated<?"
+    const-string v7, "completed>0 AND trashed=0 AND deleted=0 AND completed>=? AND completed<?"
 
     invoke-interface {v13, v9}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
@@ -1867,7 +1867,7 @@
     move-result v9
 
     .line 192
-    const-string v12, "completed=1 AND trashed=0 AND deleted=0 AND created>=? AND created<?"
+    const-string v12, "completed>0 AND trashed=0 AND deleted=0 AND created>=? AND created<?"
 
     invoke-direct {v1, v3, v12, v7}, Lim/doit/pro/stat/StatisticsActivity;->count(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;[J)I
 
@@ -1961,7 +1961,7 @@
 
     .line 202
     :goto_1ea
-    const-string v1, "SELECT title, updated FROM tasks WHERE completed=1 AND trashed=0 AND deleted=0 AND updated>=? ORDER BY updated DESC"
+    const-string v1, "SELECT title, completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=? ORDER BY completed DESC"
 
     const/4 v5, 0x1
 
@@ -2214,7 +2214,7 @@
     new-array v1, v2, [I
 
     .line 231
-    const-string v4, "SELECT updated FROM tasks WHERE completed=1 AND trashed=0 AND deleted=0 AND updated>=?"
+    const-string v4, "SELECT completed FROM tasks WHERE completed>0 AND trashed=0 AND deleted=0 AND completed>=?"
 
     const/4 v5, 0x1
 

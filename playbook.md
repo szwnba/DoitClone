@@ -371,6 +371,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
   是因为调用发生在 smali（绕过了 Java 访问检查），运行时才炸。审计脚本可加一条：
   被外部包引用的方法检查 smali 里的 `.method public` 前缀。
 
+### 46. 重写 Activity 方法体时的两条铁律（r31/r32 连环修）
+- **铁律一：invoke-super 必须保留**。把 onCreate 整体替换成跳转壳时删掉了 super.onCreate，
+  基类链（含 BaseActivityRegisterSyncFinish 的注册/标记）全部未初始化——跳转本身正常
+  （假象），返回键触发后续生命周期就 NPE 闪退。重写任何生命周期方法，先抄下原方法第一行
+  的 invoke-super。
+- **铁律二：字段语义看写入方**。tasks.completed 建表写 NUMERIC，以为是 0/1——实际
+  TaskDao.complete() 存的是 **Calendar 完成时间戳**（未完成=0）。`completed=1` 查询永远空。
+  复用原版字段前，看写入它的 DAO 方法写什么值，别按建表类型猜。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
