@@ -389,6 +389,15 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - 附带：热力图空格子 #E8E8E8 在白卡上几乎不可见（用户感知为"空白模块"）——
   数据可视化里"零值格子"也要有可感知的底色；全零时干脆换成文案提示。
 
+### 48. 实验功能接入模式（r36）
+- **抽屉加分组不动适配器**：抽屉 ListView 用 `addFooterView`（footer 不参与 adapter 数据流），
+  HomeActivity.onCreate 尾部一行 `ExpDrawer.wire(home)` 静态注入——自己的 footer 自己 wire 点击，
+  原版抽屉适配器零改动，实验功能天然可整体摘除。
+- **跨页传原版 Serializable 对象用反射**：TaskDetailActivity 要 task/box 两个 Serializable extra，
+  无法用 stub 构造——`DoitApp.persist().taskDao.findByUUIDAndRepeatNo(uuid, repeatNo)` 全反射链
+  取真实对象再 putExtra，失败 toast 兜底。
+- **收藏类轻数据直接 SharedPreferences + JSON 数组**，不进任务库、不需要表结构。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。

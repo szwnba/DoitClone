@@ -637,4 +637,7 @@ Doit.im时区：%1$s
     <string name="issue_picker_title">关联 GitHub Issue</string>
     <string name="ghs_crash_log">发送崩溃日志</string>
     <string name="stat_title">统计</string>
+    <string name="exp_group_label">实验功能</string>
+    <string name="blindbox_title">盲盒抽任务</string>
+    <string name="fav_title">收藏夹</string>
 </resources>

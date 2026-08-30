@@ -2079,6 +2079,8 @@
     .line 192
     invoke-direct {p0}, Lim/doit/pro/activity/HomeActivity;->init()V
 
+    invoke-static {p0}, Lim/doit/pro/exp/ExpDrawer;->wire(Landroid/app/Activity;)V
+
     .line 193
     return-void
 .end method

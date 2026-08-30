@@ -537,4 +537,11 @@
     <item type="id" name="ghs_issue_repo" />
     <item type="id" name="ghs_crash_log" />
     <item type="id" name="stat_root" />
+    <item type="id" name="exp_group_label" />
+    <item type="id" name="exp_blindbox_row" />
+    <item type="id" name="exp_fav_row" />
+    <item type="id" name="bb_root" />
+    <item type="id" name="fav_root" />
+    <item type="id" name="fav_name" />
+    <item type="id" name="fav_url" />
 </resources>

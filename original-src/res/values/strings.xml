@@ -653,4 +653,7 @@ Come on!"</string>
     <string name="issue_picker_title">Attach GitHub Issue</string>
     <string name="ghs_crash_log">Share crash log</string>
     <string name="stat_title">Statistics</string>
+    <string name="exp_group_label">Experimental</string>
+    <string name="blindbox_title">Lucky Draw</string>
+    <string name="fav_title">Favorites</string>
 </resources>
