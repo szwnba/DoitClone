@@ -652,4 +652,5 @@ Come on!"</string>
     <string name="ghs_issue_repo">Issues repository</string>
     <string name="issue_picker_title">Attach GitHub Issue</string>
     <string name="ghs_crash_log">Share crash log</string>
+    <string name="stat_title">Statistics</string>
 </resources>

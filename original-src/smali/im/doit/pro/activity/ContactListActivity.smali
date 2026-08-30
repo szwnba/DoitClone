@@ -775,24 +775,10 @@
     .locals 1
     .param p1, "savedInstanceState"    # Landroid/os/Bundle;
 
-    .prologue
-    .line 81
-    invoke-super {p0, p1}, Lim/doit/pro/activity/BaseActivityRegisterSyncFinish;->onCreate(Landroid/os/Bundle;)V
+    invoke-static {p0}, Lim/doit/pro/stat/StatisticsActivity;->open(Landroid/app/Activity;)V
 
-    .line 82
-    const v0, 0x7f03001d
+    invoke-virtual {p0}, Lim/doit/pro/activity/ContactListActivity;->finish()V
 
-    invoke-virtual {p0, v0}, Lim/doit/pro/activity/ContactListActivity;->setContentView(I)V
-
-    .line 83
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lim/doit/pro/activity/ContactListActivity;->mIsCreated:Z
-
-    .line 84
-    invoke-direct {p0}, Lim/doit/pro/activity/ContactListActivity;->init()V
-
-    .line 85
     return-void
 .end method
 

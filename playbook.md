@@ -353,6 +353,17 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **顺带**：构建机 /tmp 是 tmpfs，apktool 的 aapt2 要在 /tmp 写临时文件，塞满会报
   "failed to write ... Invalid entry name/IO error" 且 tail 掩盖真因——报 IO error 先 df /tmp。
 
+### 44. 统计功能实现套路（r30）
+- **直查 SQLite 绕开 DAO**：统计类需求（聚合/分组）不需要模型对象——
+  `SQLiteDatabase.openDatabase(getDatabasePath("doitim.db"), OPEN_READONLY)` 只读连接与主连接共存无冲突，
+  免 stub、免空壳方法陷阱（教训 37 的根治方案）。
+- **完成时间的近似**：tasks 表只有 `completed` 0/1 标记，无完成时间戳——用 `updated` 近似
+  （完成动作必然 touch updated）。时间戳统一为**毫秒**（13 位）。
+- **入口偷梁换柱的最省改法**：复用已死功能的活动做跳板——菜单项改标题（contacts→统计），
+  ContactListActivity.onCreate 整体替换为"打开统计页+finish"，一处补丁覆盖所有菜单入口。
+- **纯代码搭 UI**：统计页除 ScrollView 骨架外全部代码构建（weight 排版 + dp 换算 + FrameLayout
+  底部对齐做柱状图 + GridLayout 做热力图），避免资源膨胀，视图复杂度也完全可控。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
