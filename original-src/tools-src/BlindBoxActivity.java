@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -50,11 +51,13 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
     private static final String[] SRC_NAMES = { "全部待办", "收集箱", "今日待办", "下一步行动" };
     private boolean drawing = false;
     private Button srcBtn;
-    private Button drawBtn;
+    private LinearLayout drawBtn;
+    private TextView drawTxt;
     private LinearLayout resultCard;
 
     private float dp(float v) { return getResources().getDisplayMetrics().density * v; }
     private int id(String n) { return getResources().getIdentifier(n, "id", getPackageName()); }
+    private int res(String n, String t) { return getResources().getIdentifier(n, t, getPackageName()); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,16 +98,26 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
         root.addView(srcBtn);
         updateSrcLabel();
 
-        // 抽取大按钮
-        drawBtn = new Button(this);
-        drawBtn.setTextSize(18);
-        drawBtn.setTypeface(Typeface.DEFAULT_BOLD);
-        drawBtn.setTextColor(0xFFFFFFFF);
+        // 抽取大按钮（白色盒子线稿 + 文字，V1 版式）
+        drawBtn = new LinearLayout(this);
+        drawBtn.setOrientation(LinearLayout.HORIZONTAL);
+        drawBtn.setGravity(Gravity.CENTER);
         drawBtn.setBackgroundColor(BLUE);
-        drawBtn.setText("🎁  点 我 抽 一 个");
         LinearLayout.LayoutParams dlp = new LinearLayout.LayoutParams(-1, (int) dp(150));
         dlp.setMargins(m, (int) dp(14), m, 0);
         drawBtn.setLayoutParams(dlp);
+        ImageView boxIv = new ImageView(this);
+        boxIv.setImageResource(res("icon_exp_boxopen", "drawable"));
+        LinearLayout.LayoutParams ilp = new LinearLayout.LayoutParams((int) dp(34), (int) dp(34));
+        ilp.rightMargin = (int) dp(14);
+        boxIv.setLayoutParams(ilp);
+        drawTxt = new TextView(this);
+        drawTxt.setText("点 我 抽 一 个");
+        drawTxt.setTextSize(18);
+        drawTxt.setTypeface(Typeface.DEFAULT_BOLD);
+        drawTxt.setTextColor(0xFFFFFFFF);
+        drawBtn.addView(boxIv);
+        drawBtn.addView(drawTxt);
         drawBtn.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) { draw(); }
         });
@@ -182,7 +195,7 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
                     @Override public void run() {
                         if (self.isFinishing()) return;
                         self.pool = res;
-                        drawBtn.setText(res.size() > 0 ? "🎁  点 我 抽 一 个" : "🎁  该来源暂无任务");
+                        drawTxt.setText(res.size() > 0 ? "点 我 抽 一 个" : "该来源暂无任务");
                     }
                 });
             }
@@ -209,7 +222,7 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
             main.postDelayed(new Runnable() {
                 @Override public void run() {
                     Pick p = pool.get(random.nextInt(pool.size()));
-                    drawBtn.setText("「" + shortTitle(p.title) + "」");
+                    drawTxt.setText("「" + shortTitle(p.title) + "」");
                     if (n == steps - 1) reveal(pool.get(random.nextInt(pool.size())));
                 }
             }, 90 * (i + 1));
@@ -224,7 +237,7 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
     private void reveal(Pick p) {
         current = p;
         drawing = false;
-        drawBtn.setText("🎁  再 抽 一 个");
+        drawTxt.setText("再 抽 一 个");
 
         resultCard.removeAllViews();
         resultCard.setVisibility(View.VISIBLE);

@@ -26,7 +26,9 @@
 # instance fields
 .field private current:Lim/doit/pro/exp/BlindBoxActivity$Pick;
 
-.field private drawBtn:Landroid/widget/Button;
+.field private drawBtn:Landroid/widget/LinearLayout;
+
+.field private drawTxt:Landroid/widget/TextView;
 
 .field private drawing:Z
 
@@ -57,7 +59,7 @@
 .method static constructor <clinit>()V
     .registers 4
 
-    .line 50
+    .line 51
     const-string v0, "\u4eca\u65e5\u5f85\u529e"
 
     const-string v1, "\u4e0b\u4e00\u6b65\u884c\u52a8"
@@ -78,10 +80,10 @@
 .method public constructor <init>()V
     .registers 3
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/activity/DSwipeBackBaseActivity;-><init>()V
 
-    .line 45
+    .line 46
     new-instance v0, Landroid/os/Handler;
 
     invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
@@ -92,26 +94,26 @@
 
     iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->main:Landroid/os/Handler;
 
-    .line 46
+    .line 47
     new-instance v0, Ljava/util/Random;
 
     invoke-direct {v0}, Ljava/util/Random;-><init>()V
 
     iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->random:Ljava/util/Random;
 
-    .line 47
+    .line 48
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->pool:Ljava/util/List;
 
-    .line 49
+    .line 50
     const/4 v0, 0x0
 
     iput v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcIndex:I
 
-    .line 51
+    .line 52
     iput-boolean v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawing:Z
 
     return-void
@@ -120,7 +122,7 @@
 .method static synthetic access$000(Lim/doit/pro/exp/BlindBoxActivity;)I
     .registers 1
 
-    .line 28
+    .line 29
     iget p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcIndex:I
 
     return p0
@@ -129,7 +131,7 @@
 .method static synthetic access$002(Lim/doit/pro/exp/BlindBoxActivity;I)I
     .registers 2
 
-    .line 28
+    .line 29
     iput p1, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcIndex:I
 
     return p1
@@ -138,7 +140,7 @@
 .method static synthetic access$100()[Ljava/lang/String;
     .registers 1
 
-    .line 28
+    .line 29
     sget-object v0, Lim/doit/pro/exp/BlindBoxActivity;->SRC_NAMES:[Ljava/lang/String;
 
     return-object v0
@@ -147,7 +149,7 @@
 .method static synthetic access$1000(Lim/doit/pro/exp/BlindBoxActivity;Ljava/lang/String;)Ljava/lang/String;
     .registers 2
 
-    .line 28
+    .line 29
     invoke-direct {p0, p1}, Lim/doit/pro/exp/BlindBoxActivity;->shortTitle(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
@@ -158,7 +160,7 @@
 .method static synthetic access$1100(Lim/doit/pro/exp/BlindBoxActivity;Lim/doit/pro/exp/BlindBoxActivity$Pick;)V
     .registers 2
 
-    .line 28
+    .line 29
     invoke-direct {p0, p1}, Lim/doit/pro/exp/BlindBoxActivity;->reveal(Lim/doit/pro/exp/BlindBoxActivity$Pick;)V
 
     return-void
@@ -167,7 +169,7 @@
 .method static synthetic access$1200(Lim/doit/pro/exp/BlindBoxActivity;)V
     .registers 1
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->openDetail()V
 
     return-void
@@ -176,7 +178,7 @@
 .method static synthetic access$200(Lim/doit/pro/exp/BlindBoxActivity;)V
     .registers 1
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->updateSrcLabel()V
 
     return-void
@@ -185,7 +187,7 @@
 .method static synthetic access$300(Lim/doit/pro/exp/BlindBoxActivity;)V
     .registers 1
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->loadPool()V
 
     return-void
@@ -194,7 +196,7 @@
 .method static synthetic access$400(Lim/doit/pro/exp/BlindBoxActivity;)V
     .registers 1
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->draw()V
 
     return-void
@@ -203,7 +205,7 @@
 .method static synthetic access$500(Lim/doit/pro/exp/BlindBoxActivity;)Ljava/lang/String;
     .registers 1
 
-    .line 28
+    .line 29
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->srcWhere()Ljava/lang/String;
 
     move-result-object p0
@@ -214,7 +216,7 @@
 .method static synthetic access$600(Lim/doit/pro/exp/BlindBoxActivity;)Ljava/util/List;
     .registers 1
 
-    .line 28
+    .line 29
     iget-object p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->pool:Ljava/util/List;
 
     return-object p0
@@ -223,17 +225,17 @@
 .method static synthetic access$602(Lim/doit/pro/exp/BlindBoxActivity;Ljava/util/List;)Ljava/util/List;
     .registers 2
 
-    .line 28
+    .line 29
     iput-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity;->pool:Ljava/util/List;
 
     return-object p1
 .end method
 
-.method static synthetic access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/Button;
+.method static synthetic access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/TextView;
     .registers 1
 
-    .line 28
-    iget-object p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    .line 29
+    iget-object p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
 
     return-object p0
 .end method
@@ -241,7 +243,7 @@
 .method static synthetic access$800(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/os/Handler;
     .registers 1
 
-    .line 28
+    .line 29
     iget-object p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->main:Landroid/os/Handler;
 
     return-object p0
@@ -250,7 +252,7 @@
 .method static synthetic access$900(Lim/doit/pro/exp/BlindBoxActivity;)Ljava/util/Random;
     .registers 1
 
-    .line 28
+    .line 29
     iget-object p0, p0, Lim/doit/pro/exp/BlindBoxActivity;->random:Ljava/util/Random;
 
     return-object p0
@@ -259,7 +261,7 @@
 .method private ageText(J)Ljava/lang/String;
     .registers 7
 
-    .line 282
+    .line 295
     const-wide/16 v0, 0x0
 
     cmp-long v2, p1, v0
@@ -270,7 +272,7 @@
 
     return-object p1
 
-    .line 283
+    .line 296
     :cond_9
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -282,7 +284,7 @@
 
     div-long/2addr v2, p1
 
-    .line 284
+    .line 297
     cmp-long p1, v2, v0
 
     if-gtz p1, :cond_19
@@ -291,7 +293,7 @@
 
     return-object p1
 
-    .line 285
+    .line 298
     :cond_19
     const-wide/16 p1, 0x1
 
@@ -303,7 +305,7 @@
 
     return-object p1
 
-    .line 286
+    .line 299
     :cond_22
     new-instance p1, Ljava/lang/StringBuilder;
 
@@ -329,7 +331,7 @@
 .method private boxName(Ljava/lang/String;)Ljava/lang/String;
     .registers 3
 
-    .line 273
+    .line 286
     const-string v0, "inbox"
 
     invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -342,7 +344,7 @@
 
     return-object p1
 
-    .line 274
+    .line 287
     :cond_b
     const-string v0, "next"
 
@@ -356,7 +358,7 @@
 
     return-object p1
 
-    .line 275
+    .line 288
     :cond_16
     const-string v0, "plan"
 
@@ -370,7 +372,7 @@
 
     return-object p1
 
-    .line 276
+    .line 289
     :cond_21
     const-string v0, "waiting"
 
@@ -384,7 +386,7 @@
 
     return-object p1
 
-    .line 277
+    .line 290
     :cond_2c
     const-string v0, "noplan"
 
@@ -398,7 +400,7 @@
 
     return-object p1
 
-    .line 278
+    .line 291
     :cond_37
     const-string p1, "\u4efb\u52a1"
 
@@ -406,35 +408,35 @@
 .end method
 
 .method private buildUi()V
-    .registers 9
+    .registers 10
 
-    .line 80
+    .line 83
     new-instance v0, Landroid/widget/Button;
 
     invoke-direct {v0, p0}, Landroid/widget/Button;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
-    .line 81
+    .line 84
     const/high16 v1, 0x41600000    # 14.0f
 
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setTextSize(F)V
 
-    .line 82
+    .line 85
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     const v2, -0xcccccd
 
     invoke-virtual {v0, v2}, Landroid/widget/Button;->setTextColor(I)V
 
-    .line 83
+    .line 86
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     const/4 v2, -0x1
 
     invoke-virtual {v0, v2}, Landroid/widget/Button;->setBackgroundColor(I)V
 
-    .line 84
+    .line 87
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     const/high16 v3, 0x42280000    # 42.0f
@@ -447,7 +449,7 @@
 
     invoke-direct {v0, v2, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 85
+    .line 88
     const/high16 v3, 0x41400000    # 12.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
@@ -456,17 +458,17 @@
 
     float-to-int v4, v4
 
-    .line 86
+    .line 89
     const/4 v5, 0x0
 
     invoke-virtual {v0, v4, v4, v4, v5}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 87
+    .line 90
     iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     invoke-virtual {v6, v0}, Landroid/widget/Button;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 88
+    .line 91
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     new-instance v6, Lim/doit/pro/exp/BlindBoxActivity$1;
@@ -475,55 +477,41 @@
 
     invoke-virtual {v0, v6}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 95
+    .line 98
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->root:Landroid/widget/LinearLayout;
 
     iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 96
+    .line 99
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->updateSrcLabel()V
 
-    .line 99
-    new-instance v0, Landroid/widget/Button;
-
-    invoke-direct {v0, p0}, Landroid/widget/Button;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
-
-    .line 100
-    const/high16 v6, 0x41900000    # 18.0f
-
-    invoke-virtual {v0, v6}, Landroid/widget/Button;->setTextSize(F)V
-
-    .line 101
-    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
-
-    sget-object v6, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
-
-    invoke-virtual {v0, v6}, Landroid/widget/Button;->setTypeface(Landroid/graphics/Typeface;)V
-
     .line 102
-    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    new-instance v0, Landroid/widget/LinearLayout;
 
-    invoke-virtual {v0, v2}, Landroid/widget/Button;->setTextColor(I)V
+    invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
+
+    iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
 
     .line 103
-    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->setOrientation(I)V
+
+    .line 104
+    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
+
+    const/16 v6, 0x11
+
+    invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->setGravity(I)V
+
+    .line 105
+    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
 
     const v6, -0xed9d5f
 
-    invoke-virtual {v0, v6}, Landroid/widget/Button;->setBackgroundColor(I)V
+    invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->setBackgroundColor(I)V
 
-    .line 104
-    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
-
-    const-string v6, "\ud83c\udf81  \u70b9 \u6211 \u62bd \u4e00 \u4e2a"
-
-    invoke-virtual {v0, v6}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
-
-    .line 105
+    .line 106
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     const/high16 v6, 0x43160000    # 150.0f
@@ -536,7 +524,7 @@
 
     invoke-direct {v0, v2, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 106
+    .line 107
     invoke-direct {p0, v1}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
 
     move-result v6
@@ -545,52 +533,142 @@
 
     invoke-virtual {v0, v4, v6, v4, v5}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 107
-    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
-
-    invoke-virtual {v6, v0}, Landroid/widget/Button;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
     .line 108
-    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v6, v0}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 109
+    new-instance v0, Landroid/widget/ImageView;
+
+    invoke-direct {v0, p0}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
+
+    .line 110
+    const-string v6, "icon_exp_boxopen"
+
+    const-string v7, "drawable"
+
+    invoke-direct {p0, v6, v7}, Lim/doit/pro/exp/BlindBoxActivity;->res(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v6
+
+    invoke-virtual {v0, v6}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    .line 111
+    new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
+
+    const/high16 v7, 0x42080000    # 34.0f
+
+    invoke-direct {p0, v7}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
+
+    move-result v8
+
+    float-to-int v8, v8
+
+    invoke-direct {p0, v7}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
+
+    move-result v7
+
+    float-to-int v7, v7
+
+    invoke-direct {v6, v8, v7}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
+
+    .line 112
+    invoke-direct {p0, v1}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
+
+    move-result v7
+
+    float-to-int v7, v7
+
+    iput v7, v6, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
+
+    .line 113
+    invoke-virtual {v0, v6}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 114
+    new-instance v6, Landroid/widget/TextView;
+
+    invoke-direct {v6, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+
+    iput-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
+
+    .line 115
+    const-string v7, "\u70b9 \u6211 \u62bd \u4e00 \u4e2a"
+
+    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 116
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
+
+    const/high16 v7, 0x41900000    # 18.0f
+
+    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setTextSize(F)V
+
+    .line 117
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
+
+    sget-object v7, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
+
+    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface;)V
+
+    .line 118
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
+
+    invoke-virtual {v6, v2}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 119
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
+
+    invoke-virtual {v6, v0}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
+
+    .line 120
+    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
+
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
+
+    invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
+
+    .line 121
+    iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
 
     new-instance v6, Lim/doit/pro/exp/BlindBoxActivity$2;
 
     invoke-direct {v6, p0}, Lim/doit/pro/exp/BlindBoxActivity$2;-><init>(Lim/doit/pro/exp/BlindBoxActivity;)V
 
-    invoke-virtual {v0, v6}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 111
+    .line 124
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->root:Landroid/widget/LinearLayout;
 
-    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 114
+    .line 127
     new-instance v0, Landroid/widget/LinearLayout;
 
     invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
-    .line 115
+    .line 128
     const/4 v6, 0x1
 
     invoke-virtual {v0, v6}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 116
+    .line 129
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setBackgroundColor(I)V
 
-    .line 117
+    .line 130
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v6, -0x2
 
     invoke-direct {v0, v2, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 118
+    .line 131
     invoke-direct {p0, v1}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
 
     move-result v2
@@ -599,12 +677,12 @@
 
     invoke-virtual {v0, v4, v2, v4, v5}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 119
+    .line 132
     iget-object v2, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v2, v0}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 120
+    .line 133
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     const/high16 v2, 0x41800000    # 16.0f
@@ -635,41 +713,41 @@
 
     invoke-virtual {v0, v4, v6, v7, v1}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 121
+    .line 134
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 122
+    .line 135
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->root:Landroid/widget/LinearLayout;
 
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 124
+    .line 137
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 125
+    .line 138
     const-string v1, "\u00b7 \u53ea\u62bd\u672a\u5b8c\u6210\u3001\u672a\u5220\u9664\u7684\u4efb\u52a1\n\u00b7 \u62bd\u4e2d\u4e0d\u6d88\u8017\u3001\u4e0d\u6539\u52a8\u4efb\u52a1\u672c\u8eab"
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 126
+    .line 139
     const/high16 v1, 0x41300000    # 11.0f
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextSize(F)V
 
-    .line 127
+    .line 140
     const v1, -0x757576
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 128
+    .line 141
     invoke-direct {p0, v2}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
 
     move-result v1
@@ -690,19 +768,19 @@
 
     invoke-virtual {v0, v1, v3, v2, v5}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 129
+    .line 142
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->root:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 130
+    .line 143
     return-void
 .end method
 
 .method private dp(F)F
     .registers 3
 
-    .line 56
+    .line 58
     invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -721,14 +799,14 @@
 .method private draw()V
     .registers 10
 
-    .line 193
+    .line 206
     iget-boolean v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawing:Z
 
     if-eqz v0, :cond_5
 
     return-void
 
-    .line 194
+    .line 207
     :cond_5
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->pool:Ljava/util/List;
 
@@ -744,20 +822,20 @@
 
     return-void
 
-    .line 195
+    .line 208
     :cond_13
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawing:Z
 
-    .line 196
+    .line 209
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 199
+    .line 212
     new-instance v0, Landroid/view/animation/RotateAnimation;
 
     const/high16 v3, -0x3fc00000    # -3.0f
@@ -776,27 +854,27 @@
 
     invoke-direct/range {v2 .. v8}, Landroid/view/animation/RotateAnimation;-><init>(FFIFIF)V
 
-    .line 200
+    .line 213
     const-wide/16 v1, 0x5a
 
     invoke-virtual {v0, v1, v2}, Landroid/view/animation/RotateAnimation;->setDuration(J)V
 
-    .line 201
+    .line 214
     const/4 v1, 0x7
 
     invoke-virtual {v0, v1}, Landroid/view/animation/RotateAnimation;->setRepeatCount(I)V
 
-    .line 202
+    .line 215
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1}, Landroid/view/animation/RotateAnimation;->setRepeatMode(I)V
 
-    .line 203
-    iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    .line 216
+    iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/LinearLayout;
 
-    invoke-virtual {v1, v0}, Landroid/widget/Button;->startAnimation(Landroid/view/animation/Animation;)V
+    invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->startAnimation(Landroid/view/animation/Animation;)V
 
-    .line 207
+    .line 220
     const/4 v0, 0x0
 
     :goto_40
@@ -804,10 +882,10 @@
 
     if-ge v0, v1, :cond_55
 
-    .line 208
+    .line 221
     nop
 
-    .line 209
+    .line 222
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->main:Landroid/os/Handler;
 
     new-instance v2, Lim/doit/pro/exp/BlindBoxActivity$4;
@@ -822,10 +900,10 @@
 
     invoke-virtual {v1, v2, v3, v4}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 207
+    .line 220
     goto :goto_40
 
-    .line 217
+    .line 230
     :cond_55
     return-void
 .end method
@@ -833,7 +911,7 @@
 .method private id(Ljava/lang/String;)I
     .registers 5
 
-    .line 57
+    .line 59
     invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -854,17 +932,17 @@
 .method private loadPool()V
     .registers 3
 
-    .line 155
+    .line 168
     nop
 
-    .line 156
+    .line 169
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     const/16 v1, 0x8
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 157
+    .line 170
     new-instance v0, Ljava/lang/Thread;
 
     new-instance v1, Lim/doit/pro/exp/BlindBoxActivity$3;
@@ -873,24 +951,24 @@
 
     invoke-direct {v0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 189
+    .line 202
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    .line 190
+    .line 203
     return-void
 .end method
 
 .method private openDetail()V
     .registers 11
 
-    .line 291
+    .line 304
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->current:Lim/doit/pro/exp/BlindBoxActivity$Pick;
 
     if-nez v0, :cond_5
 
     return-void
 
-    .line 293
+    .line 306
     :cond_5
     :try_start_5
     const-string v0, "im.doit.pro.activity.DoitApp"
@@ -899,7 +977,7 @@
 
     move-result-object v0
 
-    .line 294
+    .line 307
     const-string v1, "persist"
 
     const/4 v2, 0x0
@@ -918,7 +996,7 @@
 
     move-result-object v1
 
-    .line 295
+    .line 308
     invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v3
@@ -933,7 +1011,7 @@
 
     move-result-object v1
 
-    .line 296
+    .line 309
     invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v3
@@ -958,7 +1036,7 @@
 
     move-result-object v3
 
-    .line 297
+    .line 310
     new-array v5, v6, [Ljava/lang/Object;
 
     iget-object v6, p0, Lim/doit/pro/exp/BlindBoxActivity;->current:Lim/doit/pro/exp/BlindBoxActivity$Pick;
@@ -977,7 +1055,7 @@
 
     move-result-object v1
 
-    .line 298
+    .line 311
     if-nez v1, :cond_59
 
     const-string v0, "\u4efb\u52a1\u5df2\u4e0d\u5b58\u5728"
@@ -986,18 +1064,18 @@
 
     return-void
 
-    .line 299
+    .line 312
     :cond_59
     new-instance v3, Landroid/content/Intent;
 
     invoke-direct {v3}, Landroid/content/Intent;-><init>()V
 
-    .line 300
+    .line 313
     const-string v5, "im.doit.pro.activity.TaskDetailActivity"
 
     invoke-virtual {v3, p0, v5}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 301
+    .line 314
     const-string v5, "task"
 
     check-cast v1, Ljava/io/Serializable;
@@ -1006,7 +1084,7 @@
     :try_end_6a
     .catchall {:try_start_5 .. :try_end_6a} :catchall_88
 
-    .line 303
+    .line 316
     :try_start_6a
     const-string v1, "currentBox"
 
@@ -1022,7 +1100,7 @@
 
     move-result-object v0
 
-    .line 304
+    .line 317
     if-eqz v0, :cond_83
 
     const-string v1, "box"
@@ -1035,7 +1113,7 @@
 
     goto :goto_83
 
-    .line 305
+    .line 318
     :catchall_82
     move-exception v0
 
@@ -1043,20 +1121,20 @@
     :goto_83
     nop
 
-    .line 306
+    .line 319
     :try_start_84
     invoke-virtual {p0, v3}, Lim/doit/pro/exp/BlindBoxActivity;->startActivity(Landroid/content/Intent;)V
     :try_end_87
     .catchall {:try_start_84 .. :try_end_87} :catchall_88
 
-    .line 309
+    .line 322
     goto :goto_a7
 
-    .line 307
+    .line 320
     :catchall_88
     move-exception v0
 
-    .line 308
+    .line 321
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1085,45 +1163,64 @@
 
     invoke-direct {p0, v0}, Lim/doit/pro/exp/BlindBoxActivity;->toast(Ljava/lang/String;)V
 
-    .line 310
+    .line 323
     :goto_a7
     return-void
+.end method
+
+.method private res(Ljava/lang/String;Ljava/lang/String;)I
+    .registers 5
+
+    .line 60
+    invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getPackageName()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, p1, p2, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result p1
+
+    return p1
 .end method
 
 .method private reveal(Lim/doit/pro/exp/BlindBoxActivity$Pick;)V
     .registers 10
 
-    .line 225
+    .line 238
     iput-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity;->current:Lim/doit/pro/exp/BlindBoxActivity$Pick;
 
-    .line 226
+    .line 239
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawing:Z
 
-    .line 227
-    iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawBtn:Landroid/widget/Button;
+    .line 240
+    iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->drawTxt:Landroid/widget/TextView;
 
-    const-string v2, "\ud83c\udf81  \u518d \u62bd \u4e00 \u4e2a"
+    const-string v2, "\u518d \u62bd \u4e00 \u4e2a"
 
-    invoke-virtual {v1, v2}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 229
+    .line 242
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1}, Landroid/widget/LinearLayout;->removeAllViews()V
 
-    .line 230
+    .line 243
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->setVisibility(I)V
 
-    .line 232
+    .line 245
     new-instance v1, Landroid/widget/TextView;
 
     invoke-direct {v1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 233
+    .line 246
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1150,7 +1247,7 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 234
+    .line 247
     const/high16 v2, 0x41300000    # 11.0f
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextSize(F)V
@@ -1159,22 +1256,22 @@
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 235
+    .line 248
     iget-object v3, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v3, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 237
+    .line 250
     new-instance v1, Landroid/widget/TextView;
 
     invoke-direct {v1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 238
+    .line 251
     iget-object v3, p1, Lim/doit/pro/exp/BlindBoxActivity$Pick;->title:Ljava/lang/String;
 
     invoke-virtual {v1, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 239
+    .line 252
     const/high16 v3, 0x41880000    # 17.0f
 
     invoke-virtual {v1, v3}, Landroid/widget/TextView;->setTextSize(F)V
@@ -1183,7 +1280,7 @@
 
     invoke-virtual {v1, v3}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 240
+    .line 253
     const/high16 v3, 0x41000000    # 8.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
@@ -1200,20 +1297,20 @@
 
     invoke-virtual {v1, v0, v4, v0, v3}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 241
+    .line 254
     iget-object v3, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v3, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 243
+    .line 256
     new-instance v1, Landroid/widget/LinearLayout;
 
     invoke-direct {v1, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 244
+    .line 257
     invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 245
+    .line 258
     iget v3, p1, Lim/doit/pro/exp/BlindBoxActivity$Pick;->priority:I
 
     const/4 v4, 0x3
@@ -1222,24 +1319,24 @@
 
     if-lt v3, v4, :cond_9d
 
-    .line 246
+    .line 259
     new-instance v3, Landroid/widget/TextView;
 
     invoke-direct {v3, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 247
+    .line 260
     const-string v4, "\u9ad8\u4f18\u5148\u7ea7"
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 248
+    .line 261
     invoke-virtual {v3, v5}, Landroid/widget/TextView;->setTextSize(F)V
 
     const v4, -0x3face8
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 249
+    .line 262
     invoke-direct {p0, v5}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
 
     move-result v4
@@ -1248,16 +1345,16 @@
 
     invoke-virtual {v3, v0, v0, v4, v0}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 250
+    .line 263
     invoke-virtual {v1, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 252
+    .line 265
     :cond_9d
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 253
+    .line 266
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -1284,45 +1381,45 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 254
+    .line 267
     invoke-virtual {v0, v5}, Landroid/widget/TextView;->setTextSize(F)V
 
     invoke-virtual {v0, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 255
+    .line 268
     invoke-virtual {v1, v0}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 256
+    .line 269
     iget-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {p1, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 258
+    .line 271
     new-instance p1, Landroid/widget/Button;
 
     invoke-direct {p1, p0}, Landroid/widget/Button;-><init>(Landroid/content/Context;)V
 
-    .line 259
+    .line 272
     const-string v0, "\u53bb\u505a\u8fd9\u6761 \u2192"
 
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
 
-    .line 260
+    .line 273
     const/high16 v0, 0x41600000    # 14.0f
 
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setTextSize(F)V
 
-    .line 261
+    .line 274
     const v0, -0xed9d5f
 
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setTextColor(I)V
 
-    .line 262
+    .line 275
     const v0, -0xd0906
 
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setBackgroundColor(I)V
 
-    .line 263
+    .line 276
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     const/high16 v1, 0x42200000    # 40.0f
@@ -1337,7 +1434,7 @@
 
     invoke-direct {v0, v2, v1}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 264
+    .line 277
     invoke-direct {p0, v5}, Lim/doit/pro/exp/BlindBoxActivity;->dp(F)F
 
     move-result v1
@@ -1346,34 +1443,34 @@
 
     iput v1, v0, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
-    .line 265
+    .line 278
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 266
+    .line 279
     new-instance v0, Lim/doit/pro/exp/BlindBoxActivity$5;
 
     invoke-direct {v0, p0}, Lim/doit/pro/exp/BlindBoxActivity$5;-><init>(Lim/doit/pro/exp/BlindBoxActivity;)V
 
     invoke-virtual {p1, v0}, Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 269
+    .line 282
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->resultCard:Landroid/widget/LinearLayout;
 
     invoke-virtual {v0, p1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 270
+    .line 283
     return-void
 .end method
 
 .method private shortTitle(Ljava/lang/String;)Ljava/lang/String;
     .registers 5
 
-    .line 220
+    .line 233
     invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object p1
 
-    .line 221
+    .line 234
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -1413,23 +1510,23 @@
 .method private srcWhere()Ljava/lang/String;
     .registers 6
 
-    .line 137
+    .line 150
     iget v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcIndex:I
 
     packed-switch v0, :pswitch_data_3e
 
-    .line 141
+    .line 154
     const-string v0, ""
 
     return-object v0
 
-    .line 140
+    .line 153
     :pswitch_8
     const-string v0, " AND attribute=\'next\'"
 
     return-object v0
 
-    .line 139
+    .line 152
     :pswitch_b
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -1479,7 +1576,7 @@
 
     return-object v0
 
-    .line 138
+    .line 151
     :pswitch_3b
     const-string v0, " AND attribute=\'inbox\'"
 
@@ -1496,7 +1593,7 @@
 .method private toast(Ljava/lang/String;)V
     .registers 3
 
-    .line 313
+    .line 326
     const/4 v0, 0x0
 
     invoke-static {p0, p1, v0}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
@@ -1505,41 +1602,41 @@
 
     invoke-virtual {p1}, Landroid/widget/Toast;->show()V
 
-    .line 314
+    .line 327
     return-void
 .end method
 
 .method private todayStart()J
     .registers 4
 
-    .line 146
+    .line 159
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v0
 
-    .line 147
+    .line 160
     const/16 v1, 0xb
 
     const/4 v2, 0x0
 
     invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
 
-    .line 148
+    .line 161
     const/16 v1, 0xc
 
     invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
 
-    .line 149
+    .line 162
     const/16 v1, 0xd
 
     invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
 
-    .line 150
+    .line 163
     const/16 v1, 0xe
 
     invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
 
-    .line 151
+    .line 164
     invoke-virtual {v0}, Ljava/util/Calendar;->getTimeInMillis()J
 
     move-result-wide v0
@@ -1550,7 +1647,7 @@
 .method private updateSrcLabel()V
     .registers 5
 
-    .line 133
+    .line 146
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity;->srcBtn:Landroid/widget/Button;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -1585,7 +1682,7 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
 
-    .line 134
+    .line 147
     return-void
 .end method
 
@@ -1594,10 +1691,10 @@
 .method protected onCreate(Landroid/os/Bundle;)V
     .registers 6
 
-    .line 61
+    .line 64
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 62
+    .line 65
     invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object p1
@@ -1616,15 +1713,15 @@
 
     invoke-virtual {p0, p1}, Lim/doit/pro/exp/BlindBoxActivity;->setContentView(I)V
 
-    .line 64
+    .line 67
     invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getActionBar()Landroid/app/ActionBar;
 
     move-result-object p1
 
-    .line 65
+    .line 68
     if-eqz p1, :cond_3d
 
-    .line 66
+    .line 69
     invoke-virtual {p0}, Lim/doit/pro/exp/BlindBoxActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -1643,23 +1740,23 @@
 
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setTitle(I)V
 
-    .line 67
+    .line 70
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayHomeAsUpEnabled(Z)V
 
-    .line 68
+    .line 71
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setHomeButtonEnabled(Z)V
 
-    .line 69
+    .line 72
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayShowTitleEnabled(Z)V
 
-    .line 70
+    .line 73
     const/4 v0, 0x0
 
     invoke-virtual {p1, v0}, Landroid/app/ActionBar;->setDisplayUseLogoEnabled(Z)V
 
-    .line 73
+    .line 76
     :cond_3d
     const-string p1, "bb_root"
 
@@ -1675,20 +1772,20 @@
 
     iput-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity;->root:Landroid/widget/LinearLayout;
 
-    .line 74
+    .line 77
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->buildUi()V
 
-    .line 75
+    .line 78
     invoke-direct {p0}, Lim/doit/pro/exp/BlindBoxActivity;->loadPool()V
 
-    .line 76
+    .line 79
     return-void
 .end method
 
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .registers 4
 
-    .line 318
+    .line 331
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
@@ -1703,7 +1800,7 @@
 
     return p1
 
-    .line 319
+    .line 332
     :cond_e
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 

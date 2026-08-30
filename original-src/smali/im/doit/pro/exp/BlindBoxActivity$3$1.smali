@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 181
+    .line 194
     iput-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity$3$1;->this$1:Lim/doit/pro/exp/BlindBoxActivity$3;
 
     iput-object p2, p0, Lim/doit/pro/exp/BlindBoxActivity$3$1;->val$res:Ljava/util/List;
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 3
 
-    .line 183
+    .line 196
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity$3$1;->this$1:Lim/doit/pro/exp/BlindBoxActivity$3;
 
     iget-object v0, v0, Lim/doit/pro/exp/BlindBoxActivity$3;->val$self:Lim/doit/pro/exp/BlindBoxActivity;
@@ -60,7 +60,7 @@
 
     return-void
 
-    .line 184
+    .line 197
     :cond_b
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity$3$1;->this$1:Lim/doit/pro/exp/BlindBoxActivity$3;
 
@@ -70,12 +70,12 @@
 
     invoke-static {v0, v1}, Lim/doit/pro/exp/BlindBoxActivity;->access$602(Lim/doit/pro/exp/BlindBoxActivity;Ljava/util/List;)Ljava/util/List;
 
-    .line 185
+    .line 198
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity$3$1;->this$1:Lim/doit/pro/exp/BlindBoxActivity$3;
 
     iget-object v0, v0, Lim/doit/pro/exp/BlindBoxActivity$3;->this$0:Lim/doit/pro/exp/BlindBoxActivity;
 
-    invoke-static {v0}, Lim/doit/pro/exp/BlindBoxActivity;->access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/Button;
+    invoke-static {v0}, Lim/doit/pro/exp/BlindBoxActivity;->access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/TextView;
 
     move-result-object v0
 
@@ -87,16 +87,16 @@
 
     if-lez v1, :cond_27
 
-    const-string v1, "\ud83c\udf81  \u70b9 \u6211 \u62bd \u4e00 \u4e2a"
+    const-string v1, "\u70b9 \u6211 \u62bd \u4e00 \u4e2a"
 
     goto :goto_29
 
     :cond_27
-    const-string v1, "\ud83c\udf81  \u8be5\u6765\u6e90\u6682\u65e0\u4efb\u52a1"
+    const-string v1, "\u8be5\u6765\u6e90\u6682\u65e0\u4efb\u52a1"
 
     :goto_29
-    invoke-virtual {v0, v1}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 186
+    .line 199
     return-void
 .end method

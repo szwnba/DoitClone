@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 209
+    .line 222
     iput-object p1, p0, Lim/doit/pro/exp/BlindBoxActivity$4;->this$0:Lim/doit/pro/exp/BlindBoxActivity;
 
     iput p2, p0, Lim/doit/pro/exp/BlindBoxActivity$4;->val$n:I
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 5
 
-    .line 211
+    .line 224
     iget-object v0, p0, Lim/doit/pro/exp/BlindBoxActivity$4;->this$0:Lim/doit/pro/exp/BlindBoxActivity;
 
     invoke-static {v0}, Lim/doit/pro/exp/BlindBoxActivity;->access$600(Lim/doit/pro/exp/BlindBoxActivity;)Ljava/util/List;
@@ -80,10 +80,10 @@
 
     check-cast v0, Lim/doit/pro/exp/BlindBoxActivity$Pick;
 
-    .line 212
+    .line 225
     iget-object v1, p0, Lim/doit/pro/exp/BlindBoxActivity$4;->this$0:Lim/doit/pro/exp/BlindBoxActivity;
 
-    invoke-static {v1}, Lim/doit/pro/exp/BlindBoxActivity;->access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/Button;
+    invoke-static {v1}, Lim/doit/pro/exp/BlindBoxActivity;->access$700(Lim/doit/pro/exp/BlindBoxActivity;)Landroid/widget/TextView;
 
     move-result-object v1
 
@@ -119,9 +119,9 @@
 
     move-result-object v0
 
-    invoke-virtual {v1, v0}, Landroid/widget/Button;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 213
+    .line 226
     iget v0, p0, Lim/doit/pro/exp/BlindBoxActivity$4;->val$n:I
 
     const/16 v1, 0x8
@@ -162,7 +162,7 @@
 
     invoke-static {v0, v1}, Lim/doit/pro/exp/BlindBoxActivity;->access$1100(Lim/doit/pro/exp/BlindBoxActivity;Lim/doit/pro/exp/BlindBoxActivity$Pick;)V
 
-    .line 214
+    .line 227
     :cond_73
     return-void
 .end method
