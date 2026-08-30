@@ -310,25 +310,13 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
 
     private View kpiRow(int done, int created, int rate) {
         LinearLayout card = card();
-        card.setPadding((int) dp(6), (int) dp(12), (int) dp(6), (int) dp(12));
-        int[][] kv = { { done, 0 }, { created, 0 }, { rate, 1 } };
-        String[] kl = { "完成", "新增", "完成率" };
-        for (int i = 0; i < 3; i++) {
-            LinearLayout col = new LinearLayout(this);
-            col.setOrientation(LinearLayout.VERTICAL);
-            col.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams clp = new LinearLayout.LayoutParams(0, -2, 1f);
-            col.setLayoutParams(clp);
-            TextView v = new TextView(this);
-            v.setText(kv[i][1] == 1 ? rate + "%" : String.valueOf(kv[i][0]));
-            v.setTextSize(22); v.setTypeface(Typeface.DEFAULT_BOLD);
-            v.setTextColor(kv[i][1] == 1 ? ORANGE : BLUE);
-            TextView l = new TextView(this);
-            l.setText(kl[i]); l.setTextSize(11); l.setTextColor(TEXT_GRAY);
-            l.setPadding(0, (int) dp(3), 0, 0);
-            col.addView(v); col.addView(l);
-            card.addView(col);
-        }
+        TextView t = new TextView(this);
+        t.setText("完成 " + done + "   ·   新增 " + created + "   ·   完成率 " + rate + "%");
+        t.setTextSize(16);
+        t.setTextColor(TEXT_MAIN);
+        t.setGravity(Gravity.CENTER);
+        t.setPadding(0, (int) dp(10), 0, (int) dp(10));
+        card.addView(t);
         return card;
     }
 

@@ -161,24 +161,24 @@
 .method private blank(I)Landroid/view/View;
     .registers 6
 
-    .line 417
+    .line 405
     new-instance v0, Landroid/view/View;
 
     invoke-direct {v0, p0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 418
+    .line 406
     new-instance v1, Landroid/widget/GridLayout$LayoutParams;
 
     invoke-direct {v1}, Landroid/widget/GridLayout$LayoutParams;-><init>()V
 
-    .line 419
+    .line 407
     iput p1, v1, Landroid/widget/GridLayout$LayoutParams;->width:I
 
     const/4 p1, 0x1
 
     iput p1, v1, Landroid/widget/GridLayout$LayoutParams;->height:I
 
-    .line 420
+    .line 408
     const/high16 p1, 0x40400000    # 3.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -197,39 +197,39 @@
 
     invoke-virtual {v1, v3, v3, v2, p1}, Landroid/widget/GridLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 421
+    .line 409
     invoke-virtual {v0, v1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 422
+    .line 410
     return-object v0
 .end method
 
 .method private card()Landroid/widget/LinearLayout;
     .registers 6
 
-    .line 426
+    .line 414
     new-instance v0, Landroid/widget/LinearLayout;
 
     invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 427
+    .line 415
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 428
+    .line 416
     const/4 v1, -0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setBackgroundColor(I)V
 
-    .line 429
+    .line 417
     new-instance v2, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v3, -0x2
 
     invoke-direct {v2, v1, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 430
+    .line 418
     const/high16 v1, 0x41400000    # 12.0f
 
     invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -238,7 +238,7 @@
 
     float-to-int v1, v1
 
-    .line 431
+    .line 419
     const/high16 v3, 0x41200000    # 10.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -251,17 +251,17 @@
 
     invoke-virtual {v2, v1, v4, v1, v3}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 432
+    .line 420
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 433
+    .line 421
     return-object v0
 .end method
 
 .method private chartCard(Ljava/lang/String;[Ljava/lang/String;[I)Landroid/view/View;
     .registers 20
 
-    .line 336
+    .line 324
     move-object/from16 v0, p0
 
     move-object/from16 v1, p3
@@ -270,7 +270,7 @@
 
     move-result-object v2
 
-    .line 337
+    .line 325
     const/high16 v3, 0x41400000    # 12.0f
 
     invoke-direct {v0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -301,12 +301,12 @@
 
     invoke-virtual {v2, v4, v5, v7, v6}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 338
+    .line 326
     new-instance v4, Landroid/widget/TextView;
 
     invoke-direct {v4, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 339
+    .line 327
     move-object/from16 v5, p1
 
     invoke-virtual {v4, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
@@ -317,7 +317,7 @@
 
     invoke-virtual {v4, v3}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 340
+    .line 328
     const/high16 v5, 0x41200000    # 10.0f
 
     invoke-direct {v0, v5}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -330,21 +330,21 @@
 
     invoke-virtual {v4, v6, v6, v6, v5}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 341
+    .line 329
     invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 343
+    .line 331
     new-instance v4, Landroid/widget/LinearLayout;
 
     invoke-direct {v4, v0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 344
+    .line 332
     invoke-virtual {v4, v6}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 345
+    .line 333
     nop
 
-    .line 346
+    .line 334
     array-length v5, v1
 
     const/4 v7, 0x1
@@ -367,7 +367,7 @@
 
     goto :goto_51
 
-    .line 347
+    .line 335
     :cond_5b
     const/high16 v5, 0x42dc0000    # 110.0f
 
@@ -377,7 +377,7 @@
 
     float-to-int v5, v5
 
-    .line 348
+    .line 336
     const/4 v8, 0x0
 
     :goto_63
@@ -385,18 +385,18 @@
 
     if-ge v8, v10, :cond_12e
 
-    .line 349
+    .line 337
     new-instance v10, Landroid/widget/LinearLayout;
 
     invoke-direct {v10, v0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 350
+    .line 338
     invoke-virtual {v10, v7}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 351
+    .line 339
     invoke-virtual {v10, v7}, Landroid/widget/LinearLayout;->setGravity(I)V
 
-    .line 352
+    .line 340
     new-instance v11, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v12, -0x2
@@ -405,7 +405,7 @@
 
     invoke-direct {v11, v6, v12, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
-    .line 353
+    .line 341
     const/high16 v12, 0x40400000    # 3.0f
 
     invoke-direct {v0, v12}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -422,15 +422,15 @@
 
     invoke-virtual {v11, v14, v6, v15, v6}, Landroid/widget/LinearLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 354
+    .line 342
     invoke-virtual {v10, v11}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 356
+    .line 344
     new-instance v11, Landroid/widget/TextView;
 
     invoke-direct {v11, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 357
+    .line 345
     aget v14, v1, v8
 
     invoke-static {v14}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
@@ -439,7 +439,7 @@
 
     invoke-virtual {v11, v14}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 358
+    .line 346
     const/high16 v14, 0x41100000    # 9.0f
 
     invoke-virtual {v11, v14}, Landroid/widget/TextView;->setTextSize(F)V
@@ -448,7 +448,7 @@
 
     invoke-virtual {v11, v15}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 359
+    .line 347
     const/high16 v15, 0x40000000    # 2.0f
 
     invoke-direct {v0, v15}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -459,27 +459,27 @@
 
     invoke-virtual {v11, v6, v6, v6, v15}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 361
+    .line 349
     new-instance v15, Landroid/widget/FrameLayout;
 
     invoke-direct {v15, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
-    .line 362
+    .line 350
     new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v3, -0x1
 
     invoke-direct {v6, v3, v5}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 363
+    .line 351
     invoke-virtual {v15, v6}, Landroid/widget/FrameLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 364
+    .line 352
     new-instance v6, Landroid/view/View;
 
     invoke-direct {v6, v0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 365
+    .line 353
     new-instance v14, Landroid/widget/FrameLayout$LayoutParams;
 
     aget v7, v1, v8
@@ -522,10 +522,10 @@
 
     invoke-direct {v14, v12, v3, v7}, Landroid/widget/FrameLayout$LayoutParams;-><init>(III)V
 
-    .line 366
+    .line 354
     invoke-virtual {v6, v14}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 367
+    .line 355
     array-length v3, v1
 
     const/4 v7, 0x1
@@ -544,20 +544,20 @@
     :goto_f0
     invoke-virtual {v6, v3}, Landroid/view/View;->setBackgroundColor(I)V
 
-    .line 368
+    .line 356
     invoke-virtual {v15, v6}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;)V
 
-    .line 370
+    .line 358
     new-instance v3, Landroid/widget/TextView;
 
     invoke-direct {v3, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 371
+    .line 359
     aget-object v6, p2, v8
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 372
+    .line 360
     const/high16 v6, 0x41100000    # 9.0f
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setTextSize(F)V
@@ -566,7 +566,7 @@
 
     invoke-virtual {v3, v6}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 373
+    .line 361
     const/high16 v7, 0x40a00000    # 5.0f
 
     invoke-direct {v0, v7}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -579,22 +579,22 @@
 
     invoke-virtual {v3, v12, v7, v12, v12}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 374
+    .line 362
     const/4 v7, 0x1
 
     invoke-virtual {v3, v7}, Landroid/widget/TextView;->setSingleLine(Z)V
 
-    .line 376
+    .line 364
     invoke-virtual {v10, v11}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
     invoke-virtual {v10, v15}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
     invoke-virtual {v10, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 377
+    .line 365
     invoke-virtual {v4, v10}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 348
+    .line 336
     add-int/lit8 v8, v8, 0x1
 
     const v3, -0x757576
@@ -603,11 +603,11 @@
 
     goto/16 :goto_63
 
-    .line 379
+    .line 367
     :cond_12e
     invoke-virtual {v2, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 380
+    .line 368
     return-object v2
 .end method
 
@@ -773,15 +773,15 @@
 .method private groupHeader(Ljava/lang/String;)Landroid/view/View;
     .registers 6
 
-    .line 437
+    .line 425
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 438
+    .line 426
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 439
+    .line 427
     const/high16 p1, 0x41400000    # 12.0f
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextSize(F)V
@@ -790,7 +790,7 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 440
+    .line 428
     const/high16 p1, 0x41600000    # 14.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -823,19 +823,19 @@
 
     invoke-virtual {v0, v1, v2, p1, v3}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 441
+    .line 429
     return-object v0
 .end method
 
 .method private heatCard([I)Landroid/view/View;
     .registers 13
 
-    .line 384
+    .line 372
     invoke-direct {p0}, Lim/doit/pro/stat/StatisticsActivity;->card()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
-    .line 385
+    .line 373
     const/high16 v1, 0x41400000    # 12.0f
 
     invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -866,24 +866,24 @@
 
     invoke-virtual {v0, v2, v3, v4, v6}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 386
+    .line 374
     new-instance v2, Landroid/widget/TextView;
 
     invoke-direct {v2, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 387
+    .line 375
     const-string v3, "\u672c\u6708\u70ed\u529b \u00b7 \u6bcf\u683c\u4e00\u5929\uff0c\u989c\u8272\u8d8a\u6df1\u5b8c\u6210\u8d8a\u591a"
 
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 388
+    .line 376
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextSize(F)V
 
     const v1, -0x757576
 
     invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 389
+    .line 377
     invoke-direct {p0, v5}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
 
     move-result v1
@@ -894,15 +894,15 @@
 
     invoke-virtual {v2, v3, v3, v3, v1}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 390
+    .line 378
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 392
+    .line 380
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v1
 
-    .line 393
+    .line 381
     const/4 v2, 0x7
 
     invoke-virtual {v1, v2}, Ljava/util/Calendar;->get(I)I
@@ -913,18 +913,18 @@
 
     rem-int/2addr v1, v2
 
-    .line 394
+    .line 382
     array-length v4, p1
 
-    .line 395
+    .line 383
     new-instance v5, Landroid/widget/GridLayout;
 
     invoke-direct {v5, p0}, Landroid/widget/GridLayout;-><init>(Landroid/content/Context;)V
 
-    .line 396
+    .line 384
     invoke-virtual {v5, v2}, Landroid/widget/GridLayout;->setColumnCount(I)V
 
-    .line 397
+    .line 385
     new-instance v2, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v6, -0x1
@@ -935,7 +935,7 @@
 
     invoke-virtual {v5, v2}, Landroid/widget/GridLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 398
+    .line 386
     const/high16 v2, 0x41600000    # 14.0f
 
     invoke-direct {p0, v2}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -944,7 +944,7 @@
 
     float-to-int v2, v2
 
-    .line 399
+    .line 387
     const/high16 v6, 0x40400000    # 3.0f
 
     invoke-direct {p0, v6}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -953,7 +953,7 @@
 
     float-to-int v6, v6
 
-    .line 400
+    .line 388
     const/4 v7, 0x0
 
     :goto_6c
@@ -969,38 +969,38 @@
 
     goto :goto_6c
 
-    .line 401
+    .line 389
     :cond_78
     const/4 v1, 0x0
 
     :goto_79
     if-ge v1, v4, :cond_b4
 
-    .line 402
+    .line 390
     new-instance v7, Landroid/view/View;
 
     invoke-direct {v7, p0}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    .line 403
+    .line 391
     new-instance v8, Landroid/widget/GridLayout$LayoutParams;
 
     invoke-direct {v8}, Landroid/widget/GridLayout$LayoutParams;-><init>()V
 
-    .line 404
+    .line 392
     iput v2, v8, Landroid/widget/GridLayout$LayoutParams;->width:I
 
     iput v2, v8, Landroid/widget/GridLayout$LayoutParams;->height:I
 
-    .line 405
+    .line 393
     invoke-virtual {v8, v3, v3, v6, v6}, Landroid/widget/GridLayout$LayoutParams;->setMargins(IIII)V
 
-    .line 406
+    .line 394
     invoke-virtual {v7, v8}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 407
+    .line 395
     aget v8, p1, v1
 
-    .line 408
+    .line 396
     const/16 v9, 0xa
 
     if-lt v8, v9, :cond_97
@@ -1039,7 +1039,7 @@
     :cond_a6
     const/4 v8, 0x0
 
-    .line 409
+    .line 397
     :goto_a7
     sget-object v9, Lim/doit/pro/stat/StatisticsActivity;->HEAT:[I
 
@@ -1047,19 +1047,19 @@
 
     invoke-virtual {v7, v8}, Landroid/view/View;->setBackgroundColor(I)V
 
-    .line 410
+    .line 398
     invoke-virtual {v5, v7}, Landroid/widget/GridLayout;->addView(Landroid/view/View;)V
 
-    .line 401
+    .line 389
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_79
 
-    .line 412
+    .line 400
     :cond_b4
     invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 413
+    .line 401
     return-object v0
 .end method
 
@@ -1085,7 +1085,7 @@
 .end method
 
 .method private kpiRow(III)Landroid/view/View;
-    .registers 13
+    .registers 8
 
     .line 312
     invoke-direct {p0}, Lim/doit/pro/stat/StatisticsActivity;->card()Landroid/widget/LinearLayout;
@@ -1093,219 +1093,95 @@
     move-result-object v0
 
     .line 313
-    const/high16 v1, 0x40c00000    # 6.0f
+    new-instance v1, Landroid/widget/TextView;
 
-    invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
-
-    move-result v2
-
-    float-to-int v2, v2
-
-    const/high16 v3, 0x41400000    # 12.0f
-
-    invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
-
-    move-result v4
-
-    float-to-int v4, v4
-
-    invoke-direct {p0, v1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
-
-    move-result v1
-
-    float-to-int v1, v1
-
-    invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
-
-    move-result v3
-
-    float-to-int v3, v3
-
-    invoke-virtual {v0, v2, v4, v1, v3}, Landroid/widget/LinearLayout;->setPadding(IIII)V
+    invoke-direct {v1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
     .line 314
-    const/4 v1, 0x3
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    new-array v2, v1, [[I
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const/4 v3, 0x0
+    const-string v3, "\u5b8c\u6210 "
 
-    filled-new-array {p1, v3}, [I
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object p1
+    move-result-object v2
 
-    aput-object p1, v2, v3
-
-    filled-new-array {p2, v3}, [I
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object p1
 
-    const/4 p2, 0x1
+    const-string v2, "   \u00b7   \u65b0\u589e "
 
-    aput-object p1, v2, p2
+    invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/4 p1, 0x2
+    move-result-object p1
 
-    filled-new-array {p3, p2}, [I
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v4
+    move-result-object p1
 
-    aput-object v4, v2, p1
+    const-string p2, "   \u00b7   \u5b8c\u6210\u7387 "
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    const-string p2, "%"
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v1, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 315
-    const-string p1, "\u65b0\u589e"
+    const/high16 p1, 0x41800000    # 16.0f
 
-    const-string v4, "\u5b8c\u6210\u7387"
-
-    const-string v5, "\u5b8c\u6210"
-
-    filled-new-array {v5, p1, v4}, [Ljava/lang/String;
-
-    move-result-object p1
+    invoke-virtual {v1, p1}, Landroid/widget/TextView;->setTextSize(F)V
 
     .line 316
-    const/4 v4, 0x0
+    const p1, -0xcccccd
 
-    :goto_42
-    if-ge v4, v1, :cond_ca
+    invoke-virtual {v1, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
     .line 317
-    new-instance v5, Landroid/widget/LinearLayout;
+    const/16 p1, 0x11
 
-    invoke-direct {v5, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
+    invoke-virtual {v1, p1}, Landroid/widget/TextView;->setGravity(I)V
 
     .line 318
-    invoke-virtual {v5, p2}, Landroid/widget/LinearLayout;->setOrientation(I)V
+    const/high16 p1, 0x41200000    # 10.0f
+
+    invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
+
+    move-result p2
+
+    float-to-int p2, p2
+
+    invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
+
+    move-result p1
+
+    float-to-int p1, p1
+
+    const/4 p3, 0x0
+
+    invoke-virtual {v1, p3, p2, p3, p1}, Landroid/widget/TextView;->setPadding(IIII)V
 
     .line 319
-    const/16 v6, 0x11
-
-    invoke-virtual {v5, v6}, Landroid/widget/LinearLayout;->setGravity(I)V
+    invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
     .line 320
-    new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
-
-    const/4 v7, -0x2
-
-    const/high16 v8, 0x3f800000    # 1.0f
-
-    invoke-direct {v6, v3, v7, v8}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
-
-    .line 321
-    invoke-virtual {v5, v6}, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 322
-    new-instance v6, Landroid/widget/TextView;
-
-    invoke-direct {v6, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
-
-    .line 323
-    aget-object v7, v2, v4
-
-    aget v8, v7, p2
-
-    if-ne v8, p2, :cond_7b
-
-    new-instance v7, Ljava/lang/StringBuilder;
-
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v7, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    const-string v8, "%"
-
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v7
-
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v7
-
-    goto :goto_81
-
-    :cond_7b
-    aget v7, v7, v3
-
-    invoke-static {v7}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    move-result-object v7
-
-    :goto_81
-    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 324
-    const/high16 v7, 0x41b00000    # 22.0f
-
-    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setTextSize(F)V
-
-    sget-object v7, Landroid/graphics/Typeface;->DEFAULT_BOLD:Landroid/graphics/Typeface;
-
-    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface;)V
-
-    .line 325
-    aget-object v7, v2, v4
-
-    aget v7, v7, p2
-
-    if-ne v7, p2, :cond_98
-
-    const v7, -0x3face8
-
-    goto :goto_9b
-
-    :cond_98
-    const v7, -0xed9d5f
-
-    :goto_9b
-    invoke-virtual {v6, v7}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 326
-    new-instance v7, Landroid/widget/TextView;
-
-    invoke-direct {v7, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
-
-    .line 327
-    aget-object v8, p1, v4
-
-    invoke-virtual {v7, v8}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    const/high16 v8, 0x41300000    # 11.0f
-
-    invoke-virtual {v7, v8}, Landroid/widget/TextView;->setTextSize(F)V
-
-    const v8, -0x757576
-
-    invoke-virtual {v7, v8}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 328
-    const/high16 v8, 0x40400000    # 3.0f
-
-    invoke-direct {p0, v8}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
-
-    move-result v8
-
-    float-to-int v8, v8
-
-    invoke-virtual {v7, v3, v8, v3, v3}, Landroid/widget/TextView;->setPadding(IIII)V
-
-    .line 329
-    invoke-virtual {v5, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
-
-    invoke-virtual {v5, v7}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
-
-    .line 330
-    invoke-virtual {v0, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
-
-    .line 316
-    add-int/lit8 v4, v4, 0x1
-
-    goto/16 :goto_42
-
-    .line 332
-    :cond_ca
     return-object v0
 .end method
 
@@ -1337,15 +1213,15 @@
 .method private note(Ljava/lang/String;)Landroid/view/View;
     .registers 5
 
-    .line 472
+    .line 460
     new-instance v0, Landroid/widget/TextView;
 
     invoke-direct {v0, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 473
+    .line 461
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 474
+    .line 462
     const/high16 p1, 0x41500000    # 13.0f
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextSize(F)V
@@ -1354,12 +1230,12 @@
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 475
+    .line 463
     const/16 p1, 0x11
 
     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setGravity(I)V
 
-    .line 476
+    .line 464
     const/high16 p1, 0x41f00000    # 30.0f
 
     invoke-direct {p0, p1}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -1378,7 +1254,7 @@
 
     invoke-virtual {v0, v2, v1, v2, p1}, Landroid/widget/TextView;->setPadding(IIII)V
 
-    .line 477
+    .line 465
     return-object v0
 .end method
 
@@ -2963,7 +2839,7 @@
 .method private tColor(Landroid/widget/TextView;)V
     .registers 3
 
-    .line 469
+    .line 457
     const v0, -0x656566
 
     invoke-virtual {p1, v0}, Landroid/widget/TextView;->setTextColor(I)V
@@ -2974,22 +2850,22 @@
 .method private taskRow(Ljava/lang/String;)Landroid/view/View;
     .registers 11
 
-    .line 445
+    .line 433
     new-instance v0, Landroid/widget/LinearLayout;
 
     invoke-direct {v0, p0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 446
+    .line 434
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    .line 447
+    .line 435
     const/16 v2, 0x10
 
     invoke-virtual {v0, v2}, Landroid/widget/LinearLayout;->setGravity(I)V
 
-    .line 448
+    .line 436
     const/high16 v3, 0x41200000    # 10.0f
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
@@ -3020,7 +2896,7 @@
 
     invoke-virtual {v0, v4, v6, v7, v5}, Landroid/widget/LinearLayout;->setPadding(IIII)V
 
-    .line 449
+    .line 437
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
@@ -3039,12 +2915,12 @@
 
     if-eqz v4, :cond_6d
 
-    .line 450
+    .line 438
     new-instance v4, Landroid/widget/ImageView;
 
     invoke-direct {v4, p0}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
 
-    .line 451
+    .line 439
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v5
@@ -3057,10 +2933,10 @@
 
     move-result v5
 
-    .line 452
+    .line 440
     invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 453
+    .line 441
     new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
 
     const/high16 v6, 0x41900000    # 18.0f
@@ -3079,7 +2955,7 @@
 
     invoke-direct {v5, v7, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 454
+    .line 442
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->dp(F)F
 
     move-result v3
@@ -3088,34 +2964,34 @@
 
     iput v3, v5, Landroid/widget/LinearLayout$LayoutParams;->rightMargin:I
 
-    .line 455
+    .line 443
     invoke-virtual {v4, v5}, Landroid/widget/ImageView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 456
+    .line 444
     invoke-virtual {v0, v4}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 458
+    .line 446
     :cond_6d
     new-instance v3, Landroid/widget/TextView;
 
     invoke-direct {v3, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    .line 459
+    .line 447
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 460
+    .line 448
     const/high16 p1, 0x41600000    # 14.0f
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setTextSize(F)V
 
     invoke-direct {p0, v3}, Lim/doit/pro/stat/StatisticsActivity;->tColor(Landroid/widget/TextView;)V
 
-    .line 461
+    .line 449
     const/4 p1, 0x1
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setSingleLine(Z)V
 
-    .line 462
+    .line 450
     invoke-virtual {v3}, Landroid/widget/TextView;->getPaintFlags()I
 
     move-result p1
@@ -3124,7 +3000,7 @@
 
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setPaintFlags(I)V
 
-    .line 463
+    .line 451
     new-instance p1, Landroid/widget/LinearLayout$LayoutParams;
 
     const/4 v2, -0x2
@@ -3133,13 +3009,13 @@
 
     invoke-direct {p1, v1, v2, v4}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
-    .line 464
+    .line 452
     invoke-virtual {v3, p1}, Landroid/widget/TextView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 465
+    .line 453
     invoke-virtual {v0, v3}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    .line 466
+    .line 454
     return-object v0
 .end method
 
@@ -3239,7 +3115,7 @@
 .method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
     .registers 4
 
-    .line 482
+    .line 470
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
@@ -3248,15 +3124,15 @@
 
     if-ne v0, v1, :cond_e
 
-    .line 483
+    .line 471
     invoke-virtual {p0}, Lim/doit/pro/stat/StatisticsActivity;->finish()V
 
-    .line 484
+    .line 472
     const/4 p1, 0x1
 
     return p1
 
-    .line 486
+    .line 474
     :cond_e
     invoke-super {p0, p1}, Lim/doit/pro/activity/DSwipeBackBaseActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 
