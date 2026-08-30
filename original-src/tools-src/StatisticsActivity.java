@@ -72,7 +72,7 @@ public class StatisticsActivity extends DSwipeBackBaseActivity {
         reload();
     }
 
-    static void open(Activity a) {
+    public static void open(Activity a) {
         android.content.Intent i = new android.content.Intent();
         i.setClassName(a, "im.doit.pro.stat.StatisticsActivity");
         a.startActivity(i);

@@ -1353,7 +1353,7 @@
     return-object v0
 .end method
 
-.method static open(Landroid/app/Activity;)V
+.method public static open(Landroid/app/Activity;)V
     .registers 3
 
     .line 76

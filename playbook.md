@@ -364,6 +364,13 @@ stubs/im/doit/pro/ui/component/LabelArrowButton.java     → 带需要的方法�
 - **纯代码搭 UI**：统计页除 ScrollView 骨架外全部代码构建（weight 排版 + dp 换算 + FrameLayout
   底部对齐做柱状图 + GridLayout 做热力图），避免资源膨胀，视图复杂度也完全可控。
 
+### 45. 跨包静态调用必须 public（r31）
+- **坑**：统计入口 `StatisticsActivity.open(Activity)` 漏写 public（包私有），ContactListActivity
+  （另一个包）调用它 → `IllegalAccessError` 打开即闪退。
+- **规则**：凡是被 smali 补丁跨包调用的 Java 静态方法，**一律 public**；编译期 javac 不报错
+  是因为调用发生在 smali（绕过了 Java 访问检查），运行时才炸。审计脚本可加一条：
+  被外部包引用的方法检查 smali 里的 `.method public` 前缀。
+
 ## 九、教训级方法论
 
 - **改 UI 前先读原版同类实现**（坑 24）——所有"风格不统一"返工都源于此。
