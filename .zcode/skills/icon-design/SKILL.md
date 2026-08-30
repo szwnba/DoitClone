@@ -12,8 +12,9 @@ description: 为 Doit 本地版设计/绘制与原版精致线稿风格一致的
 
 对目标场景的原版图标（如抽屉项 icon_actionbar_goal）做像素分析。
 
-**抽屉行对齐实测**：菜单行 paddingLeft **14dp**、分组标题 paddingLeft **15dp**（用户真机截图
-逐像素测量对齐；自建页脚别想当然写 16dp/12dp）。
+**抽屉行对齐（定稿）**：菜单行 paddingLeft 用原版尺寸 **`@dimen/d_menu_list_item_padding_left`
+= 8dp**（自建页脚直接引用同一 dimen），分组标题 paddingLeft **15dp**。经验：自建块先引用原版
+dimen，再按真机截图微调；图标位图内部留白不同也会造成视觉偏移，必要时重画位图的内边距。
 
 ```python
 from PIL import Image
