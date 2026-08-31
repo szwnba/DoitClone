@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 511
+    .line 607
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
 .method public ok(Ljava/lang/String;)V
     .registers 5
 
-    .line 514
+    .line 610
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -55,7 +55,7 @@
 
     move-result-object p1
 
-    .line 515
+    .line 611
     :goto_9
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
@@ -75,7 +75,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 516
+    .line 612
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-virtual {p1}, Ljava/lang/String;->length()I
@@ -110,6 +110,6 @@
     :goto_3a
     invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 517
+    .line 613
     return-void
 .end method

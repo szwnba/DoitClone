@@ -544,4 +544,8 @@
     <item type="id" name="fav_root" />
     <item type="id" name="fav_name" />
     <item type="id" name="fav_url" />
+    <item type="id" name="ai_prompt" />
+    <item type="id" name="prompt_root" />
+    <item type="id" name="prompt_name" />
+    <item type="id" name="prompt_body" />
 </resources>

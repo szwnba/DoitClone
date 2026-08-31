@@ -656,4 +656,6 @@ Come on!"</string>
     <string name="exp_group_label">Experimental</string>
     <string name="blindbox_title">Blind Box</string>
     <string name="fav_title">Favorites</string>
+    <string name="ai_prompt_label">Plan prompt</string>
+    <string name="prompt_list_title">Plan Prompts</string>
 </resources>

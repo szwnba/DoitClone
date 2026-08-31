@@ -640,4 +640,6 @@ Doit.im时区：%1$s
     <string name="exp_group_label">实验功能</string>
     <string name="blindbox_title">盲盒任务</string>
     <string name="fav_title">收藏夹</string>
+    <string name="ai_prompt_label">方案提示词</string>
+    <string name="prompt_list_title">方案提示词</string>
 </resources>

@@ -7,6 +7,7 @@
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_endpoint" doit:label="@string/ai_endpoint" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_key" android:layout_below="@id/ai_endpoint" doit:label="@string/ai_key" style="@style/task_detail_cell_wrap" />
             <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_model" android:layout_below="@id/ai_key" doit:label="@string/ai_model" style="@style/task_detail_cell_wrap" />
+            <im.doit.pro.ui.component.LabelArrowButton android:id="@id/ai_prompt" android:layout_below="@id/ai_model" doit:label="@string/ai_prompt_label" style="@style/task_detail_cell_wrap" />
         </RelativeLayout>
         <TextView android:text="@string/ai_section_sync" style="@style/settings_label" />
         <RelativeLayout android:id="@id/ai_block_2" android:layout_marginBottom="0.0dip" style="@style/task_detial_block_wrap">

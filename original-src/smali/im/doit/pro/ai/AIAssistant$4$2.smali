@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 196
+    .line 197
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$4$2;->this$0:Lim/doit/pro/ai/AIAssistant$4;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$4$2;->val$msg:Ljava/lang/String;
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 4
 
-    .line 198
+    .line 199
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$4$2;->this$0:Lim/doit/pro/ai/AIAssistant$4;
 
     iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;

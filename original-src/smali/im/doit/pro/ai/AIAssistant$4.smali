@@ -34,7 +34,7 @@
         }
     .end annotation
 
-    .line 185
+    .line 186
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$4;->val$task:Lim/doit/pro/model/Task;
@@ -51,7 +51,7 @@
 .method public run()V
     .registers 4
 
-    .line 189
+    .line 190
     :try_start_0
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$4;->val$a:Landroid/app/Activity;
 
@@ -61,7 +61,7 @@
 
     move-result-object v0
 
-    .line 190
+    .line 191
     invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
     move-result-object v1
@@ -74,14 +74,14 @@
     :try_end_14
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_14} :catch_15
 
-    .line 200
+    .line 201
     goto :goto_35
 
-    .line 194
+    .line 195
     :catch_15
     move-exception v0
 
-    .line 195
+    .line 196
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v1
@@ -103,7 +103,7 @@
 
     move-result-object v0
 
-    .line 196
+    .line 197
     :goto_29
     invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
@@ -115,7 +115,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 201
+    .line 202
     :goto_35
     return-void
 .end method

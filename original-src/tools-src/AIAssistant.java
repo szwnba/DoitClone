@@ -1,6 +1,7 @@
 package im.doit.pro.ai;
 
 import android.app.Activity;
+import android.content.Context;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -211,8 +212,9 @@ public class AIAssistant {
         final List<String> estimates = new ArrayList<String>();
     }
 
-    private static PlanResult requestPlan(Activity a, Task task) throws Exception {
-        String sys = "你是一位资深的 GTD 个人管理教练和项目规划专家。用户会给你一个任务，"
+        public static final int BUILTIN_PROMPT_ID = 0;
+    public static final String BUILTIN_PROMPT_NAME = "GTD 教练 · 内置";
+    public static final String BUILTIN_PROMPT_BODY = "你是一位资深的 GTD 个人管理教练和项目规划专家。用户会给你一个任务，"
             + "请生成一份务实、可执行的行动方案。要求："
             + "1) summary 用一句话澄清目标与完成标准；"
             + "2) plan 给出精炼的方案文本，包含：可行性要点、阶段划分、每阶段做什么、关键风险与规避建议，用简短的段落和「·」列表排版；"
@@ -221,7 +223,100 @@ public class AIAssistant {
             + "5) 全部使用简体中文；"
             + "6) 严格只输出一个 JSON 对象，禁止输出任何解释、markdown 或代码块标记。"
             + "JSON 格式：{\"summary\":\"...\",\"plan\":\"...\",\"steps\":[{\"title\":\"...\",\"estimate\":\"...\"}]}";
-        String user = "今天的日期：" + new SimpleDateFormat("yyyy-MM-dd EEEE", Locale.CHINA).format(new Date())
+
+    /** 提示词存取：SharedPreferences JSON 数组 [{"id","name","body"}]，id 0 = 内置不可删 */
+    public static org.json.JSONArray promptsJson(Context c) {
+        org.json.JSONArray arr;
+        try {
+            arr = new org.json.JSONArray(prefs(c).getString("prompts", "[]"));
+        } catch (Throwable t) {
+            arr = new org.json.JSONArray();
+        }
+        boolean hasBuiltin = false;
+        for (int i = 0; i < arr.length(); i++) {
+            if (arr.optJSONObject(i) != null && arr.optJSONObject(i).optInt("id", -1) == BUILTIN_PROMPT_ID) { hasBuiltin = true; break; }
+        }
+        if (!hasBuiltin) {
+            try { arr.put(new org.json.JSONObject().put("id", BUILTIN_PROMPT_ID).put("name", BUILTIN_PROMPT_NAME).put("body", BUILTIN_PROMPT_BODY)); } catch (Throwable t) { }
+        }
+        return arr;
+    }
+
+    public static int currentPromptId(Context c) {
+        return prefs(c).getInt("cur_prompt", BUILTIN_PROMPT_ID);
+    }
+
+    public static void setCurrentPromptId(Context c, int id) {
+        prefs(c).edit().putInt("cur_prompt", id).commit();
+    }
+
+    public static String currentPromptName(Context c) {
+        int id = currentPromptId(c);
+        org.json.JSONArray arr = promptsJson(c);
+        for (int i = 0; i < arr.length(); i++) {
+            org.json.JSONObject o = arr.optJSONObject(i);
+            if (o != null && o.optInt("id", -1) == id) return o.optString("name", "");
+        }
+        return BUILTIN_PROMPT_NAME;
+    }
+
+    /** 保存（id<0 = 新增）；返回 id */
+    public static int savePrompt(Context c, int id, String name, String body) {
+        org.json.JSONArray arr = promptsJson(c);
+        if (id < 0) {
+            int max = 0;
+            for (int i = 0; i < arr.length(); i++) {
+                org.json.JSONObject o = arr.optJSONObject(i);
+                if (o != null) max = Math.max(max, o.optInt("id", 0));
+            }
+            id = max + 1;
+            try { arr.put(new org.json.JSONObject().put("id", id).put("name", name).put("body", body)); } catch (Throwable t) { }
+        } else {
+            for (int i = 0; i < arr.length(); i++) {
+                org.json.JSONObject o = arr.optJSONObject(i);
+                if (o != null && o.optInt("id", -1) == id) {
+                    if (id != BUILTIN_PROMPT_ID) {
+                        try { o.put("name", name); o.put("body", body); } catch (Throwable t) { }
+                    }
+                    break;
+                }
+            }
+        }
+        prefs(c).edit().putString("prompts", arr.toString()).commit();
+        return id;
+    }
+
+    public static void deletePrompt(Context c, int id) {
+        if (id == BUILTIN_PROMPT_ID) return;
+        org.json.JSONArray arr = promptsJson(c);
+        org.json.JSONArray out = new org.json.JSONArray();
+        for (int i = 0; i < arr.length(); i++) {
+            org.json.JSONObject o = arr.optJSONObject(i);
+            if (o == null || o.optInt("id", -1) == id) continue;
+            out.put(o);
+        }
+        prefs(c).edit().putString("prompts", out.toString()).commit();
+        if (currentPromptId(c) == id) setCurrentPromptId(c, BUILTIN_PROMPT_ID);
+    }
+
+    /** 取当前提示词并替换变量（{标题}/{日期}/{描述}），供生成使用 */
+    private static String buildSystem(Context c, Task task) {
+        int id = currentPromptId(c);
+        String body = BUILTIN_PROMPT_BODY;
+        org.json.JSONArray arr = promptsJson(c);
+        for (int i = 0; i < arr.length(); i++) {
+            org.json.JSONObject o = arr.optJSONObject(i);
+            if (o != null && o.optInt("id", -1) == id) { body = o.optString("body", BUILTIN_PROMPT_BODY); break; }
+        }
+        String title = safe(task.getTitle()).trim();
+        String date = new SimpleDateFormat("yyyy-MM-dd EEEE", Locale.CHINA).format(new Date());
+        String notes = isBlank(task.getNotes()) ? "无" : task.getNotes();
+        body = body.replace("{标题}", title).replace("{日期}", date).replace("{描述}", notes);
+        return body;
+    }
+
+    private static PlanResult requestPlan(Activity a, Task task) throws Exception {
+        String sys = buildSystem(a, task);        String user = "今天的日期：" + new SimpleDateFormat("yyyy-MM-dd EEEE", Locale.CHINA).format(new Date())
             + "\n任务标题：" + safe(task.getTitle())
             + "\n已有描述：" + (isBlank(task.getNotes()) ? "无" : task.getNotes())
             + "\n请生成行动方案 JSON。";
@@ -260,6 +355,7 @@ public class AIAssistant {
 
     private static void showPreview(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r) {
         StringBuilder sb = new StringBuilder();
+        sb.append("〔提示词：").append(currentPromptName(a)).append("〕\n\n");
         if (r.summary.length() > 0) sb.append("【目标】").append(r.summary).append("\n\n");
         sb.append(r.plan == null ? "" : r.plan);
         if (r.steps.size() > 0) {
@@ -516,6 +612,17 @@ public class AIAssistant {
                 toast(a, v.length() == 0 ? "已恢复默认模型" : "模型已保存: " + v);
             }
         }, model(a), false);
+        View promptRow = a.findViewById(a.getResources().getIdentifier("ai_prompt", "id", a.getPackageName()));
+        if (promptRow instanceof LabelArrowButton) {
+            LabelArrowButton pr = (LabelArrowButton) promptRow;
+            try { pr.setLabel("方案提示词 · " + currentPromptName(a)); } catch (Throwable t) { }
+            pr.setOnLayoutClickListener(new OnLayoutClickListener() {
+                @Override
+                public void click(View v) {
+                    a.startActivity(new android.content.Intent().setClassName(a, "im.doit.pro.ai.PromptListActivity"));
+                }
+            });
+        }
         View test = a.findViewById(a.getResources().getIdentifier("ai_test", "id", a.getPackageName()));
         if (test instanceof LabelArrowButton) {
             ((LabelArrowButton) test).setOnLayoutClickListener(new OnLayoutClickListener() {

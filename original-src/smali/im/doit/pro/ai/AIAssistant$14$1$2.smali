@@ -1,4 +1,4 @@
-.class Lim/doit/pro/ai/AIAssistant$13$1$2;
+.class Lim/doit/pro/ai/AIAssistant$14$1$2;
 .super Ljava/lang/Object;
 .source "AIAssistant.java"
 
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant$13$1;->run()V
+    value = Lim/doit/pro/ai/AIAssistant$14$1;->run()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,13 +18,13 @@
 
 
 # instance fields
-.field final synthetic this$1:Lim/doit/pro/ai/AIAssistant$13$1;
+.field final synthetic this$1:Lim/doit/pro/ai/AIAssistant$14$1;
 
 .field final synthetic val$msg:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Lim/doit/pro/ai/AIAssistant$13$1;Ljava/lang/String;)V
+.method constructor <init>(Lim/doit/pro/ai/AIAssistant$14$1;Ljava/lang/String;)V
     .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -32,10 +32,10 @@
         }
     .end annotation
 
-    .line 537
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$13$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$13$1;
+    .line 644
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$14$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$14$1;
 
-    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$13$1$2;->val$msg:Ljava/lang/String;
+    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$14$1$2;->val$msg:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -47,12 +47,12 @@
 .method public run()V
     .registers 4
 
-    .line 539
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$13$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$13$1;
+    .line 646
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$14$1$2;->this$1:Lim/doit/pro/ai/AIAssistant$14$1;
 
-    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$13$1;->this$0:Lim/doit/pro/ai/AIAssistant$13;
+    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$14$1;->this$0:Lim/doit/pro/ai/AIAssistant$14;
 
-    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
+    iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$14;->val$a:Landroid/app/Activity;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -64,7 +64,7 @@
 
     move-result-object v1
 
-    iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$13$1$2;->val$msg:Ljava/lang/String;
+    iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$14$1$2;->val$msg:Ljava/lang/String;
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

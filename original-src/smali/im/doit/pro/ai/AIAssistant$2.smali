@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 117
+    .line 118
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$2;->val$a:Landroid/app/Activity;
@@ -47,7 +47,7 @@
 .method public onClick(Landroid/view/View;)V
     .registers 5
 
-    .line 121
+    .line 122
     :try_start_0
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$2;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
@@ -57,14 +57,14 @@
     :try_end_7
     .catchall {:try_start_0 .. :try_end_7} :catchall_8
 
-    .line 124
+    .line 125
     goto :goto_21
 
-    .line 122
+    .line 123
     :catchall_8
     move-exception p1
 
-    .line 123
+    .line 124
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$2;->val$a:Landroid/app/Activity;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -87,7 +87,7 @@
 
     invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 125
+    .line 126
     :goto_21
     return-void
 .end method
