@@ -463,6 +463,14 @@ public class AIAssistant {
             @Override
             public void onClick(View v) { d.dismiss(); }
         });
+        DButton regen = (DButton) content.findViewById(a.getResources().getIdentifier("ai_regen_btn", "id", a.getPackageName()));
+        regen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+                generate(a, f, task, true);
+            }
+        });
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

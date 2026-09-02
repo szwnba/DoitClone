@@ -548,4 +548,5 @@
     <item type="id" name="prompt_root" />
     <item type="id" name="prompt_name" />
     <item type="id" name="prompt_body" />
+    <item type="id" name="ai_regen_btn" />
 </resources>

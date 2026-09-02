@@ -5,5 +5,11 @@
     <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
         <TextView android:id="@id/ai_plan_text" android:textSize="14.0sp" android:textColor="@color/task_list_item_attribute_normal_color" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:lineSpacingExtra="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </ScrollView>
-    <include layout="@layout/layout_cancel_and_ok_btns" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/dialog_btns_wrap_bg" android:layout_width="fill_parent" android:layout_height="@dimen/btns_wrap_height">
+        <im.doit.pro.ui.component.DButton android:id="@id/cancel_btn" android:text="@string/cancel" style="@style/dialog_btn" />
+        <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <im.doit.pro.ui.component.DButton android:id="@id/ai_regen_btn" android:textSize="14.0sp" android:textColor="@color/button_text_color" android:gravity="center" android:background="@android:color/transparent" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:text="重新生成" />
+        <View android:background="@color/datepicker_normal_line" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <im.doit.pro.ui.component.DButton android:id="@id/ok_btn" android:text="@string/OK" style="@style/dialog_btn" />
+    </LinearLayout>
 </LinearLayout>

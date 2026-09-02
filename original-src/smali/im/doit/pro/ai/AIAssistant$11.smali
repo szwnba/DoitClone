@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    const-string v1, "key"
+    const-string v1, "endpoint"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -84,12 +84,12 @@
 
     if-nez p1, :cond_27
 
-    const-string p1, "\u5df2\u6e05\u7a7a Key"
+    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u7aef\u70b9"
 
     goto :goto_29
 
     :cond_27
-    const-string p1, "Key \u5df2\u4fdd\u5b58"
+    const-string p1, "\u7aef\u70b9\u5df2\u4fdd\u5b58"
 
     :goto_29
     invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
