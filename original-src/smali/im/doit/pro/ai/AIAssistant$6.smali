@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->showPreview(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
+    value = Lim/doit/pro/ai/AIAssistant;->showPreviewInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -36,7 +36,7 @@
         }
     .end annotation
 
-    .line 467
+    .line 482
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$d:Landroid/app/Dialog;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$6;->val$a:Landroid/app/Activity;
@@ -55,12 +55,12 @@
 .method public onClick(Landroid/view/View;)V
     .registers 5
 
-    .line 470
+    .line 485
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    .line 471
+    .line 486
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$6;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
@@ -71,6 +71,6 @@
 
     invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$100(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
 
-    .line 472
+    .line 487
     return-void
 .end method

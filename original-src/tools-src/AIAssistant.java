@@ -351,7 +351,10 @@ public class AIAssistant {
             collectStepArrays(o, cands);
             java.util.List<String> best = null;
             for (java.util.List<String> c : cands) if (best == null || c.size() > best.size()) best = c;
-            if (best != null) for (int i = 0; i < best.size() && i < 12; i++) r.steps.add(best.get(i));
+            if (best != null) for (int i = 0; i < best.size() && i < 12; i++) {
+                r.steps.add(best.get(i));
+                r.estimates.add("");
+            }
             return r;
         }
         r.plan = trimmed;
@@ -436,7 +439,19 @@ public class AIAssistant {
         return normalizePlan(content);
     }
 
+    private static String estAt(PlanResult r, int i) {
+        return i < r.estimates.size() ? r.estimates.get(i) : "";
+    }
+
     private static void showPreview(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r) {
+        try {
+        showPreviewInner(a, f, task, r);
+        } catch (Throwable t) {
+            AIAssistant.toast(a, "预览出错: " + t.getClass().getSimpleName());
+        }
+    }
+
+    private static void showPreviewInner(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r) {
         StringBuilder sb = new StringBuilder();
         sb.append("〔提示词：").append(currentPromptName(a)).append("〕\n\n");
         if (r.summary.length() > 0) sb.append("【目标】").append(r.summary).append("\n\n");
@@ -445,7 +460,7 @@ public class AIAssistant {
             sb.append("\n\n── 将创建的子任务 ──\n");
             for (int i = 0; i < r.steps.size(); i++) {
                 sb.append(i + 1).append(". ").append(r.steps.get(i));
-                String est = r.estimates.get(i);
+                String est = estAt(r, i);
                 if (est.length() > 0) sb.append("（约").append(est).append("）");
                 sb.append("\n");
             }
@@ -513,7 +528,7 @@ public class AIAssistant {
                 SubTask st = new SubTask(task.getUuid(), task.getRepeatNo());
                 st.setUuid(UUID.randomUUID().toString());
                 String title = r.steps.get(i);
-                String est = r.estimates.get(i);
+                String est = estAt(r, i);
                 if (est.length() > 0) title = title + "（约" + est + "）";
                 st.setTitle(title);
                 st.initPos();
@@ -543,7 +558,7 @@ public class AIAssistant {
             sb.append("\n\n【AI 行动清单】\n");
             for (int i = 0; i < r.steps.size(); i++) {
                 sb.append(i + 1).append(". ").append(r.steps.get(i));
-                String est = r.estimates.get(i);
+                String est = estAt(r, i);
                 if (est.length() > 0) sb.append("（约").append(est).append("）");
                 sb.append("\n");
             }

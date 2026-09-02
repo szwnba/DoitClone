@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 660
+    .line 675
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$9;->val$d:Landroid/app/Dialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
 .method public onClick(Landroid/view/View;)V
     .registers 2
 
-    .line 662
+    .line 677
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$9;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
