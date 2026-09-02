@@ -4,7 +4,7 @@
     <include layout="@layout/dialog_title_layout" />
     <EditText android:id="@id/prompt_name" android:textSize="14.0sp" android:hint="名称，如：精简执行派" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <EditText android:id="@id/prompt_body" android:textSize="13.0sp" android:gravity="top" android:minLines="5" android:inputType="textMultiLine" android:scrollbars="vertical" android:hint="系统提示词：告诉 AI 用什么身份、什么风格、按什么格式输出行动方案…" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginTop="6.0dip" android:layout_width="fill_parent" android:layout_height="140.0dip" />
-    <TextView android:textSize="11.0sp" android:textColor="#ffaaaaaa" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="可用变量（生成时自动替换）：{标题} 任务标题 · {日期} 今天日期 · {描述} 任务描述。想生成可勾选的子任务，需要求模型按 JSON 格式输出（内置模板已含）。" />
+    <TextView android:textSize="11.0sp" android:textColor="#ffaaaaaa" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:paddingTop="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="可用变量（生成时自动替换）：{标题} 任务标题 · {日期} 今天日期 · {描述} 任务描述。输出格式随意——App 会自动把 JSON 或普通文本整理成方案；想让生成可勾选的子任务，就在提示词里要求分条列出步骤。" />
     <View android:layout_marginTop="8.0dip" android:layout_width="fill_parent" android:layout_height="1.0dip" android:background="@color/datepicker_normal_line" />
     <include layout="@layout/layout_cancel_and_ok_btns" />
 </LinearLayout>

@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 619
+    .line 702
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
 .method public click(Landroid/view/View;)V
     .registers 5
 
-    .line 622
+    .line 705
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$13;->val$a:Landroid/app/Activity;
 
     new-instance v0, Landroid/content/Intent;
@@ -60,6 +60,6 @@
 
     invoke-virtual {p1, v0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    .line 623
+    .line 706
     return-void
 .end method

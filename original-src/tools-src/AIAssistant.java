@@ -315,6 +315,117 @@ public class AIAssistant {
         return body;
     }
 
+    /** 任意输出 -> 整理为方案：内置 schema 直读；其他 JSON 通用美化+抢救步骤；非 JSON 纯文本 */
+    private static PlanResult normalizePlan(String content) {
+        PlanResult r = new PlanResult();
+        if (content == null) content = "";
+        String trimmed = content.trim();
+        String json = extractJson(trimmed);
+        org.json.JSONObject o = null;
+        if (json != null) {
+            try { o = new org.json.JSONObject(json); } catch (Throwable t) { o = null; }
+        }
+        if (o != null && (o.has("plan") || o.has("summary") || o.has("steps"))) {
+            r.summary = o.optString("summary", "");
+            r.plan = o.optString("plan", "");
+            org.json.JSONArray arr = o.optJSONArray("steps");
+            if (arr != null) {
+                for (int i = 0; i < arr.length() && i < 12; i++) {
+                    org.json.JSONObject st = arr.optJSONObject(i);
+                    if (st == null) continue;
+                    String title = st.optString("title", "").trim();
+                    if (title.length() == 0) continue;
+                    r.steps.add(title);
+                    r.estimates.add(st.optString("estimate", ""));
+                }
+            }
+            if (r.plan.length() == 0 && r.steps.isEmpty()) {
+                r.plan = flatten(o, "");
+            }
+            return r;
+        }
+        if (o != null) {
+            String pretty = flatten(o, "");
+            r.plan = pretty.length() > 0 ? pretty : trimmed;
+            java.util.List<java.util.List<String>> cands = new java.util.ArrayList<java.util.List<String>>();
+            collectStepArrays(o, cands);
+            java.util.List<String> best = null;
+            for (java.util.List<String> c : cands) if (best == null || c.size() > best.size()) best = c;
+            if (best != null) for (int i = 0; i < best.size() && i < 12; i++) r.steps.add(best.get(i));
+            return r;
+        }
+        r.plan = trimmed;
+        return r;
+    }
+
+    private static String flatten(Object node, String prefix) {
+        StringBuilder sb = new StringBuilder();
+        flatten(node, prefix, sb, 0);
+        return sb.toString();
+    }
+
+    private static void flatten(Object node, String prefix, StringBuilder sb, int depth) {
+        if (node instanceof org.json.JSONObject) {
+            org.json.JSONObject o = (org.json.JSONObject) node;
+            java.util.Iterator<String> it = o.keys();
+            while (it.hasNext()) {
+                String k = it.next();
+                emit(k, o.opt(k), prefix, sb, depth);
+            }
+        } else if (node instanceof org.json.JSONArray) {
+            org.json.JSONArray a = (org.json.JSONArray) node;
+            for (int i = 0; i < a.length(); i++) {
+                emit(null, a.opt(i), prefix + "· ", sb, depth);
+            }
+        }
+    }
+
+    private static void emit(String key, Object v, String prefix, StringBuilder sb, int depth) {
+        String head = (key == null || key.length() == 0) ? prefix : prefix + key + "：";
+        if (v instanceof org.json.JSONObject) {
+            sb.append(head).append('\n');
+            flatten(v, prefix + "   ", sb, depth + 1);
+        } else if (v instanceof org.json.JSONArray) {
+            sb.append(head).append('\n');
+            flatten(v, prefix + "  ", sb, depth + 1);
+        } else {
+            String str = String.valueOf(v).trim();
+            if (str.length() > 0) sb.append(head).append(str).append('\n');
+        }
+    }
+
+    private static void collectStepArrays(Object node, java.util.List<java.util.List<String>> out) {
+        if (node instanceof org.json.JSONArray) {
+            org.json.JSONArray a = (org.json.JSONArray) node;
+            java.util.List<String> cand = new java.util.ArrayList<String>();
+            for (int i = 0; i < a.length(); i++) {
+                Object it = a.opt(i);
+                if (it instanceof String) {
+                    String t = ((String) it).trim();
+                    if (t.length() >= 3 && t.length() <= 80) cand.add(t);
+                } else if (it instanceof org.json.JSONObject) {
+                    org.json.JSONObject o = (org.json.JSONObject) it;
+                    String best = null;
+                    java.util.Iterator<String> k = o.keys();
+                    while (k.hasNext()) {
+                        Object v = o.opt(k.next());
+                        if (v instanceof String) {
+                            String t = ((String) v).trim();
+                            if (t.length() >= 3 && t.length() <= 60 && (best == null || t.length() < best.length())) best = t;
+                        }
+                    }
+                    if (best != null) cand.add(best);
+                }
+            }
+            if (cand.size() >= 2) out.add(cand);
+            for (int i = 0; i < a.length(); i++) collectStepArrays(a.opt(i), out);
+        } else if (node instanceof org.json.JSONObject) {
+            org.json.JSONObject o = (org.json.JSONObject) node;
+            java.util.Iterator<String> it = o.keys();
+            while (it.hasNext()) collectStepArrays(o.opt(it.next()), out);
+        }
+    }
+
     private static PlanResult requestPlan(Activity a, Task task) throws Exception {
         String sys = buildSystem(a, task);        String user = "今天的日期：" + new SimpleDateFormat("yyyy-MM-dd EEEE", Locale.CHINA).format(new Date())
             + "\n任务标题：" + safe(task.getTitle())
@@ -322,35 +433,7 @@ public class AIAssistant {
             + "\n请生成行动方案 JSON。";
 
         String content = chat(a, sys, user);
-        PlanResult r = new PlanResult();
-        String json = extractJson(content);
-        boolean parsed = false;
-        if (json != null) {
-            try {
-                org.json.JSONObject o = new org.json.JSONObject(json);
-                r.summary = o.optString("summary", "");
-                r.plan = o.optString("plan", "");
-                org.json.JSONArray arr = o.optJSONArray("steps");
-                if (arr != null) {
-                    for (int i = 0; i < arr.length() && i < 12; i++) {
-                        org.json.JSONObject st = arr.optJSONObject(i);
-                        if (st == null) continue;
-                        String title = st.optString("title", "").trim();
-                        if (title.length() == 0) continue;
-                        r.steps.add(title);
-                        r.estimates.add(st.optString("estimate", ""));
-                    }
-                }
-                parsed = r.plan.length() > 0 || r.steps.size() > 0;
-            } catch (Throwable t) { /* 走降级 */ }
-        }
-        if (!parsed) {
-            // 降级：模型没吐合法 JSON，全文当方案，不建子任务
-            r.summary = "AI 返回了非结构化文本，已作为方案放入描述（未生成子任务）";
-            r.plan = content.trim();
-            r.steps.clear();
-        }
-        return r;
+        return normalizePlan(content);
     }
 
     private static void showPreview(final Activity a, final TaskDetailFragment f, final Task task, final PlanResult r) {

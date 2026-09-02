@@ -34,7 +34,7 @@
         }
     .end annotation
 
-    .line 573
+    .line 656
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$9;->val$d:Landroid/app/Dialog;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$9;->val$onOk:Lim/doit/pro/ai/AIAssistant$OnOk;
@@ -51,12 +51,12 @@
 .method public onClick(Landroid/view/View;)V
     .registers 3
 
-    .line 576
+    .line 659
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$9;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    .line 577
+    .line 660
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$9;->val$onOk:Lim/doit/pro/ai/AIAssistant$OnOk;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$9;->val$input:Landroid/widget/EditText;
@@ -79,6 +79,6 @@
     :goto_15
     invoke-interface {p1, v0}, Lim/doit/pro/ai/AIAssistant$OnOk;->ok(Ljava/lang/String;)V
 
-    .line 578
+    .line 661
     return-void
 .end method

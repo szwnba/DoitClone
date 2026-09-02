@@ -40,7 +40,7 @@
         }
     .end annotation
 
-    .line 383
+    .line 466
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$d:Landroid/app/Dialog;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$6;->val$a:Landroid/app/Activity;
@@ -63,12 +63,12 @@
 .method public onClick(Landroid/view/View;)V
     .registers 6
 
-    .line 386
+    .line 469
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    .line 387
+    .line 470
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$6;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$6;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
@@ -81,6 +81,6 @@
 
     invoke-static {p1, v0, v1, v2, v3}, Lim/doit/pro/ai/AIAssistant;->access$600(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
 
-    .line 388
+    .line 471
     return-void
 .end method
