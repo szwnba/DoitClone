@@ -145,7 +145,7 @@ public class AIAssistant {
                     @Override
                     public void onClick(View v) {
                         try {
-                            openExternalAI(a, getTask(f), "com.moonshot.cn", "Kimi");
+                            openExternalAI(a, getTask(f), "com.moonshot.kimichat", "Kimi");
                         } catch (Throwable t) { }
                     }
                 });

@@ -57,7 +57,7 @@
 
     move-result-object v0
 
-    const-string v1, "com.moonshot.cn"
+    const-string v1, "com.moonshot.kimichat"
 
     const-string v2, "Kimi"
 

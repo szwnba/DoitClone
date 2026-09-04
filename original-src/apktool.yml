@@ -12,8 +12,8 @@ packageInfo:
   forcedPackageId: 127
   renameManifestPackage: null
 versionInfo:
-  versionCode: 1414454
-  versionName: 4.4.5-local-r50
+  versionCode: 1414455
+  versionName: 4.4.5-local-r51
 resourcesAreCompressed: false
 sharedLibrary: false
 sparseResources: false
