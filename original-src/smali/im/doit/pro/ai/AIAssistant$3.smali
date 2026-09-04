@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Lim/doit/pro/ai/AIAssistant$OnOk;
+.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->onPlanClick(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
+    value = Lim/doit/pro/ai/AIAssistant;->wireDetail(Lim/doit/pro/activity/TaskDetailFragment;Landroid/view/View;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -22,24 +22,20 @@
 
 .field final synthetic val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
-.field final synthetic val$task:Lim/doit/pro/model/Task;
-
 
 # direct methods
-.method constructor <init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
-    .registers 4
+.method constructor <init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;)V
+    .registers 3
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 178
+    .line 132
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
-
-    iput-object p3, p0, Lim/doit/pro/ai/AIAssistant$3;->val$task:Lim/doit/pro/model/Task;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,19 +44,32 @@
 
 
 # virtual methods
-.method public ok(Ljava/lang/String;)V
-    .registers 5
+.method public onClick(Landroid/view/View;)V
+    .registers 3
 
-    .line 180
+    .line 136
+    :try_start_0
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
-    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$task:Lim/doit/pro/model/Task;
+    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->access$100(Ljava/lang/Object;)Lim/doit/pro/model/Task;
 
-    const/4 v2, 0x0
+    move-result-object v0
 
-    invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$100(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
+    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->openDeepSeek(Landroid/app/Activity;Lim/doit/pro/model/Task;)V
+    :try_end_b
+    .catchall {:try_start_0 .. :try_end_b} :catchall_c
 
+    goto :goto_d
+
+    .line 137
+    :catchall_c
+    move-exception p1
+
+    :goto_d
+    nop
+
+    .line 138
     return-void
 .end method

@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->showPreviewInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
+    value = Lim/doit/pro/ai/AIAssistant;->generate(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,20 +18,28 @@
 
 
 # instance fields
-.field final synthetic val$d:Landroid/app/Dialog;
+.field final synthetic val$a:Landroid/app/Activity;
+
+.field final synthetic val$f:Lim/doit/pro/activity/TaskDetailFragment;
+
+.field final synthetic val$task:Lim/doit/pro/model/Task;
 
 
 # direct methods
-.method constructor <init>(Landroid/app/Dialog;)V
-    .registers 2
+.method constructor <init>(Landroid/app/Activity;Lim/doit/pro/model/Task;Lim/doit/pro/activity/TaskDetailFragment;)V
+    .registers 4
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 477
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$5;->val$d:Landroid/app/Dialog;
+    .line 234
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$5;->val$a:Landroid/app/Activity;
+
+    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$5;->val$task:Lim/doit/pro/model/Task;
+
+    iput-object p3, p0, Lim/doit/pro/ai/AIAssistant$5;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -40,13 +48,74 @@
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
-    .registers 2
+.method public run()V
+    .registers 4
 
-    .line 479
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$5;->val$d:Landroid/app/Dialog;
+    .line 238
+    :try_start_0
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$5;->val$a:Landroid/app/Activity;
 
-    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
+    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$5;->val$task:Lim/doit/pro/model/Task;
 
+    invoke-static {v0, v1}, Lim/doit/pro/ai/AIAssistant;->access$300(Landroid/app/Activity;Lim/doit/pro/model/Task;)Lim/doit/pro/ai/AIAssistant$PlanResult;
+
+    move-result-object v0
+
+    .line 239
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$500()Landroid/os/Handler;
+
+    move-result-object v1
+
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$5$1;
+
+    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$5$1;-><init>(Lim/doit/pro/ai/AIAssistant$5;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+    :try_end_14
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_14} :catch_15
+
+    .line 249
+    goto :goto_35
+
+    .line 243
+    :catch_15
+    move-exception v0
+
+    .line 244
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v1
+
+    if-nez v1, :cond_25
+
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_29
+
+    :cond_25
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 245
+    :goto_29
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$500()Landroid/os/Handler;
+
+    move-result-object v1
+
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$5$2;
+
+    invoke-direct {v2, p0, v0}, Lim/doit/pro/ai/AIAssistant$5$2;-><init>(Lim/doit/pro/ai/AIAssistant$5;Ljava/lang/String;)V
+
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 250
+    :goto_35
     return-void
 .end method

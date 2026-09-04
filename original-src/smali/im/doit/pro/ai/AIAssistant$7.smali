@@ -20,27 +20,23 @@
 # instance fields
 .field final synthetic val$a:Landroid/app/Activity;
 
-.field final synthetic val$applied:[I
-
 .field final synthetic val$d:Landroid/app/Dialog;
 
 .field final synthetic val$f:Lim/doit/pro/activity/TaskDetailFragment;
-
-.field final synthetic val$r:Lim/doit/pro/ai/AIAssistant$PlanResult;
 
 .field final synthetic val$task:Lim/doit/pro/model/Task;
 
 
 # direct methods
-.method constructor <init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
-    .registers 7
+.method constructor <init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
+    .registers 5
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 489
+    .line 530
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$d:Landroid/app/Dialog;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
@@ -48,10 +44,6 @@
     iput-object p3, p0, Lim/doit/pro/ai/AIAssistant$7;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
     iput-object p4, p0, Lim/doit/pro/ai/AIAssistant$7;->val$task:Lim/doit/pro/model/Task;
-
-    iput-object p5, p0, Lim/doit/pro/ai/AIAssistant$7;->val$r:Lim/doit/pro/ai/AIAssistant$PlanResult;
-
-    iput-object p6, p0, Lim/doit/pro/ai/AIAssistant$7;->val$applied:[I
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -61,26 +53,24 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .registers 6
+    .registers 5
 
-    .line 492
+    .line 533
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$d:Landroid/app/Dialog;
 
     invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
-    .line 493
+    .line 534
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$7;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
     iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$7;->val$task:Lim/doit/pro/model/Task;
 
-    iget-object v2, p0, Lim/doit/pro/ai/AIAssistant$7;->val$r:Lim/doit/pro/ai/AIAssistant$PlanResult;
+    const/4 v2, 0x1
 
-    iget-object v3, p0, Lim/doit/pro/ai/AIAssistant$7;->val$applied:[I
+    invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$200(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
 
-    invoke-static {p1, v0, v1, v2, v3}, Lim/doit/pro/ai/AIAssistant;->access$600(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
-
-    .line 494
+    .line 535
     return-void
 .end method
