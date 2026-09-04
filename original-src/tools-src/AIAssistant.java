@@ -133,7 +133,19 @@ public class AIAssistant {
                     @Override
                     public void onClick(View v) {
                         try {
-                            openDeepSeek(a, getTask(f));
+                            openExternalAI(a, getTask(f), "com.deepseek.chat", "DeepSeek");
+                        } catch (Throwable t) { }
+                    }
+                });
+            }
+            int kimiId = layout.getResources().getIdentifier("ai_kimi_btn", "id", layout.getContext().getPackageName());
+            View kimiBtn = layout.findViewById(kimiId);
+            if (kimiBtn != null && a != null) {
+                kimiBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            openExternalAI(a, getTask(f), "com.moonshot.cn", "Kimi");
                         } catch (Throwable t) { }
                     }
                 });
@@ -161,8 +173,8 @@ public class AIAssistant {
         }
     }
 
-    /** 跳转 DeepSeek：优先分享直达（文字进输入框），退化为打开App+复制剪贴板 */
-    public static void openDeepSeek(Activity a, Task task) {
+    /** 跳转外部 AI App（DeepSeek/Kimi）：分享直达 → 打开App+剪贴板 → 提示 */
+    public static void openExternalAI(Activity a, Task task, String pkg, String appName) {
         if (task == null) { toast(a, "任务未加载"); return; }
         String title = safe(task.getTitle()).trim();
         if (title.length() == 0) { toast(a, "请先填写任务标题"); return; }
@@ -176,25 +188,25 @@ public class AIAssistant {
         try {
             android.content.Intent send = new android.content.Intent(android.content.Intent.ACTION_SEND);
             send.setType("text/plain");
-            send.setPackage("com.deepseek.chat");
+            send.setPackage(pkg);
             send.putExtra(android.content.Intent.EXTRA_TEXT, text);
             if (send.resolveActivity(a.getPackageManager()) != null) {
-                a.startActivity(android.content.Intent.createChooser(send, "发送到 DeepSeek"));
-                toast(a, "已带入 DeepSeek");
+                a.startActivity(android.content.Intent.createChooser(send, "发送到 " + appName));
+                toast(a, "已带入 " + appName);
                 return;
             }
         } catch (Throwable t) { }
 
         try {
-            android.content.Intent launch = a.getPackageManager().getLaunchIntentForPackage("com.deepseek.chat");
+            android.content.Intent launch = a.getPackageManager().getLaunchIntentForPackage(pkg);
             if (launch != null) {
                 a.startActivity(launch);
-                toast(a, "已复制任务内容，长按粘贴到 DeepSeek");
+                toast(a, "已复制任务内容，长按粘贴到 " + appName);
                 return;
             }
         } catch (Throwable t) { }
 
-        toast(a, "未找到 DeepSeek，任务内容已复制到剪贴板");
+        toast(a, "未找到 " + appName + "，任务内容已复制到剪贴板");
     }
 
     private static void onPlanClick(final TaskDetailFragment f, final Activity a) {

@@ -550,4 +550,5 @@
     <item type="id" name="prompt_body" />
     <item type="id" name="ai_regen_btn" />
     <item type="id" name="ai_ds_btn" />
+    <item type="id" name="ai_kimi_btn" />
 </resources>

@@ -45,7 +45,7 @@
 
 # virtual methods
 .method public onClick(Landroid/view/View;)V
-    .registers 3
+    .registers 5
 
     .line 136
     :try_start_0
@@ -57,17 +57,21 @@
 
     move-result-object v0
 
-    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->openDeepSeek(Landroid/app/Activity;Lim/doit/pro/model/Task;)V
-    :try_end_b
-    .catchall {:try_start_0 .. :try_end_b} :catchall_c
+    const-string v1, "com.deepseek.chat"
 
-    goto :goto_d
+    const-string v2, "DeepSeek"
+
+    invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->openExternalAI(Landroid/app/Activity;Lim/doit/pro/model/Task;Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_f
+    .catchall {:try_start_0 .. :try_end_f} :catchall_10
+
+    goto :goto_11
 
     .line 137
-    :catchall_c
+    :catchall_10
     move-exception p1
 
-    :goto_d
+    :goto_11
     nop
 
     .line 138

@@ -44,25 +44,25 @@
 .method private constructor <init>()V
     .registers 2
 
-    .line 256
+    .line 268
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 257
+    .line 269
     const-string v0, ""
 
     iput-object v0, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->summary:Ljava/lang/String;
 
-    .line 258
+    .line 270
     iput-object v0, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
-    .line 259
+    .line 271
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
-    .line 260
+    .line 272
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
@@ -75,7 +75,7 @@
 .method synthetic constructor <init>(Lim/doit/pro/ai/AIAssistant$1;)V
     .registers 2
 
-    .line 256
+    .line 268
     invoke-direct {p0}, Lim/doit/pro/ai/AIAssistant$PlanResult;-><init>()V
 
     return-void

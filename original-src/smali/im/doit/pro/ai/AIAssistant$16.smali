@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 782
+    .line 785
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$16;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,49 +41,25 @@
 
 # virtual methods
 .method public click(Landroid/view/View;)V
-    .registers 3
+    .registers 5
 
-    .line 785
+    .line 788
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$16;->val$a:Landroid/app/Activity;
 
-    invoke-static {p1}, Lim/doit/pro/ai/AIAssistant;->key(Landroid/content/Context;)Ljava/lang/String;
+    new-instance v0, Landroid/content/Intent;
 
-    move-result-object p1
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
+    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$16;->val$a:Landroid/app/Activity;
 
-    move-result p1
+    const-string v2, "im.doit.pro.ai.PromptListActivity"
 
-    if-nez p1, :cond_14
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
 
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$16;->val$a:Landroid/app/Activity;
+    move-result-object v0
 
-    const-string v0, "\u8bf7\u5148\u586b\u5199 API Key"
+    invoke-virtual {p1, v0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    return-void
-
-    .line 786
-    :cond_14
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$16;->val$a:Landroid/app/Activity;
-
-    const-string v0, "\u6b63\u5728\u6d4b\u8bd5\u8fde\u63a5\u2026"
-
-    invoke-static {p1, v0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    .line 787
-    new-instance p1, Ljava/lang/Thread;
-
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$16$1;
-
-    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$16$1;-><init>(Lim/doit/pro/ai/AIAssistant$16;)V
-
-    invoke-direct {p1, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
-
-    .line 804
-    invoke-virtual {p1}, Ljava/lang/Thread;->start()V
-
-    .line 805
+    .line 789
     return-void
 .end method
