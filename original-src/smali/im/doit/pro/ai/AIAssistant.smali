@@ -63,16 +63,7 @@
     return-void
 .end method
 
-.method static synthetic access$000(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
-    .registers 2
-
-    .line 39
-    invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->onPlanClick(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
-
-    return-void
-.end method
-
-.method static synthetic access$100(Ljava/lang/Object;)Lim/doit/pro/model/Task;
+.method static synthetic access$000(Ljava/lang/Object;)Lim/doit/pro/model/Task;
     .registers 1
 
     .line 39
@@ -83,7 +74,7 @@
     return-object p0
 .end method
 
-.method static synthetic access$200(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
+.method static synthetic access$100(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
     .registers 4
 
     .line 39
@@ -92,7 +83,7 @@
     return-void
 .end method
 
-.method static synthetic access$300(Landroid/app/Activity;Lim/doit/pro/model/Task;)Lim/doit/pro/ai/AIAssistant$PlanResult;
+.method static synthetic access$200(Landroid/app/Activity;Lim/doit/pro/model/Task;)Lim/doit/pro/ai/AIAssistant$PlanResult;
     .registers 2
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -108,7 +99,7 @@
     return-object p0
 .end method
 
-.method static synthetic access$400(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
+.method static synthetic access$300(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
     .registers 4
 
     .line 39
@@ -117,7 +108,7 @@
     return-void
 .end method
 
-.method static synthetic access$500()Landroid/os/Handler;
+.method static synthetic access$400()Landroid/os/Handler;
     .registers 1
 
     .line 39
@@ -126,7 +117,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$700(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
+.method static synthetic access$600(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
     .registers 5
 
     .line 39
@@ -135,7 +126,7 @@
     return-void
 .end method
 
-.method static synthetic access$800(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+.method static synthetic access$700(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .registers 3
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -151,7 +142,7 @@
     return-object p0
 .end method
 
-.method static synthetic access$900(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
+.method static synthetic access$800(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
     .registers 9
 
     .line 39
@@ -165,7 +156,7 @@
 .method private static appDialog(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
     .registers 13
 
-    .line 721
+    .line 707
     new-instance p6, Landroid/app/Dialog;
 
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
@@ -186,7 +177,7 @@
 
     invoke-direct {p6, p0, v0}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
 
-    .line 722
+    .line 708
     invoke-static {p0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v0
@@ -211,7 +202,7 @@
 
     move-result-object p1
 
-    .line 723
+    .line 709
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -236,7 +227,7 @@
 
     invoke-virtual {v0, p2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 724
+    .line 710
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object p2
@@ -257,14 +248,14 @@
 
     check-cast p2, Landroid/widget/TextView;
 
-    .line 725
+    .line 711
     if-eqz p2, :cond_60
 
     if-eqz p3, :cond_60
 
     invoke-virtual {p2, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 726
+    .line 712
     :cond_60
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
@@ -286,21 +277,21 @@
 
     check-cast p2, Landroid/widget/EditText;
 
-    .line 727
+    .line 713
     if-eqz p2, :cond_8b
 
-    .line 728
+    .line 714
     if-eqz p8, :cond_7d
 
     const/16 p3, 0x81
 
     invoke-virtual {p2, p3}, Landroid/widget/EditText;->setInputType(I)V
 
-    .line 729
+    .line 715
     :cond_7d
     invoke-virtual {p2, p7}, Landroid/widget/EditText;->setText(Ljava/lang/CharSequence;)V
 
-    .line 730
+    .line 716
     invoke-virtual {p2}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
 
     move-result-object p3
@@ -311,7 +302,7 @@
 
     invoke-virtual {p2, p3}, Landroid/widget/EditText;->setSelection(I)V
 
-    .line 732
+    .line 718
     :cond_8b
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
@@ -333,7 +324,7 @@
 
     check-cast p3, Lim/doit/pro/ui/component/DButton;
 
-    .line 733
+    .line 719
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object p7
@@ -354,50 +345,50 @@
 
     check-cast p0, Lim/doit/pro/ui/component/DButton;
 
-    .line 734
+    .line 720
     if-eqz p4, :cond_b8
 
     invoke-virtual {p0, p4}, Lim/doit/pro/ui/component/DButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 735
+    .line 721
     :cond_b8
-    new-instance p4, Lim/doit/pro/ai/AIAssistant$11;
+    new-instance p4, Lim/doit/pro/ai/AIAssistant$10;
 
-    invoke-direct {p4, p6}, Lim/doit/pro/ai/AIAssistant$11;-><init>(Landroid/app/Dialog;)V
+    invoke-direct {p4, p6}, Lim/doit/pro/ai/AIAssistant$10;-><init>(Landroid/app/Dialog;)V
 
     invoke-virtual {p3, p4}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 739
-    new-instance p3, Lim/doit/pro/ai/AIAssistant$12;
+    .line 725
+    new-instance p3, Lim/doit/pro/ai/AIAssistant$11;
 
-    invoke-direct {p3, p6, p5, p2}, Lim/doit/pro/ai/AIAssistant$12;-><init>(Landroid/app/Dialog;Lim/doit/pro/ai/AIAssistant$OnOk;Landroid/widget/EditText;)V
+    invoke-direct {p3, p6, p5, p2}, Lim/doit/pro/ai/AIAssistant$11;-><init>(Landroid/app/Dialog;Lim/doit/pro/ai/AIAssistant$OnOk;Landroid/widget/EditText;)V
 
     invoke-virtual {p0, p3}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 746
+    .line 732
     invoke-virtual {p6, p1}, Landroid/app/Dialog;->setContentView(Landroid/view/View;)V
 
-    .line 747
+    .line 733
     return-object p6
 .end method
 
 .method private static apply(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
     .registers 5
 
-    .line 568
+    .line 554
     :try_start_0
     invoke-static {p0, p1, p2, p3, p4}, Lim/doit/pro/ai/AIAssistant;->applyInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
     :try_end_3
     .catchall {:try_start_0 .. :try_end_3} :catchall_4
 
-    .line 571
+    .line 557
     goto :goto_1b
 
-    .line 569
+    .line 555
     :catchall_4
     move-exception p1
 
-    .line 570
+    .line 556
     new-instance p2, Ljava/lang/StringBuilder;
 
     invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
@@ -418,7 +409,7 @@
 
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 572
+    .line 558
     :goto_1b
     return-void
 .end method
@@ -426,7 +417,7 @@
 .method private static applyInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
     .registers 12
 
-    .line 577
+    .line 563
     :try_start_0
     invoke-virtual {p1}, Lim/doit/pro/activity/TaskDetailFragment;->getView()Landroid/view/View;
 
@@ -452,12 +443,12 @@
 
     move-result-object v0
 
-    .line 578
+    .line 564
     invoke-static {p3}, Lim/doit/pro/ai/AIAssistant;->buildDoc(Lim/doit/pro/ai/AIAssistant$PlanResult;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 579
+    .line 565
     instance-of v2, v0, Landroid/widget/TextView;
 
     if-eqz v2, :cond_26
@@ -468,21 +459,21 @@
 
     goto :goto_29
 
-    .line 580
+    .line 566
     :cond_26
     invoke-virtual {p2, v1}, Lim/doit/pro/model/Task;->setNotes(Ljava/lang/String;)V
     :try_end_29
     .catchall {:try_start_0 .. :try_end_29} :catchall_2a
 
-    .line 583
+    .line 569
     :goto_29
     goto :goto_34
 
-    .line 581
+    .line 567
     :catchall_2a
     move-exception v0
 
-    .line 582
+    .line 568
     :try_start_2b
     invoke-static {p3}, Lim/doit/pro/ai/AIAssistant;->buildDoc(Lim/doit/pro/ai/AIAssistant$PlanResult;)Ljava/lang/String;
 
@@ -497,13 +488,13 @@
     :catchall_33
     move-exception v0
 
-    .line 585
+    .line 571
     :goto_34
     const/4 v0, 0x0
 
     aput v0, p4, v0
 
-    .line 587
+    .line 573
     const/4 v1, 0x0
 
     :goto_38
@@ -518,7 +509,7 @@
 
     if-ge v1, v3, :cond_a6
 
-    .line 588
+    .line 574
     new-instance v3, Lim/doit/pro/model/SubTask;
 
     invoke-virtual {p2}, Lim/doit/pro/model/Task;->getUuid()Ljava/lang/String;
@@ -531,7 +522,7 @@
 
     invoke-direct {v3, v4, v5}, Lim/doit/pro/model/SubTask;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 589
+    .line 575
     invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
 
     move-result-object v4
@@ -542,7 +533,7 @@
 
     invoke-virtual {v3, v4}, Lim/doit/pro/model/SubTask;->setUuid(Ljava/lang/String;)V
 
-    .line 590
+    .line 576
     iget-object v4, p3, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
     invoke-interface {v4, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -551,12 +542,12 @@
 
     check-cast v4, Ljava/lang/String;
 
-    .line 591
+    .line 577
     invoke-static {p3, v1}, Lim/doit/pro/ai/AIAssistant;->estAt(Lim/doit/pro/ai/AIAssistant$PlanResult;I)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 592
+    .line 578
     invoke-virtual {v5}, Ljava/lang/String;->length()I
 
     move-result v6
@@ -591,21 +582,21 @@
 
     move-result-object v4
 
-    .line 593
+    .line 579
     :cond_88
     invoke-virtual {v3, v4}, Lim/doit/pro/model/SubTask;->setTitle(Ljava/lang/String;)V
 
-    .line 594
+    .line 580
     invoke-virtual {v3}, Lim/doit/pro/model/SubTask;->initPos()V
 
-    .line 595
+    .line 581
     invoke-virtual {p2}, Lim/doit/pro/model/Task;->getSubTasks()Ljava/util/ArrayList;
 
     move-result-object v4
 
     invoke-virtual {v4, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 596
+    .line 582
     invoke-static {}, Lim/doit/pro/activity/DoitApp;->persist()Lim/doit/pro/db/Persist;
 
     move-result-object v4
@@ -614,7 +605,7 @@
 
     invoke-virtual {v4, v3}, Lim/doit/pro/db/persist/SubTaskDao;->createAndSaveLog(Lim/doit/pro/model/SubTask;)V
 
-    .line 597
+    .line 583
     aget v3, p4, v0
 
     add-int/2addr v3, v2
@@ -623,20 +614,20 @@
     :try_end_a3
     .catchall {:try_start_39 .. :try_end_a3} :catchall_a7
 
-    .line 587
+    .line 573
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_38
 
-    .line 601
+    .line 587
     :cond_a6
     goto :goto_c2
 
-    .line 599
+    .line 585
     :catchall_a7
     move-exception p2
 
-    .line 600
+    .line 586
     new-instance p3, Ljava/lang/StringBuilder;
 
     invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V
@@ -661,7 +652,7 @@
 
     invoke-static {p0, p2}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 604
+    .line 590
     :goto_c2
     :try_start_c2
     invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
@@ -676,10 +667,10 @@
 
     move-result-object p2
 
-    .line 605
+    .line 591
     invoke-virtual {p2, v2}, Ljava/lang/reflect/Method;->setAccessible(Z)V
 
-    .line 606
+    .line 592
     new-array p3, v0, [Ljava/lang/Object;
 
     invoke-virtual {p2, p1, p3}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
@@ -688,19 +679,19 @@
 
     goto :goto_d8
 
-    .line 607
+    .line 593
     :catchall_d7
     move-exception p1
 
     :goto_d8
     nop
 
-    .line 608
+    .line 594
     aget p1, p4, v0
 
     if-lez p1, :cond_f9
 
-    .line 609
+    .line 595
     new-instance p1, Ljava/lang/StringBuilder;
 
     invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
@@ -729,29 +720,29 @@
 
     goto :goto_fb
 
-    .line 610
+    .line 596
     :cond_f9
     const-string p1, "\u2713 \u65b9\u6848\u5df2\u5e94\u7528\u5230\u63cf\u8ff0"
 
-    .line 608
+    .line 594
     :goto_fb
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 611
+    .line 597
     return-void
 .end method
 
 .method private static brief(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
 
-    .line 696
+    .line 682
     const-string v0, ""
 
     if-nez p0, :cond_5
 
     return-object v0
 
-    .line 698
+    .line 684
     :cond_5
     :try_start_5
     new-instance v1, Lorg/json/JSONObject;
@@ -768,11 +759,11 @@
 
     return-object p0
 
-    .line 699
+    .line 685
     :catch_11
     move-exception v0
 
-    .line 700
+    .line 686
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v0
@@ -794,12 +785,12 @@
 .method private static buildDoc(Lim/doit/pro/ai/AIAssistant$PlanResult;)Ljava/lang/String;
     .registers 6
 
-    .line 614
+    .line 600
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 615
+    .line 601
     iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->summary:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->length()I
@@ -824,7 +815,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 616
+    .line 602
     :cond_1e
     iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
@@ -840,7 +831,7 @@
     :goto_27
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 617
+    .line 603
     iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
@@ -849,12 +840,12 @@
 
     if-lez v1, :cond_77
 
-    .line 618
+    .line 604
     const-string v1, "\n\n\u3010AI \u884c\u52a8\u6e05\u5355\u3011\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 619
+    .line 605
     const/4 v1, 0x0
 
     :goto_38
@@ -866,7 +857,7 @@
 
     if-ge v1, v2, :cond_77
 
-    .line 620
+    .line 606
     add-int/lit8 v2, v1, 0x1
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
@@ -889,12 +880,12 @@
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 621
+    .line 607
     invoke-static {p0, v1}, Lim/doit/pro/ai/AIAssistant;->estAt(Lim/doit/pro/ai/AIAssistant$PlanResult;I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 622
+    .line 608
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v3
@@ -915,18 +906,18 @@
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 623
+    .line 609
     :cond_70
     const-string v1, "\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 619
+    .line 605
     move v1, v2
 
     goto :goto_38
 
-    .line 626
+    .line 612
     :cond_77
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
@@ -938,20 +929,20 @@
 .method private static buildSystem(Landroid/content/Context;Lim/doit/pro/model/Task;)Ljava/lang/String;
     .registers 8
 
-    .line 364
+    .line 350
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->currentPromptId(Landroid/content/Context;)I
 
     move-result v0
 
-    .line 365
+    .line 351
     nop
 
-    .line 366
+    .line 352
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->promptsJson(Landroid/content/Context;)Lorg/json/JSONArray;
 
     move-result-object p0
 
-    .line 367
+    .line 353
     const/4 v1, 0x0
 
     :goto_a
@@ -963,12 +954,12 @@
 
     if-ge v1, v2, :cond_2b
 
-    .line 368
+    .line 354
     invoke-virtual {p0, v1}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 369
+    .line 355
     if-eqz v2, :cond_28
 
     const-string v4, "id"
@@ -989,13 +980,13 @@
 
     goto :goto_2b
 
-    .line 367
+    .line 353
     :cond_28
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_a
 
-    .line 371
+    .line 357
     :cond_2b
     :goto_2b
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getTitle()Ljava/lang/String;
@@ -1010,7 +1001,7 @@
 
     move-result-object p0
 
-    .line 372
+    .line 358
     new-instance v0, Ljava/text/SimpleDateFormat;
 
     const-string v1, "yyyy-MM-dd EEEE"
@@ -1027,7 +1018,7 @@
 
     move-result-object v0
 
-    .line 373
+    .line 359
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getNotes()Ljava/lang/String;
 
     move-result-object v1
@@ -1047,7 +1038,7 @@
 
     move-result-object p1
 
-    .line 374
+    .line 360
     :goto_5a
     const-string v1, "{\u6807\u9898}"
 
@@ -1067,7 +1058,7 @@
 
     move-result-object p0
 
-    .line 375
+    .line 361
     return-object p0
 .end method
 
@@ -1079,14 +1070,14 @@
         }
     .end annotation
 
-    .line 632
+    .line 618
     const-string v0, "UTF-8"
 
     new-instance v1, Lorg/json/JSONObject;
 
     invoke-direct {v1}, Lorg/json/JSONObject;-><init>()V
 
-    .line 633
+    .line 619
     const-string v2, "model"
 
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->model(Landroid/content/Context;)Ljava/lang/String;
@@ -1095,63 +1086,63 @@
 
     invoke-virtual {v1, v2, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 634
+    .line 620
     new-instance v2, Lorg/json/JSONArray;
 
     invoke-direct {v2}, Lorg/json/JSONArray;-><init>()V
 
-    .line 635
+    .line 621
     new-instance v3, Lorg/json/JSONObject;
 
     invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V
 
-    .line 636
+    .line 622
     const-string v4, "system"
 
     const-string v5, "role"
 
     invoke-virtual {v3, v5, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 637
+    .line 623
     const-string v4, "content"
 
     invoke-virtual {v3, v4, p1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 638
+    .line 624
     invoke-virtual {v2, v3}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
 
-    .line 639
+    .line 625
     new-instance p1, Lorg/json/JSONObject;
 
     invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V
 
-    .line 640
+    .line 626
     const-string v3, "user"
 
     invoke-virtual {p1, v5, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 641
+    .line 627
     invoke-virtual {p1, v4, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 642
+    .line 628
     invoke-virtual {v2, p1}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
 
-    .line 643
+    .line 629
     const-string p1, "messages"
 
     invoke-virtual {v1, p1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
-    .line 644
+    .line 630
     const-string p1, "temperature"
 
     const-wide v2, 0x3fd999999999999aL    # 0.4
 
     invoke-virtual {v1, p1, v2, v3}, Lorg/json/JSONObject;->put(Ljava/lang/String;D)Lorg/json/JSONObject;
 
-    .line 646
+    .line 632
     nop
 
-    .line 648
+    .line 634
     const/4 p1, 0x0
 
     :try_start_4a
@@ -1197,23 +1188,23 @@
     :try_end_74
     .catchall {:try_start_4a .. :try_end_74} :catchall_16e
 
-    .line 649
+    .line 635
     const/16 p1, 0x3a98
 
     :try_start_76
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setConnectTimeout(I)V
 
-    .line 650
+    .line 636
     const p1, 0x1d4c0
 
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V
 
-    .line 651
+    .line 637
     const-string p1, "POST"
 
     invoke-virtual {p2, p1}, Ljava/net/HttpURLConnection;->setRequestMethod(Ljava/lang/String;)V
 
-    .line 652
+    .line 638
     const-string p1, "Authorization"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -1240,33 +1231,33 @@
 
     invoke-virtual {p2, p1, p0}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 653
+    .line 639
     const-string p0, "Content-Type"
 
     const-string p1, "application/json"
 
     invoke-virtual {p2, p0, p1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 654
+    .line 640
     const-string p0, "User-Agent"
 
     const-string p1, "DoitLocalAI/1.0"
 
     invoke-virtual {p2, p0, p1}, Ljava/net/HttpURLConnection;->setRequestProperty(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 655
+    .line 641
     const/4 p0, 0x1
 
     invoke-virtual {p2, p0}, Ljava/net/HttpURLConnection;->setDoOutput(Z)V
 
-    .line 656
+    .line 642
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getOutputStream()Ljava/io/OutputStream;
 
     move-result-object p0
     :try_end_b6
     .catchall {:try_start_76 .. :try_end_b6} :catchall_16b
 
-    .line 657
+    .line 643
     :try_start_b6
     invoke-virtual {v1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
@@ -1283,12 +1274,12 @@
     :try_start_c1
     invoke-virtual {p0}, Ljava/io/OutputStream;->close()V
 
-    .line 658
+    .line 644
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->getResponseCode()I
 
     move-result p0
 
-    .line 659
+    .line 645
     const/16 p1, 0x190
 
     if-lt p0, p1, :cond_d1
@@ -1304,23 +1295,23 @@
 
     move-result-object p1
 
-    .line 660
+    .line 646
     :goto_d5
     new-instance v1, Ljava/io/ByteArrayOutputStream;
 
     invoke-direct {v1}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
-    .line 661
+    .line 647
     const/4 v2, 0x0
 
     if-eqz p1, :cond_ee
 
-    .line 662
+    .line 648
     const/16 v3, 0x2000
 
     new-array v3, v3, [B
 
-    .line 664
+    .line 650
     :goto_e1
     invoke-virtual {p1, v3}, Ljava/io/InputStream;->read([B)I
 
@@ -1332,11 +1323,11 @@
 
     goto :goto_e1
 
-    .line 665
+    .line 651
     :cond_eb
     invoke-virtual {p1}, Ljava/io/InputStream;->close()V
 
-    .line 667
+    .line 653
     :cond_ee
     new-instance p1, Ljava/lang/String;
 
@@ -1346,24 +1337,24 @@
 
     invoke-direct {p1, v1, v0}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
 
-    .line 668
+    .line 654
     const/16 v0, 0xc8
 
     if-ne p0, v0, :cond_13f
 
-    .line 669
+    .line 655
     new-instance p0, Lorg/json/JSONObject;
 
     invoke-direct {p0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
-    .line 670
+    .line 656
     const-string v0, "choices"
 
     invoke-virtual {p0, v0}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object p0
 
-    .line 671
+    .line 657
     if-eqz p0, :cond_122
 
     invoke-virtual {p0}, Lorg/json/JSONArray;->length()I
@@ -1372,7 +1363,7 @@
 
     if-eqz v0, :cond_122
 
-    .line 672
+    .line 658
     invoke-virtual {p0, v2}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object p0
@@ -1389,16 +1380,16 @@
     :try_end_11c
     .catchall {:try_start_c1 .. :try_end_11c} :catchall_16b
 
-    .line 674
+    .line 660
     if-eqz p2, :cond_121
 
     invoke-virtual {p2}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 672
+    .line 658
     :cond_121
     return-object p0
 
-    .line 671
+    .line 657
     :cond_122
     :try_start_122
     new-instance p0, Ljava/lang/Exception;
@@ -1429,7 +1420,7 @@
 
     throw p0
 
-    .line 668
+    .line 654
     :cond_13f
     new-instance v0, Ljava/lang/Exception;
 
@@ -1469,7 +1460,7 @@
 
     throw v0
 
-    .line 657
+    .line 643
     :catchall_166
     move-exception p1
 
@@ -1479,7 +1470,7 @@
     :try_end_16b
     .catchall {:try_start_122 .. :try_end_16b} :catchall_16b
 
-    .line 674
+    .line 660
     :catchall_16b
     move-exception p0
 
@@ -1495,7 +1486,7 @@
 
     invoke-virtual {p1}, Ljava/net/HttpURLConnection;->disconnect()V
 
-    .line 675
+    .line 661
     :cond_174
     goto :goto_176
 
@@ -1519,20 +1510,20 @@
         }
     .end annotation
 
-    .line 461
+    .line 447
     instance-of v0, p0, Lorg/json/JSONArray;
 
     if-eqz v0, :cond_9b
 
-    .line 462
+    .line 448
     check-cast p0, Lorg/json/JSONArray;
 
-    .line 463
+    .line 449
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 464
+    .line 450
     const/4 v1, 0x0
 
     const/4 v2, 0x0
@@ -1544,26 +1535,26 @@
 
     if-ge v2, v3, :cond_80
 
-    .line 465
+    .line 451
     invoke-virtual {p0, v2}, Lorg/json/JSONArray;->opt(I)Ljava/lang/Object;
 
     move-result-object v3
 
-    .line 466
+    .line 452
     instance-of v4, v3, Ljava/lang/String;
 
     const/4 v5, 0x3
 
     if-eqz v4, :cond_34
 
-    .line 467
+    .line 453
     check-cast v3, Ljava/lang/String;
 
     invoke-virtual {v3}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object v3
 
-    .line 468
+    .line 454
     invoke-virtual {v3}, Ljava/lang/String;->length()I
 
     move-result v4
@@ -1582,26 +1573,26 @@
 
     goto :goto_7c
 
-    .line 469
+    .line 455
     :cond_34
     instance-of v4, v3, Lorg/json/JSONObject;
 
     if-eqz v4, :cond_7c
 
-    .line 470
+    .line 456
     check-cast v3, Lorg/json/JSONObject;
 
-    .line 471
+    .line 457
     nop
 
-    .line 472
+    .line 458
     invoke-virtual {v3}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
 
     move-result-object v4
 
     const/4 v6, 0x0
 
-    .line 473
+    .line 459
     :goto_40
     invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
@@ -1609,7 +1600,7 @@
 
     if-eqz v7, :cond_76
 
-    .line 474
+    .line 460
     invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v7
@@ -1620,19 +1611,19 @@
 
     move-result-object v7
 
-    .line 475
+    .line 461
     instance-of v8, v7, Ljava/lang/String;
 
     if-eqz v8, :cond_75
 
-    .line 476
+    .line 462
     check-cast v7, Ljava/lang/String;
 
     invoke-virtual {v7}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object v7
 
-    .line 477
+    .line 463
     invoke-virtual {v7}, Ljava/lang/String;->length()I
 
     move-result v8
@@ -1662,11 +1653,11 @@
     :cond_74
     move-object v6, v7
 
-    .line 479
+    .line 465
     :cond_75
     goto :goto_40
 
-    .line 480
+    .line 466
     :cond_76
     if-eqz v6, :cond_7d
 
@@ -1674,19 +1665,19 @@
 
     goto :goto_7d
 
-    .line 469
+    .line 455
     :cond_7c
     :goto_7c
     nop
 
-    .line 464
+    .line 450
     :cond_7d
     :goto_7d
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_d
 
-    .line 483
+    .line 469
     :cond_80
     invoke-interface {v0}, Ljava/util/List;->size()I
 
@@ -1698,7 +1689,7 @@
 
     invoke-interface {p1, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 484
+    .line 470
     :cond_8a
     nop
 
@@ -1719,21 +1710,21 @@
 
     goto :goto_8b
 
-    .line 485
+    .line 471
     :cond_9b
     instance-of v0, p0, Lorg/json/JSONObject;
 
     if-eqz v0, :cond_b9
 
-    .line 486
+    .line 472
     check-cast p0, Lorg/json/JSONObject;
 
-    .line 487
+    .line 473
     invoke-virtual {p0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
 
     move-result-object v0
 
-    .line 488
+    .line 474
     :goto_a5
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
@@ -1755,11 +1746,11 @@
 
     goto :goto_a5
 
-    .line 485
+    .line 471
     :cond_b9
     nop
 
-    .line 490
+    .line 476
     :cond_ba
     return-void
 .end method
@@ -1767,7 +1758,7 @@
 .method private static confirm(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;)V
     .registers 14
 
-    .line 751
+    .line 737
     const-string v1, "dialog_ghs_confirm"
 
     const/4 v6, 0x0
@@ -1792,14 +1783,14 @@
 
     invoke-virtual {p0}, Landroid/app/Dialog;->show()V
 
-    .line 752
+    .line 738
     return-void
 .end method
 
 .method public static currentPromptId(Landroid/content/Context;)I
     .registers 3
 
-    .line 306
+    .line 292
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -1818,17 +1809,17 @@
 .method public static currentPromptName(Landroid/content/Context;)Ljava/lang/String;
     .registers 6
 
-    .line 314
+    .line 300
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->currentPromptId(Landroid/content/Context;)I
 
     move-result v0
 
-    .line 315
+    .line 301
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->promptsJson(Landroid/content/Context;)Lorg/json/JSONArray;
 
     move-result-object p0
 
-    .line 316
+    .line 302
     const/4 v1, 0x0
 
     :goto_9
@@ -1838,12 +1829,12 @@
 
     if-ge v1, v2, :cond_2a
 
-    .line 317
+    .line 303
     invoke-virtual {p0, v1}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v2
 
-    .line 318
+    .line 304
     if-eqz v2, :cond_27
 
     const-string v3, "id"
@@ -1866,13 +1857,13 @@
 
     return-object p0
 
-    .line 316
+    .line 302
     :cond_27
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_9
 
-    .line 320
+    .line 306
     :cond_2a
     const-string p0, "GTD \u6559\u7ec3 \u00b7 \u5185\u7f6e"
 
@@ -1882,23 +1873,23 @@
 .method public static deletePrompt(Landroid/content/Context;I)V
     .registers 9
 
-    .line 350
+    .line 336
     if-nez p1, :cond_3
 
     return-void
 
-    .line 351
+    .line 337
     :cond_3
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->promptsJson(Landroid/content/Context;)Lorg/json/JSONArray;
 
     move-result-object v0
 
-    .line 352
+    .line 338
     new-instance v1, Lorg/json/JSONArray;
 
     invoke-direct {v1}, Lorg/json/JSONArray;-><init>()V
 
-    .line 353
+    .line 339
     const/4 v2, 0x0
 
     const/4 v3, 0x0
@@ -1910,12 +1901,12 @@
 
     if-ge v3, v4, :cond_2a
 
-    .line 354
+    .line 340
     invoke-virtual {v0, v3}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v4
 
-    .line 355
+    .line 341
     if-eqz v4, :cond_27
 
     const-string v5, "id"
@@ -1930,18 +1921,18 @@
 
     goto :goto_27
 
-    .line 356
+    .line 342
     :cond_24
     invoke-virtual {v1, v4}, Lorg/json/JSONArray;->put(Ljava/lang/Object;)Lorg/json/JSONArray;
 
-    .line 353
+    .line 339
     :cond_27
     :goto_27
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_e
 
-    .line 358
+    .line 344
     :cond_2a
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
@@ -1963,7 +1954,7 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 359
+    .line 345
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->currentPromptId(Landroid/content/Context;)I
 
     move-result v0
@@ -1972,7 +1963,7 @@
 
     invoke-static {p0, v2}, Lim/doit/pro/ai/AIAssistant;->setCurrentPromptId(Landroid/content/Context;I)V
 
-    .line 360
+    .line 346
     :cond_48
     return-void
 .end method
@@ -1980,7 +1971,7 @@
 .method private static emit(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/StringBuilder;I)V
     .registers 7
 
-    .line 447
+    .line 433
     if-eqz p0, :cond_21
 
     invoke-virtual {p0}, Ljava/lang/String;->length()I
@@ -2020,7 +2011,7 @@
     :goto_21
     move-object p0, p2
 
-    .line 448
+    .line 434
     :goto_22
     instance-of v0, p1, Lorg/json/JSONObject;
 
@@ -2028,14 +2019,14 @@
 
     if-eqz v0, :cond_48
 
-    .line 449
+    .line 435
     invoke-virtual {p3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object p0
 
     invoke-virtual {p0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 450
+    .line 436
     new-instance p0, Ljava/lang/StringBuilder;
 
     invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2060,20 +2051,20 @@
 
     goto :goto_85
 
-    .line 451
+    .line 437
     :cond_48
     instance-of v0, p1, Lorg/json/JSONArray;
 
     if-eqz v0, :cond_6c
 
-    .line 452
+    .line 438
     invoke-virtual {p3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object p0
 
     invoke-virtual {p0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 453
+    .line 439
     new-instance p0, Ljava/lang/StringBuilder;
 
     invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2098,7 +2089,7 @@
 
     goto :goto_85
 
-    .line 455
+    .line 441
     :cond_6c
     invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
 
@@ -2108,7 +2099,7 @@
 
     move-result-object p1
 
-    .line 456
+    .line 442
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
     move-result p2
@@ -2125,7 +2116,7 @@
 
     invoke-virtual {p0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 458
+    .line 444
     :cond_85
     :goto_85
     return-void
@@ -2163,7 +2154,7 @@
 .method private static estAt(Lim/doit/pro/ai/AIAssistant$PlanResult;I)Ljava/lang/String;
     .registers 3
 
-    .line 503
+    .line 489
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$PlanResult;->estimates:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -2192,20 +2183,20 @@
 .method private static extractJson(Ljava/lang/String;)Ljava/lang/String;
     .registers 4
 
-    .line 680
+    .line 666
     const/4 v0, 0x0
 
     if-nez p0, :cond_4
 
     return-object v0
 
-    .line 681
+    .line 667
     :cond_4
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object p0
 
-    .line 682
+    .line 668
     const-string v1, "```"
 
     invoke-virtual {p0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
@@ -2214,14 +2205,14 @@
 
     if-eqz v2, :cond_2d
 
-    .line 683
+    .line 669
     const/16 v2, 0xa
 
     invoke-virtual {p0, v2}, Ljava/lang/String;->indexOf(I)I
 
     move-result v2
 
-    .line 684
+    .line 670
     if-lez v2, :cond_1e
 
     add-int/lit8 v2, v2, 0x1
@@ -2230,13 +2221,13 @@
 
     move-result-object p0
 
-    .line 685
+    .line 671
     :cond_1e
     invoke-virtual {p0, v1}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v1
 
-    .line 686
+    .line 672
     if-ltz v1, :cond_29
 
     const/4 v2, 0x0
@@ -2245,13 +2236,13 @@
 
     move-result-object p0
 
-    .line 687
+    .line 673
     :cond_29
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object p0
 
-    .line 689
+    .line 675
     :cond_2d
     const/16 v1, 0x7b
 
@@ -2259,14 +2250,14 @@
 
     move-result v1
 
-    .line 690
+    .line 676
     const/16 v2, 0x7d
 
     invoke-virtual {p0, v2}, Ljava/lang/String;->lastIndexOf(I)I
 
     move-result v2
 
-    .line 691
+    .line 677
     if-ltz v1, :cond_44
 
     if-le v2, v1, :cond_44
@@ -2279,7 +2270,7 @@
 
     return-object p0
 
-    .line 692
+    .line 678
     :cond_44
     return-object v0
 .end method
@@ -2365,17 +2356,17 @@
 .method private static flatten(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
     .registers 4
 
-    .line 425
+    .line 411
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 426
+    .line 412
     const/4 v1, 0x0
 
     invoke-static {p0, p1, v0, v1}, Lim/doit/pro/ai/AIAssistant;->flatten(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/StringBuilder;I)V
 
-    .line 427
+    .line 413
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object p0
@@ -2386,20 +2377,20 @@
 .method private static flatten(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/StringBuilder;I)V
     .registers 8
 
-    .line 431
+    .line 417
     instance-of v0, p0, Lorg/json/JSONObject;
 
     if-eqz v0, :cond_1e
 
-    .line 432
+    .line 418
     check-cast p0, Lorg/json/JSONObject;
 
-    .line 433
+    .line 419
     invoke-virtual {p0}, Lorg/json/JSONObject;->keys()Ljava/util/Iterator;
 
     move-result-object v0
 
-    .line 434
+    .line 420
     :goto_a
     invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
@@ -2407,33 +2398,33 @@
 
     if-eqz v1, :cond_49
 
-    .line 435
+    .line 421
     invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Ljava/lang/String;
 
-    .line 436
+    .line 422
     invoke-virtual {p0, v1}, Lorg/json/JSONObject;->opt(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v2
 
     invoke-static {v1, v2, p1, p2, p3}, Lim/doit/pro/ai/AIAssistant;->emit(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/StringBuilder;I)V
 
-    .line 437
+    .line 423
     goto :goto_a
 
-    .line 438
+    .line 424
     :cond_1e
     instance-of v0, p0, Lorg/json/JSONArray;
 
     if-eqz v0, :cond_49
 
-    .line 439
+    .line 425
     check-cast p0, Lorg/json/JSONArray;
 
-    .line 440
+    .line 426
     const/4 v0, 0x0
 
     :goto_25
@@ -2443,7 +2434,7 @@
 
     if-ge v0, v1, :cond_4a
 
-    .line 441
+    .line 427
     invoke-virtual {p0, v0}, Lorg/json/JSONArray;->opt(I)Ljava/lang/Object;
 
     move-result-object v1
@@ -2470,16 +2461,16 @@
 
     invoke-static {v3, v1, v2, p2, p3}, Lim/doit/pro/ai/AIAssistant;->emit(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/StringBuilder;I)V
 
-    .line 440
+    .line 426
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_25
 
-    .line 438
+    .line 424
     :cond_49
     nop
 
-    .line 444
+    .line 430
     :cond_4a
     return-void
 .end method
@@ -2487,7 +2478,7 @@
 .method private static generate(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Z)V
     .registers 5
 
-    .line 245
+    .line 231
     if-eqz p3, :cond_5
 
     const-string p3, "\u6b63\u5728\u91cd\u65b0\u751f\u6210\u2026"
@@ -2500,26 +2491,26 @@
     :goto_7
     invoke-static {p0, p3}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 246
+    .line 232
     new-instance p3, Ljava/lang/Thread;
 
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$6;
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$5;
 
-    invoke-direct {v0, p0, p2, p1}, Lim/doit/pro/ai/AIAssistant$6;-><init>(Landroid/app/Activity;Lim/doit/pro/model/Task;Lim/doit/pro/activity/TaskDetailFragment;)V
+    invoke-direct {v0, p0, p2, p1}, Lim/doit/pro/ai/AIAssistant$5;-><init>(Landroid/app/Activity;Lim/doit/pro/model/Task;Lim/doit/pro/activity/TaskDetailFragment;)V
 
     invoke-direct {p3, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 263
+    .line 249
     invoke-virtual {p3}, Ljava/lang/Thread;->start()V
 
-    .line 264
+    .line 250
     return-void
 .end method
 
 .method private static getTask(Ljava/lang/Object;)Lim/doit/pro/model/Task;
     .registers 3
 
-    .line 158
+    .line 144
     :try_start_0
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -2531,12 +2522,12 @@
 
     move-result-object v0
 
-    .line 159
+    .line 145
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Ljava/lang/reflect/Field;->setAccessible(Z)V
 
-    .line 160
+    .line 146
     invoke-virtual {v0, p0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object p0
@@ -2547,11 +2538,11 @@
 
     return-object p0
 
-    .line 161
+    .line 147
     :catchall_15
     move-exception p0
 
-    .line 162
+    .line 148
     const/4 p0, 0x0
 
     return-object p0
@@ -2560,7 +2551,7 @@
 .method private static isBlank(Ljava/lang/String;)Z
     .registers 1
 
-    .line 706
+    .line 692
     if-eqz p0, :cond_f
 
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
@@ -2591,7 +2582,7 @@
 .method private static isCreateMode(Ljava/lang/Object;)Z
     .registers 3
 
-    .line 168
+    .line 154
     :try_start_0
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
@@ -2603,12 +2594,12 @@
 
     move-result-object v0
 
-    .line 169
+    .line 155
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Ljava/lang/reflect/Field;->setAccessible(Z)V
 
-    .line 170
+    .line 156
     invoke-virtual {v0, p0}, Ljava/lang/reflect/Field;->getBoolean(Ljava/lang/Object;)Z
 
     move-result p0
@@ -2617,11 +2608,11 @@
 
     return p0
 
-    .line 171
+    .line 157
     :catchall_13
     move-exception p0
 
-    .line 172
+    .line 158
     const/4 p0, 0x0
 
     return p0
@@ -2678,38 +2669,38 @@
 .method private static normalizePlan(Ljava/lang/String;)Lim/doit/pro/ai/AIAssistant$PlanResult;
     .registers 11
 
-    .line 380
+    .line 366
     new-instance v0, Lim/doit/pro/ai/AIAssistant$PlanResult;
 
     const/4 v1, 0x0
 
     invoke-direct {v0, v1}, Lim/doit/pro/ai/AIAssistant$PlanResult;-><init>(Lim/doit/pro/ai/AIAssistant$1;)V
 
-    .line 381
+    .line 367
     const-string v2, ""
 
     if-nez p0, :cond_b
 
     move-object p0, v2
 
-    .line 382
+    .line 368
     :cond_b
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object p0
 
-    .line 383
+    .line 369
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->extractJson(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 384
+    .line 370
     nop
 
-    .line 385
+    .line 371
     if-eqz v3, :cond_1f
 
-    .line 386
+    .line 372
     :try_start_16
     new-instance v4, Lorg/json/JSONObject;
 
@@ -2726,11 +2717,11 @@
 
     goto :goto_20
 
-    .line 385
+    .line 371
     :cond_1f
     move-object v4, v1
 
-    .line 388
+    .line 374
     :goto_20
     const/16 v3, 0xc
 
@@ -2762,7 +2753,7 @@
 
     if-eqz v7, :cond_9a
 
-    .line 389
+    .line 375
     :cond_3d
     invoke-virtual {v4, v9, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
@@ -2770,22 +2761,22 @@
 
     iput-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->summary:Ljava/lang/String;
 
-    .line 390
+    .line 376
     invoke-virtual {v4, v6, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
 
     iput-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
-    .line 391
+    .line 377
     invoke-virtual {v4, v8}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object p0
 
-    .line 392
+    .line 378
     if-eqz p0, :cond_83
 
-    .line 393
+    .line 379
     nop
 
     :goto_50
@@ -2797,17 +2788,17 @@
 
     if-ge v5, v3, :cond_83
 
-    .line 394
+    .line 380
     invoke-virtual {p0, v5}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v1
 
-    .line 395
+    .line 381
     if-nez v1, :cond_5f
 
     goto :goto_80
 
-    .line 396
+    .line 382
     :cond_5f
     const-string v6, "title"
 
@@ -2819,7 +2810,7 @@
 
     move-result-object v6
 
-    .line 397
+    .line 383
     invoke-virtual {v6}, Ljava/lang/String;->length()I
 
     move-result v7
@@ -2828,13 +2819,13 @@
 
     goto :goto_80
 
-    .line 398
+    .line 384
     :cond_70
     iget-object v7, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
     invoke-interface {v7, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 399
+    .line 385
     iget-object v6, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->estimates:Ljava/util/List;
 
     const-string v7, "estimate"
@@ -2845,13 +2836,13 @@
 
     invoke-interface {v6, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 393
+    .line 379
     :goto_80
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_50
 
-    .line 402
+    .line 388
     :cond_83
     iget-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
@@ -2869,27 +2860,27 @@
 
     if-eqz p0, :cond_99
 
-    .line 403
+    .line 389
     invoke-static {v4, v2}, Lim/doit/pro/ai/AIAssistant;->flatten(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
 
     iput-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
-    .line 405
+    .line 391
     :cond_99
     return-object v0
 
-    .line 407
+    .line 393
     :cond_9a
     if-eqz v4, :cond_ee
 
-    .line 408
+    .line 394
     invoke-static {v4, v2}, Lim/doit/pro/ai/AIAssistant;->flatten(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v6
 
-    .line 409
+    .line 395
     invoke-virtual {v6}, Ljava/lang/String;->length()I
 
     move-result v7
@@ -2901,18 +2892,18 @@
     :cond_a7
     iput-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
-    .line 410
+    .line 396
     new-instance p0, Ljava/util/ArrayList;
 
     invoke-direct {p0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 411
+    .line 397
     invoke-static {v4, p0}, Lim/doit/pro/ai/AIAssistant;->collectStepArrays(Ljava/lang/Object;Ljava/util/List;)V
 
-    .line 412
+    .line 398
     nop
 
-    .line 413
+    .line 399
     invoke-interface {p0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object p0
@@ -2948,7 +2939,7 @@
 
     goto :goto_b6
 
-    .line 414
+    .line 400
     :cond_d0
     if-eqz v1, :cond_ed
 
@@ -2961,7 +2952,7 @@
 
     if-ge v5, v3, :cond_ed
 
-    .line 415
+    .line 401
     iget-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
     invoke-interface {v1, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -2972,37 +2963,37 @@
 
     invoke-interface {p0, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 416
+    .line 402
     iget-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->estimates:Ljava/util/List;
 
     invoke-interface {p0, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 414
+    .line 400
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_d2
 
-    .line 418
+    .line 404
     :cond_ed
     return-object v0
 
-    .line 420
+    .line 406
     :cond_ee
     iput-object p0, v0, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
-    .line 421
+    .line 407
     return-object v0
 .end method
 
 .method private static onPlanClick(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
     .registers 7
 
-    .line 213
+    .line 199
     if-nez p1, :cond_3
 
     return-void
 
-    .line 214
+    .line 200
     :cond_3
     invoke-static {p1}, Lim/doit/pro/ai/AIAssistant;->key(Landroid/content/Context;)Ljava/lang/String;
 
@@ -3014,12 +3005,12 @@
 
     if-nez v0, :cond_21
 
-    .line 215
+    .line 201
     const-string p0, "\u8bf7\u5148\u5728 \u8bbe\u7f6e \u2192 AI \u52a9\u7406 \u91cc\u914d\u7f6e API Key"
 
     invoke-static {p1, p0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 216
+    .line 202
     new-instance p0, Landroid/content/Intent;
 
     invoke-direct {p0}, Landroid/content/Intent;-><init>()V
@@ -3032,10 +3023,10 @@
 
     invoke-virtual {p1, p0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    .line 217
+    .line 203
     return-void
 
-    .line 219
+    .line 205
     :cond_21
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->isCreateMode(Ljava/lang/Object;)Z
 
@@ -3043,21 +3034,21 @@
 
     if-eqz v0, :cond_2d
 
-    .line 220
+    .line 206
     const-string p0, "\u8bf7\u5148\u4fdd\u5b58\u4efb\u52a1\uff0c\u518d\u751f\u6210 AI \u65b9\u6848"
 
     invoke-static {p1, p0}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 221
+    .line 207
     return-void
 
-    .line 223
+    .line 209
     :cond_2d
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->getTask(Ljava/lang/Object;)Lim/doit/pro/model/Task;
 
     move-result-object v0
 
-    .line 224
+    .line 210
     if-nez v0, :cond_39
 
     const-string p0, "\u4efb\u52a1\u672a\u52a0\u8f7d"
@@ -3066,7 +3057,7 @@
 
     return-void
 
-    .line 225
+    .line 211
     :cond_39
     invoke-virtual {v0}, Lim/doit/pro/model/Task;->getTitle()Ljava/lang/String;
 
@@ -3080,7 +3071,7 @@
 
     move-result-object v1
 
-    .line 226
+    .line 212
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v2
@@ -3093,13 +3084,13 @@
 
     return-void
 
-    .line 229
+    .line 215
     :cond_51
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 231
+    .line 217
     :try_start_56
     invoke-virtual {v0}, Lim/doit/pro/model/Task;->getSubTasks()Ljava/util/ArrayList;
 
@@ -3120,7 +3111,7 @@
 
     move-result v3
 
-    .line 232
+    .line 218
     :goto_66
     if-lez v3, :cond_79
 
@@ -3142,7 +3133,7 @@
 
     goto :goto_79
 
-    .line 233
+    .line 219
     :catchall_78
     move-exception v3
 
@@ -3150,7 +3141,7 @@
     :goto_79
     nop
 
-    .line 234
+    .line 220
     invoke-virtual {v0}, Lim/doit/pro/model/Task;->getNotes()Ljava/lang/String;
 
     move-result-object v3
@@ -3165,7 +3156,7 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 236
+    .line 222
     :cond_89
     new-instance v3, Ljava/lang/StringBuilder;
 
@@ -3201,9 +3192,9 @@
 
     move-result-object v1
 
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$5;
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$4;
 
-    invoke-direct {v2, p1, p0, v0}, Lim/doit/pro/ai/AIAssistant$5;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
+    invoke-direct {v2, p1, p0, v0}, Lim/doit/pro/ai/AIAssistant$4;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
 
     const-string p0, "AI \u884c\u52a8\u65b9\u6848"
 
@@ -3211,14 +3202,14 @@
 
     invoke-static {p1, p0, v1, v0, v2}, Lim/doit/pro/ai/AIAssistant;->confirm(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;)V
 
-    .line 242
+    .line 228
     return-void
 .end method
 
 .method public static openExternalAI(Landroid/app/Activity;Lim/doit/pro/model/Task;Ljava/lang/String;Ljava/lang/String;)V
     .registers 7
 
-    .line 178
+    .line 164
     if-nez p1, :cond_8
 
     const-string p1, "\u4efb\u52a1\u672a\u52a0\u8f7d"
@@ -3227,7 +3218,7 @@
 
     return-void
 
-    .line 179
+    .line 165
     :cond_8
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getTitle()Ljava/lang/String;
 
@@ -3241,7 +3232,7 @@
 
     move-result-object v0
 
-    .line 180
+    .line 166
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v1
@@ -3254,13 +3245,13 @@
 
     return-void
 
-    .line 181
+    .line 167
     :cond_20
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getNotes()Ljava/lang/String;
 
     move-result-object p1
 
-    .line 182
+    .line 168
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -3313,10 +3304,10 @@
 
     move-result-object p1
 
-    .line 184
+    .line 170
     nop
 
-    .line 185
+    .line 171
     const-string v0, "clipboard"
 
     invoke-virtual {p0, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
@@ -3325,7 +3316,7 @@
 
     check-cast v0, Landroid/content/ClipboardManager;
 
-    .line 186
+    .line 172
     :try_start_60
     const-string v1, "task"
 
@@ -3342,7 +3333,7 @@
     :catchall_6a
     move-exception v0
 
-    .line 189
+    .line 175
     :goto_6b
     :try_start_6b
     new-instance v0, Landroid/content/Intent;
@@ -3351,20 +3342,20 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 190
+    .line 176
     const-string v1, "text/plain"
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 191
+    .line 177
     invoke-virtual {v0, p2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 192
+    .line 178
     const-string v1, "android.intent.extra.TEXT"
 
     invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 193
+    .line 179
     invoke-virtual {p0}, Landroid/app/Activity;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object p1
@@ -3375,7 +3366,7 @@
 
     if-eqz p1, :cond_bb
 
-    .line 194
+    .line 180
     new-instance p1, Ljava/lang/StringBuilder;
 
     invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
@@ -3400,7 +3391,7 @@
 
     invoke-virtual {p0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    .line 195
+    .line 181
     new-instance p1, Ljava/lang/StringBuilder;
 
     invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
@@ -3423,17 +3414,17 @@
     :try_end_b9
     .catchall {:try_start_6b .. :try_end_b9} :catchall_ba
 
-    .line 196
+    .line 182
     return-void
 
-    .line 198
+    .line 184
     :catchall_ba
     move-exception p1
 
     :cond_bb
     nop
 
-    .line 201
+    .line 187
     :try_start_bc
     invoke-virtual {p0}, Landroid/app/Activity;->getPackageManager()Landroid/content/pm/PackageManager;
 
@@ -3443,13 +3434,13 @@
 
     move-result-object p1
 
-    .line 202
+    .line 188
     if-eqz p1, :cond_e1
 
-    .line 203
+    .line 189
     invoke-virtual {p0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    .line 204
+    .line 190
     new-instance p1, Ljava/lang/StringBuilder;
 
     invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
@@ -3472,17 +3463,17 @@
     :try_end_df
     .catchall {:try_start_bc .. :try_end_df} :catchall_e0
 
-    .line 205
+    .line 191
     return-void
 
-    .line 207
+    .line 193
     :catchall_e0
     move-exception p1
 
     :cond_e1
     nop
 
-    .line 209
+    .line 195
     new-instance p1, Ljava/lang/StringBuilder;
 
     invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
@@ -3509,7 +3500,7 @@
 
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 210
+    .line 196
     return-void
 .end method
 
@@ -3531,7 +3522,7 @@
 .method public static promptsJson(Landroid/content/Context;)Lorg/json/JSONArray;
     .registers 6
 
-    .line 291
+    .line 277
     :try_start_0
     new-instance v0, Lorg/json/JSONArray;
 
@@ -3551,23 +3542,23 @@
     :try_end_11
     .catchall {:try_start_0 .. :try_end_11} :catchall_12
 
-    .line 294
+    .line 280
     goto :goto_18
 
-    .line 292
+    .line 278
     :catchall_12
     move-exception p0
 
-    .line 293
+    .line 279
     new-instance v0, Lorg/json/JSONArray;
 
     invoke-direct {v0}, Lorg/json/JSONArray;-><init>()V
 
-    .line 295
+    .line 281
     :goto_18
     nop
 
-    .line 296
+    .line 282
     const/4 p0, 0x0
 
     const/4 v1, 0x0
@@ -3581,7 +3572,7 @@
 
     if-ge v1, v2, :cond_39
 
-    .line 297
+    .line 283
     invoke-virtual {v0, v1}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v2
@@ -3604,7 +3595,7 @@
 
     goto :goto_3a
 
-    .line 296
+    .line 282
     :cond_36
     add-int/lit8 v1, v1, 0x1
 
@@ -3613,11 +3604,11 @@
     :cond_39
     const/4 v1, 0x0
 
-    .line 299
+    .line 285
     :goto_3a
     if-nez v1, :cond_5a
 
-    .line 300
+    .line 286
     :try_start_3c
     new-instance v1, Lorg/json/JSONObject;
 
@@ -3652,7 +3643,7 @@
     :catchall_59
     move-exception p0
 
-    .line 302
+    .line 288
     :cond_5a
     :goto_5a
     return-object v0
@@ -3666,7 +3657,7 @@
         }
     .end annotation
 
-    .line 493
+    .line 479
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->buildSystem(Landroid/content/Context;Lim/doit/pro/model/Task;)Ljava/lang/String;
 
     move-result-object v0
@@ -3707,7 +3698,7 @@
 
     move-result-object v1
 
-    .line 494
+    .line 480
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getTitle()Ljava/lang/String;
 
     move-result-object v2
@@ -3726,7 +3717,7 @@
 
     move-result-object v1
 
-    .line 495
+    .line 481
     invoke-virtual {p1}, Lim/doit/pro/model/Task;->getNotes()Ljava/lang/String;
 
     move-result-object v2
@@ -3761,12 +3752,12 @@
 
     move-result-object p1
 
-    .line 498
+    .line 484
     invoke-static {p0, v0, p1}, Lim/doit/pro/ai/AIAssistant;->chat(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
 
-    .line 499
+    .line 485
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->normalizePlan(Ljava/lang/String;)Lim/doit/pro/ai/AIAssistant$PlanResult;
 
     move-result-object p0
@@ -3777,7 +3768,7 @@
 .method private static row(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
     .registers 13
 
-    .line 823
+    .line 809
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -3796,15 +3787,15 @@
 
     move-result-object v0
 
-    .line 824
+    .line 810
     instance-of v1, v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
     if-eqz v1, :cond_26
 
-    .line 825
+    .line 811
     check-cast v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
-    new-instance v7, Lim/doit/pro/ai/AIAssistant$18;
+    new-instance v7, Lim/doit/pro/ai/AIAssistant$17;
 
     move-object v1, v7
 
@@ -3818,11 +3809,11 @@
 
     move v6, p4
 
-    invoke-direct/range {v1 .. v6}, Lim/doit/pro/ai/AIAssistant$18;-><init>(Ljava/lang/String;Landroid/app/Activity;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
+    invoke-direct/range {v1 .. v6}, Lim/doit/pro/ai/AIAssistant$17;-><init>(Ljava/lang/String;Landroid/app/Activity;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
 
     invoke-virtual {v0, v7}, Lim/doit/pro/ui/component/LabelArrowButton;->setOnLayoutClickListener(Lim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 836
+    .line 822
     :cond_26
     return-void
 .end method
@@ -3830,7 +3821,7 @@
 .method private static safe(Ljava/lang/String;)Ljava/lang/String;
     .registers 1
 
-    .line 704
+    .line 690
     if-nez p0, :cond_4
 
     const-string p0, ""
@@ -3842,12 +3833,12 @@
 .method public static savePrompt(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;)I
     .registers 11
 
-    .line 325
+    .line 311
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->promptsJson(Landroid/content/Context;)Lorg/json/JSONArray;
 
     move-result-object v0
 
-    .line 326
+    .line 312
     const-string v1, "body"
 
     const-string v2, "name"
@@ -3858,10 +3849,10 @@
 
     if-gez p1, :cond_40
 
-    .line 327
+    .line 313
     nop
 
-    .line 328
+    .line 314
     const/4 p1, 0x0
 
     const/4 v5, 0x0
@@ -3873,12 +3864,12 @@
 
     if-ge p1, v6, :cond_27
 
-    .line 329
+    .line 315
     invoke-virtual {v0, p1}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v6
 
-    .line 330
+    .line 316
     if-eqz v6, :cond_24
 
     invoke-virtual {v6, v3, v4}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I
@@ -3889,17 +3880,17 @@
 
     move-result v5
 
-    .line 328
+    .line 314
     :cond_24
     add-int/lit8 p1, p1, 0x1
 
     goto :goto_10
 
-    .line 332
+    .line 318
     :cond_27
     add-int/lit8 p1, v5, 0x1
 
-    .line 333
+    .line 319
     :try_start_29
     new-instance v4, Lorg/json/JSONObject;
 
@@ -3926,11 +3917,11 @@
     :catchall_3e
     move-exception p2
 
-    .line 334
+    .line 320
     :goto_3f
     goto :goto_62
 
-    .line 335
+    .line 321
     :cond_40
     nop
 
@@ -3941,12 +3932,12 @@
 
     if-ge v4, v5, :cond_62
 
-    .line 336
+    .line 322
     invoke-virtual {v0, v4}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
 
     move-result-object v5
 
-    .line 337
+    .line 323
     if-eqz v5, :cond_5f
 
     const/4 v6, -0x1
@@ -3957,10 +3948,10 @@
 
     if-ne v6, p1, :cond_5f
 
-    .line 338
+    .line 324
     if-eqz p1, :cond_62
 
-    .line 339
+    .line 325
     :try_start_56
     invoke-virtual {v5, v2, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
 
@@ -3975,13 +3966,13 @@
 
     goto :goto_62
 
-    .line 335
+    .line 321
     :cond_5f
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_41
 
-    .line 345
+    .line 331
     :cond_62
     :goto_62
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
@@ -4004,14 +3995,14 @@
 
     invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 346
+    .line 332
     return p1
 .end method
 
 .method public static setCurrentPromptId(Landroid/content/Context;I)V
     .registers 3
 
-    .line 310
+    .line 296
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object p0
@@ -4028,27 +4019,27 @@
 
     invoke-interface {p0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 311
+    .line 297
     return-void
 .end method
 
 .method private static showPreview(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
     .registers 4
 
-    .line 508
+    .line 494
     :try_start_0
     invoke-static {p0, p1, p2, p3}, Lim/doit/pro/ai/AIAssistant;->showPreviewInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
     :try_end_3
     .catchall {:try_start_0 .. :try_end_3} :catchall_4
 
-    .line 511
+    .line 497
     goto :goto_23
 
-    .line 509
+    .line 495
     :catchall_4
     move-exception p1
 
-    .line 510
+    .line 496
     new-instance p2, Ljava/lang/StringBuilder;
 
     invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
@@ -4077,7 +4068,7 @@
 
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 512
+    .line 498
     :goto_23
     return-void
 .end method
@@ -4085,12 +4076,12 @@
 .method private static showPreviewInner(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
     .registers 16
 
-    .line 515
+    .line 501
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 516
+    .line 502
     const-string v1, "\u3014\u63d0\u793a\u8bcd\uff1a"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -4109,7 +4100,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 517
+    .line 503
     iget-object v1, p3, Lim/doit/pro/ai/AIAssistant$PlanResult;->summary:Ljava/lang/String;
 
     invoke-virtual {v1}, Ljava/lang/String;->length()I
@@ -4134,7 +4125,7 @@
 
     invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 518
+    .line 504
     :cond_31
     iget-object v1, p3, Lim/doit/pro/ai/AIAssistant$PlanResult;->plan:Ljava/lang/String;
 
@@ -4150,7 +4141,7 @@
     :goto_3a
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 519
+    .line 505
     iget-object v1, p3, Lim/doit/pro/ai/AIAssistant$PlanResult;->steps:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->size()I
@@ -4161,12 +4152,12 @@
 
     if-lez v1, :cond_8b
 
-    .line 520
+    .line 506
     const-string v1, "\n\n\u2500\u2500 \u5c06\u521b\u5efa\u7684\u5b50\u4efb\u52a1 \u2500\u2500\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 521
+    .line 507
     const/4 v1, 0x0
 
     :goto_4c
@@ -4178,7 +4169,7 @@
 
     if-ge v1, v3, :cond_8b
 
-    .line 522
+    .line 508
     add-int/lit8 v3, v1, 0x1
 
     invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
@@ -4201,12 +4192,12 @@
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 523
+    .line 509
     invoke-static {p3, v1}, Lim/doit/pro/ai/AIAssistant;->estAt(Lim/doit/pro/ai/AIAssistant$PlanResult;I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 524
+    .line 510
     invoke-virtual {v1}, Ljava/lang/String;->length()I
 
     move-result v4
@@ -4227,18 +4218,18 @@
 
     invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 525
+    .line 511
     :cond_84
     const-string v1, "\n"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 521
+    .line 507
     move v1, v3
 
     goto :goto_4c
 
-    .line 528
+    .line 514
     :cond_8b
     new-instance v1, Landroid/app/Dialog;
 
@@ -4260,7 +4251,7 @@
 
     invoke-direct {v1, p0, v3}, Landroid/app/Dialog;-><init>(Landroid/content/Context;I)V
 
-    .line 529
+    .line 515
     invoke-static {p0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v3
@@ -4287,7 +4278,7 @@
 
     move-result-object v3
 
-    .line 530
+    .line 516
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
@@ -4310,14 +4301,14 @@
 
     check-cast v4, Landroid/widget/TextView;
 
-    .line 531
+    .line 517
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-virtual {v4, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 532
+    .line 518
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -4338,7 +4329,7 @@
 
     check-cast v0, Lim/doit/pro/ui/component/DButton;
 
-    .line 533
+    .line 519
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
@@ -4361,29 +4352,29 @@
 
     check-cast v11, Lim/doit/pro/ui/component/DButton;
 
-    .line 534
+    .line 520
     const-string v4, "\u5e94\u7528\u5230\u4efb\u52a1"
 
     invoke-virtual {v11, v4}, Lim/doit/pro/ui/component/DButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 535
+    .line 521
     const-string v4, "\u5173\u95ed"
 
     invoke-virtual {v0, v4}, Lim/doit/pro/ui/component/DButton;->setText(Ljava/lang/CharSequence;)V
 
-    .line 536
+    .line 522
     filled-new-array {v2}, [I
 
     move-result-object v10
 
-    .line 537
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$7;
+    .line 523
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$6;
 
-    invoke-direct {v2, v1}, Lim/doit/pro/ai/AIAssistant$7;-><init>(Landroid/app/Dialog;)V
+    invoke-direct {v2, v1}, Lim/doit/pro/ai/AIAssistant$6;-><init>(Landroid/app/Dialog;)V
 
     invoke-virtual {v0, v2}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 541
+    .line 527
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -4404,15 +4395,15 @@
 
     check-cast v0, Lim/doit/pro/ui/component/DButton;
 
-    .line 542
-    new-instance v2, Lim/doit/pro/ai/AIAssistant$8;
+    .line 528
+    new-instance v2, Lim/doit/pro/ai/AIAssistant$7;
 
-    invoke-direct {v2, v1, p0, p1, p2}, Lim/doit/pro/ai/AIAssistant$8;-><init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
+    invoke-direct {v2, v1, p0, p1, p2}, Lim/doit/pro/ai/AIAssistant$7;-><init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;)V
 
     invoke-virtual {v0, v2}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 549
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$9;
+    .line 535
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$8;
 
     move-object v4, v0
 
@@ -4426,23 +4417,23 @@
 
     move-object v9, p3
 
-    invoke-direct/range {v4 .. v10}, Lim/doit/pro/ai/AIAssistant$9;-><init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
+    invoke-direct/range {v4 .. v10}, Lim/doit/pro/ai/AIAssistant$8;-><init>(Landroid/app/Dialog;Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;[I)V
 
     invoke-virtual {v11, v0}, Lim/doit/pro/ui/component/DButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 556
+    .line 542
     invoke-virtual {v1, v3}, Landroid/app/Dialog;->setContentView(Landroid/view/View;)V
 
-    .line 558
+    .line 544
     :try_start_142
     invoke-virtual {v1}, Landroid/app/Dialog;->show()V
 
-    .line 559
+    .line 545
     invoke-virtual {v1}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
     move-result-object p1
 
-    .line 560
+    .line 546
     if-eqz p1, :cond_165
 
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
@@ -4474,20 +4465,20 @@
     :try_end_165
     .catchall {:try_start_162 .. :try_end_165} :catchall_166
 
-    .line 563
+    .line 549
     :cond_165
     goto :goto_16c
 
-    .line 561
+    .line 547
     :catchall_166
     move-exception p1
 
-    .line 562
+    .line 548
     const-string p1, "\u65b9\u6848\u5df2\u751f\u6210\uff0c\u4f46\u9875\u9762\u5df2\u5173\u95ed\uff0c\u8bf7\u91cd\u65b0\u70b9\u51fb AI \u884c\u52a8\u65b9\u6848\u67e5\u770b"
 
     invoke-static {p0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 564
+    .line 550
     :goto_16c
     return-void
 .end method
@@ -4495,16 +4486,16 @@
 .method public static toast(Landroid/content/Context;Ljava/lang/String;)V
     .registers 4
 
-    .line 709
+    .line 695
     sget-object v0, Lim/doit/pro/ai/AIAssistant;->MAIN:Landroid/os/Handler;
 
-    new-instance v1, Lim/doit/pro/ai/AIAssistant$10;
+    new-instance v1, Lim/doit/pro/ai/AIAssistant$9;
 
-    invoke-direct {v1, p0, p1}, Lim/doit/pro/ai/AIAssistant$10;-><init>(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-direct {v1, p0, p1}, Lim/doit/pro/ai/AIAssistant$9;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 713
+    .line 699
     return-void
 .end method
 
@@ -4610,7 +4601,7 @@
 
     move-result-object v2
 
-    const-string v3, "ai_plan_btn"
+    const-string v3, "ai_ds_btn"
 
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
 
@@ -4637,49 +4628,12 @@
     .line 118
     new-instance v3, Lim/doit/pro/ai/AIAssistant$2;
 
-    invoke-direct {v3, p0, v1}, Lim/doit/pro/ai/AIAssistant$2;-><init>(Lim/doit/pro/activity/TaskDetailFragment;Landroid/app/Activity;)V
+    invoke-direct {v3, v1, p0}, Lim/doit/pro/ai/AIAssistant$2;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;)V
 
     invoke-virtual {v2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 129
+    .line 127
     :cond_34
-    invoke-virtual {p1}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const-string v3, "ai_ds_btn"
-
-    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
-
-    move-result-object v4
-
-    invoke-virtual {v4}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-virtual {v2, v3, v0, v4}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
-
-    move-result v2
-
-    .line 130
-    invoke-virtual {p1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v2
-
-    .line 131
-    if-eqz v2, :cond_56
-
-    if-eqz v1, :cond_56
-
-    .line 132
-    new-instance v3, Lim/doit/pro/ai/AIAssistant$3;
-
-    invoke-direct {v3, v1, p0}, Lim/doit/pro/ai/AIAssistant$3;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;)V
-
-    invoke-virtual {v2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 141
-    :cond_56
     invoke-virtual {p1}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
 
     move-result-object v2
@@ -4698,92 +4652,92 @@
 
     move-result v0
 
-    .line 142
+    .line 128
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object p1
 
-    .line 143
-    if-eqz p1, :cond_7a
+    .line 129
+    if-eqz p1, :cond_58
 
-    if-eqz v1, :cond_7a
+    if-eqz v1, :cond_58
 
-    .line 144
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$4;
+    .line 130
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$3;
 
-    invoke-direct {v0, v1, p0}, Lim/doit/pro/ai/AIAssistant$4;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;)V
+    invoke-direct {v0, v1, p0}, Lim/doit/pro/ai/AIAssistant$3;-><init>(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;)V
 
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-    :try_end_78
-    .catchall {:try_start_2 .. :try_end_78} :catchall_79
+    :try_end_56
+    .catchall {:try_start_2 .. :try_end_56} :catchall_57
 
-    goto :goto_7a
+    goto :goto_58
 
-    .line 153
-    :catchall_79
+    .line 139
+    :catchall_57
     move-exception p0
 
-    :cond_7a
-    :goto_7a
+    :cond_58
+    :goto_58
     nop
 
-    .line 154
+    .line 140
     return-void
 .end method
 
 .method public static wireSettings(Landroid/app/Activity;)V
     .registers 6
 
-    .line 757
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$13;
+    .line 743
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$12;
 
-    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$13;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$12;-><init>(Landroid/app/Activity;)V
 
-    .line 764
+    .line 750
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->endpoint(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 757
+    .line 743
     const-string v2, "ai_endpoint"
 
     const/4 v3, 0x0
 
     invoke-static {p0, v2, v0, v1, v3}, Lim/doit/pro/ai/AIAssistant;->row(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
 
-    .line 765
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$14;
+    .line 751
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$13;
 
-    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$14;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$13;-><init>(Landroid/app/Activity;)V
 
-    .line 772
+    .line 758
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->key(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 765
+    .line 751
     const-string v2, "ai_key"
 
     const/4 v4, 0x1
 
     invoke-static {p0, v2, v0, v1, v4}, Lim/doit/pro/ai/AIAssistant;->row(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
 
-    .line 773
-    new-instance v0, Lim/doit/pro/ai/AIAssistant$15;
+    .line 759
+    new-instance v0, Lim/doit/pro/ai/AIAssistant$14;
 
-    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$15;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v0, p0}, Lim/doit/pro/ai/AIAssistant$14;-><init>(Landroid/app/Activity;)V
 
-    .line 780
+    .line 766
     invoke-static {p0}, Lim/doit/pro/ai/AIAssistant;->model(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 773
+    .line 759
     const-string v2, "ai_model"
 
     invoke-static {p0, v2, v0, v1, v3}, Lim/doit/pro/ai/AIAssistant;->row(Landroid/app/Activity;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;Ljava/lang/String;Z)V
 
-    .line 781
+    .line 767
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -4804,15 +4758,15 @@
 
     move-result-object v0
 
-    .line 782
+    .line 768
     instance-of v1, v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
     if-eqz v1, :cond_6a
 
-    .line 783
+    .line 769
     check-cast v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
-    .line 784
+    .line 770
     :try_start_46
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -4845,15 +4799,15 @@
     :catchall_61
     move-exception v1
 
-    .line 785
+    .line 771
     :goto_62
-    new-instance v1, Lim/doit/pro/ai/AIAssistant$16;
+    new-instance v1, Lim/doit/pro/ai/AIAssistant$15;
 
-    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$16;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$15;-><init>(Landroid/app/Activity;)V
 
     invoke-virtual {v0, v1}, Lim/doit/pro/ui/component/LabelArrowButton;->setOnLayoutClickListener(Lim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 792
+    .line 778
     :cond_6a
     invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
@@ -4873,21 +4827,21 @@
 
     move-result-object v0
 
-    .line 793
+    .line 779
     instance-of v1, v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
     if-eqz v1, :cond_8a
 
-    .line 794
+    .line 780
     check-cast v0, Lim/doit/pro/ui/component/LabelArrowButton;
 
-    new-instance v1, Lim/doit/pro/ai/AIAssistant$17;
+    new-instance v1, Lim/doit/pro/ai/AIAssistant$16;
 
-    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$17;-><init>(Landroid/app/Activity;)V
+    invoke-direct {v1, p0}, Lim/doit/pro/ai/AIAssistant$16;-><init>(Landroid/app/Activity;)V
 
     invoke-virtual {v0, v1}, Lim/doit/pro/ui/component/LabelArrowButton;->setOnLayoutClickListener(Lim/doit/pro/activity/listener/OnLayoutClickListener;)V
 
-    .line 820
+    .line 806
     :cond_8a
     return-void
 .end method

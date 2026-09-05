@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 132
+    .line 130
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
@@ -47,19 +47,19 @@
 .method public onClick(Landroid/view/View;)V
     .registers 5
 
-    .line 136
+    .line 134
     :try_start_0
     iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$3;->val$a:Landroid/app/Activity;
 
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$3;->val$f:Lim/doit/pro/activity/TaskDetailFragment;
 
-    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->access$100(Ljava/lang/Object;)Lim/doit/pro/model/Task;
+    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->access$000(Ljava/lang/Object;)Lim/doit/pro/model/Task;
 
     move-result-object v0
 
-    const-string v1, "com.deepseek.chat"
+    const-string v1, "com.moonshot.kimichat"
 
-    const-string v2, "DeepSeek"
+    const-string v2, "Kimi"
 
     invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->openExternalAI(Landroid/app/Activity;Lim/doit/pro/model/Task;Ljava/lang/String;Ljava/lang/String;)V
     :try_end_f
@@ -67,13 +67,13 @@
 
     goto :goto_11
 
-    .line 137
+    .line 135
     :catchall_10
     move-exception p1
 
     :goto_11
     nop
 
-    .line 138
+    .line 136
     return-void
 .end method

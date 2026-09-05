@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Lim/doit/pro/ai/AIAssistant$OnOk;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->appDialog(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
+    value = Lim/doit/pro/ai/AIAssistant;->wireSettings(Landroid/app/Activity;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,28 +18,20 @@
 
 
 # instance fields
-.field final synthetic val$d:Landroid/app/Dialog;
-
-.field final synthetic val$input:Landroid/widget/EditText;
-
-.field final synthetic val$onOk:Lim/doit/pro/ai/AIAssistant$OnOk;
+.field final synthetic val$a:Landroid/app/Activity;
 
 
 # direct methods
-.method constructor <init>(Landroid/app/Dialog;Lim/doit/pro/ai/AIAssistant$OnOk;Landroid/widget/EditText;)V
-    .registers 4
+.method constructor <init>(Landroid/app/Activity;)V
+    .registers 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 739
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$d:Landroid/app/Dialog;
-
-    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$12;->val$onOk:Lim/doit/pro/ai/AIAssistant$OnOk;
-
-    iput-object p3, p0, Lim/doit/pro/ai/AIAssistant$12;->val$input:Landroid/widget/EditText;
+    .line 743
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -48,37 +40,60 @@
 
 
 # virtual methods
-.method public onClick(Landroid/view/View;)V
-    .registers 3
+.method public ok(Ljava/lang/String;)V
+    .registers 4
 
-    .line 742
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$d:Landroid/app/Dialog;
+    .line 746
+    if-nez p1, :cond_5
 
-    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
+    const-string p1, ""
 
-    .line 743
-    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$12;->val$onOk:Lim/doit/pro/ai/AIAssistant$OnOk;
+    goto :goto_9
 
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$input:Landroid/widget/EditText;
+    :cond_5
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
 
-    if-nez v0, :cond_d
+    move-result-object p1
 
-    const/4 v0, 0x0
+    .line 747
+    :goto_9
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
 
-    goto :goto_15
-
-    :cond_d
-    invoke-virtual {v0}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     move-result-object v0
 
-    :goto_15
-    invoke-interface {p1, v0}, Lim/doit/pro/ai/AIAssistant$OnOk;->ok(Ljava/lang/String;)V
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    .line 744
+    move-result-object v0
+
+    const-string v1, "endpoint"
+
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
+
+    .line 748
+    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$12;->val$a:Landroid/app/Activity;
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result p1
+
+    if-nez p1, :cond_27
+
+    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u7aef\u70b9"
+
+    goto :goto_29
+
+    :cond_27
+    const-string p1, "\u7aef\u70b9\u5df2\u4fdd\u5b58"
+
+    :goto_29
+    invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 749
     return-void
 .end method

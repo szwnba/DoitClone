@@ -3,7 +3,7 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Lim/doit/pro/ai/AIAssistant$OnOk;
+.implements Lim/doit/pro/activity/listener/OnLayoutClickListener;
 
 
 # annotations
@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 773
+    .line 771
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$15;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,76 +40,26 @@
 
 
 # virtual methods
-.method public ok(Ljava/lang/String;)V
+.method public click(Landroid/view/View;)V
     .registers 5
 
-    .line 776
-    if-nez p1, :cond_5
+    .line 774
+    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$15;->val$a:Landroid/app/Activity;
 
-    const-string p1, ""
+    new-instance v0, Landroid/content/Intent;
 
-    goto :goto_9
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    :cond_5
-    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$15;->val$a:Landroid/app/Activity;
 
-    move-result-object p1
+    const-string v2, "im.doit.pro.ai.PromptListActivity"
 
-    .line 777
-    :goto_9
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$15;->val$a:Landroid/app/Activity;
-
-    invoke-static {v0}, Lim/doit/pro/ai/AIAssistant;->prefs(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->setClassName(Landroid/content/Context;Ljava/lang/String;)Landroid/content/Intent;
 
     move-result-object v0
 
-    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+    invoke-virtual {p1, v0}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
 
-    move-result-object v0
-
-    const-string v1, "model"
-
-    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
-
-    .line 778
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$15;->val$a:Landroid/app/Activity;
-
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v1
-
-    if-nez v1, :cond_27
-
-    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u6a21\u578b"
-
-    goto :goto_3a
-
-    :cond_27
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v2, "\u6a21\u578b\u5df2\u4fdd\u5b58: "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object p1
-
-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object p1
-
-    :goto_3a
-    invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
-
-    .line 779
+    .line 775
     return-void
 .end method

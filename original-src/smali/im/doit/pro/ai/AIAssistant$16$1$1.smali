@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/ai/AIAssistant$16$1;)V
     .registers 2
 
-    .line 792
+    .line 790
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$16$1$1;->this$1:Lim/doit/pro/ai/AIAssistant$16$1;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public run()V
     .registers 4
 
-    .line 794
+    .line 792
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$16$1$1;->this$1:Lim/doit/pro/ai/AIAssistant$16$1;
 
     iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$16$1;->this$0:Lim/doit/pro/ai/AIAssistant$16;

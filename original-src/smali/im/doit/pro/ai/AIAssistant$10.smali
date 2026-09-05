@@ -3,12 +3,12 @@
 .source "AIAssistant.java"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
+    value = Lim/doit/pro/ai/AIAssistant;->appDialog(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lim/doit/pro/ai/AIAssistant$OnOk;ZLjava/lang/String;Z)Landroid/app/Dialog;
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -18,24 +18,20 @@
 
 
 # instance fields
-.field final synthetic val$c:Landroid/content/Context;
-
-.field final synthetic val$msg:Ljava/lang/String;
+.field final synthetic val$d:Landroid/app/Dialog;
 
 
 # direct methods
-.method constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
-    .registers 3
+.method constructor <init>(Landroid/app/Dialog;)V
+    .registers 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
         }
     .end annotation
 
-    .line 709
-    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$10;->val$c:Landroid/content/Context;
-
-    iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$10;->val$msg:Ljava/lang/String;
+    .line 721
+    iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$10;->val$d:Landroid/app/Dialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -44,21 +40,13 @@
 
 
 # virtual methods
-.method public run()V
-    .registers 4
+.method public onClick(Landroid/view/View;)V
+    .registers 2
 
-    .line 711
-    iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$10;->val$c:Landroid/content/Context;
+    .line 723
+    iget-object p1, p0, Lim/doit/pro/ai/AIAssistant$10;->val$d:Landroid/app/Dialog;
 
-    iget-object v1, p0, Lim/doit/pro/ai/AIAssistant$10;->val$msg:Ljava/lang/String;
-
-    const/4 v2, 0x1
-
-    invoke-static {v0, v1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
 
     return-void
 .end method

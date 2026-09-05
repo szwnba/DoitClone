@@ -112,20 +112,6 @@ public class AIAssistant {
             // 不能用 f.getActivity()：真实类继承 support-v4 Fragment，其返回类型是
             // FragmentActivity，签名不匹配会 NoSuchMethodError。布局的 context 就是宿主 Activity。
             final Activity a = layout.getContext() instanceof Activity ? (Activity) layout.getContext() : null;
-            int id = layout.getResources().getIdentifier("ai_plan_btn", "id", layout.getContext().getPackageName());
-            View btn = layout.findViewById(id);
-            if (btn != null && a != null) {
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        try {
-                            onPlanClick(f, a);
-                        } catch (Throwable t) {
-                            toast(a, "AI 功能异常: " + t);
-                        }
-                    }
-                });
-            }
             int dsId = layout.getResources().getIdentifier("ai_ds_btn", "id", layout.getContext().getPackageName());
             View dsBtn = layout.findViewById(dsId);
             if (dsBtn != null && a != null) {

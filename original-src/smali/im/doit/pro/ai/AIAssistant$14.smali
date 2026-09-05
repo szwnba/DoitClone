@@ -30,7 +30,7 @@
         }
     .end annotation
 
-    .line 765
+    .line 759
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$14;->val$a:Landroid/app/Activity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,9 +41,9 @@
 
 # virtual methods
 .method public ok(Ljava/lang/String;)V
-    .registers 4
+    .registers 5
 
-    .line 768
+    .line 762
     if-nez p1, :cond_5
 
     const-string p1, ""
@@ -55,7 +55,7 @@
 
     move-result-object p1
 
-    .line 769
+    .line 763
     :goto_9
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$14;->val$a:Landroid/app/Activity;
 
@@ -67,7 +67,7 @@
 
     move-result-object v0
 
-    const-string v1, "key"
+    const-string v1, "model"
 
     invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
@@ -75,25 +75,41 @@
 
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->commit()Z
 
-    .line 770
+    .line 764
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$14;->val$a:Landroid/app/Activity;
 
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
-    move-result p1
+    move-result v1
 
-    if-nez p1, :cond_27
+    if-nez v1, :cond_27
 
-    const-string p1, "\u5df2\u6e05\u7a7a Key"
+    const-string p1, "\u5df2\u6062\u590d\u9ed8\u8ba4\u6a21\u578b"
 
-    goto :goto_29
+    goto :goto_3a
 
     :cond_27
-    const-string p1, "Key \u5df2\u4fdd\u5b58"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    :goto_29
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "\u6a21\u578b\u5df2\u4fdd\u5b58: "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    :goto_3a
     invoke-static {v0, p1}, Lim/doit/pro/ai/AIAssistant;->toast(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 771
+    .line 765
     return-void
 .end method

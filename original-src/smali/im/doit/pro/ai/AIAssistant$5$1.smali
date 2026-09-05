@@ -32,7 +32,7 @@
         }
     .end annotation
 
-    .line 239
+    .line 237
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$5$1;->this$0:Lim/doit/pro/ai/AIAssistant$5;
 
     iput-object p2, p0, Lim/doit/pro/ai/AIAssistant$5$1;->val$r:Lim/doit/pro/ai/AIAssistant$PlanResult;
@@ -47,7 +47,7 @@
 .method public run()V
     .registers 5
 
-    .line 241
+    .line 239
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$5$1;->this$0:Lim/doit/pro/ai/AIAssistant$5;
 
     iget-object v0, v0, Lim/doit/pro/ai/AIAssistant$5;->val$a:Landroid/app/Activity;
@@ -62,7 +62,7 @@
 
     iget-object v3, p0, Lim/doit/pro/ai/AIAssistant$5$1;->val$r:Lim/doit/pro/ai/AIAssistant$PlanResult;
 
-    invoke-static {v0, v1, v2, v3}, Lim/doit/pro/ai/AIAssistant;->access$400(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
+    invoke-static {v0, v1, v2, v3}, Lim/doit/pro/ai/AIAssistant;->access$300(Landroid/app/Activity;Lim/doit/pro/activity/TaskDetailFragment;Lim/doit/pro/model/Task;Lim/doit/pro/ai/AIAssistant$PlanResult;)V
 
     return-void
 .end method

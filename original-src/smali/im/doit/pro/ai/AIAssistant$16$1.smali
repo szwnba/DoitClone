@@ -25,7 +25,7 @@
 .method constructor <init>(Lim/doit/pro/ai/AIAssistant$16;)V
     .registers 2
 
-    .line 787
+    .line 785
     iput-object p1, p0, Lim/doit/pro/ai/AIAssistant$16$1;->this$0:Lim/doit/pro/ai/AIAssistant$16;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -38,7 +38,7 @@
 .method public run()V
     .registers 4
 
-    .line 791
+    .line 789
     :try_start_0
     iget-object v0, p0, Lim/doit/pro/ai/AIAssistant$16$1;->this$0:Lim/doit/pro/ai/AIAssistant$16;
 
@@ -48,10 +48,10 @@
 
     const-string v2, "\u53ea\u56de\u590d\u4e24\u4e2a\u5b57\uff1a\u6210\u529f"
 
-    invoke-static {v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$800(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->access$700(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 792
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$500()Landroid/os/Handler;
+    .line 790
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
     move-result-object v0
 
@@ -63,14 +63,14 @@
     :try_end_17
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_17} :catch_18
 
-    .line 802
+    .line 800
     goto :goto_38
 
-    .line 796
+    .line 794
     :catch_18
     move-exception v0
 
-    .line 797
+    .line 795
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
     move-result-object v1
@@ -92,9 +92,9 @@
 
     move-result-object v0
 
-    .line 798
+    .line 796
     :goto_2c
-    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$500()Landroid/os/Handler;
+    invoke-static {}, Lim/doit/pro/ai/AIAssistant;->access$400()Landroid/os/Handler;
 
     move-result-object v1
 
@@ -104,7 +104,7 @@
 
     invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 803
+    .line 801
     :goto_38
     return-void
 .end method
