@@ -13,7 +13,7 @@ packageInfo:
   renameManifestPackage: null
 versionInfo:
   versionCode: 1414457
-  versionName: 4.4.5-local-r53
+  versionName: 4.4.5-local-r54
 resourcesAreCompressed: false
 sharedLibrary: false
 sparseResources: false
