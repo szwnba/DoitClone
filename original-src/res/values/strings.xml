@@ -82,7 +82,7 @@
     <string name="tomorrow">Tomorrow</string>
     <string name="scheduled">Scheduled</string>
     <string name="someday">Someday</string>
-    <string name="waiting">Waiting</string>
+    <string name="waiting">笔记</string>
     <string name="completed">Completed</string>
     <string name="archived">Archived</string>
     <string name="trash">Trash</string>
@@ -409,7 +409,7 @@ Please go to Preferences in Doit.im for Web to reset the timezone."</string>
     <string name="empty_tomorrow">Tomorrow box holds tasks to be handled tomorrow, which will be shown in Today box after midnight.</string>
     <string name="empty_scheduled">All to-dos with start time after today, including repeated ones, appear in Scheduled.</string>
     <string name="empty_someday">Someday box holds tasks with no start time yet and probably to be done someday in the future.</string>
-    <string name="empty_waiting">Tasks sent to others come to Waiting automatically.</string>
+    <string name="empty_waiting">随手把想法、灵感与资料记录到笔记箱。</string>
     <string name="empty_completed">Tasks come here when you check the checkbox in front.</string>
     <string name="empty_trash">Click Empty to erase all in Trash.</string>
     <string name="empty_context">To-dos under this context can be found here.</string>

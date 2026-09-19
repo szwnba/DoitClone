@@ -382,7 +382,7 @@
 
     if-eqz v0, :cond_2c
 
-    const-string p1, "\u7b49\u5f85"
+    const-string p1, "\u7b14\u8bb0"
 
     return-object p1
 

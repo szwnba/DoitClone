@@ -63,7 +63,7 @@
     <string name="tomorrow">明日</string>
     <string name="scheduled">スケジュール</string>
     <string name="someday">いつか／多分</string>
-    <string name="waiting">連絡待ち</string>
+    <string name="waiting">笔记</string>
     <string name="completed">完了</string>
     <string name="archived">アーカイブ</string>
     <string name="trash">ゴミ箱</string>
@@ -382,7 +382,7 @@ web版の設定に直してください。"</string>
     <string name="empty_tomorrow">明日処理しなくてはならないタスクはこの箱に見えます。午後１２時過ぎたら、自動で「今日」に入ります。</string>
     <string name="empty_scheduled">今日以降に始めるすべてのタスク が（リピート設定されているものを含め）、「スケジュール」に表示されます。</string>
     <string name="empty_someday">「いつか」は、開始日時が設定されておらず、そのうち終わらせるつもりのタスクを保管します。</string>
-    <string name="empty_waiting">他の人に転送されたタスクは自動的に「連絡待ち」に入ります。</string>
+    <string name="empty_waiting">随手把想法、灵感与资料记录到笔记箱。</string>
     <string name="empty_completed">チェックマークをつけたタスクはここに移動します。アーカイブボタンでそれらを取り除くことができます。</string>
     <string name="empty_trash">「空にする」をクリックすると、ゴミ箱の中のすべてのタスクを削除できます。</string>
     <string name="empty_context">このコンテキストにのタスクがここに表示されます。</string>

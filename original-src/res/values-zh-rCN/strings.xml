@@ -63,7 +63,7 @@
     <string name="tomorrow">明日待办</string>
     <string name="scheduled">日程</string>
     <string name="someday">将来/也许</string>
-    <string name="waiting">等待</string>
+    <string name="waiting">笔记</string>
     <string name="completed">已完成</string>
     <string name="archived">已归档</string>
     <string name="trash">垃圾箱</string>
@@ -390,7 +390,7 @@ Doit.im时区：%1$s
     <string name="empty_tomorrow">待明日处理的任务显示在明日待办箱中，午夜之后将自动进入今日待办。</string>
     <string name="empty_scheduled">所有开始时间为明天及以后的待办任务（包括重复任务）均在日程箱中。</string>
     <string name="empty_someday">尚不确定开始时间、也许将来要做的事宜，可放入此箱。</string>
-    <string name="empty_waiting">已发送任务自动进入等待箱子</string>
+    <string name="empty_waiting">随手把想法、灵感与资料记录到笔记箱。</string>
     <string name="empty_completed">勾选任务前的勾选框便能完成任务。</string>
     <string name="empty_trash">点击“清空”便能清空垃圾箱</string>
     <string name="empty_context">本箱中看到的是该情境下的任务。</string>

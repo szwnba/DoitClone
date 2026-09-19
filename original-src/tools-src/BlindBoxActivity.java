@@ -286,7 +286,7 @@ public class BlindBoxActivity extends DSwipeBackBaseActivity {
         if ("inbox".equals(attr)) return "收集箱";
         if ("next".equals(attr)) return "下一步行动";
         if ("plan".equals(attr)) return "今日待办";
-        if ("waiting".equals(attr)) return "等待";
+        if ("waiting".equals(attr)) return "笔记";
         if ("noplan".equals(attr)) return "未安排";
         return "任务";
     }
