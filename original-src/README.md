@@ -1,4 +1,4 @@
-# 原版本地化版源码（基准版本 4.4.5-local-r59 / code 1414462）
+# 原版本地化版源码（基准版本 4.4.5-local-r60 / code 1414463）
 
 本目录是 doit.im v4.4.5（2015）APK 的 apktool 反编译产物 + 本地化补丁，
 **当前分发的 doit-local.apk 即由此树构建**。
@@ -28,6 +28,7 @@ apksigner sign --ks original-src/doit-reverse.keystore \
 | 9 | `AndroidManifest.xml`（此前版本） | targetSdk 23 | Android 14+ 可装 |
 | 10 | `smali/im/doit/pro/github/`（新增 15 个文件） | `GitHubSync` 整类（Java 编译→d8→baksmali）+ 设置页入口行 + `SettingsActivity.onGitHubSyncClick` + 字符串资源 | **GitHub 私有仓备份/恢复**：设置页手动把整库 gzip 后经 Contents API 备份到私有仓库，可下载覆盖恢复（恢复后自动重启）；Token 仅存本机 SharedPreferences |
 | 11 | `res/values{,-ja,-zh-rCN}/strings.xml` + `smali/im/doit/pro/exp/BlindBoxActivity.smali` | `@string/waiting` 等待→**笔记**；`@string/empty_waiting` 改笔记语境文案；盲盒卡片"来自：等待"→"笔记" | **抽屉「等待」箱改名「笔记」**（r59）：显示名纯资源驱动（`BoxUtils.setBoxViewRes` 按箱子 type 名 getIdentifier 解析），DB 无 name 列——存量安装覆盖升级即生效，无需数据迁移；`icon_leftbox_waiting` 图标保持原样未动 |
+| 12 | `res/layout/fragment_task_detail.xml` + `smali/im/doit/pro/ai/AIAssistant$3.smali` | 任务详情 AI 行第二按钮 Kimi→**豆包**：按钮文案、跳转包名 `com.moonshot.kimichat`→`com.larus.nova`（Google Play/应用宝核实）；删除零引用死图标 `icon_ai_kimi.png` | **AI 跳转按钮换豆包**（r60）：三级降级链路（分享定向→打开App+剪贴板→仅复制）不变；资源 id `ai_kimi_btn` 保留与文案解耦，`icon_ai_deepseek.png` 同为死文件暂留 |
 
 ### 补丁 10 说明（GitHub 备份）
 

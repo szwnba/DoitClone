@@ -57,9 +57,9 @@
 
     move-result-object v0
 
-    const-string v1, "com.moonshot.kimichat"
+    const-string v1, "com.larus.nova"
 
-    const-string v2, "Kimi"
+    const-string v2, "\u8c46\u5305"
 
     invoke-static {p1, v0, v1, v2}, Lim/doit/pro/ai/AIAssistant;->openExternalAI(Landroid/app/Activity;Lim/doit/pro/model/Task;Ljava/lang/String;Ljava/lang/String;)V
     :try_end_f

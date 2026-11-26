@@ -131,7 +131,8 @@ public class AIAssistant {
                     @Override
                     public void onClick(View v) {
                         try {
-                            openExternalAI(a, getTask(f), "com.moonshot.kimichat", "Kimi");
+                            // r60: Kimi 换成豆包（id 名 ai_kimi_btn 保留，资源 id 与文案解耦）
+                            openExternalAI(a, getTask(f), "com.larus.nova", "豆包");
                         } catch (Throwable t) { }
                     }
                 });

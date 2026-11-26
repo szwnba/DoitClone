@@ -19,7 +19,7 @@
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
             
             <im.doit.pro.ui.component.DButton android:id="@id/ai_ds_btn" android:background="@android:color/transparent" android:layout_width="0.0dip" android:layout_weight="1.0" android:layout_height="40.0dip" android:gravity="center" android:textSize="14.0sp" android:textColor="#7f000000" android:text="DeepSeek" />
-            <im.doit.pro.ui.component.DButton android:id="@id/ai_kimi_btn" android:background="@android:color/transparent" android:layout_width="0.0dip" android:layout_weight="1.0" android:layout_height="40.0dip" android:gravity="center" android:textSize="14.0sp" android:textColor="#7f000000" android:text="Kimi" />
+            <im.doit.pro.ui.component.DButton android:id="@id/ai_kimi_btn" android:background="@android:color/transparent" android:layout_width="0.0dip" android:layout_weight="1.0" android:layout_height="40.0dip" android:gravity="center" android:textSize="14.0sp" android:textColor="#7f000000" android:text="豆包" />
         </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/subtask_wrap" android:background="@drawable/task_detail_subtask_wrap_bg" android:paddingBottom="16.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <im.doit.pro.ui.component.DButton android:id="@id/subtask_sort_btn" android:text="@string/sort" style="@style/task_detail_subtask_sort_btn" />
